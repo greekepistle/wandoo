@@ -10,6 +10,8 @@ import UIKit
 
 class PostViewController: UIViewController {
 
+    var wandooModel = WandooModel.sharedWandooInstance
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -26,7 +28,9 @@ class PostViewController: UIViewController {
     }
     
     func buttonAction(send: UIButton!) {
-        self.performSegueWithIdentifier("toWandooController", sender: self)
+        wandooModel.postWandoo { (result) -> Void in
+            self.performSegueWithIdentifier("toWandooController", sender: self)
+        }
     }
 
     @IBAction func cancelPeopleUnwind(segue:UIStoryboardSegue) {

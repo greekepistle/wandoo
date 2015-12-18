@@ -112,7 +112,9 @@ class UserModel {
                 
                 //photo data
                 if let data = NSData(contentsOfURL: FBurl!) {
-                    userInfo["profilePic"] = String(data)
+                    
+                    userInfo["profilePic"] = data.base64EncodedStringWithOptions([])
+                    
                     request.HTTPBody = try! NSJSONSerialization.dataWithJSONObject(userInfo, options: [])
                     
                     let task = session.dataTaskWithRequest(request) { data, response, error in
