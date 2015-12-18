@@ -20,8 +20,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDe
     var wandooModel = WandooModel()
     var count: Int = 0
     
+    @IBOutlet weak var wandooTable: UITableView!
+    
     var offset: Int = 1
-    let limit: Int = 25
+    let limit: Int = 100
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,9 +36,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDe
         
         self.navigationItem.hidesBackButton = true
         
-        getAllWandoos { (allWandoos) -> Void in
-            print(allWandoos[0])
-        }
+        refreshUI()
     
         
         
@@ -81,14 +81,25 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDe
         let wandooCell = tableView.dequeueReusableCellWithIdentifier("wandooCell", forIndexPath: indexPath) as! WandooCell
         
         getAllWandoos { (allWandoos) -> Void in
-            dispatch_async(dispatch_get_main_queue()){
-                wandooCell.message.text = allWandoos[indexPath.row]["text"] as? String
-                wandooCell.startDate.text = allWandoos[indexPath.row]["start_time"] as? String
-                
-                
+            if allWandoos.count > 0 {
+                let fbID = FBSDKAccessToken.currentAccessToken().userID
+            
+                self.userModel.getUserInfo(fbID, completion: { (result) -> Void in
+                    dispatch_async(dispatch_get_main_queue()){
+                        wandooCell.profileImage.image = allWandoos[indexPath.row]["profile_picture"] as? UIImage
+                        wandooCell.message.text = allWandoos[indexPath.row]["text"] as? String
+                        wandooCell.startDate.text = allWandoos[indexPath.row]["start_time"] as? String
+                    }
+                })
             }
         }
         
         return wandooCell
+    }
+    
+    func refreshUI() {
+        dispatch_async(dispatch_get_main_queue(),{
+            self.wandooTable.reloadData()
+        });
     }
 }

@@ -151,8 +151,14 @@ class UserModel {
             if let data = data {
                 do {
                     let parsedData = try NSJSONSerialization.JSONObjectWithData(data, options: .MutableContainers) as? NSDictionary
-                    let unwrappedData = parsedData!["data"]![0] as! NSDictionary
-                    completion(result: unwrappedData)
+                    var unwrappedData = parsedData!["data"]![0] as! NSDictionary
+                    let fbToken = FBSDKAccessToken.currentAccessToken().tokenString
+                    let picURL = NSURL(string: "http://localhost:8000/images/" + fbToken + ".png")
+                    if let data = NSData(contentsOfURL: picURL!) {
+                        
+                        unwrappedData.setValue(UIImage(data: data), forKey: "profile_picture")
+                        completion(result: unwrappedData)
+                    }
                 } catch {
                     print("Something went wrong")
                 }
