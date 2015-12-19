@@ -19,6 +19,7 @@
   "homepage": "https://github.com/GregDungca/wandoo#readme",
   "dependencies": {
     "body-parser": "^1.14.1",
+    "cron": "^1.1.0",
     "express": "^4.13.3",
     "mysql": "^2.9.0",
     "underscore": "^1.8.3"
