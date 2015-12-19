@@ -27,14 +27,31 @@ class FacebookLoginController: UIViewController {
                         let accessToken = FBSDKAccessToken.currentAccessToken().tokenString
                         self.userModel.storeFBDataIntoParse(user.objectId!, accessToken: accessToken) { () -> Void in
                             print ("hi")
+                            let fbID = FBSDKAccessToken.currentAccessToken().userID
+                            self.userModel.getUserInfo(fbID, completion: { (result) -> Void in
+                                self.userModel.userID = result["userID"]! as! Int
+                                print(self.userModel.userID)
+                                dispatch_async(dispatch_get_main_queue()) {
+                                    self.performSegueWithIdentifier("LoginFacebook", sender: self)
+                                }
+
+                            })
+
                         }
                         //segue into profile editing page
                         print("New user signed up")
                         self.performSegueWithIdentifier("LoginFacebook", sender: self)
                     } else {
-                        self.performSegueWithIdentifier("LoginFacebook", sender: self)
+                        let fbID = FBSDKAccessToken.currentAccessToken().userID
+                        self.userModel.getUserInfo(fbID, completion: { (result) -> Void in
+                            self.userModel.userID = result["userID"]! as! Int
+                            print(self.userModel.userID)
+                            dispatch_async(dispatch_get_main_queue()) {
+                                self.performSegueWithIdentifier("LoginFacebook", sender: self)
+                            }
+                        })
                         print("Already a user")
-                        print(user.objectId!)
+
                         
                     }
                 }

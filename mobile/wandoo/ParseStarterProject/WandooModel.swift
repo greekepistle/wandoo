@@ -19,6 +19,7 @@ class WandooModel {
     var latitude: Double?
     var longitude: Double?
     var numPeople: Int?
+    var userModel = UserModel.sharedUserInstance
     
     static let sharedWandooInstance = WandooModel()
     
@@ -31,6 +32,7 @@ class WandooModel {
             if let data = data {
                 do {
                     let parsedData = try NSJSONSerialization.JSONObjectWithData(data, options: .MutableContainers) as? NSDictionary
+                    print(parsedData!["userID"])
                     var userID: Int = (parsedData!["userID"] as? Int)!
                     completion(userID: userID)
                 } catch {
@@ -40,33 +42,53 @@ class WandooModel {
         }
     }
     
-    func postWandoo(completion: (result: NSDictionary) -> Void) {
+    func postWandoo(completion: () -> Void) {
+        // "2015-12-12T01:30:00.040Z"
+        self.latitude = userModel.latitude
+        self.longitude = userModel.longitude
         
-        var postInfo: [String: AnyObject] = [
-            "userID": 1,
-            "text": "test",
-            "startTime": "2015-12-12T01:30:00.040Z",
-            "endTime": "2015-12-12T01:30:00.040Z",
-            "postTime": "2015-12-12T01:30:00.040Z",
-            "latitude": 1.23,
-            "longitude": 1.23,
-            "numPeople": 3
-        ]
+        let userID = userModel.userID
+        print(userID)
+            var postInfo: [String: AnyObject] = [
+                "userID": userID!,
+                "text": self.text!,
+//                "startTime": self.startTime!,
+//                "endTime": self.endTime!,
+//                "postTime": self.postTime!,
+//                "latitude": self.latitude!,
+//                "longitude": self.longitude!,
+                "numPeople": self.numPeople!
+            ]
+            
+            print("reaching here???")
+            let url = NSURL(string: "http://localhost:8000/api/wandoos")
+            
+            let request = NSMutableURLRequest(URL: url!)
+            
+            let session = NSURLSession.sharedSession()
+            request.HTTPMethod = "POST"
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            
+            request.HTTPBody = try! NSJSONSerialization.dataWithJSONObject(postInfo, options: [])
+//            for var i = 0; i < 700; i++ {
+                let task = session.dataTaskWithRequest(request) { data, response, error in
+                    print("success")
+                    completion()
+                }
+                task.resume()
+//            }
         
-        let url = NSURL(string: "http://localhost:8000/api/wandoos")
         
-        let request = NSMutableURLRequest(URL: url!)
-        
-        let session = NSURLSession.sharedSession()
-        request.HTTPMethod = "POST"
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        
-        request.HTTPBody = try! NSJSONSerialization.dataWithJSONObject(postInfo, options: [])
-        
-        let task = session.dataTaskWithRequest(request) { data, response, error in
-            print("success")
-        }
-        task.resume()
+//        var postInfo: [String: AnyObject] = [
+//            "userID": 1,
+//            "text": "test",
+//            "startTime": "2015-12-12T01:30:00.040Z",
+//            "endTime": "2015-12-12T01:30:00.040Z",
+//            "postTime": "2015-12-12T01:30:00.040Z",
+//            "latitude": 1.23,
+//            "longitude": 1.23,
+//            "numPeople": 3
+//        ]
     }
     
     func getWandoo(completion: (result: NSDictionary) -> Void) {

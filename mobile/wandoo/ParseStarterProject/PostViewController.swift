@@ -11,6 +11,9 @@ import UIKit
 class PostViewController: UIViewController {
 
     var wandooModel = WandooModel.sharedWandooInstance
+    var userModel = UserModel.sharedUserInstance
+    
+    @IBOutlet weak var wandooMessage: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,9 +31,18 @@ class PostViewController: UIViewController {
     }
     
     func buttonAction(send: UIButton!) {
+        wandooModel.text = wandooMessage.text
+        print(wandooModel.text!)
+        userModel.postLocation()
+        
+
         wandooModel.postWandoo { (result) -> Void in
-            self.performSegueWithIdentifier("toWandooController", sender: self)
+            dispatch_async(dispatch_get_main_queue()) {
+                self.performSegueWithIdentifier("toWandooController", sender: self)
+            }
         }
+
+
     }
 
     @IBAction func cancelPeopleUnwind(segue:UIStoryboardSegue) {

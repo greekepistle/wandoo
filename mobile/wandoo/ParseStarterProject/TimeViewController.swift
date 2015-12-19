@@ -13,7 +13,7 @@ class TimeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         datePicker.addTarget(self, action: Selector("startDatePickerChanged:"), forControlEvents: UIControlEvents.ValueChanged)
-         datePicker.addTarget(self, action: Selector("endDatePickerChanged:"), forControlEvents: UIControlEvents.ValueChanged)
+//         datePicker.addTarget(self, action: Selector("endDatePickerChanged:"), forControlEvents: UIControlEvents.ValueChanged)
     }
 
     override func didReceiveMemoryWarning() {
@@ -29,18 +29,28 @@ class TimeViewController: UIViewController {
     }
    
     @IBAction func SubmitTimeButton(sender: UIButton) {
+        print(timePickerToString(datePicker))
     }
    
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var endTimeDatePicker: UIDatePicker!
    
-    func startSatePickerChanged(datePicker:UIDatePicker) {
+    func startDatePickerChanged(datePicker:UIDatePicker) {
         let dateFormatter = NSDateFormatter()
 
     }
     
-    func endDatePickerChanged(datePicker:UIDatePicker) {
-        let dateFormatter = NSDateFormatter()
+//    func endDatePickerChanged(datePicker:UIDatePicker) {
+//        let dateFormatter = NSDateFormatter()
+//        
+//    }
+    
+    func timePickerToString(sender: UIDatePicker) -> String {
+        var timeFormatter = NSDateFormatter()
+        timeFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
         
+        var stringDate = timeFormatter.stringFromDate(sender.date)
+        
+        return stringDate
     }
 }

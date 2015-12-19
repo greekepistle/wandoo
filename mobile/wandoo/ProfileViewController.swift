@@ -63,6 +63,7 @@ class ProfileViewController: UIViewController {
                     if let edu = result["educationInstitution"] {
                         self.name.text! += "\n" + (result["educationInstitution"]! as? String)!
                     }
+                    print(result)
                     
 //                    print(result)
 //                    

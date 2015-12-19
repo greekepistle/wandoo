@@ -9,6 +9,8 @@
 import UIKit
 
 class PeopleViewController: UIViewController {
+    
+    var wandooModel = WandooModel.sharedWandooInstance
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,5 +49,7 @@ class PeopleViewController: UIViewController {
     }
 
     @IBAction func SubmitButton(sender: UIButton) {
+        wandooModel.numPeople = Int(quantity.text!)
+        print(quantity.text)
     }
 }

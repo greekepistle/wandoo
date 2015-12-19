@@ -30,6 +30,7 @@ class UserModel {
     var email: String?
     var latitude: Double?
     var longitude: Double?
+    var userID: Int?
     
     static let sharedUserInstance = UserModel()
 
@@ -143,6 +144,34 @@ class UserModel {
         }
     }
     
+    func postLocation() {
+        
+        var userLocation : [String: AnyObject] = [
+            "latitude": self.latitude!,
+            "longitude": self.longitude!
+        ]
+        let fbID = FBSDKAccessToken.currentAccessToken().userID
+        
+        getUserInfo(fbID) { (result) -> Void in
+            print(result["userID"])
+            
+            let url = NSURL(string: "http://localhost:8000/api/users/" + String(result["userID"]!))
+            
+            let request = NSMutableURLRequest(URL: url!)
+            
+            let session = NSURLSession.sharedSession()
+            request.HTTPMethod = "PUT"
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            
+            request.HTTPBody = try! NSJSONSerialization.dataWithJSONObject(userLocation, options: [])
+            
+            let task = session.dataTaskWithRequest(request) { data, response, error in
+                print("success")
+            }
+            task.resume()
+        }
+    }
+    
     func getUserInfo(facebookID: String, completion: (result: NSDictionary) -> Void) {
         let url = NSURL(string: "http://localhost:8000/api/users/?facebookID=" + facebookID)
         
@@ -152,10 +181,10 @@ class UserModel {
                 do {
                     let parsedData = try NSJSONSerialization.JSONObjectWithData(data, options: .MutableContainers) as? NSDictionary
                     var unwrappedData = parsedData!["data"]![0] as! NSDictionary
-                    let fbToken = FBSDKAccessToken.currentAccessToken().tokenString
-                    let picURL = NSURL(string: "http://localhost:8000/images/" + fbToken + ".png")
+                    let fbID = FBSDKAccessToken.currentAccessToken().userID
+                    let picURL = NSURL(string: "http://localhost:8000/images/" + fbID + ".png")
                     if let data = NSData(contentsOfURL: picURL!) {
-                        
+                        print("yes")
                         unwrappedData.setValue(UIImage(data: data), forKey: "profile_picture")
                         completion(result: unwrappedData)
                     }
