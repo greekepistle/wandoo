@@ -38,8 +38,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // ParseCrashReporting.enable()
         //
         // Uncomment and fill in with your Parse credentials:
-        Parse.setApplicationId("3DIlsEbkedwBE0AOCQ5sYW2ajV1s8vtlrd3Jm8yf",
-            clientKey: "jHHs0Dmc0ryy6LXYDVDXmwjYtFUoFQNiKt1WSEN3")
+//        Parse.setApplicationId("3DIlsEbkedwBE0AOCQ5sYW2ajV1s8vtlrd3Jm8yf",
+//            clientKey: "jHHs0Dmc0ryy6LXYDVDXmwjYtFUoFQNiKt1WSEN3")
+        //mmnm Parse appid
+        Parse.setApplicationId("HS5AbFE2AykpVi7QD2vBwutQJcytqHSPpaWAriy5",
+            clientKey: "sxoaYg2v8qUk2Vz2Xu1HTkRVoH9VL0avcSd9aRwv")
         
         PFFacebookUtils.initializeFacebookWithApplicationLaunchOptions(launchOptions)
         //
@@ -87,18 +90,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //            application.registerForRemoteNotificationTypes(types)
         //        }
 
-        //
-        //  Swift 2.0
-        //
-        //        if #available(iOS 8.0, *) {
-        //            let types: UIUserNotificationType = [.Alert, .Badge, .Sound]
-        //            let settings = UIUserNotificationSettings(forTypes: types, categories: nil)
-        //            application.registerUserNotificationSettings(settings)
-        //            application.registerForRemoteNotifications()
-        //        } else {
-        //            let types: UIRemoteNotificationType = [.Alert, .Badge, .Sound]
-        //            application.registerForRemoteNotificationTypes(types)
-        //        }
+        
+//          Swift 2.0
+        
+                if #available(iOS 8.0, *) {
+                    let types: UIUserNotificationType = [.Alert, .Badge, .Sound]
+                    let settings = UIUserNotificationSettings(forTypes: types, categories: nil)
+                    application.registerUserNotificationSettings(settings)
+                    application.registerForRemoteNotifications()
+                } else {
+                    let types: UIRemoteNotificationType = [.Alert, .Badge, .Sound]
+                    application.registerForRemoteNotificationTypes(types)
+                }
 
         return true
     }
@@ -158,7 +161,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication,
         openURL url: NSURL,
         sourceApplication: String?,
-        annotation: AnyObject?) -> Bool {
+        annotation: AnyObject) -> Bool {
             return FBSDKApplicationDelegate.sharedInstance().application(application,
                 openURL: url,
                 sourceApplication: sourceApplication,
