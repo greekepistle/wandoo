@@ -36,6 +36,10 @@ module.exports = {
     var qs1 = 'delete from wandoo_interest where wandooID = ?;' 
     var qs2 = 'delete from wandoo_tag where wandooID = ?;'
     var qs3 = 'delete from wandoo where wandooID = ?;'
+
+    // Delete all rooms, room_user corresponding to Wandoo_id before deleting wandoos table
+    // If you don't do this, the other operations (Wandoo_delete) will be unsucccessful
+
     db.query(qs1, wandooID, function (err, results1) {
       if (err) {
         callback(err);
