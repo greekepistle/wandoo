@@ -32,17 +32,53 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDe
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        
+        //location manager - request for user location only when in use
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
         
+        //http GET request for all wandoos
         self.retrieveWandoos()
         
         self.navigationItem.hidesBackButton = true
         
     }
+    //continually spits out user location
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
+        let userLocation:CLLocation = locations[0]
+        
+        userModel.latitude = userLocation.coordinate.latitude
+        userModel.longitude = userLocation.coordinate.longitude
+    }
     
+    //renders wandoos into table view
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        let wandooCell = tableView.dequeueReusableCellWithIdentifier("wandooCell", forIndexPath: indexPath) as! WandooCell
+        
+        
+        wandooCell.profileImage.image = profilePicture
+        wandooCell.message.text = self.allWandoosArray[indexPath.row]["text"] as? String
+        wandooCell.startDate.text = allWandoosArray[indexPath.row]["start_time"] as? String
+        
+        return wandooCell
+    }
+    
+    //number of sections in table.. we only have 1 section of wandoos
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    //number of rows in our section.. depends on how many wandoos we get from our http request
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return allWandoosArray.count
+    }
+    
+    //gets all wandoos using UserModel
+    //UserModel is able to get the user's info (e.g. name, photo) via facebook id
     func retrieveWandoos() {
         
         getAllWandoos { (allWandoos) -> Void in
@@ -71,60 +107,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDe
             completion(result: result)
         }
     }
-    
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
-        let userLocation:CLLocation = locations[0]
-        
-        userModel.latitude = userLocation.coordinate.latitude
-        userModel.longitude = userLocation.coordinate.longitude
-    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return allWandoosArray.count
-    }
-    
-    
-    
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
-        let wandooCell = tableView.dequeueReusableCellWithIdentifier("wandooCell", forIndexPath: indexPath) as! WandooCell
-        
-        
-            wandooCell.profileImage.image = profilePicture
-            wandooCell.message.text = self.allWandoosArray[indexPath.row]["text"] as? String
-            wandooCell.startDate.text = allWandoosArray[indexPath.row]["start_time"] as? String
-        
-//        getAllWandoos { (allWandoos) -> Void in
-//            if allWandoos.count > 0 {
-//                let fbID = FBSDKAccessToken.currentAccessToken().userID
-//                self.userModel.getUserInfo(fbID, completion: { (result) -> Void in
-//                    
-//                    dispatch_async(dispatch_get_main_queue()){
-//                        self.limit = allWandoos.count
-//                        wandooCell.profileImage.image = result["profile_picture"] as? UIImage
-//                        wandooCell.message.text = allWandoos[indexPath.row]["text"] as? String
-//                        wandooCell.startDate.text = allWandoos[indexPath.row]["start_time"] as? String
-//                        print(allWandoos[80]["wandooID"])
-//                        if self.counter++ == self.count {
-//                            self.wandooTable.reloadData()
-//                        }
-//                    }
-//                })
-//            }
-//        }
-        
-        return wandooCell
-    }
 }
 
 

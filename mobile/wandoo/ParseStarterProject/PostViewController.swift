@@ -30,6 +30,7 @@ class PostViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    //Upon tapping Post button: PUT request for user location and POST request for user's wandoo
     func buttonAction(send: UIButton!) {
         wandooModel.text = wandooMessage.text
         print(wandooModel.text!)

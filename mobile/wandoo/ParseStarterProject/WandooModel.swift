@@ -21,29 +21,10 @@ class WandooModel {
     var numPeople: Int?
     var userModel = UserModel.sharedUserInstance
     
+    //shared wandoo instance.. multiple view controllers can use the same instance of this model
     static let sharedWandooInstance = WandooModel()
     
-    func getUserIDWithFacebookID(facebookID: String, completion: (userID: Int) -> Void) {
-        
-        let url = NSURL(string: "http://localhost:8000/api/users/" + facebookID)
-        
-        let task = NSURLSession.sharedSession().dataTaskWithURL(url!) {(data, response, error) in
-            
-            if let data = data {
-                do {
-                    let parsedData = try NSJSONSerialization.JSONObjectWithData(data, options: .MutableContainers) as? NSDictionary
-                    print(parsedData!["userID"])
-                    var userID: Int = (parsedData!["userID"] as? Int)!
-                    completion(userID: userID)
-                } catch {
-                    print("Something went wrong")
-                }
-            }
-        }
-    }
-    
     func postWandoo(completion: () -> Void) {
-        // "2015-12-12T01:30:00.040Z"
         self.latitude = userModel.latitude
         self.longitude = userModel.longitude
         
@@ -59,8 +40,7 @@ class WandooModel {
 //                "longitude": self.longitude!,
                 "numPeople": self.numPeople!
             ]
-            
-            print("reaching here???")
+        
             let url = NSURL(string: "http://localhost:8000/api/wandoos")
             
             let request = NSMutableURLRequest(URL: url!)
@@ -91,8 +71,9 @@ class WandooModel {
 //        ]
     }
     
+    //GET request for a specific user's wandoos
     func getWandoo(completion: (result: NSDictionary) -> Void) {
-        let url = NSURL(string: "http://localhost:8000/api/wandoos")
+        let url = NSURL(string: "http://localhost:8000/api/wandoos/" + String(userID!))
         
         let task = NSURLSession.sharedSession().dataTaskWithURL(url!) {(data, response, error) in
             
@@ -110,6 +91,7 @@ class WandooModel {
         
     }
     
+    //GET request for wandoos with offset and limit
     func getWandoos(offset: Int, limit: Int, completion: (result: NSArray) -> Void) {
         let url = NSURL(string: "http://localhost:8000/api/wandoos/?offset=" + String(offset) + "&limit=" + String(limit))
         
@@ -129,6 +111,7 @@ class WandooModel {
         task.resume()
     }
     
+    //GET requet for all wandoos
     func getAllWandoos(completion: (result: NSArray) -> Void) {
         let url = NSURL(string: "http://localhost:8000/api/wandoos/")
         

@@ -38,6 +38,7 @@ class ProfileViewController: UIViewController {
         
     }
     
+    //GET request to render user info on profile page
     func getInfo() {
         let fbID = FBSDKAccessToken.currentAccessToken().userID
             self.user.getUserInfo (fbID) { (result) -> Void in
@@ -63,21 +64,6 @@ class ProfileViewController: UIViewController {
                     if let edu = result["educationInstitution"] {
                         self.name.text! += "\n" + (result["educationInstitution"]! as? String)!
                     }
-                    print(result)
-                    
-//                    print(result)
-//                    
-//                    let picString = result["profile_picture"] as! String
-//                    
-//                    
-//                    print(picString)
-                    
-
-//                    var picData = NSData(base64EncodedString: picString, options: NSDataBase64DecodingOptions.IgnoreUnknownCharacters)
-//                    
-//                    print(picData)
-//                    self.profileImage.image = UIImage(data: picData!)
-                    
                 }
             }
     }
