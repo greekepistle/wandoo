@@ -30,33 +30,40 @@ class ProfileViewController: UIViewController {
         rightBarButton.customView = btnName
         self.navigationItem.rightBarButtonItem = rightBarButton
         
+        
+        //INSERT code for post request test
+        
+        self.name.numberOfLines = 6
         getInfo()
         
-        
-        
-        
-//        self.user.storeFBDataIntoParse("GvNZq4udhT", accessToken: "CAAGyoLTet0IBAHysCqVQv3HtaO6SK72Gs1hZCbVfLLxVKTL72h8WF5mAWje4sDSicXFAJDGb72WyarG4eOXZCQbVtIBSTglcaUmlQP1vxnCknDVZBmzQJ3f9KoGRS6N9MvVDrQcPs1CDZBLLs2RsdtjL8g0XZB3LMUbFoymZAVSGm86JuonZC5UcCLMdhQnQN0uzzhEIip0diTsDoBa9lbKRpDgMnOtgLX3k1jikv4KZAkbGFon0ONwhTeThsSHGS9MZD") { () -> Void in
-//            print (self.user.name)
-//            print (self.user.photo)
-//            
-//            self.name.text = String(self.user.id!)
-//            
-//            
-//        }
-        
-        
-        // Do any additional setup after loading the view.
     }
     
+    //GET request to render user info on profile page
     func getInfo() {
         let fbID = FBSDKAccessToken.currentAccessToken().userID
             self.user.getUserInfo (fbID) { (result) -> Void in
                 dispatch_async(dispatch_get_main_queue()) {
                     self.name.text = result["name"]! as! String
-                    var pic = result["profile_picture"] as! NSDictionary
                     
-                    print(pic["data"]!)
-//                    self.profileImage.image = pic["data"]![0] as! UIImage
+                    if let age = result["age"] {
+                        self.name.text! += "\n" + String(result["age"]!)
+                    }
+                    
+                    if let sex = result["sex"] {
+                        self.name.text! += "\n" + (result["sex"]! as! String)
+                    }
+                    
+                    if let employer = result["employer"] {
+                        self.name.text! += "\n" + (result["employer"]! as! String)
+                    }
+                    
+                    if let jobTitle = result["jobTitle"] {
+                        self.name.text! += "\n" + (result["jobTitle"]! as! String)
+                    }
+                    
+                    if let edu = result["educationInstitution"] {
+                        self.name.text! += "\n" + (result["educationInstitution"]! as? String)!
+                    }
                 }
             }
     }

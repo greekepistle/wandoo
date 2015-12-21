@@ -10,6 +10,11 @@ import UIKit
 
 class PostViewController: UIViewController {
 
+    var wandooModel = WandooModel.sharedWandooInstance
+    var userModel = UserModel.sharedUserInstance
+    
+    @IBOutlet weak var wandooMessage: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -25,8 +30,20 @@ class PostViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    //Upon tapping Post button: PUT request for user location and POST request for user's wandoo
     func buttonAction(send: UIButton!) {
-        self.performSegueWithIdentifier("toWandooController", sender: self)
+        wandooModel.text = wandooMessage.text
+        print(wandooModel.text!)
+        userModel.postLocation()
+        
+
+        wandooModel.postWandoo { (result) -> Void in
+            dispatch_async(dispatch_get_main_queue()) {
+                self.performSegueWithIdentifier("toWandooController", sender: self)
+            }
+        }
+
+
     }
 
     @IBAction func cancelPeopleUnwind(segue:UIStoryboardSegue) {

@@ -12,9 +12,6 @@ class LocationViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-//        let submitButton : UIBarButtonItem = UIBarButtonItem(title: "Submit", style: UIBarButtonItemStyle.Done, target: self, action: "buttonAction:")
-//        self.navigationItem.rightBarButtonItem = submitButton
     }
 
     override func didReceiveMemoryWarning() {

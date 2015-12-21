@@ -30,14 +30,11 @@ class UserModel {
     var email: String?
     var latitude: Double?
     var longitude: Double?
+    var userID: Int?
     
+    //shared user instance - multiple view controllers can use the same instance of this user
     static let sharedUserInstance = UserModel()
 
-    //function -> void
-     //name = from api request
-    func getName() ->String {
-        return self.name!
-    }
     func storeFBDataIntoParse(objectId: String, accessToken: String, completion: (() -> Void)!) {
         
         let request = FBSDKGraphRequest(graphPath:"me?fields=id,name,gender,education,picture,work,birthday,email", parameters:nil)
@@ -52,7 +49,8 @@ class UserModel {
             }
             else if let userData = result as? [String:AnyObject] {
                 
-                // Access user data
+                // Parsing facebook data and setting them to our global variables
+                // Some of these need special logic, considering the user might not have certain information on facebook
                 self.id = userData["id"] as! String
                 self.name = userData["name"] as? String
                 self.age = self.getAgeFromFBBirthday(userData["birthday"] as! String) as? Int
@@ -78,6 +76,7 @@ class UserModel {
                     }
                 }
                 
+                //Packaging global variables into a dictionary that will be sent to our db
                 var userInfo : [String: AnyObject] = [
                     "name": self.name!,
                     "facebookID": self.id!,
@@ -100,6 +99,8 @@ class UserModel {
                     userInfo["educationInstitution"] = self.education!
                 }
                 
+                
+                //starting our POST request to backend
                 let url = NSURL(string: "http://localhost:8000/api/users")
                 
                 let request = NSMutableURLRequest(URL: url!)
@@ -107,12 +108,14 @@ class UserModel {
                 let session = NSURLSession.sharedSession()
                 request.HTTPMethod = "POST"
                 request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-
-                let FBurl = NSURL(string: "https://graph.facebook.com/me/picture?type=large&return_ssl_resources=1&access_token="+String(accessToken))
                 
-                //photo data
+                //retrieving user's profile photo from facebook
+                let FBurl = NSURL(string: "https://graph.facebook.com/me/picture?type=large&return_ssl_resources=1&access_token="+String(accessToken))
+                //upon retrieving the photo we can finalize our POST request
                 if let data = NSData(contentsOfURL: FBurl!) {
-                    userInfo["profilePic"] = String(data)
+                    
+                    userInfo["profilePic"] = data.base64EncodedStringWithOptions([])
+                    
                     request.HTTPBody = try! NSJSONSerialization.dataWithJSONObject(userInfo, options: [])
                     
                     let task = session.dataTaskWithRequest(request) { data, response, error in
@@ -121,26 +124,52 @@ class UserModel {
                     task.resume()
                 }
                 completion()
-                    
-//                    let query = PFQuery(className:"_User")
-//                    query.getObjectInBackgroundWithId(objectId) {
-//                        (user: PFObject?, error: NSError?) -> Void in
-//                        if error != nil {
-//                            print(error)
-//                        } else if let user = user {
-//                            user["name"] = self.name!
-//                            user["gender"] = self.gender!
-//                            user["education"] = self.education!
-//                            user["age"] = self.age!
-////                            user["photo"] = self.photo
-//
-//                            user.saveInBackground()
-//                        }
-//                    }
+                
+                //sending the user's name to parse to make our parse db more readable
+                let query = PFQuery(className:"_User")
+                query.getObjectInBackgroundWithId(objectId) {
+                    (user: PFObject?, error: NSError?) -> Void in
+                    if error != nil {
+                        print(error)
+                    } else if let user = user {
+                        user["name"] = self.name!
+                        user.saveInBackground()
+                    }
+                }
             }
         }
     }
     
+    //POST request for user's current location
+    func postLocation() {
+        
+        var userLocation : [String: AnyObject] = [
+            "latitude": self.latitude!,
+            "longitude": self.longitude!
+        ]
+        let fbID = FBSDKAccessToken.currentAccessToken().userID
+        
+        getUserInfo(fbID) { (result) -> Void in
+            print(result["userID"])
+            
+            let url = NSURL(string: "http://localhost:8000/api/users/" + String(result["userID"]!))
+            
+            let request = NSMutableURLRequest(URL: url!)
+            
+            let session = NSURLSession.sharedSession()
+            request.HTTPMethod = "PUT"
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            
+            request.HTTPBody = try! NSJSONSerialization.dataWithJSONObject(userLocation, options: [])
+            
+            let task = session.dataTaskWithRequest(request) { data, response, error in
+                print("success")
+            }
+            task.resume()
+        }
+    }
+    
+    //GET request for all user's info
     func getUserInfo(facebookID: String, completion: (result: NSDictionary) -> Void) {
         let url = NSURL(string: "http://localhost:8000/api/users/?facebookID=" + facebookID)
         
@@ -149,8 +178,14 @@ class UserModel {
             if let data = data {
                 do {
                     let parsedData = try NSJSONSerialization.JSONObjectWithData(data, options: .MutableContainers) as? NSDictionary
-                    let unwrappedData = parsedData!["data"]![0] as! NSDictionary
-                    completion(result: unwrappedData)
+                    var unwrappedData = parsedData!["data"]![0] as! NSDictionary
+                    let fbID = FBSDKAccessToken.currentAccessToken().userID
+                    let picURL = NSURL(string: "http://localhost:8000/images/" + fbID + ".png")
+                    if let data = NSData(contentsOfURL: picURL!) {
+                        print("yes")
+                        unwrappedData.setValue(UIImage(data: data), forKey: "profile_picture")
+                        completion(result: unwrappedData)
+                    }
                 } catch {
                     print("Something went wrong")
                 }
@@ -161,6 +196,7 @@ class UserModel {
         
     }
     
+    //Function to parse birthday to age
     func getAgeFromFBBirthday(birthdate: String) -> Int {
         
         let formatter: NSDateFormatter = NSDateFormatter()

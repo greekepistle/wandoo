@@ -10,4 +10,12 @@ import UIKit
 
 class WandooCell: UITableViewCell {
 
+    @IBOutlet weak var wandoo: UIView!
+    
+    @IBOutlet weak var message: UILabel!
+    
+    
+    @IBOutlet weak var startDate: UILabel!
+    
+    @IBOutlet weak var profileImage: UIImageView!
 }
