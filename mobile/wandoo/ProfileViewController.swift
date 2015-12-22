@@ -64,6 +64,10 @@ class ProfileViewController: UIViewController {
                     if let edu = result["educationInstitution"] {
                         self.name.text! += "\n" + (result["educationInstitution"]! as? String)!
                     }
+
+                    if let profilePicture = result["profile_picture"] {
+                        self.profileImage.image = profilePicture as! UIImage
+                    }
                 }
             }
     }
