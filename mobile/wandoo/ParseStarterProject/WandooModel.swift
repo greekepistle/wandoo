@@ -13,9 +13,9 @@ class WandooModel {
     
     var userID: String?
     var text: String?
-    var startTime: NSDate?
-    var endTime: NSDate?
-    var postTime: NSDate?
+    var startTime: String?
+    var endTime: String?
+    var postTime: String?
     var latitude: Double?
     var longitude: Double?
     var numPeople: Int?
@@ -33,11 +33,11 @@ class WandooModel {
             var postInfo: [String: AnyObject] = [
                 "userID": userID!,
                 "text": self.text!,
-//                "startTime": self.startTime!,
+                "startTime": self.startTime!,
 //                "endTime": self.endTime!,
 //                "postTime": self.postTime!,
-//                "latitude": self.latitude!,
-//                "longitude": self.longitude!,
+                "latitude": self.latitude!,
+                "longitude": self.longitude!,
                 "numPeople": self.numPeople!
             ]
         

@@ -9,6 +9,8 @@
 import UIKit
 
 class TimeViewController: UIViewController {
+    
+    let wandooModel = WandooModel.sharedWandooInstance
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +31,7 @@ class TimeViewController: UIViewController {
     }
    
     @IBAction func SubmitTimeButton(sender: UIButton) {
-        print(timePickerToString(datePicker))
+        wandooModel.startTime =  timePickerToString(datePicker)
     }
    
     @IBOutlet weak var datePicker: UIDatePicker!
