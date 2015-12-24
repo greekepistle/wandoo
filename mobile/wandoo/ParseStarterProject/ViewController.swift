@@ -58,11 +58,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDe
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let wandooCell = tableView.dequeueReusableCellWithIdentifier("wandooCell", forIndexPath: indexPath) as! WandooCell
-        
-        
+        print(wandooModel.checkAndFormatWandooDate((allWandoosArray[indexPath.row]["start_time"] as? String)!))
         wandooCell.profileImage.image = profilePicture
         wandooCell.message.text = self.allWandoosArray[indexPath.row]["text"] as? String
-        wandooCell.startDate.text = allWandoosArray[indexPath.row]["start_time"] as? String
+        wandooCell.startDate.text = wandooModel.checkAndFormatWandooDate((allWandoosArray[indexPath.row]["start_time"] as? String)!)
         
         return wandooCell
     }
@@ -76,6 +75,15 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDe
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return allWandoosArray.count
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        //print
+    }
+    
+//    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+//        print("segueing")
+//        performSegueWithIdentifier("lookAtWandoo", sender: nil)
+//    }
     
     //gets all wandoos using UserModel
     //UserModel is able to get the user's info (e.g. name, photo) via facebook id

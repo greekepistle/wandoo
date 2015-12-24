@@ -29,7 +29,6 @@ class WandooModel {
         self.longitude = userModel.longitude
         
         let userID = userModel.userID
-        print(userID)
             var postInfo: [String: AnyObject] = [
                 "userID": userID!,
                 "text": self.text!,
@@ -129,5 +128,33 @@ class WandooModel {
         }
         
         task.resume()
+    }
+    
+    func checkAndFormatWandooDate (wandooDate: String) -> String {
+        
+        var timeFormatter = NSDateFormatter()
+        timeFormatter.dateFormat = "h:mm a"
+        timeFormatter.timeZone = NSTimeZone.localTimeZone()
+        var dateToString = NSDateFormatter()
+        dateToString.dateFormat = "dd"
+        dateToString.timeZone = NSTimeZone.localTimeZone()
+        var stringToDate = NSDateFormatter()
+        stringToDate.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+        stringToDate.timeZone = NSTimeZone(name: "UTC")
+        
+        var result: String = ""
+        let todayDate = NSDate()
+        let todayIntDay = Int(dateToString.stringFromDate(todayDate))
+        let wandooIntDay = Int(dateToString.stringFromDate(stringToDate.dateFromString(wandooDate)!))
+        let wandooFormattedDate = timeFormatter.stringFromDate(stringToDate.dateFromString(wandooDate)!)
+        
+        if  todayIntDay < wandooIntDay {
+            //
+        } else {
+            result = "Today at " + wandooFormattedDate
+        }
+        
+        return result
+        
     }
 }
