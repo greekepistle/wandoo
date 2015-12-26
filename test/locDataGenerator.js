@@ -1,21 +1,11 @@
 // east: example 1: 37.789048, -122.387229
-
 // north: 2: 37.810917, -122.477343
 // - golden gate bridge
-
-
-
-
 // west: 37.751869, -122.510050
-
-
 // south: 37.624711, -122.380869
 // - near the airport
 
 module.exports = function (seed, numRecords) {
-  // var numRecords = 10;
-
-  // var seed = [37.7833669, -122.4088739];
 
   var latOffset = 0.2;
 

@@ -1,11 +1,1 @@
-numUsers
-numWandoos
 
-
-1. Insert users
-2. Get userIDs
-3. Insert wandoos
-4. Insert wandoo_interests
-5. Insert room
-6. Insert room_user
-7. Run workers

@@ -5,7 +5,8 @@
   "main": "server/server.js",
   "scripts": {
     "test": "mocha",
-    "start": "sudo nodemon"
+    "start": "sudo nodemon",
+    "generate": "node test/generateTestData.js"
   },
   "repository": {
     "type": "git",
@@ -26,6 +27,7 @@
   },
   "devDependencies": {
     "chai": "^3.4.1",
+    "gulp": "^3.9.0",
     "mocha": "^2.3.4",
     "supertest": "^1.1.0"
   }
