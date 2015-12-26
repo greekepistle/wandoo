@@ -4,7 +4,8 @@ var config = require('./config');
 db = mysql.createConnection({
   user: config.dbUser,
   password: config.dbPassword,
-  database: 'wandoo'
+  database: 'wandoo',
+  timezone: 'Z'
 });
 
 db.connect(function(err) {

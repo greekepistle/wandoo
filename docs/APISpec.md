@@ -14,7 +14,7 @@ facebookID| | 10153381139067955
 #### Example
 
 ```json
-curl -i http://127.0.0.1:8000/api/user/?facebookID=10153381139067955
+curl -i http://127.0.0.1:8000/api/users/?facebookID=10153381139067955
 ```
 
 #### Usage
@@ -25,7 +25,7 @@ curl -i http://127.0.0.1:8000/api/user/?facebookID=10153381139067955
 #### Example
 
 ```json
-curl -i http://127.0.0.1:8000/api/user/324624
+curl -i http://127.0.0.1:8000/api/users/324624
 ```
 
 #### Usage
@@ -45,9 +45,10 @@ age | | 53 |
 sex | | M |
 profilePic | Image file | ? |
 employer | | Google |
-jobTitle | | Stanford |
+jobTitle | | Software Engineer |
 latitude | | 37.7836675 |
 longitude | | -122.4091699 |
+|educationInstitution | | Stanford |
 friends | POST MVP | |
 interests | POST MVP | |
 likes | POST MVP |  |
@@ -112,10 +113,8 @@ tag | POST MVP | dinner |
 
 #### Examples
 
-TO DO 
-
 ```json
-curl -i http://127.0.0.1:8000/api/wandoos/4256245
+curl -i http://localhost:8000/api/wandoos
 curl -i localhost:8000/api/wandoos?offset=2\&limit=5
 curl -i localhost:8000/api/wandoos?userID=1
 ```

@@ -1,6 +1,7 @@
 drop database if exists `wandoo`;
 create database `wandoo`;
 use wandoo;
+
 -- ---
 -- Globals
 -- ---
@@ -25,6 +26,7 @@ CREATE TABLE `wandoo` (
   `latitude` DECIMAL(13,10) NULL DEFAULT NULL,
   `longitude` DECIMAL(13,10) NULL DEFAULT NULL,
   `num_people` INTEGER NULL DEFAULT NULL,
+  `status` CHAR(1) NULL DEFAULT NULL,
   PRIMARY KEY (`wandooID`)
 );
 
@@ -158,10 +160,24 @@ CREATE TABLE `room_user` (
 );
 
 -- ---
+-- Table 'wandoo_status'
+-- 
+-- ---
+
+DROP TABLE IF EXISTS `wandoo_status`;
+    
+CREATE TABLE `wandoo_status` (
+  `status` CHAR(1),
+  `description` VARCHAR(100) NULL DEFAULT NULL,
+  PRIMARY KEY (`status`)
+);
+
+-- ---
 -- Foreign Keys 
 -- ---
 
 ALTER TABLE `wandoo` ADD FOREIGN KEY (userID) REFERENCES `user` (`userID`);
+ALTER TABLE `wandoo` ADD FOREIGN KEY (status) REFERENCES `wandoo_status` (`status`);
 ALTER TABLE `room` ADD FOREIGN KEY (wandooID) REFERENCES `wandoo` (`wandooID`);
 ALTER TABLE `user_interest` ADD FOREIGN KEY (userID) REFERENCES `user` (`userID`);
 ALTER TABLE `user_friendship` ADD FOREIGN KEY (userID_1) REFERENCES `user` (`userID`);
@@ -173,6 +189,12 @@ ALTER TABLE `wandoo_interest` ADD FOREIGN KEY (wandooID) REFERENCES `wandoo` (`w
 ALTER TABLE `wandoo_interest` ADD FOREIGN KEY (userID) REFERENCES `user` (`userID`);
 ALTER TABLE `room_user` ADD FOREIGN KEY (roomID) REFERENCES `room` (`roomID`);
 ALTER TABLE `room_user` ADD FOREIGN KEY (userID) REFERENCES `user` (`userID`);
+
+INSERT INTO `wandoo_status` (`status`,`description`) VALUES
+('A','Active and visible on feed'),
+('P','Passive wandoo that is no longer visible on feed, but has an active room'),
+('E','Expired wandoo that is no longer visible on feed and has no active room')
+;
 
 -- ---
 -- Table Properties
@@ -188,13 +210,14 @@ ALTER TABLE `room_user` ADD FOREIGN KEY (userID) REFERENCES `user` (`userID`);
 -- ALTER TABLE `wandoo_interest` ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 -- ALTER TABLE `tag` ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 -- ALTER TABLE `room_user` ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+-- ALTER TABLE `wandoo_status` ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- ---
 -- Test Data
 -- ---
 
--- INSERT INTO `wandoo` (`wandooID`,`userID`,`text`,`start_time`,`end_time`,`post_time`,`latitude`,`longitude`,`num_people`) VALUES
--- ('','','','','','','','','');
+-- INSERT INTO `wandoo` (`wandooID`,`userID`,`text`,`start_time`,`end_time`,`post_time`,`latitude`,`longitude`,`num_people`,`status`) VALUES
+-- ('','','','','','','','','','');
 -- INSERT INTO `user` (`userID`,`name`,`facebookID`,`email`,`age`,`sex`,`profile_picture`,`employer`,`job_title`,`latitude`,`longitude`) VALUES
 -- ('','','','','','','','','','','');
 -- INSERT INTO `room` (`roomID`,`expiry_time`,`wandooID`) VALUES
@@ -212,4 +235,6 @@ ALTER TABLE `room_user` ADD FOREIGN KEY (userID) REFERENCES `user` (`userID`);
 -- INSERT INTO `tag` (`tagID`,`name`) VALUES
 -- ('','');
 -- INSERT INTO `room_user` (`roomID`,`userID`) VALUES
+-- ('','');
+-- INSERT INTO `wandoo_status` (`status`,`description`) VALUES
 -- ('','');
