@@ -27,8 +27,8 @@ module.exports = {
 
   create : function (wandooData, callback) {
     var qs = 'INSERT INTO `wandoo` (`wandooID`,`userID`,`text`,`start_time`,\
-    `end_time`,`post_time`,`latitude`,`longitude`,`num_people`) VALUES \
-    (0,?,?,?,?,?,?,?,?);';
+    `end_time`,`post_time`,`latitude`,`longitude`,`num_people`,`status`) VALUES \
+    (0,?,?,?,?,?,?,?,?,"A");';
     queryBuilder(qs, wandooData, callback);
   },
 

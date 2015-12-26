@@ -6,11 +6,11 @@ module.exports = {
     return date.substring(0,10) + ' ' + date.substring(11, 19);
   },
 
-  checkDir : function (path, callback) {
-    fs.readdir(path, function () {
+  // checkDir : function (path, callback) {
+  //   fs.readdir(path, function () {
 
-    })
-  },
+  //   })
+  // },
 
   writeImage : function (path, image) {
 
@@ -23,17 +23,19 @@ module.exports = {
       });
     }
 
-    fs.stat('/public/images', function (stats) {// check if the public directory exists
-      console.log('stats',files);
-      if (!stats.isDirectory()) { // if it doesn't, make that directory
-        fs.mkdir(__dirname + '/public' + '/images', function () {
-          writeTheImage();
-        });
-      } else {
-        writeTheImage();
-      }
+    writeTheImage();
+
+    // fs.stat('/public/images', function (stats) {// check if the public directory exists
+    //   console.log('stats',files);
+    //   if (!stats.isDirectory()) { // if it doesn't, make that directory
+    //     fs.mkdir(__dirname + '/public' + '/images', function () {
+    //       writeTheImage();
+    //     });
+    //   } else {
+    //     writeTheImage();
+    //   }
       
-    });
+    // });
   } 
 
 }
