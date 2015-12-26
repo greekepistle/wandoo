@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		07348D92EFA2476E8FC1D045 /* Pods_ParseStarterProject_Swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1EAEE4F7D20EAE0E8D11D42 /* Pods_ParseStarterProject_Swift.framework */; };
+		10348A6E1C2DF3CF00CA593D /* InterestedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10348A6D1C2DF3CF00CA593D /* InterestedModel.swift */; };
+		10348A701C2DF4FF00CA593D /* InterestedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10348A6F1C2DF4FF00CA593D /* InterestedViewController.swift */; };
 		10F9FDE41C17BC9D00D3C4CC /* FacebookLoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F9FDE31C17BC9D00D3C4CC /* FacebookLoginController.swift */; };
 		10F9FDE61C17DFF700D3C4CC /* SwipeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F9FDE51C17DFF700D3C4CC /* SwipeController.swift */; };
 		10F9FDEC1C18AFBB00D3C4CC /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F9FDEB1C18AFBB00D3C4CC /* SettingsController.swift */; };
@@ -34,6 +36,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		10348A6D1C2DF3CF00CA593D /* InterestedModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterestedModel.swift; sourceTree = "<group>"; };
+		10348A6F1C2DF4FF00CA593D /* InterestedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterestedViewController.swift; sourceTree = "<group>"; };
 		10F9FDE31C17BC9D00D3C4CC /* FacebookLoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookLoginController.swift; sourceTree = "<group>"; };
 		10F9FDE51C17DFF700D3C4CC /* SwipeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeController.swift; sourceTree = "<group>"; };
 		10F9FDEB1C18AFBB00D3C4CC /* SettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
@@ -140,6 +144,8 @@
 				10F9FEC11C21465900D3C4CC /* WandooCell.swift */,
 				10F9FDEF1C18ECD800D3C4CC /* UserModel.swift */,
 				BECE40211C1F6A3300894D06 /* Main.storyboard */,
+				10348A6F1C2DF4FF00CA593D /* InterestedViewController.swift */,
+				10348A6D1C2DF3CF00CA593D /* InterestedModel.swift */,
 				BE928A511C20F26E002C9C7D /* LocationViewController.swift */,
 				BE928A4F1C20F245002C9C7D /* TimeViewController.swift */,
 				BE928A4D1C20E6E2002C9C7D /* PeopleViewController.swift */,
@@ -310,6 +316,8 @@
 				10F9FEC21C21465900D3C4CC /* WandooCell.swift in Sources */,
 				BECE401E1C1F578100894D06 /* WandooViewController.swift in Sources */,
 				BE95C7371C20AF80005CB21C /* PostViewController.swift in Sources */,
+				10348A701C2DF4FF00CA593D /* InterestedViewController.swift in Sources */,
+				10348A6E1C2DF3CF00CA593D /* InterestedModel.swift in Sources */,
 				BE928A521C20F26E002C9C7D /* LocationViewController.swift in Sources */,
 				10F9FDEC1C18AFBB00D3C4CC /* SettingsController.swift in Sources */,
 				81BA814D1A49DA1800E65899 /* ViewController.swift in Sources */,

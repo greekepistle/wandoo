@@ -62,6 +62,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDe
         wandooCell.profileImage.image = profilePicture
         wandooCell.message.text = self.allWandoosArray[indexPath.row]["text"] as? String
         wandooCell.startDate.text = wandooModel.checkAndFormatWandooDate((allWandoosArray[indexPath.row]["start_time"] as? String)!)
+//        wandooCell.startDate.text = self.allWandoosArray[indexPath.row]["start_time"] as? String
         
         return wandooCell
     }
@@ -78,6 +79,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDe
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         //print
+        let selectedIndex = tableView.indexPathForCell(sender as WandooCell)
     }
     
 //    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

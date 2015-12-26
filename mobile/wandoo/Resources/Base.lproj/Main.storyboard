@@ -465,10 +465,10 @@
             </objects>
             <point key="canvasLocation" x="5839" y="161"/>
         </scene>
-        <!--View Controller-->
+        <!--Interested View Controller-->
         <scene sceneID="HRX-Gw-VkV">
             <objects>
-                <viewController id="a7A-M2-OfK" sceneMemberID="viewController">
+                <viewController id="a7A-M2-OfK" customClass="InterestedViewController" customModule="ParseStarterProject_Swift" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="lKu-xN-Wec"/>
                         <viewControllerLayoutGuide type="bottom" id="7n2-qK-lXR"/>
@@ -476,6 +476,15 @@
                     <view key="view" contentMode="scaleToFill" id="yrn-n3-r78">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VCM-eb-HUE">
+                                <rect key="frame" x="137" y="389" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="interested:" destination="a7A-M2-OfK" eventType="touchUpInside" id="g4b-mD-JPV"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
@@ -619,7 +628,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="UcQ-As-2ES" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" backIndicatorImage="60A64944-A431-4912-83D0-63A82468F757" id="LIG-kr-Btz">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" backIndicatorImage="FDEB1159-37D0-4C60-8E63-28D7F51155BC" id="LIG-kr-Btz">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -829,7 +838,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="60A64944-A431-4912-83D0-63A82468F757" width="62" height="64">
+        <image name="FDEB1159-37D0-4C60-8E63-28D7F51155BC" width="62" height="64">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOzxYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBMU
 GR4fJSYsLzU4VSRudWxs1QkKCwwNDg8QERJWTlNTaXplViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBz
