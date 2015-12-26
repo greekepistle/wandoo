@@ -11,7 +11,7 @@ var queryBuilder = function (qs, data, callback) {
 
 module.exports = {
   getAll : function (callback) {
-    var qs = "select * from wandoo";
+    var qs = "select * from wandoo where status='A'";
     queryBuilder(qs, [], callback);  
   },
 

@@ -113,10 +113,8 @@ tag | POST MVP | dinner |
 
 #### Examples
 
-TO DO 
-
 ```json
-curl -i http://127.0.0.1:8000/api/wandoos/4256245
+curl -i http://localhost:8000/api/wandoos
 curl -i localhost:8000/api/wandoos?offset=2\&limit=5
 curl -i localhost:8000/api/wandoos?userID=1
 ```
