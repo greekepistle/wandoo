@@ -25,4 +25,4 @@ module.exports = app;
 
 
 /*Cron Jobs*/
-cronjob.schedulejob();
+//cronjob.schedulejob();

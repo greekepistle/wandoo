@@ -17,6 +17,7 @@ var numUsers = 6, // max is userData.length
 
 var locData = locDataGenerator(locSeed, numLocations);
 var wandooTimeData = wandooTimeDataGenerator(numTimes);
+console.log(wandooTimeData);
 var userIDs = [];
 var wandooIDs = [];
 
@@ -85,8 +86,8 @@ var generateWandoos = function (callback) {
     var wandoo = {
       userID : userIDs[Math.round(Math.random() * (userIDs.length - 1))],
       text : wandooTextData[i],
-      startTime : wandooTimeData[i][0],
-      postTime : wandooTimeData[i][1],
+      startTime : wandooTimeData[i][1],
+      postTime : wandooTimeData[i][0],
       latitude : locData[i][0],
       longitude : locData[i][1],
       numPeople : Math.ceil(Math.random() * 4) 
