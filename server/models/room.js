@@ -45,17 +45,24 @@ module.exports = {
       if (err) {
         callback(err);
       } else {
-        roomUserData.unshift(result1.insertId);
-        db.query(qs2, roomUserData, function (err, result2) {
-          if (err) {
-            callback(err);
-          } else {
-            callback(null, result1, result2);
-          }
-        });
+        var roomID = result1.insertId;
+        var insertUser = function (userIndex) {
+          var insertParams = [roomID, roomUserData[userIndex]]
+          db.query(qs2, insertParams, function (err, result2) {
+            if (err) {
+              callback(err);
+            } else {
+              if (userIndex < roomUserData.length - 1) {
+                insertUser(userIndex + 1);
+              } else {
+                callback(null, result1, result2);
+              }
+            }
+          });
         }
+        insertUser(0);
       }
-    );
+    });
   },
 
   delete : function (roomID, callback) {
@@ -79,10 +86,23 @@ module.exports = {
 
   },
 
-  addRoomUsers : function (roomUserData, callback) {
+  addRoomUsers : function (roomID, roomUserData, callback) {
     var qs = "INSERT INTO `room_user` (`roomID`,`userID`) VALUES\
       (?,?);"
-    queryBuilder(qs, roomUserData, callback);
+    var insertRoomUser = function (roomUserIndex) {
+      db.query(qs, [roomID, roomUserData[roomUserIndex]], function (err, result) {
+        if (err) {
+          callback(err);
+        } else {
+          if (roomUserIndex < roomUserData.length - 1) {
+            insertRoomUser(roomUserIndex + 1);
+          } else {
+            callback(null, result);
+          }
+        }
+      });
+    }
+    insertRoomUser(0);
   }
 }
 
