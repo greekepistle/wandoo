@@ -84,7 +84,7 @@ module.exports = {
   },
 
   put : function (req, res) {
-    room.addRoomUsers(room.params.roomID, room.body.userIDs, function(err, result) {
+    room.addRoomUsers(req.params.roomID, req.body.userIDs, function(err, result) {
       putQueryCB(err, result, res);
     });
     

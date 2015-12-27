@@ -234,12 +234,12 @@ curl -i -X POST -H 'Content-Type: application/json' localhost:8000/api/rooms -d 
 
 Name| Notes | Example
 ----|-------|--------
-userIDs| NEED TO VERIFY IF WE NEED THIS - should prob be an array | 2354| 
+userIDs| An array of userIDs | 2354| 
 
 #### Examples
 
 ```json
-curl -i -X POST -H 'Content-Type: application/json' localhost:8000/api/rooms -d '{"wandooID":1,"userID":1}'
+curl -i -X PUT -H 'Content-Type: application/json' http://localhost:8000/api/rooms/10 -d '{"userIDs":[3,4]}'
 ```
 
 ### DELETE /api/rooms/\<roomID\>

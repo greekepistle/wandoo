@@ -90,12 +90,15 @@ module.exports = {
     var qs = "INSERT INTO `room_user` (`roomID`,`userID`) VALUES\
       (?,?);"
     var insertRoomUser = function (roomUserIndex) {
-      
-      queryBuilder(qs, [roomID, roomUserData[roomUserIndex], function () {
-        if () {
-          // NEED TO FIX THIS
+      db.query(qs, [roomID, roomUserData[roomUserIndex]], function (err, result) {
+        if (err) {
+          callback(err);
         } else {
-          callback();
+          if (roomUserIndex < roomUserData.length - 1) {
+            insertRoomUser(roomUserIndex + 1);
+          } else {
+            callback(null, result);
+          }
         }
       });
     }
