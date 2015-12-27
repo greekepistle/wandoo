@@ -1,4 +1,6 @@
 var db = require('../db');
+var room = require('../models/room');
+
 var queryBuilder = function (qs, data, callback) {
   db.query(qs, data, function (err, result) {
     if (err) {
@@ -33,13 +35,9 @@ module.exports = {
   },
 
   delete : function (wandooID, callback) {
-    var qs1 = 'delete from wandoo_interest where wandooID = ?;' 
-    var qs2 = 'delete from wandoo_tag where wandooID = ?;'
-    var qs3 = 'delete from wandoo where wandooID = ?;'
-
-
-    // Delete all rooms, room_user corresponding to Wandoo_id before deleting wandoos table
-    // If you don't do this, the other operations (Wandoo_delete) will be unsucccessful
+    var qs1 = "delete from wandoo_interest where wandooID = ?;" 
+    var qs2 = "delete from wandoo_tag where wandooID = ?;"
+    var qs3 = "delete from wandoo where wandooID = ?;"
 
     db.query(qs1, wandooID, function (err, results1) {
       if (err) {
@@ -49,11 +47,17 @@ module.exports = {
           if (err) {
             callback(err);
           } else {
-            db.query(qs3, wandooID, function (err, results3) {
+            room.deleteByWandoo(wandooID, function (err, results3) {
               if (err) {
                 callback(err);
               } else {
-                callback(null, results1, results2, results3);
+                db.query(qs3, wandooID, function (err, results4) {
+                  if (err) {
+                    callback(err);
+                  } else {
+                    callback(null, results1, results2, results3, results4);
+                  }
+                });
               }
             });
           }

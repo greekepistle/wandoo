@@ -19,7 +19,8 @@ module.exports = {
   },
 
   getByFBID : function (facebookID, callback) {
-    var qs = "select * from user where facebookID = ?;";
+    var qs = "select user.*, institution_name from user inner join \
+    user_education on (user.userID = user_education.userID) where user.facebookID = ?;";
     queryBuilder(qs, facebookID, callback);
   },
   

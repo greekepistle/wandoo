@@ -78,19 +78,9 @@ module.exports = {
   },
 
   delete : function (req, res) {
-    if (req.params.roomID) {
-      room.delete(req.params.roomID, function (err, result) {
-        deleteQueryCB(err, result, res);
-      });
-    } else {
-      if (!req.body.wandooIDs) {
-        res.send('Invalid parameters');
-        console.log('Does this get output?');
-      }
-      room.deleteByWandoo(req.body.wandooIDs, function(err, result) {
-        deleteQueryCB(err, result, res);
-      })
-    }
+    room.delete(req.params.roomID, function (err, result) {
+      deleteQueryCB(err, result, res);
+    });
   },
 
   put : function (req, res) {
