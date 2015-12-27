@@ -11,11 +11,11 @@ use wandoo;
 
 -- ---
 -- Table 'wandoo'
--- 
+--
 -- ---
 
 DROP TABLE IF EXISTS `wandoo`;
-    
+
 CREATE TABLE `wandoo` (
   `wandooID` INTEGER AUTO_INCREMENT,
   `userID` INTEGER NULL DEFAULT NULL,
@@ -32,11 +32,11 @@ CREATE TABLE `wandoo` (
 
 -- ---
 -- Table 'user'
--- 
+--
 -- ---
 
 DROP TABLE IF EXISTS `user`;
-    
+
 CREATE TABLE `user` (
   `userID` INTEGER AUTO_INCREMENT,
   `name` VARCHAR(100) NULL DEFAULT NULL,
@@ -54,11 +54,11 @@ CREATE TABLE `user` (
 
 -- ---
 -- Table 'room'
--- 
+--
 -- ---
 
 DROP TABLE IF EXISTS `room`;
-    
+
 CREATE TABLE `room` (
   `roomID` INTEGER AUTO_INCREMENT,
   `expiry_time` DATETIME NULL DEFAULT NULL,
@@ -68,11 +68,11 @@ CREATE TABLE `room` (
 
 -- ---
 -- Table 'user_interest'
--- 
+--
 -- ---
 
 DROP TABLE IF EXISTS `user_interest`;
-    
+
 CREATE TABLE `user_interest` (
   `userID` INTEGER,
   `interest` VARCHAR(100),
@@ -81,11 +81,11 @@ CREATE TABLE `user_interest` (
 
 -- ---
 -- Table 'user_friendship'
--- 
+--
 -- ---
 
 DROP TABLE IF EXISTS `user_friendship`;
-    
+
 CREATE TABLE `user_friendship` (
   `userID_1` INTEGER,
   `userID_2` INTEGER,
@@ -94,11 +94,11 @@ CREATE TABLE `user_friendship` (
 
 -- ---
 -- Table 'user_education'
--- 
+--
 -- ---
 
 DROP TABLE IF EXISTS `user_education`;
-    
+
 CREATE TABLE `user_education` (
   `userID` INTEGER,
   `institution_name` VARCHAR(100),
@@ -107,11 +107,11 @@ CREATE TABLE `user_education` (
 
 -- ---
 -- Table 'wandoo_tag'
--- 
+--
 -- ---
 
 DROP TABLE IF EXISTS `wandoo_tag`;
-    
+
 CREATE TABLE `wandoo_tag` (
   `wandooID` INTEGER,
   `tagID` INTEGER,
@@ -120,11 +120,11 @@ CREATE TABLE `wandoo_tag` (
 
 -- ---
 -- Table 'wandoo_interest'
--- 
+--
 -- ---
 
 DROP TABLE IF EXISTS `wandoo_interest`;
-    
+
 CREATE TABLE `wandoo_interest` (
   `wandooID` INTEGER,
   `userID` INTEGER,
@@ -135,11 +135,11 @@ CREATE TABLE `wandoo_interest` (
 
 -- ---
 -- Table 'tag'
--- 
+--
 -- ---
 
 DROP TABLE IF EXISTS `tag`;
-    
+
 CREATE TABLE `tag` (
   `tagID` INTEGER AUTO_INCREMENT,
   `name` VARCHAR(100) NULL DEFAULT NULL,
@@ -148,11 +148,11 @@ CREATE TABLE `tag` (
 
 -- ---
 -- Table 'room_user'
--- 
+--
 -- ---
 
 DROP TABLE IF EXISTS `room_user`;
-    
+
 CREATE TABLE `room_user` (
   `roomID` INTEGER,
   `userID` INTEGER,
@@ -161,11 +161,11 @@ CREATE TABLE `room_user` (
 
 -- ---
 -- Table 'wandoo_status'
--- 
+--
 -- ---
 
 DROP TABLE IF EXISTS `wandoo_status`;
-    
+
 CREATE TABLE `wandoo_status` (
   `status` CHAR(1),
   `description` VARCHAR(100) NULL DEFAULT NULL,
@@ -173,7 +173,7 @@ CREATE TABLE `wandoo_status` (
 );
 
 -- ---
--- Foreign Keys 
+-- Foreign Keys
 -- ---
 
 ALTER TABLE `wandoo` ADD FOREIGN KEY (userID) REFERENCES `user` (`userID`);
