@@ -62,8 +62,8 @@
 		BE928A4D1C20E6E2002C9C7D /* PeopleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeopleViewController.swift; sourceTree = "<group>"; };
 		BE928A4F1C20F245002C9C7D /* TimeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeViewController.swift; sourceTree = "<group>"; };
 		BE928A511C20F26E002C9C7D /* LocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
-		BE95C7351C20AE53005CB21C /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-Regular.ttf"; path = "../../../../../Montserrat-Regular.ttf"; sourceTree = "<group>"; };
 		BE95C7361C20AF80005CB21C /* PostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
+		BEA742E01C2F91DA0028332D /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-Regular.ttf"; path = "../../../../Montserrat-Regular.ttf"; sourceTree = "<group>"; };
 		BECE401D1C1F578100894D06 /* WandooViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WandooViewController.swift; sourceTree = "<group>"; };
 		BECE40221C1F6A3300894D06 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Resources/Base.lproj/Main.storyboard; sourceTree = SOURCE_ROOT; };
 		BEF8B9501C1CDEB90080D0C7 /* Rectangle 43 + Login with facebook + Facebook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Rectangle 43 + Login with facebook + Facebook.png"; sourceTree = "<group>"; };
@@ -109,7 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				814C3AC81B69877600E307BB /* Images.xcassets */,
-				BE95C7351C20AE53005CB21C /* Montserrat-Regular.ttf */,
+				BEA742E01C2F91DA0028332D /* Montserrat-Regular.ttf */,
 				814C3AC91B69877600E307BB /* Info.plist */,
 			);
 			path = Resources;

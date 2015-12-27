@@ -23,6 +23,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDe
     var allWandoosArray = [NSDictionary]()
     var profilePicture: UIImage?
     
+    //Feed button to move to top of feed
+    @IBAction func toTopPost(sender: UIButton) {
+     wandooTable.setContentOffset(CGPointMake(0, -wandooTable.contentInset.top), animated: true)
+    }
     @IBOutlet weak var wandooTable: UITableView!
     
     var offset: Int = 1
