@@ -66,11 +66,6 @@ module.exports = {
   },
 
   delete : function (roomID, callback) {
-    // Delete all rooms, room_user corresponding to Wandoo_id
-    //We need wandoo_id as a parameter instead of roomID
-
-    // Delete all rooms, room_user corresponding to Wandoo_id
-    // We need wandoo_id as a parameter instead of roomID
 
     var qs1 = "delete from room_user where roomID = ?;"
     var qs2 = "delete from room where roomID = ?;"
@@ -91,12 +86,26 @@ module.exports = {
 
   },
 
-  deleteByWandoo : function (wandooIDs, callback) {
-    // get all of the rooms associated with the wandooIDs
-    // delete all of the rooms based on the roomID within room_user
-    // delete all of the room based on the roomID within room
+  deleteByWandoo : function (wandooID, callback) {
 
-    // var qs = "select wandooID "
+    var qs1 = "delete from room_user where roomID in (select roomID from room where wandooID = ?);";
+    var qs2 = "delete from room where wandooID = ?;";
+
+    db.query(qs1, wandooID, function (err, results1) {
+      if (err) {
+        callback(err);
+      } else {
+        db.query(qs2, wandooID, function (err, results2) {
+          if (err) {
+            callback(err);
+          } else {
+            callback(null, results1, results2);
+          }
+        });
+      }
+    });
+    //in the future, we can add check on results to see if something has been deleted
+
   },
 
   addRoomUsers : function (roomID, roomUserData, callback) {
