@@ -17,7 +17,7 @@ use wandoo;
 DROP TABLE IF EXISTS `wandoo`;
     
 CREATE TABLE `wandoo` (
-  `wandooID` INTEGER NULL AUTO_INCREMENT DEFAULT NULL,
+  `wandooID` INTEGER AUTO_INCREMENT,
   `userID` INTEGER NULL DEFAULT NULL,
   `text` VARCHAR(255) NULL DEFAULT NULL,
   `start_time` DATETIME NULL DEFAULT NULL,
@@ -38,7 +38,7 @@ CREATE TABLE `wandoo` (
 DROP TABLE IF EXISTS `user`;
     
 CREATE TABLE `user` (
-  `userID` INTEGER NULL AUTO_INCREMENT DEFAULT NULL,
+  `userID` INTEGER AUTO_INCREMENT,
   `name` VARCHAR(100) NULL DEFAULT NULL,
   `facebookID` VARCHAR(20) NULL DEFAULT NULL,
   `email` VARCHAR(100) NULL DEFAULT NULL,
@@ -60,7 +60,7 @@ CREATE TABLE `user` (
 DROP TABLE IF EXISTS `room`;
     
 CREATE TABLE `room` (
-  `roomID` INTEGER NULL AUTO_INCREMENT DEFAULT NULL,
+  `roomID` INTEGER AUTO_INCREMENT,
   `expiry_time` DATETIME NULL DEFAULT NULL,
   `wandooID` INTEGER NULL DEFAULT NULL,
   PRIMARY KEY (`roomID`)
@@ -74,8 +74,8 @@ CREATE TABLE `room` (
 DROP TABLE IF EXISTS `user_interest`;
     
 CREATE TABLE `user_interest` (
-  `userID` INTEGER NULL DEFAULT NULL,
-  `interest` VARCHAR(100) NULL DEFAULT NULL,
+  `userID` INTEGER,
+  `interest` VARCHAR(100),
   PRIMARY KEY (`userID`, `interest`)
 );
 
@@ -87,8 +87,8 @@ CREATE TABLE `user_interest` (
 DROP TABLE IF EXISTS `user_friendship`;
     
 CREATE TABLE `user_friendship` (
-  `userID_1` INTEGER NULL DEFAULT NULL,
-  `userID_2` INTEGER NULL DEFAULT NULL,
+  `userID_1` INTEGER,
+  `userID_2` INTEGER,
   PRIMARY KEY (`userID_1`, `userID_2`)
 );
 
@@ -100,8 +100,8 @@ CREATE TABLE `user_friendship` (
 DROP TABLE IF EXISTS `user_education`;
     
 CREATE TABLE `user_education` (
-  `userID` INTEGER NULL DEFAULT NULL,
-  `institution_name` VARCHAR(100) NULL DEFAULT NULL,
+  `userID` INTEGER,
+  `institution_name` VARCHAR(100),
   PRIMARY KEY (`userID`, `institution_name`)
 );
 
@@ -113,8 +113,8 @@ CREATE TABLE `user_education` (
 DROP TABLE IF EXISTS `wandoo_tag`;
     
 CREATE TABLE `wandoo_tag` (
-  `wandooID` INTEGER NULL DEFAULT NULL,
-  `tagID` INTEGER NULL DEFAULT NULL,
+  `wandooID` INTEGER,
+  `tagID` INTEGER,
   PRIMARY KEY (`wandooID`, `tagID`)
 );
 
@@ -126,8 +126,8 @@ CREATE TABLE `wandoo_tag` (
 DROP TABLE IF EXISTS `wandoo_interest`;
     
 CREATE TABLE `wandoo_interest` (
-  `wandooID` INTEGER NULL DEFAULT NULL,
-  `userID` INTEGER NULL DEFAULT NULL,
+  `wandooID` INTEGER,
+  `userID` INTEGER,
   `selected` TINYINT(1) NULL DEFAULT 0,
   `rejected` TINYINT(1) NULL DEFAULT NULL,
   PRIMARY KEY (`wandooID`, `userID`)
@@ -141,7 +141,7 @@ CREATE TABLE `wandoo_interest` (
 DROP TABLE IF EXISTS `tag`;
     
 CREATE TABLE `tag` (
-  `tagID` INTEGER NULL AUTO_INCREMENT DEFAULT NULL,
+  `tagID` INTEGER AUTO_INCREMENT,
   `name` VARCHAR(100) NULL DEFAULT NULL,
   PRIMARY KEY (`tagID`)
 );
@@ -154,8 +154,8 @@ CREATE TABLE `tag` (
 DROP TABLE IF EXISTS `room_user`;
     
 CREATE TABLE `room_user` (
-  `roomID` INTEGER NULL DEFAULT NULL,
-  `userID` INTEGER NULL DEFAULT NULL,
+  `roomID` INTEGER,
+  `userID` INTEGER,
   PRIMARY KEY (`roomID`, `userID`)
 );
 
