@@ -62,13 +62,19 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDe
     
     //renders wandoos into table view
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
         let wandooCell = tableView.dequeueReusableCellWithIdentifier("wandooCell", forIndexPath: indexPath) as! WandooCell
-//        print(wandooModel.checkAndFormatWandooDate((allWandoosArray[indexPath.row]["start_time"] as? String)!))
-        wandooCell.profileImage.image = profilePicture
-        wandooCell.message.text = self.allWandoosArray[indexPath.row]["text"] as? String
-        wandooCell.startDate.text = wandooModel.checkAndFormatWandooDate((allWandoosArray[indexPath.row]["start_time"] as? String)!)
-//        wandooCell.startDate.text = self.allWandoosArray[indexPath.row]["start_time"] as? String
+        let userID = self.allWandoosArray[indexPath.row]["userID"] as! Int
+        userModel.getUserNameByUserID(userID) { (result) -> Void in
+            print("are we reaching here")
+            dispatch_async(dispatch_get_main_queue()){
+                wandooCell.profileImage.image = self.profilePicture
+                wandooCell.name.text = result
+                wandooCell.message.text = self.allWandoosArray[indexPath.row]["text"] as? String
+                wandooCell.time.text = self.wandooModel.checkAndFormatWandooDate((self.allWandoosArray[indexPath.row]["start_time"] as? String)!)
+            }
+        }
+        
+        
         
         return wandooCell
     }

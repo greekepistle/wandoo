@@ -12,10 +12,18 @@ class WandooCell: UITableViewCell {
 
     @IBOutlet weak var wandoo: UIView!
     
+    @IBOutlet weak var profileImage: UIImageView!
+    
+    @IBOutlet weak var name: UILabel!
+    
     @IBOutlet weak var message: UILabel!
     
+    @IBOutlet weak var location: UILabel!
     
-    @IBOutlet weak var startDate: UILabel!
+    @IBOutlet weak var time: UILabel!
     
-    @IBOutlet weak var profileImage: UIImageView!
+    @IBOutlet weak var numPeople: UILabel!
+    
+    
+    
 }
