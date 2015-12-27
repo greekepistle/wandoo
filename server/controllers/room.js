@@ -71,7 +71,7 @@ module.exports = {
     expiryTime.setDate(expiryTime.getDate() + 1);
     util.isoDateToMySQL(expiryTime.toJSON());
     
-    room.create([expiryTime, req.body.wandooID], req.body.userID, function(err, result) {
+    room.create([expiryTime, req.body.wandooID], req.body.userIDs, function(err, result) {
       postQueryCB(err, result, res);
     });
 
@@ -84,7 +84,7 @@ module.exports = {
   },
 
   put : function (req, res) {
-    room.addRoomUsers([room.params.roomID, room.body.userID], function(err, result) {
+    room.addRoomUsers(room.params.roomID, room.body.userIDs, function(err, result) {
       putQueryCB(err, result, res);
     });
     

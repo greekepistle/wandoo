@@ -217,7 +217,7 @@ expired| Boolean specifying if room is expired | true |
 Name| Notes | Example
 ----|-------|--------
 wandooID| | 352436|
-userID| An array of userIDs | [235435, 53466]| 
+userIDs| An array of userIDs | [235435, 53466]| 
 
 #### Examples
 
@@ -228,13 +228,13 @@ curl -i -X POST -H 'Content-Type: application/json' localhost:8000/api/rooms -d 
 #### Usage
 1. When a host has selected a guest for the hosts's wandoo, the room will be created with the host userIDs and the selected guest userIDs.
 
-### PUT /api/rooms
+### PUT /api/rooms/\<roomID\>
 
 #### Payload
 
 Name| Notes | Example
 ----|-------|--------
-userID| NEED TO VERIFY IF WE NEED THIS - should prob be an array | 2354| 
+userIDs| NEED TO VERIFY IF WE NEED THIS - should prob be an array | 2354| 
 
 #### Examples
 
