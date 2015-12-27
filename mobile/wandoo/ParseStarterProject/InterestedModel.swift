@@ -17,6 +17,7 @@ class InterestedModel {
     //POST request for interested
     func showInterest(wandooID: Int) {
         
+        print(userModel.userID!)
         let interestedInfo: [String: AnyObject] = [
             "wandooID": wandooID,
             "userID": userModel.userID!

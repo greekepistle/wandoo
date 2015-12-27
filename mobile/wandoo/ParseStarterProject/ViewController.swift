@@ -80,12 +80,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDe
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-
+        if segue.identifier == "lookAtWandoo" {
         let selectedIndex = wandooTable.indexPathForCell(sender as! WandooCell)
         
         let wandooInfo = allWandoosArray[selectedIndex!.row]
         let destinationVC = segue.destinationViewController as! DetailsViewController
         destinationVC.wandooInfo = wandooInfo
+        }
         
     }
     
