@@ -44,7 +44,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDe
         
         self.navigationItem.hidesBackButton = true
         
-        print(allWandoosArray)
+//        print(allWandoosArray)
         
     }
     //continually spits out user location
@@ -83,9 +83,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDe
 
         let selectedIndex = wandooTable.indexPathForCell(sender as! WandooCell)
         
-        var wandooInfo = allWandoosArray[selectedIndex!.row]
+        let wandooInfo = allWandoosArray[selectedIndex!.row]
         let destinationVC = segue.destinationViewController as! DetailsViewController
-        destinationVC.wandooInfo = wandooInfo as! NSDictionary
+        destinationVC.wandooInfo = wandooInfo
         
     }
     
