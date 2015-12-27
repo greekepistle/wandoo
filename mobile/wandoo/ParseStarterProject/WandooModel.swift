@@ -107,7 +107,7 @@ class WandooModel {
                 do {
                     let parsedData = try NSJSONSerialization.JSONObjectWithData(data, options: .MutableContainers) as? NSDictionary
                     let unwrappedData = parsedData!["data"] as! NSArray
-                    print(unwrappedData)
+//                    print(unwrappedData)
                     completion(result: unwrappedData)
                 } catch {
                     print("Something went wrong")

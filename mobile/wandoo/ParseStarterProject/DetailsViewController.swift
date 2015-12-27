@@ -14,10 +14,13 @@ class DetailsViewController: UIViewController {
     
     @IBOutlet weak var test: UILabel!
     
-    @IBOutlet weak var interested: UIButton!
-    
     var interestedModel = InterestedModel()
     
+
+    @IBAction func interestedButton(sender: AnyObject) {
+        let wandooID = wandooInfo["wandooID"] as! Int
+        interestedModel.showInterest(wandooID)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
