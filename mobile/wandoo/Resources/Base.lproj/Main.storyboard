@@ -806,7 +806,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="UcQ-As-2ES" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" backIndicatorImage="7298798C-9D17-494C-A104-7B13E7636B49" id="LIG-kr-Btz">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" backIndicatorImage="39C1B68A-A669-460B-B76F-96DCC1467DEC" id="LIG-kr-Btz">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -1016,7 +1016,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="7298798C-9D17-494C-A104-7B13E7636B49" width="62" height="64">
+        <image name="39C1B68A-A669-460B-B76F-96DCC1467DEC" width="62" height="64">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOzxYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBMU
 GR4fJSYsLzU4VSRudWxs1QkKCwwNDg8QERJWTlNTaXplViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBz
