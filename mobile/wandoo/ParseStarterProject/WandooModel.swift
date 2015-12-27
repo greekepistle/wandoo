@@ -29,11 +29,10 @@ class WandooModel {
         self.longitude = userModel.longitude
         
         let userID = userModel.userID
-        print(userID)
             var postInfo: [String: AnyObject] = [
                 "userID": userID!,
                 "text": self.text!,
-                "startTime": self.startTime!,
+                "startTime": convertTimeToUTC(self.startTime!),
 //                "endTime": self.endTime!,
 //                "postTime": self.postTime!,
                 "latitude": self.latitude!,
@@ -50,25 +49,12 @@ class WandooModel {
             request.addValue("application/json", forHTTPHeaderField: "Content-Type")
             
             request.HTTPBody = try! NSJSONSerialization.dataWithJSONObject(postInfo, options: [])
-//            for var i = 0; i < 700; i++ {
-                let task = session.dataTaskWithRequest(request) { data, response, error in
-                    print("success")
-                    completion()
-                }
-                task.resume()
-//            }
         
-        
-//        var postInfo: [String: AnyObject] = [
-//            "userID": 1,
-//            "text": "test",
-//            "startTime": "2015-12-12T01:30:00.040Z",
-//            "endTime": "2015-12-12T01:30:00.040Z",
-//            "postTime": "2015-12-12T01:30:00.040Z",
-//            "latitude": 1.23,
-//            "longitude": 1.23,
-//            "numPeople": 3
-//        ]
+            let task = session.dataTaskWithRequest(request) { data, response, error in
+                print("success")
+                completion()
+            }
+            task.resume()
     }
     
     //GET request for a specific user's wandoos
@@ -121,6 +107,7 @@ class WandooModel {
                 do {
                     let parsedData = try NSJSONSerialization.JSONObjectWithData(data, options: .MutableContainers) as? NSDictionary
                     let unwrappedData = parsedData!["data"] as! NSArray
+                    print(unwrappedData)
                     completion(result: unwrappedData)
                 } catch {
                     print("Something went wrong")
@@ -129,5 +116,50 @@ class WandooModel {
         }
         
         task.resume()
+    }
+    
+    func convertTimeToUTC (time: String) -> String {
+        var result: String = ""
+        let timeFormatter = NSDateFormatter()
+        timeFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+        timeFormatter.timeZone = NSTimeZone.localTimeZone()
+        
+        let toUTCFormatter = NSDateFormatter()
+        toUTCFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+        toUTCFormatter.timeZone = NSTimeZone(name: "UTC")
+        
+        result = toUTCFormatter.stringFromDate(timeFormatter.dateFromString(time)!)
+        
+        return result
+    }
+    
+    func checkAndFormatWandooDate (wandooDate: String) -> String {
+        
+//        print(wandooDate)
+        
+        let timeFormatter = NSDateFormatter()
+        timeFormatter.dateFormat = "h:mm a"
+        timeFormatter.timeZone = NSTimeZone.localTimeZone()
+        let dateToString = NSDateFormatter()
+        dateToString.dateFormat = "dd"
+        dateToString.timeZone = NSTimeZone.localTimeZone()
+        let stringToDate = NSDateFormatter()
+        stringToDate.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+        stringToDate.timeZone = NSTimeZone(name: "UTC")
+        
+        var result: String = ""
+        let todayDate = NSDate()
+        let todayIntDay = Int(dateToString.stringFromDate(todayDate))
+        let wandooIntDay = Int(dateToString.stringFromDate(stringToDate.dateFromString(wandooDate)!))
+        let wandooFormattedDate = timeFormatter.stringFromDate(stringToDate.dateFromString(wandooDate)!)
+        
+        if  todayIntDay < wandooIntDay {
+            result = "Tomorrow at " + wandooFormattedDate
+        } else {
+            result = "Today at " + wandooFormattedDate
+        }
+        
+        return result
+        
     }
 }
