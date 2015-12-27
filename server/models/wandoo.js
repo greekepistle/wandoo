@@ -13,12 +13,12 @@ var queryBuilder = function (qs, data, callback) {
 
 module.exports = {
   getAll : function (callback) {
-    var qs = "select * from wandoo where status='A'";
+    var qs = "select * from wandoo where status='A' order by start_time asc";
     queryBuilder(qs, [], callback);  
   },
 
   getPartialRes : function (params, callback) {
-    var qs = "select * from wandoo where wandooID >= ? order by start_time desc limit ?"
+    var qs = "select * from wandoo where wandooID >= ? order by start_time asc limit ?"
     queryBuilder(qs, params, callback);
   },
 
