@@ -135,7 +135,7 @@ class WandooModel {
     
     func checkAndFormatWandooDate (wandooDate: String) -> String {
         
-        print(wandooDate)
+//        print(wandooDate)
         
         let timeFormatter = NSDateFormatter()
         timeFormatter.dateFormat = "h:mm a"

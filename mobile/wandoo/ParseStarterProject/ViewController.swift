@@ -44,6 +44,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDe
         
         self.navigationItem.hidesBackButton = true
         
+        print(allWandoosArray)
+        
     }
     //continually spits out user location
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -58,7 +60,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDe
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let wandooCell = tableView.dequeueReusableCellWithIdentifier("wandooCell", forIndexPath: indexPath) as! WandooCell
-        print(wandooModel.checkAndFormatWandooDate((allWandoosArray[indexPath.row]["start_time"] as? String)!))
+//        print(wandooModel.checkAndFormatWandooDate((allWandoosArray[indexPath.row]["start_time"] as? String)!))
         wandooCell.profileImage.image = profilePicture
         wandooCell.message.text = self.allWandoosArray[indexPath.row]["text"] as? String
         wandooCell.startDate.text = wandooModel.checkAndFormatWandooDate((allWandoosArray[indexPath.row]["start_time"] as? String)!)
@@ -78,8 +80,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDe
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        //print
-        let selectedIndex = tableView.indexPathForCell(sender as WandooCell)
+
+        let selectedIndex = wandooTable.indexPathForCell(sender as! WandooCell)
+        
+        var wandooInfo = allWandoosArray[selectedIndex!.row]
+        let destinationVC = segue.destinationViewController as! DetailsViewController
+        destinationVC.wandooInfo = wandooInfo as! NSDictionary
+        
     }
     
 //    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

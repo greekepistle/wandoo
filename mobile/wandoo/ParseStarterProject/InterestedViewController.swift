@@ -8,15 +8,7 @@
 
 import UIKit
 
-class DetailsViewController: UIViewController {
-    
-    var wandooID: Int?
-    var interestedModel = InterestedModel()
-    
-    
-    @IBAction func interested(sender: AnyObject) {
-        
-    }
+class InterestedViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -10,10 +10,18 @@ import UIKit
 
 class DetailsViewController: UIViewController {
 
+    var wandooInfo: NSDictionary!
+    
+    @IBOutlet weak var test: UILabel!
+    
+    @IBOutlet weak var interested: UIButton!
+    
+    var interestedModel = InterestedModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
+        
     }
 
     override func didReceiveMemoryWarning() {
