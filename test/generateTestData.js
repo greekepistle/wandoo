@@ -17,7 +17,6 @@ var numUsers = 6, // max is userData.length
 
 var locData = locDataGenerator(locSeed, numLocations);
 var wandooTimeData = wandooTimeDataGenerator(numTimes);
-console.log(wandooTimeData);
 var userIDs = [];
 var wandooIDs = [];
 
