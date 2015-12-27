@@ -12,8 +12,9 @@ var queryBuilder = function (qs, data, callback) {
 
 module.exports = {
   getByUserID : function (userID, callback) {
-    var qs = "select user.*, institution_name from user \
-      inner join user_education where user.userID = ?;";
+    console.log('getByUserID');
+    var qs = "select user.*, institution_name from user inner join \
+    user_education on (user.userID = user_education.userID) where user.userID = ?;";
     queryBuilder(qs, userID, callback);
   },
 

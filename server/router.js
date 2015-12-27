@@ -39,6 +39,8 @@ module.exports = function (router) {
 
   router.delete('/api/rooms/:roomID', room.delete);
 
+  router.delete('/api/rooms', room.delete);
+
   router.put('/api/rooms/:roomID', room.put);
 
 }

@@ -91,6 +91,14 @@ module.exports = {
 
   },
 
+  deleteByWandoo : function (wandooIDs, callback) {
+    // get all of the rooms associated with the wandooIDs
+    // delete all of the rooms based on the roomID within room_user
+    // delete all of the room based on the roomID within room
+
+    // var qs = "select wandooID "
+  },
+
   addRoomUsers : function (roomID, roomUserData, callback) {
     var qs = "INSERT INTO `room_user` (`roomID`,`userID`) VALUES\
       (?,?);"
