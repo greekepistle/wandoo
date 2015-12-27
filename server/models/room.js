@@ -66,6 +66,8 @@ module.exports = {
   },
 
   delete : function (roomID, callback) {
+    // Delete all rooms, room_user corresponding to Wandoo_id
+    //We need wandoo_id as a parameter instead of roomID
 
     // Delete all rooms, room_user corresponding to Wandoo_id
     // We need wandoo_id as a parameter instead of roomID
