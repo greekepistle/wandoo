@@ -196,24 +196,20 @@ class UserModel {
         
     }
     
-    func getUserNameByUserID(userID: Int, completion: (result: String) -> Void) {
-        print("poooooop")
+    func getUserNameByUserID(userID: Int, completion: (result: NSDictionary) -> Void) {
         let id = NSURL(string: "http://localhost:8000/api/users/" + String(userID))
-        
         let task = NSURLSession.sharedSession().dataTaskWithURL(id!) {(data, response, error) in
-            
             if let data = data {
                 do {
                     let parsedData = try NSJSONSerialization.JSONObjectWithData(data, options: .MutableContainers) as? NSDictionary
                     var unwrappedData = parsedData!["data"]![0] as! NSDictionary
-                    print(unwrappedData)
-                    var name = unwrappedData["name"] as! String
-                    completion(result: name)
+                    completion(result: unwrappedData)
                 } catch {
                     print("Something went wrong")
                 }
             }
         }
+        task.resume()
         
     }
     

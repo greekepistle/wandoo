@@ -22,6 +22,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDe
     var counter: Int = 0
     var allWandoosArray = [NSDictionary]()
     var profilePicture: UIImage?
+    var interestedModel = InterestedModel()
     
     //Feed button to move to top of feed
     @IBAction func toTopPost(sender: UIButton) {
@@ -49,6 +50,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDe
         self.navigationItem.hidesBackButton = true
         
 //        print(allWandoosArray)
+//        userModel.getUserNameByUserID(userModel.userID!) { (result) -> Void in
+//            print(result)
+//        }
         
     }
     //continually spits out user location
@@ -62,21 +66,38 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDe
     
     //renders wandoos into table view
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+//        print(allWandoosArray)
         let wandooCell = tableView.dequeueReusableCellWithIdentifier("wandooCell", forIndexPath: indexPath) as! WandooCell
         let userID = self.allWandoosArray[indexPath.row]["userID"] as! Int
         userModel.getUserNameByUserID(userID) { (result) -> Void in
-            print("are we reaching here")
-            dispatch_async(dispatch_get_main_queue()){
-                wandooCell.profileImage.image = self.profilePicture
-                wandooCell.name.text = result
-                wandooCell.message.text = self.allWandoosArray[indexPath.row]["text"] as? String
-                wandooCell.time.text = self.wandooModel.checkAndFormatWandooDate((self.allWandoosArray[indexPath.row]["start_time"] as? String)!)
+            let picString = result["profile_picture"] as! String
+            let picURL = NSURL(string: "http://localhost:8000" + picString)
+            if let pic = NSData(contentsOfURL: picURL!) {
+                dispatch_async(dispatch_get_main_queue()){
+                    wandooCell.profileImage.image = UIImage(data: pic)
+                    wandooCell.profileImage.layer.borderWidth = 1
+                    wandooCell.profileImage.layer.masksToBounds = false
+                    wandooCell.profileImage.layer.borderColor = UIColor.blackColor().CGColor
+                    wandooCell.profileImage.layer.cornerRadius = wandooCell.profileImage.frame.height/2
+                    wandooCell.profileImage.clipsToBounds = true
+                    wandooCell.name.text = result["name"] as? String
+                    wandooCell.message.text = self.allWandoosArray[indexPath.row]["text"] as? String
+                    wandooCell.time.text = self.wandooModel.checkAndFormatWandooDate((self.allWandoosArray[indexPath.row]["start_time"] as? String)!)
+                    wandooCell.numPeople.text = String(self.allWandoosArray[indexPath.row]["num_people"]!) + " people"
+                    
+                }
             }
+            
         }
         
-        
-        
+        wandooCell.showInterestButton.tag = indexPath.row
+        wandooCell.showInterestButton.addTarget(self, action: "toggleInterest:", forControlEvents: .TouchUpInside)
         return wandooCell
+    }
+    
+    @IBAction func toggleInterest(sender: UIButton) {
+        let wandooID = allWandoosArray[sender.tag]["wandooID"] as! Int
+        interestedModel.showInterest(wandooID)
     }
     
     //number of sections in table.. we only have 1 section of wandoos
@@ -91,13 +112,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDe
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "lookAtWandoo" {
-        let selectedIndex = wandooTable.indexPathForCell(sender as! WandooCell)
+            let selectedIndex = wandooTable.indexPathForCell(sender as! WandooCell)
         
-        let wandooInfo = allWandoosArray[selectedIndex!.row]
-        let destinationVC = segue.destinationViewController as! DetailsViewController
-        destinationVC.wandooInfo = wandooInfo
+            let wandooInfo = allWandoosArray[selectedIndex!.row]
+            let destinationVC = segue.destinationViewController as! DetailsViewController
+            destinationVC.wandooInfo = wandooInfo
         }
-        
     }
     
 //    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

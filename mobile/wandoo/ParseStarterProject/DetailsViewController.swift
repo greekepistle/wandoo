@@ -7,24 +7,44 @@
 //
 
 import UIKit
+import MapKit
 
 class DetailsViewController: UIViewController {
 
     var wandooInfo: NSDictionary!
-    
-    @IBOutlet weak var test: UILabel!
-    
     var interestedModel = InterestedModel()
+    var userModel = UserModel()
     
+    @IBOutlet weak var mapView: MKMapView!
 
-    @IBAction func interestedButton(sender: AnyObject) {
+    @IBOutlet weak var profilePicture: UIImageView!
+    @IBOutlet weak var profileView: UIView!
+    @IBOutlet weak var message: UILabel!
+    @IBOutlet weak var location: UILabel!
+    @IBOutlet weak var time: UILabel!
+    @IBOutlet weak var numPeople: UILabel!
+    
+    @IBAction func showInterestButton(sender: UIButton) {
         let wandooID = wandooInfo["wandooID"] as! Int
         interestedModel.showInterest(wandooID)
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        let gesture = UITapGestureRecognizer(target: self, action: "segueToProfile:")
+        profileView.addGestureRecognizer(gesture)
         
+    }
+    
+    func segueToProfile(sender:UITapGestureRecognizer) {
+        performSegueWithIdentifier("fromDetails", sender: UITapGestureRecognizer())
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "fromDetails" {
+            let destinationVC = segue.destinationViewController as! HostProfileViewController
+        }
     }
 
     override func didReceiveMemoryWarning() {

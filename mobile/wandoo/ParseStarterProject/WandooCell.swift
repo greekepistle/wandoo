@@ -24,6 +24,6 @@ class WandooCell: UITableViewCell {
     
     @IBOutlet weak var numPeople: UILabel!
     
-    
+    @IBOutlet weak var showInterestButton: UIButton!
     
 }
