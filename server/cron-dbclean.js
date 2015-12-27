@@ -9,7 +9,7 @@ var isExpired = function(data) {
 }
 
 
-// Pseudo code for 
+// Pseudo code Iteration 1
 // Worker 1 - Responsible for Wandoo table:
 //  a) Filters all Wandoo's with startTime < curTime and creates expired list
 //  		-> forEach Elem in Expired list
