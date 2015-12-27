@@ -1,22 +1,14 @@
 //
-//  InterestedViewController.swift
+//  DetailsViewController.swift
 //  ParseStarterProject-Swift
 //
-//  Created by Brian Kwon on 12/25/15.
+//  Created by Brian Kwon on 12/26/15.
 //  Copyright © 2015 Parse. All rights reserved.
 //
 
 import UIKit
 
 class DetailsViewController: UIViewController {
-    
-    var wandooID: Int?
-    var interestedModel = InterestedModel()
-    
-    
-    @IBAction func interested(sender: AnyObject) {
-        
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
