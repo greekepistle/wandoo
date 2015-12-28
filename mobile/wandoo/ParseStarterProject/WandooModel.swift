@@ -58,15 +58,17 @@ class WandooModel {
     }
     
     //GET request for a specific user's wandoos
-    func getWandoo(completion: (result: NSDictionary) -> Void) {
-        let url = NSURL(string: "http://localhost:8000/api/wandoos/" + String(userID!))
+    func getUserWandoo(completion: (result: NSArray) -> Void) {
+        let url = NSURL(string: "http://localhost:8000/api/wandoos?hostID=" + String(userModel.userID!))
         
         let task = NSURLSession.sharedSession().dataTaskWithURL(url!) {(data, response, error) in
             
             if let data = data {
                 do {
                     let parsedData = try NSJSONSerialization.JSONObjectWithData(data, options: .MutableContainers) as? NSDictionary
-                    completion(result: parsedData!)
+                    let unwrappedData = parsedData!["data"] as! NSArray
+                    completion(result: unwrappedData)
+                    print(unwrappedData)
                 } catch {
                     print("Something went wrong")
                 }
@@ -99,7 +101,7 @@ class WandooModel {
     
     //GET requet for all wandoos
     func getAllWandoos(completion: (result: NSArray) -> Void) {
-        let url = NSURL(string: "http://localhost:8000/api/wandoos/")
+        let url = NSURL(string: "http://localhost:8000/api/wandoos?userID=" + String(userModel.userID!))
         
         let task = NSURLSession.sharedSession().dataTaskWithURL(url!) {(data, response, error) in
             
@@ -107,7 +109,7 @@ class WandooModel {
                 do {
                     let parsedData = try NSJSONSerialization.JSONObjectWithData(data, options: .MutableContainers) as? NSDictionary
                     let unwrappedData = parsedData!["data"] as! NSArray
-//                    print(unwrappedData)
+                    print(unwrappedData)
                     completion(result: unwrappedData)
                 } catch {
                     print("Something went wrong")

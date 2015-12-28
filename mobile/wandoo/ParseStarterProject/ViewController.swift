@@ -67,7 +67,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDe
     
     //renders wandoos into table view
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-//        print(allWandoosArray)
         let wandooCell = tableView.dequeueReusableCellWithIdentifier("wandooCell", forIndexPath: indexPath) as! WandooCell
         let userID = self.allWandoosArray[indexPath.row]["userID"] as! Int
         userModel.getUserNameByUserID(userID) { (result) -> Void in
@@ -82,6 +81,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDe
                     wandooCell.profileImage.layer.cornerRadius = wandooCell.profileImage.frame.height/2
                     wandooCell.profileImage.clipsToBounds = true
                     wandooCell.name.text = result["name"] as? String
+                    wandooCell.location.text = String(self.allWandoosArray[indexPath.row]["distance"]!) + " miles away"
                     wandooCell.message.text = self.allWandoosArray[indexPath.row]["text"] as? String
                     wandooCell.time.text = self.wandooModel.checkAndFormatWandooDate((self.allWandoosArray[indexPath.row]["start_time"] as? String)!)
                     wandooCell.numPeople.text = String(self.allWandoosArray[indexPath.row]["num_people"]!) + " people"
