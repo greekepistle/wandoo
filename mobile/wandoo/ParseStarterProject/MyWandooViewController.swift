@@ -34,6 +34,7 @@ class MyWandooViewController: UITableViewController {
         let wandooCell = tableView.dequeueReusableCellWithIdentifier("myWandooCell", forIndexPath: indexPath) as! MyWandooCell
         
         wandooCell.myWandooTitle.text = self.myWandoosArray[indexPath.row]["text"] as? String
+        wandooCell.myWandooTime.text = self.wandooModel.checkAndFormatWandooDate((self.myWandoosArray[indexPath.row]["start_time"] as? String)!)
         
         return wandooCell
     }
