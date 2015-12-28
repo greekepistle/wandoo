@@ -16,6 +16,7 @@ class MyWandooViewController: UITableViewController {
     var myWandoosArray = [NSDictionary]()
     var userModel = UserModel.sharedUserInstance
     var wandooModel = WandooModel()
+    var interestedModel = InterestedModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,6 +46,17 @@ class MyWandooViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return myWandoosArray.count
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "toSwipe" {
+            let selectedIndex = wandooTable.indexPathForCell(sender as! MyWandooCell)
+            
+            let myWandooInfo = myWandoosArray[selectedIndex!.row]
+            let destinationVC = segue.destinationViewController as! SwipeController
+            destinationVC.myWandooInfo = myWandooInfo
+            
+        }
     }
 
     func retrieveMyWandoos() {

@@ -39,4 +39,23 @@ class InterestedModel {
         task.resume()
     }
     
+    func getInterestedPeople(wandooID: Int, completion: (result: [NSDictionary]) -> Void) {
+        
+        let url = NSURL(string: "http://localhost:8000/api/interested/?wandooID=" + String(wandooID))
+        
+        let task = NSURLSession.sharedSession().dataTaskWithURL(url!) { (data, response, error) -> Void in
+            
+            if let data = data {
+                do {
+                    let parsedData = try NSJSONSerialization.JSONObjectWithData(data, options: .MutableContainers)
+                    completion(result: parsedData as! [NSDictionary])
+                    
+                } catch {
+                    print("Something went wrong")
+                }
+            }
+        }
+        task.resume()
+    }
+    
 }
