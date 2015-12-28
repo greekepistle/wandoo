@@ -67,10 +67,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDe
     
     //renders wandoos into table view
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-<<<<<<< ed4869ce403e65b6efe17026ef2b9e589780ad91
-//        print(allWandoosArray)
-=======
->>>>>>> Added segue action from W to myWandooView. Rendered own wandoo post
         let wandooCell = tableView.dequeueReusableCellWithIdentifier("wandooCell", forIndexPath: indexPath) as! WandooCell
         let userID = self.allWandoosArray[indexPath.row]["userID"] as! Int
         userModel.getUserNameByUserID(userID) { (result) -> Void in
