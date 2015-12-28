@@ -32,32 +32,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gxX-oT-OUj">
-                                <rect key="frame" x="0.0" y="64" width="320" height="226"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gxX-oT-OUj">
+                                <rect key="frame" x="2" y="72" width="316" height="226"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="226" id="mxh-sw-IK8"/>
+                                </constraints>
                             </imageView>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="w1r-P2-w8y">
-                                <rect key="frame" x="0.0" y="298" width="320" height="270"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w1r-P2-w8y">
+                                <rect key="frame" x="2" y="306" width="316" height="254"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="name sex age" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UVB-Mi-bWj">
-                                        <rect key="frame" x="8" y="8" width="304" height="33"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="employer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O48-Pw-LcE">
-                                        <rect key="frame" x="8" y="35" width="304" height="28"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="school" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pDT-KA-sSY">
-                                        <rect key="frame" x="8" y="60" width="304" height="22"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wI7-rW-aen">
-                                        <rect key="frame" x="8" y="81" width="304" height="30"/>
+                                        <rect key="frame" x="19" y="20" width="291" height="242"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
@@ -67,21 +52,27 @@
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="gxX-oT-OUj" secondAttribute="trailing" constant="-14" id="ACW-09-KgE"/>
+                            <constraint firstItem="gxX-oT-OUj" firstAttribute="leading" secondItem="xnc-i9-TJY" secondAttribute="leadingMargin" constant="-14" id="Gpl-AP-sUd"/>
+                            <constraint firstItem="JXY-k7-cRS" firstAttribute="top" secondItem="w1r-P2-w8y" secondAttribute="bottom" constant="8" symbolic="YES" id="ZYn-Y1-ack"/>
+                            <constraint firstItem="w1r-P2-w8y" firstAttribute="top" secondItem="gxX-oT-OUj" secondAttribute="bottom" constant="8" symbolic="YES" id="goe-F9-2fO"/>
+                            <constraint firstItem="w1r-P2-w8y" firstAttribute="trailing" secondItem="gxX-oT-OUj" secondAttribute="trailing" id="iP5-My-Ta1"/>
+                            <constraint firstItem="gxX-oT-OUj" firstAttribute="top" secondItem="Rlj-Pd-Lfr" secondAttribute="bottom" constant="8" id="sR9-Jf-1zT"/>
+                            <constraint firstItem="w1r-P2-w8y" firstAttribute="leading" secondItem="gxX-oT-OUj" secondAttribute="leading" id="zDQ-2J-Qvg"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="L6a-bm-lXl"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
-                        <outlet property="employer" destination="O48-Pw-LcE" id="oGZ-Vo-flU"/>
-                        <outlet property="location" destination="wI7-rW-aen" id="8Th-kK-R8t"/>
-                        <outlet property="nameSexAge" destination="UVB-Mi-bWj" id="0wn-I8-LEf"/>
                         <outlet property="profileImage" destination="gxX-oT-OUj" id="isJ-e7-gFE"/>
-                        <outlet property="school" destination="pDT-KA-sSY" id="yyZ-j5-1fW"/>
+                        <outlet property="profileInfo" destination="UVB-Mi-bWj" id="obK-8z-Npo"/>
                         <segue destination="xTP-PA-TSO" kind="show" identifier="toSettingsController" id="qgZ-Ma-NdO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XtG-mv-UVS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5856" y="928"/>
+            <point key="canvasLocation" x="5844" y="940"/>
         </scene>
         <!--Post View Controller-->
         <scene sceneID="tp1-me-Nlj">
@@ -806,7 +797,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="UcQ-As-2ES" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" backIndicatorImage="39C1B68A-A669-460B-B76F-96DCC1467DEC" id="LIG-kr-Btz">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" backIndicatorImage="A036D72B-E33B-4EEE-9384-519B6396EC3E" id="LIG-kr-Btz">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -1016,7 +1007,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="39C1B68A-A669-460B-B76F-96DCC1467DEC" width="62" height="64">
+        <image name="A036D72B-E33B-4EEE-9384-519B6396EC3E" width="62" height="64">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOzxYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBMU
 GR4fJSYsLzU4VSRudWxs1QkKCwwNDg8QERJWTlNTaXplViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBz

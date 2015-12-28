@@ -48,6 +48,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDe
         self.retrieveWandoos()
         
         self.navigationItem.hidesBackButton = true
+        wandooTable.reloadData()
         
 //        print(allWandoosArray)
 //        userModel.getUserNameByUserID(userModel.userID!) { (result) -> Void in

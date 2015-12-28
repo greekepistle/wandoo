@@ -13,10 +13,8 @@ class ProfileViewController: UIViewController, UITableViewDelegate {
     let user = UserModel()
     
     @IBOutlet weak var profileImage: UIImageView!
-    @IBOutlet weak var nameSexAge: UILabel!
-    @IBOutlet weak var employer: UILabel!
-    @IBOutlet weak var school: UILabel!
-    @IBOutlet weak var location: UILabel!
+
+    @IBOutlet weak var profileInfo: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,10 +33,6 @@ class ProfileViewController: UIViewController, UITableViewDelegate {
         
         
         //INSERT code for post request test
-        
-//        self.nameSexAge.numberOfLines = 0
-//        self.nameSexAge.frame = CGRectMake(20,20,200,800)
-//        self.nameSexAge.sizeToFit()
         getInfo()
         
     }
@@ -49,32 +43,41 @@ class ProfileViewController: UIViewController, UITableViewDelegate {
             self.user.getUserInfo (fbID) { (result) -> Void in
                 print(result)
                 dispatch_async(dispatch_get_main_queue()) {
-                    self.nameSexAge.text = result["name"]! as! String
+                    self.profileInfo.text = result["name"]! as? String
                     
                     if let sex = result["sex"]! as? String {
-                        self.nameSexAge.text! += ", " + (result["sex"]! as! String)
+                        self.profileInfo.text! += ", " + sex
                     }
                     
                     if let age = result["age"]! as? Int {
-                        self.nameSexAge.text! += ", " + String(result["age"]!)
+                        self.profileInfo.text! += ", " + String(age)
                     }
                     
                     if let employer = result["employer"]! as? String {
+                        self.profileInfo.text! += "\n"
                         if let jobTitle = result["job_title"]! as? String {
-                            self.employer.text! += result["job_title"]! as! String
-                            self.employer.text! += "at " + (result["employer"]! as! String)
+                            self.profileInfo.text! += jobTitle 
+                            self.profileInfo.text! += "at " + employer
                         } else {
-                            self.employer.text! += "at " + (result["employer"]! as! String)
+                            self.profileInfo.text! += "at " + employer
                         }
                     }
                     
-//                    if let edu = result["institution_name"]! as? String {
-//                        self.school.text! += result["institution_name"]! as? String
-//                    }
+                    if let edu = result["institution_name"]! as? String {
+                        self.profileInfo.text! += "\n" + edu
+                    }
 
                     if let profilePicture = result["profile_picture"]! as? UIImage {
-                        self.profileImage.image = profilePicture as! UIImage
+                        self.profileImage.image = profilePicture
+                        self.profileImage.layer.borderWidth = 1
+                        self.profileImage.layer.masksToBounds = false
+                        self.profileImage.layer.borderColor = UIColor.blackColor().CGColor
+                        self.profileImage.layer.cornerRadius = self.profileImage.frame.height/2
+                        self.profileImage.clipsToBounds = true
                     }
+                    self.profileInfo.numberOfLines = 0
+                    self.profileInfo.frame = CGRectMake(20,20,200,800)
+                    self.profileInfo.sizeToFit()
                 }
             }
     }
