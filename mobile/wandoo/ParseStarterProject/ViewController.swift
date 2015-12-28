@@ -48,13 +48,16 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDe
         self.retrieveWandoos()
         
         self.navigationItem.hidesBackButton = true
-        wandooTable.reloadData()
         
 //        print(allWandoosArray)
 //        userModel.getUserNameByUserID(userModel.userID!) { (result) -> Void in
 //            print(result)
 //        }
         
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        wandooTable.reloadData()
     }
     //continually spits out user location
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -69,7 +72,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDe
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let wandooCell = tableView.dequeueReusableCellWithIdentifier("wandooCell", forIndexPath: indexPath) as! WandooCell
         let userID = self.allWandoosArray[indexPath.row]["userID"] as! Int
-        userModel.getUserNameByUserID(userID) { (result) -> Void in
+        userModel.getUserInfoByUserID(userID) { (result) -> Void in
             let picString = result["profile_picture"] as! String
             let picURL = NSURL(string: "http://localhost:8000" + picString)
             if let pic = NSData(contentsOfURL: picURL!) {

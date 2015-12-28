@@ -178,7 +178,7 @@ class UserModel {
             if let data = data {
                 do {
                     let parsedData = try NSJSONSerialization.JSONObjectWithData(data, options: .MutableContainers) as? NSDictionary
-                    var unwrappedData = parsedData!["data"]![0] as! NSDictionary
+                    let unwrappedData = parsedData!["data"]![0] as! NSDictionary
                     let fbID = FBSDKAccessToken.currentAccessToken().userID
                     let picURL = NSURL(string: "http://localhost:8000/images/" + fbID + ".png")
                     if let data = NSData(contentsOfURL: picURL!) {
@@ -196,7 +196,7 @@ class UserModel {
         
     }
     
-    func getUserNameByUserID(userID: Int, completion: (result: NSDictionary) -> Void) {
+    func getUserInfoByUserID(userID: Int, completion: (result: NSDictionary) -> Void) {
         let id = NSURL(string: "http://localhost:8000/api/users/" + String(userID))
         let task = NSURLSession.sharedSession().dataTaskWithURL(id!) {(data, response, error) in
             if let data = data {
