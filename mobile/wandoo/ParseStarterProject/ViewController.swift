@@ -11,11 +11,10 @@ import UIKit
 import Parse
 import FBSDKCoreKit
 import ParseFacebookUtilsV4
-import CoreLocation
 
-class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDelegate, UITableViewDataSource {
 
-    var locationManager = CLLocationManager()
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+
     var userModel = UserModel.sharedUserInstance
     var wandooModel = WandooModel()
     var count: Int = 0
@@ -38,12 +37,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDe
         // Do any additional setup after loading the view, typically from a nib.
         
         
-        //location manager - request for user location only when in use
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.startUpdatingLocation()
-        
         //http GET request for all wandoos
         self.retrieveWandoos()
         
@@ -53,15 +46,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDe
 //        userModel.getUserNameByUserID(userModel.userID!) { (result) -> Void in
 //            print(result)
 //        }
-        
-    }
-    //continually spits out user location
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
-        let userLocation:CLLocation = locations[0]
-        
-        userModel.latitude = userLocation.coordinate.latitude
-        userModel.longitude = userLocation.coordinate.longitude
+        userModel.postLocation()
     }
     
     //renders wandoos into table view
@@ -84,8 +69,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDe
                     wandooCell.message.text = self.allWandoosArray[indexPath.row]["text"] as? String
                     wandooCell.time.text = self.wandooModel.checkAndFormatWandooDate((self.allWandoosArray[indexPath.row]["start_time"] as? String)!)
                     wandooCell.numPeople.text = String(self.allWandoosArray[indexPath.row]["num_people"]!) + " people"
-                    
-                    }
                 }
             }
             

@@ -11,10 +11,12 @@ import FBSDKCoreKit
 import FBSDKLoginKit
 import ParseFacebookUtilsV4
 import Parse
+import CoreLocation
 
-class FacebookLoginController: UIViewController {
+class FacebookLoginController: UIViewController, CLLocationManagerDelegate {
 
     var userModel = UserModel.sharedUserInstance
+    var locationManager = CLLocationManager()
     
     //Signup and Login button:
         //Signup will send POST request for user's info and GET request for userID to be used in our userModel
@@ -68,9 +70,25 @@ class FacebookLoginController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
+        //location manager - request for user location only when in use
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
+
         if self.navigationController != nil {
             self.navigationController!.navigationBarHidden = true
         }
+    }
+    
+    //continually spits out user location
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
+        let userLocation:CLLocation = locations[0]
+        
+        userModel.latitude = userLocation.coordinate.latitude
+        userModel.longitude = userLocation.coordinate.longitude
+        
     }
 
     override func didReceiveMemoryWarning() {
