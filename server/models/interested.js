@@ -12,12 +12,12 @@ var queryBuilder = function (qs, data, callback) {
 
 module.exports = {
   getByWandoo : function (wandooID, callback) {
-    var qs = "select * from wandoo_interest where userID=63;";
+    var qs = "select * from wandoo_interest where wandooID=?;";
     queryBuilder(qs, wandooID, callback);
   },
 
   getByUser : function (userID, callback) {
-    var qs = 'select * from wandoo_interest where userID=63;';
+    var qs = 'select * from wandoo_interest where userID=?;';
     queryBuilder(qs, userID, callback);    
   },
 

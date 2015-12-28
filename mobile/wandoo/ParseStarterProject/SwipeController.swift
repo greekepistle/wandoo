@@ -9,21 +9,37 @@
 import UIKit
 
 class SwipeController: UIViewController {
-
+    
+    var interestedModel = InterestedModel()
+    var userModel = UserModel.sharedUserInstance
+    var myWandooInfo: NSDictionary?
+    var interested: [NSDictionary]?
+    var interestedPeoplesInfo: [NSDictionary]?
+    var pictures: [UIImage] = []
+    @IBOutlet weak var photo: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
         
-        let label = UILabel(frame: CGRect(x: self.view.bounds.width/2 - 100, y: self.view.bounds.height/2 - 50, width: 200, height: 100))
+        updateImage()
         
-        label.text = "Drag Me!"
-        label.textAlignment = NSTextAlignment.Center
-        self.view.addSubview(label)
-        
-        let gesture = UIPanGestureRecognizer(target: self, action: "wasDragged:")
-        label.addGestureRecognizer(gesture)
-        label.userInteractionEnabled = true
+    }
+    
+    func updateImage() {
+        getInterestedPeople { () -> Void in
+            print(self.interested![0]["selected"])
+            for var i = 0; i < self.pictures.count; i++ {
+                if self.interested![i]["selected"]! as! Int != 1 && self.interested![i]["rejected"]! as! Int != 1 {
+                    self.photo.image = self.pictures[i]
+                    self.view.addSubview(self.photo)
+                }
+                
+                let gesture = UIPanGestureRecognizer(target: self, action: "wasDragged:")
+                self.photo.addGestureRecognizer(gesture)
+                self.photo.userInteractionEnabled = true
+            }
+        }
     }
     
     func wasDragged(gesture: UIPanGestureRecognizer) {
@@ -51,7 +67,38 @@ class SwipeController: UIViewController {
             
             label.transform = stretch
         }
+        
+    }
+    
+    func getInterestedPeople(completion: () -> Void) {
+        let wandooID = self.myWandooInfo!["wandooID"] as! Int
+        
+        interestedModel.getInterestedPeople(17, completion: { (result) -> Void in
+            dispatch_async(dispatch_get_main_queue()){
+                self.interested = result
+            }
             
+            var count = 0;
+            for var i = 0; i < result.count; i++ {
+                let userID = result[i]["userID"]! as! Int
+                
+                let interestedCount = result.count
+                self.userModel.getUserInfoByUserID(userID, completion: { (result) -> Void in
+                    let picString = result["profile_picture"] as! String
+                    let picURL = NSURL(string: "http://localhost:8000" + picString)
+                    if let pic = NSData(contentsOfURL: picURL!) {
+                        dispatch_async(dispatch_get_main_queue()){
+                            self.pictures.append(UIImage(data: pic)!)
+                            count++
+                            if count == interestedCount {
+                                completion()
+                            }
+                        }
+                    }
+                })
+                
+            }
+        })
     }
     
 
