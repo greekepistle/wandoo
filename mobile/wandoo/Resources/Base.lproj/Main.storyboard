@@ -17,6 +17,8 @@
             <string>Montserrat-Regular</string>
             <string>Montserrat-Regular</string>
             <string>Montserrat-Regular</string>
+            <string>Montserrat-Regular</string>
+            <string>Montserrat-Regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -729,35 +731,60 @@
         <scene sceneID="czi-lg-MuD">
             <objects>
                 <tableViewController id="HcV-Jv-mYw" customClass="MyWandooViewController" customModule="ParseStarterProject_Swift" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="e7o-qy-Ulw">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="95" sectionHeaderHeight="28" sectionFooterHeight="28" id="e7o-qy-Ulw">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="myWandooCell" id="bs3-CR-khV" customClass="MyWandooCell" customModule="ParseStarterProject_Swift" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="92" width="320" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="myWandooCell" rowHeight="95" id="bs3-CR-khV" customClass="MyWandooCell" customModule="ParseStarterProject_Swift" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="92" width="320" height="95"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bs3-CR-khV" id="so2-O0-39r">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="94"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YEk-nW-jzN">
-                                            <rect key="frame" x="123" y="0.0" width="42" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8CE-Fp-uFO">
-                                            <rect key="frame" x="123" y="22" width="42" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7B2-0Q-oYU">
+                                            <rect key="frame" x="8" y="8" width="304" height="78"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QwP-Ud-xMF">
+                                                    <rect key="frame" x="28" y="8" width="239" height="21"/>
+                                                    <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="23"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Wd-wR-Dly">
+                                                    <rect key="frame" x="28" y="42" width="255" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="mNI-3e-VHt"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="18"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstItem="QwP-Ud-xMF" firstAttribute="top" secondItem="7B2-0Q-oYU" secondAttribute="topMargin" id="7AL-wo-bMF"/>
+                                                <constraint firstAttribute="trailing" secondItem="QwP-Ud-xMF" secondAttribute="trailing" constant="37" id="7jD-ll-EIR"/>
+                                                <constraint firstItem="1Wd-wR-Dly" firstAttribute="bottom" secondItem="7B2-0Q-oYU" secondAttribute="bottomMargin" constant="-7" id="Atb-kd-JEt"/>
+                                                <constraint firstItem="1Wd-wR-Dly" firstAttribute="leading" secondItem="7B2-0Q-oYU" secondAttribute="leading" constant="28" id="QsB-fW-2Gs"/>
+                                                <constraint firstAttribute="trailing" secondItem="1Wd-wR-Dly" secondAttribute="trailing" constant="21" id="asm-Y2-Gh1"/>
+                                                <constraint firstItem="1Wd-wR-Dly" firstAttribute="top" secondItem="QwP-Ud-xMF" secondAttribute="bottom" constant="13" id="fi0-Ai-rOu"/>
+                                                <constraint firstItem="QwP-Ud-xMF" firstAttribute="leading" secondItem="1Wd-wR-Dly" secondAttribute="leading" id="ofV-G2-zsw"/>
+                                            </constraints>
+                                        </view>
                                     </subviews>
+                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstItem="7B2-0Q-oYU" firstAttribute="leading" secondItem="so2-O0-39r" secondAttribute="leadingMargin" id="HQb-Vp-6K6"/>
+                                        <constraint firstItem="7B2-0Q-oYU" firstAttribute="bottom" secondItem="so2-O0-39r" secondAttribute="bottomMargin" id="Nc6-fz-jCn"/>
+                                        <constraint firstItem="7B2-0Q-oYU" firstAttribute="top" secondItem="so2-O0-39r" secondAttribute="topMargin" id="cNA-VC-mV4"/>
+                                        <constraint firstItem="7B2-0Q-oYU" firstAttribute="trailing" secondItem="so2-O0-39r" secondAttribute="trailingMargin" id="diU-Dc-8h9"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="myWandooTime" destination="8CE-Fp-uFO" id="Lys-pv-ifG"/>
-                                    <outlet property="myWandooTitle" destination="YEk-nW-jzN" id="Hct-a4-BoQ"/>
+                                    <outlet property="myWandooTime" destination="1Wd-wR-Dly" id="J83-Zu-q6A"/>
+                                    <outlet property="myWandooTitle" destination="QwP-Ud-xMF" id="Rbr-52-5T8"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
