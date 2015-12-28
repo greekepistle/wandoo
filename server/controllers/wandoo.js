@@ -12,13 +12,17 @@ var getQueryCB = function (err, result, res) {
 
 module.exports = {
   get : function (req, res) {
-    if (req.query.offset && req.query.limit && !req.query.hostID) {
+    if (req.query.offset && req.query.limit && !req.query.hostID && !req.query.userID) {
       wandoo.getPartialRes([+req.query.offset, +req.query.limit], function (err, result) {
         getQueryCB(err, result, res); // need to wrap this function so that I can pass res to my callback
       });
-    } else if (!req.query.offset && !req.query.limit && req.query.hostID) {
+    } else if (!req.query.offset && !req.query.limit && req.query.hostID && !req.query.userID) {
       wandoo.getByHost(+req.query.hostID, function (err, result) {
         getQueryCB(err, result, res);
+      });
+    } else if (!req.query.offset && !req.query.limit && !req.query.hostID && req.query.userID) {
+      wandoo.getByUser(+req.query.userID, function (err, result) {
+        // WHAT TO DO
       });
     } else if (!Object.keys(req.query).length) {
       wandoo.getAll(function (err, result) {

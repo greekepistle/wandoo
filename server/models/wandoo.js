@@ -13,18 +13,42 @@ var queryBuilder = function (qs, data, callback) {
 
 module.exports = {
   getAll : function (callback) {
-    var qs = "select * from wandoo where status='A' order by start_time asc";
+    var qs = "select * from wandoo where status='A' order by start_time asc;";
     queryBuilder(qs, [], callback);  
   },
 
   getPartialRes : function (params, callback) {
-    var qs = "select * from wandoo where wandooID >= ? order by start_time asc limit ?"
+    var qs = "select * from wandoo where wandooID >= ? order by start_time asc limit ?;";
     queryBuilder(qs, params, callback);
   },
 
   getByHost : function (userID, callback) {
     var qs = "select * from wandoo where userID = ?;"
     queryBuilder(qs, userID, callback);
+  },
+
+  getByUser : function (userID, callback) {
+    // DO STUFF HERE
+    var qs1 = "select latitide, longitude from user where userID = ?;";
+    var qs2 = "select * from wandoo where status ='A' order by start_time asc;"
+
+    db.query(qs1, userID, function (err, results1) {
+      if (err) {
+        callback(err);
+      } else if (!results1.length) {
+        callback('The specified userID does not exist');
+      } else {
+        var location = [results1[0].latitude, results1[0].longitude];
+        db.query(qs1, [], function (err, results2) {
+          if (err) {
+            callback(err);
+          } else {
+            
+          }
+        });
+      }
+    })
+
   },
 
   create : function (wandooData, callback) {
