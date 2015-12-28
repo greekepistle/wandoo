@@ -34,7 +34,9 @@ class PostViewController: UIViewController {
     func buttonAction(send: UIButton!) {
         wandooModel.text = wandooMessage.text
         print(wandooModel.text!)
-        userModel.postLocation()
+        userModel.postLocation { () -> Void in
+            print("suck it")
+        }
         
 
         wandooModel.postWandoo { (result) -> Void in

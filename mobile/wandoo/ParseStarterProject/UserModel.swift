@@ -120,10 +120,10 @@ class UserModel {
                     
                     let task = session.dataTaskWithRequest(request) { data, response, error in
                         print("success")
+                        completion()
                     }
                     task.resume()
                 }
-                completion()
                 
                 //sending the user's name to parse to make our parse db more readable
                 let query = PFQuery(className:"_User")
@@ -141,7 +141,7 @@ class UserModel {
     }
     
     //POST request for user's current location
-    func postLocation() {
+    func postLocation(completion: () -> Void) {
         
         var userLocation : [String: AnyObject] = [
             "latitude": self.latitude!,
@@ -164,6 +164,7 @@ class UserModel {
             
             let task = session.dataTaskWithRequest(request) { data, response, error in
                 print("success")
+                completion()
             }
             task.resume()
         }
@@ -172,13 +173,14 @@ class UserModel {
     //GET request for all user's info
     func getUserInfo(facebookID: String, completion: (result: NSDictionary) -> Void) {
         let url = NSURL(string: "http://localhost:8000/api/users/?facebookID=" + facebookID)
-        
+        print("i have come here!")
         let task = NSURLSession.sharedSession().dataTaskWithURL(url!) {(data, response, error) in
-            
             if let data = data {
                 do {
+//                    print(data)
                     let parsedData = try NSJSONSerialization.JSONObjectWithData(data, options: .MutableContainers) as? NSDictionary
-                    var unwrappedData = parsedData!["data"]![0] as! NSDictionary
+                    print(parsedData)
+                    let unwrappedData = parsedData!["data"]![0] as! NSDictionary
                     let fbID = FBSDKAccessToken.currentAccessToken().userID
                     let picURL = NSURL(string: "http://localhost:8000/images/" + fbID + ".png")
                     if let data = NSData(contentsOfURL: picURL!) {
@@ -196,7 +198,7 @@ class UserModel {
         
     }
     
-    func getUserNameByUserID(userID: Int, completion: (result: NSDictionary) -> Void) {
+    func getUserInfoByUserID(userID: Int, completion: (result: NSDictionary) -> Void) {
         let id = NSURL(string: "http://localhost:8000/api/users/" + String(userID))
         let task = NSURLSession.sharedSession().dataTaskWithURL(id!) {(data, response, error) in
             if let data = data {

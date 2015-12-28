@@ -38,14 +38,14 @@ class DetailsViewController: UIViewController {
     }
     
     func segueToProfile(sender:UITapGestureRecognizer) {
-        performSegueWithIdentifier("fromDetails", sender: UITapGestureRecognizer())
+        performSegueWithIdentifier("fromDetails", sender: nil)
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "fromDetails" {
-            let destinationVC = segue.destinationViewController as! HostProfileViewController
-        }
-    }
+//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+//        if segue.identifier == "fromDetails" {
+//            _ = segue.destinationViewController as! HostProfileViewController
+//        }
+//    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

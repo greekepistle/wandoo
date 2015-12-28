@@ -11,11 +11,10 @@ import UIKit
 import Parse
 import FBSDKCoreKit
 import ParseFacebookUtilsV4
-import CoreLocation
 
-class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDelegate, UITableViewDataSource {
 
-    var locationManager = CLLocationManager()
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+
     var userModel = UserModel.sharedUserInstance
     var wandooModel = WandooModel()
     var count: Int = 0
@@ -37,39 +36,25 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDe
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        
-        //location manager - request for user location only when in use
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.startUpdatingLocation()
+        userModel.postLocation { () -> Void in
+            self.retrieveWandoos()
+        }
         
         //http GET request for all wandoos
-        self.retrieveWandoos()
         
         self.navigationItem.hidesBackButton = true
-        wandooTable.reloadData()
         
 //        print(allWandoosArray)
 //        userModel.getUserNameByUserID(userModel.userID!) { (result) -> Void in
 //            print(result)
 //        }
-        
-    }
-    //continually spits out user location
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
-        let userLocation:CLLocation = locations[0]
-        
-        userModel.latitude = userLocation.coordinate.latitude
-        userModel.longitude = userLocation.coordinate.longitude
     }
     
     //renders wandoos into table view
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let wandooCell = tableView.dequeueReusableCellWithIdentifier("wandooCell", forIndexPath: indexPath) as! WandooCell
         let userID = self.allWandoosArray[indexPath.row]["userID"] as! Int
-        userModel.getUserNameByUserID(userID) { (result) -> Void in
+        userModel.getUserInfoByUserID(userID) { (result) -> Void in
             let picString = result["profile_picture"] as! String
             let picURL = NSURL(string: "http://localhost:8000" + picString)
             if let pic = NSData(contentsOfURL: picURL!) {
@@ -85,7 +70,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDe
                     wandooCell.message.text = self.allWandoosArray[indexPath.row]["text"] as? String
                     wandooCell.time.text = self.wandooModel.checkAndFormatWandooDate((self.allWandoosArray[indexPath.row]["start_time"] as? String)!)
                     wandooCell.numPeople.text = String(self.allWandoosArray[indexPath.row]["num_people"]!) + " people"
-                    
                 }
             }
             
@@ -108,7 +92,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDe
     
     //number of rows in our section.. depends on how many wandoos we get from our http request
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return allWandoosArray.count
+        if allWandoosArray.count > 0 {
+            return allWandoosArray.count
+        } else {
+            return 0
+        }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
