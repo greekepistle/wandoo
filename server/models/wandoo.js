@@ -28,10 +28,8 @@ module.exports = {
   },
 
   getByUser : function (userID, callback) {
-    // DO STUFF HERE
-    var qs1 = "select latitide, longitude from user where userID = ?;";
+    var qs1 = 'select latitude, longitude from user where userID = ?;';
     var qs2 = "select * from wandoo where status ='A' order by start_time asc;"
-
     db.query(qs1, userID, function (err, results1) {
       if (err) {
         callback(err);
@@ -39,11 +37,11 @@ module.exports = {
         callback('The specified userID does not exist');
       } else {
         var location = [results1[0].latitude, results1[0].longitude];
-        db.query(qs1, [], function (err, results2) {
+        db.query(qs2, [], function (err, results2) {
           if (err) {
             callback(err);
           } else {
-            
+            callback(err, results2, location);
           }
         });
       }

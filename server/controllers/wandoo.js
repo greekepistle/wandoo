@@ -1,5 +1,8 @@
 var wandoo = require('../models/wandoo.js');
 var util = require('../util');
+var _ = require('underscore');
+
+var maxDist = 5; // max dist in miles between user and wandoos returned
 
 var getQueryCB = function (err, result, res) {
     if (err) {
@@ -21,8 +24,18 @@ module.exports = {
         getQueryCB(err, result, res);
       });
     } else if (!req.query.offset && !req.query.limit && !req.query.hostID && req.query.userID) {
-      wandoo.getByUser(+req.query.userID, function (err, result) {
-        // WHAT TO DO
+      wandoo.getByUser(+req.query.userID, function (err, result, location) {
+        if (err) {
+          console.error(err);
+          res.status('400').send('There was an error with selection');
+        } else {
+          var filteredResults = _.filter(result, function (wandoo) {
+            var dist = util.distance(wandoo.latitude, wandoo.longitude, location[0], location[1]);
+            wandoo.distance = Math.round(dist * 10)/10; // round to 1 decimal point
+            return (dist <= maxDist);
+          });
+          res.json({data : filteredResults});
+        }
       });
     } else if (!Object.keys(req.query).length) {
       wandoo.getAll(function (err, result) {
