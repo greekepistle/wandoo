@@ -55,10 +55,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDe
 //        }
         
     }
-    
-    override func viewWillAppear(animated: Bool) {
-        wandooTable.reloadData()
-    }
     //continually spits out user location
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
@@ -89,6 +85,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDe
                     wandooCell.time.text = self.wandooModel.checkAndFormatWandooDate((self.allWandoosArray[indexPath.row]["start_time"] as? String)!)
                     wandooCell.numPeople.text = String(self.allWandoosArray[indexPath.row]["num_people"]!) + " people"
                     
+                    }
                 }
             }
             
@@ -111,7 +108,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDe
     
     //number of rows in our section.. depends on how many wandoos we get from our http request
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return allWandoosArray.count
+        if allWandoosArray.count > 0 {
+            return allWandoosArray.count
+        } else {
+            return 0
+        }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
