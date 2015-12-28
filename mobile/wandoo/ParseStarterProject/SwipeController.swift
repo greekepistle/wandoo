@@ -22,18 +22,32 @@ class SwipeController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        updateImage()
+        getInterestedPeople { () -> Void in
+            print(self.interested![0]["selected"])
+            print(self.pictures)
+            for var i = 0; i < self.pictures.count; i++ {
+                //                if self.interested![i]["selected"]! as! Int != 1 && self.interested![i]["rejected"]! as! Int != 1 {
+                self.photo.image = self.pictures[i]
+                self.view.addSubview(self.photo)
+                //                }
+                
+                let gesture = UIPanGestureRecognizer(target: self, action: "wasDragged:")
+                self.photo.addGestureRecognizer(gesture)
+                self.photo.userInteractionEnabled = true
+            }
+        }
         
     }
     
     func updateImage() {
         getInterestedPeople { () -> Void in
             print(self.interested![0]["selected"])
+            print(self.pictures)
             for var i = 0; i < self.pictures.count; i++ {
-                if self.interested![i]["selected"]! as! Int != 1 && self.interested![i]["rejected"]! as! Int != 1 {
+//                if self.interested![i]["selected"]! as! Int != 1 && self.interested![i]["rejected"]! as! Int != 1 {
                     self.photo.image = self.pictures[i]
                     self.view.addSubview(self.photo)
-                }
+//                }
                 
                 let gesture = UIPanGestureRecognizer(target: self, action: "wasDragged:")
                 self.photo.addGestureRecognizer(gesture)
