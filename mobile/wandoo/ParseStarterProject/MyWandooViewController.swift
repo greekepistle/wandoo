@@ -31,7 +31,6 @@ class MyWandooViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        print("hello")
         let wandooCell = tableView.dequeueReusableCellWithIdentifier("myWandooCell", forIndexPath: indexPath) as! MyWandooCell
         
         wandooCell.myWandooTitle.text = self.myWandoosArray[indexPath.row]["text"] as? String
@@ -50,7 +49,6 @@ class MyWandooViewController: UITableViewController {
     func retrieveMyWandoos() {
         getMyWandoos { (allMyWandoos) -> Void in
             self.myWandoosArray = allMyWandoos as! [NSDictionary]
-            print(self.myWandoosArray)
             dispatch_async(dispatch_get_main_queue()){
                 self.wandooTable.reloadData()
             }
@@ -58,7 +56,7 @@ class MyWandooViewController: UITableViewController {
     }
     
     func getMyWandoos(completion: (result: NSArray) -> Void) {
-        wandooModel.getWandoo { (allMyWandoos) -> Void in
+        wandooModel.getUserWandoo { (allMyWandoos) -> Void in
             completion(result: allMyWandoos)
         }
     }
