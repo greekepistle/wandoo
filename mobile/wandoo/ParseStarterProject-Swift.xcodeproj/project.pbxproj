@@ -31,7 +31,8 @@
 		BE928A501C20F245002C9C7D /* TimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE928A4F1C20F245002C9C7D /* TimeViewController.swift */; };
 		BE928A521C20F26E002C9C7D /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE928A511C20F26E002C9C7D /* LocationViewController.swift */; };
 		BE95C7371C20AF80005CB21C /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE95C7361C20AF80005CB21C /* PostViewController.swift */; };
-		BECE401E1C1F578100894D06 /* WandooViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECE401D1C1F578100894D06 /* WandooViewController.swift */; };
+		BEA742EA1C3077500028332D /* MyWandooCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA742E91C3077500028332D /* MyWandooCell.swift */; };
+		BEA742EC1C30B8440028332D /* MyWandooViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA742EB1C30B8440028332D /* MyWandooViewController.swift */; };
 		BECE40231C1F6A3300894D06 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BECE40211C1F6A3300894D06 /* Main.storyboard */; };
 		BEF8B9511C1CDEB90080D0C7 /* Rectangle 43 + Login with facebook + Facebook.png in Resources */ = {isa = PBXBuildFile; fileRef = BEF8B9501C1CDEB90080D0C7 /* Rectangle 43 + Login with facebook + Facebook.png */; };
 		BEF8B9531C1CDFD60080D0C7 /* Wandoo.png in Resources */ = {isa = PBXBuildFile; fileRef = BEF8B9521C1CDFD60080D0C7 /* Wandoo.png */; };
@@ -66,7 +67,8 @@
 		BE928A511C20F26E002C9C7D /* LocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
 		BE95C7361C20AF80005CB21C /* PostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		BEA742E01C2F91DA0028332D /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-Regular.ttf"; path = "../../../../Montserrat-Regular.ttf"; sourceTree = "<group>"; };
-		BECE401D1C1F578100894D06 /* WandooViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WandooViewController.swift; sourceTree = "<group>"; };
+		BEA742E91C3077500028332D /* MyWandooCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyWandooCell.swift; sourceTree = "<group>"; };
+		BEA742EB1C30B8440028332D /* MyWandooViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyWandooViewController.swift; sourceTree = "<group>"; };
 		BECE40221C1F6A3300894D06 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Resources/Base.lproj/Main.storyboard; sourceTree = SOURCE_ROOT; };
 		BEF8B9501C1CDEB90080D0C7 /* Rectangle 43 + Login with facebook + Facebook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Rectangle 43 + Login with facebook + Facebook.png"; sourceTree = "<group>"; };
 		BEF8B9521C1CDFD60080D0C7 /* Wandoo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Wandoo.png; sourceTree = "<group>"; };
@@ -142,10 +144,11 @@
 				10F9FE741C1B95D400D3C4CC /* images */,
 				81BA814A1A49DA1800E65899 /* AppDelegate.swift */,
 				81BA814C1A49DA1800E65899 /* ViewController.swift */,
-				BECE401D1C1F578100894D06 /* WandooViewController.swift */,
+				BEA742EB1C30B8440028332D /* MyWandooViewController.swift */,
 				10F9FE721C1B83FF00D3C4CC /* ChatViewController.swift */,
 				10F9FDF31C18F3B900D3C4CC /* ProfileViewController.swift */,
 				10F9FEC11C21465900D3C4CC /* WandooCell.swift */,
+				BEA742E91C3077500028332D /* MyWandooCell.swift */,
 				10F9FDEF1C18ECD800D3C4CC /* UserModel.swift */,
 				BECE40211C1F6A3300894D06 /* Main.storyboard */,
 				10348A6F1C2DF4FF00CA593D /* InterestedViewController.swift */,
@@ -318,9 +321,10 @@
 				BE928A501C20F245002C9C7D /* TimeViewController.swift in Sources */,
 				10F9FDF01C18ECD800D3C4CC /* UserModel.swift in Sources */,
 				10F9FE731C1B83FF00D3C4CC /* ChatViewController.swift in Sources */,
+				BEA742EC1C30B8440028332D /* MyWandooViewController.swift in Sources */,
 				BE928A4E1C20E6E2002C9C7D /* PeopleViewController.swift in Sources */,
 				10F9FEC21C21465900D3C4CC /* WandooCell.swift in Sources */,
-				BECE401E1C1F578100894D06 /* WandooViewController.swift in Sources */,
+				BEA742EA1C3077500028332D /* MyWandooCell.swift in Sources */,
 				BE95C7371C20AF80005CB21C /* PostViewController.swift in Sources */,
 				10348A701C2DF4FF00CA593D /* InterestedViewController.swift in Sources */,
 				10348A6E1C2DF3CF00CA593D /* InterestedModel.swift in Sources */,
