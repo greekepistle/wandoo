@@ -35,6 +35,8 @@ module.exports = {
         callback(err);
       } else if (!results1.length) {
         callback('The specified userID does not exist');
+      } else if (!results1[0].latitude || !results1[0].longitude) {
+        callback('The user location is undefined');
       } else {
         var location = [results1[0].latitude, results1[0].longitude];
         db.query(qs2, [], function (err, results2) {

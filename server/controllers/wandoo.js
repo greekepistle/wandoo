@@ -32,7 +32,7 @@ module.exports = {
           var filteredResults = _.filter(result, function (wandoo) {
             var dist = util.distance(wandoo.latitude, wandoo.longitude, location[0], location[1]);
             wandoo.distance = Math.round(dist * 10)/10; // round to 1 decimal point
-            return (dist <= maxDist);
+            return (dist <= maxDist && req.query.userID !== wandoo.userID);
           });
           res.json({data : filteredResults});
         }
