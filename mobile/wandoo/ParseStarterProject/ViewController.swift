@@ -36,9 +36,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        userModel.postLocation { () -> Void in
+            self.retrieveWandoos()
+        }
         
         //http GET request for all wandoos
-        self.retrieveWandoos()
         
         self.navigationItem.hidesBackButton = true
         
@@ -46,7 +48,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 //        userModel.getUserNameByUserID(userModel.userID!) { (result) -> Void in
 //            print(result)
 //        }
-        userModel.postLocation()
     }
     
     //renders wandoos into table view

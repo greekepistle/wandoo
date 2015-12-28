@@ -141,7 +141,7 @@ class UserModel {
     }
     
     //POST request for user's current location
-    func postLocation() {
+    func postLocation(completion: () -> Void) {
         
         var userLocation : [String: AnyObject] = [
             "latitude": self.latitude!,
@@ -164,6 +164,7 @@ class UserModel {
             
             let task = session.dataTaskWithRequest(request) { data, response, error in
                 print("success")
+                completion()
             }
             task.resume()
         }
