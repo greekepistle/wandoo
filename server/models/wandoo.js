@@ -22,7 +22,7 @@ module.exports = {
     queryBuilder(qs, params, callback);
   },
 
-  getByUserID : function (userID, callback) {
+  getByHost : function (userID, callback) {
     var qs = "select * from wandoo where userID = ?;"
     queryBuilder(qs, userID, callback);
   },

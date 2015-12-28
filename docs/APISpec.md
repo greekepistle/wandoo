@@ -105,7 +105,8 @@ Name | Notes | Example
 -----|-------|------------|
 offset| The record number to start from. Must be used with limit. | 1 |
 limit | Limits the number of return values | 25 |
-userID | Returns all wandoos with this userID. Cannot be used with offset and limit.| 222 |
+hostID | Returns all wandoos of the host identified by the host's userID. Cannot be used with offset and limit.| 222 |
+userID | Returns all wandoos that are 5 miles away from user | 3345 |
 startTime | ISO:8601 String (use Date.prototype.toJSON()) POST MVP| 2015-12-12T01:30:00.040Z |
 endTime | ISO:8601 String (use Date.prototype.toJSON()) POST MVP| 2015-12-12T02:30:00.040Z |
 postTime | ISO:8601 String (use Date.prototype.toJSON()) POST MVP | 2015-12-12T01:00:00.040Z |
@@ -116,7 +117,8 @@ tag | POST MVP | dinner |
 ```json
 curl -i http://localhost:8000/api/wandoos
 curl -i localhost:8000/api/wandoos?offset=2\&limit=5
-curl -i localhost:8000/api/wandoos?userID=1
+curl -i localhost:8000/api/wandoos?hostID=1
+curl -i localhost:8000/api/wandoos?userID=5
 ```
 
 #### Usage
