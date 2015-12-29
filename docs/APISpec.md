@@ -161,6 +161,23 @@ wandooID|An array of wandooIDs that identify the wandoos to be deleted|[24,43,56
 1. When a user deletes a wandoo (delete room, tags, interests)
 2. When a wandoo expires and the worker deletes it
 
+### PUT /api/wandoos/<wandooID>
+
+#### Payload
+Name | Notes | Example
+-----|-------|---------
+status|Update the status of the wandoo to 'P' (passive). This can only change the status of the wandoo to 'P'. | P
+
+#### Examples
+```json
+curl -i -X PUT -H 'Content-Type: application/json' http://localhost:8000/api/wandoos/168 -d '{"status":"P"}'
+```
+
+
+#### Usage
+1. When a wandoo has been filled, the wandoo should no longer be visible within the main feed. This PUT request should be sent when this wandoo has been filled.
+
+
 ## Interested 
 
 ### GET /api/interested

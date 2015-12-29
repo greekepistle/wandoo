@@ -8,10 +8,10 @@ var expiredWandoos = function (data) {
 }
 
 var expiredRooms = function(data) {
-  return Date.parse(data.expiry) <= Date.parse(new Date());
+  return Date.parse(data.expiry_time) < Date.parse(new Date());
 }
 
-var processWandooData = function (data) {
+var processWandooData = function (data, cb) {
   var expiredEntries = data.filter(expiredWandoos);
   
   // console.log('Expired entries:', expiredEntries);
@@ -51,6 +51,7 @@ var processWandooData = function (data) {
           console.log(err);
         } else {
           console.log('Wandoos updated and deleted successfully');
+          cb();
         }
       });
     }
@@ -61,7 +62,7 @@ var processRoomData = function (data, cb) {
   // filter for rooms which are expired
   var expiredEntries = data.filter(expiredRooms);
   // get the wandooID for each of the rooms that are expired
-  var toExpire = _.pluck(data,'wandooID');
+  var toExpire = _.pluck(expiredEntries,'wandooID');
   // update the status for all wandooIDs to be 'E'
   console.log('Expired wandoos:',toExpire);
   console.log('Expired wandoos count:', toExpire.length);
@@ -77,7 +78,7 @@ var processRoomData = function (data, cb) {
   
 }
 
-var job1 = function () {
+var job1 = function (cb) {
   wandoo.getForDW(function (err, result) {
     if (err) {
       console.log('DB entries not retrieved');
@@ -100,8 +101,12 @@ var job2 = function (cb) {
   });  
 }
 
-job2(job1);
+job1(job2(function () {
+  console.log('Worker complete');
+}));
 // job2(function() {console.log('complete')});
+// job1();
+
 
 // module.exports  = {
 

@@ -13,6 +13,15 @@ var getQueryCB = function (err, result, res) {
     }
 }
 
+var putQueryCB = function (err, result, res) {
+  if (err) {
+    console.error(err);
+    res.status('400').send('There was an error with the update');
+  } else {
+    res.send();
+  }
+}
+
 module.exports = {
   get : function (req, res) {
     if (req.query.offset && req.query.limit && !req.query.hostID && !req.query.userID) {
@@ -86,7 +95,7 @@ module.exports = {
     
   },
 
-  delete : function (req,res) {
+  delete : function (req, res) {
     wandoo.delete(req.body.wandooIDs, function (err, result) {
       if ( err ) {
         console.error(err);
@@ -96,5 +105,19 @@ module.exports = {
       }
     });
 
+  },
+
+  put : function (req, res) {
+    if (!('status' in req.body)) {
+      res.send('Wrong parameters');
+    } else if (req.body.status !== 'P') {
+      res.send('Unacceptable value for status')
+    } else if (req.body.status === 'P') {
+      wandoo.updateToPassive([req.params.wandooID], function (err, result) {
+        putQueryCB(err, result, res);
+      });
+    } else {
+      res.send('Wrong parameters');
+    }
   }
 }

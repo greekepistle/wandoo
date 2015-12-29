@@ -25,6 +25,8 @@ module.exports = function (router) {
 
   router.delete('/api/wandoos', wandoo.delete);
 
+  router.put('/api/wandoos/:wandooID', wandoo.put);
+
   router.get('/api/interested', interested.get);
 
   router.post('/api/interested', interested.post);

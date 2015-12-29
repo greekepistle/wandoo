@@ -105,6 +105,7 @@ module.exports = {
   },
 
   updateToPassive : function (wandooIDs, callback) {
+    console.log(wandooIDs);
     if (!wandooIDs.length) {
       callback(null, 'No entries were updated.');
     } else {
