@@ -24,6 +24,7 @@
 		10F9FE841C1CFE9600D3C4CC /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10F9FE831C1CFE9600D3C4CC /* CoreLocation.framework */; };
 		10F9FE861C20D48500D3C4CC /* WandooModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F9FE851C20D48400D3C4CC /* WandooModel.swift */; };
 		10F9FEC21C21465900D3C4CC /* WandooCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F9FEC11C21465900D3C4CC /* WandooCell.swift */; };
+		32B24AE11C32356900F894DF /* ChatUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B24AE01C32356900F894DF /* ChatUserViewController.swift */; };
 		814C3ACB1B69877600E307BB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 814C3AC81B69877600E307BB /* Images.xcassets */; };
 		81BA814B1A49DA1800E65899 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81BA814A1A49DA1800E65899 /* AppDelegate.swift */; };
 		81BA814D1A49DA1800E65899 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81BA814C1A49DA1800E65899 /* ViewController.swift */; };
@@ -55,6 +56,7 @@
 		10F9FE831C1CFE9600D3C4CC /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		10F9FE851C20D48400D3C4CC /* WandooModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WandooModel.swift; sourceTree = "<group>"; };
 		10F9FEC11C21465900D3C4CC /* WandooCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WandooCell.swift; sourceTree = "<group>"; };
+		32B24AE01C32356900F894DF /* ChatUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatUserViewController.swift; sourceTree = "<group>"; };
 		4E12F8D37691B8A9974CD9AF /* Pods-ParseStarterProject-Swift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ParseStarterProject-Swift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ParseStarterProject-Swift/Pods-ParseStarterProject-Swift.debug.xcconfig"; sourceTree = "<group>"; };
 		5E79F99D0AFBB46C42DB8EC8 /* Pods-ParseStarterProject-Swift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ParseStarterProject-Swift.release.xcconfig"; path = "Pods/Target Support Files/Pods-ParseStarterProject-Swift/Pods-ParseStarterProject-Swift.release.xcconfig"; sourceTree = "<group>"; };
 		814C3AC81B69877600E307BB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 				81BA814A1A49DA1800E65899 /* AppDelegate.swift */,
 				81BA814C1A49DA1800E65899 /* ViewController.swift */,
 				BEA742EB1C30B8440028332D /* MyWandooViewController.swift */,
+				32B24AE01C32356900F894DF /* ChatUserViewController.swift */,
 				10F9FE721C1B83FF00D3C4CC /* ChatViewController.swift */,
 				10F9FDF31C18F3B900D3C4CC /* ProfileViewController.swift */,
 				10F9FEC11C21465900D3C4CC /* WandooCell.swift */,
@@ -333,6 +336,7 @@
 				10348A721C2F57BC00CA593D /* DetailsViewController.swift in Sources */,
 				10F9FDEC1C18AFBB00D3C4CC /* SettingsController.swift in Sources */,
 				81BA814D1A49DA1800E65899 /* ViewController.swift in Sources */,
+				32B24AE11C32356900F894DF /* ChatUserViewController.swift in Sources */,
 				10F9FDF41C18F3B900D3C4CC /* ProfileViewController.swift in Sources */,
 				10F9FDE41C17BC9D00D3C4CC /* FacebookLoginController.swift in Sources */,
 				10F9FE861C20D48500D3C4CC /* WandooModel.swift in Sources */,
