@@ -49,20 +49,27 @@ module.exports = {
     return 7917.5 * Math.asin(Math.sqrt(a)); // Diameter of the earth: 7917.5
   },
 
-  entriesToArray : function (field, data) {
+  entriesToArray : function (data) {
+    // This needs to be cleaned up and optimized
     var set = [];
     var cleanedResult = [];
 
     for (var i = 0; i < data.length; i ++) {
-      if (!data[i + 1] || data[i] !== data[i + 1]) {
+      if (data[i].userID === null) {
+        data[i]['userIDs'] = null;
+        cleanedResult.push(data[i]);
+      } else if (!data[i + 1]['userID'] || data[i]['roomID'] !== data[i + 1]['roomID']) {
+        set.push(data[i].userID);
         data[i]['userIDs'] = set;
         cleanedResult.push(data[i]);
-      } else if (!data[i].userID) {
-        set = null;        
+        set = [];    
       } else {
         set.push(data[i].userID);
       }
     }
+    _.each(cleanedResult, function (entry) {
+      delete entry.userID;
+    });
     return cleanedResult;
   }
 

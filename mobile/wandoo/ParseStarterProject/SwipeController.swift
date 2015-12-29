@@ -102,7 +102,7 @@ class SwipeController: UIViewController {
                     let interestedCount = result.count
                     self.userModel.getUserInfoByUserID(userID, completion: { (result) -> Void in
                         let picString = result["profile_picture"] as! String
-                        let picURL = NSURL(string: "http://localhost:8000" + picString)
+                        let picURL = NSURL(string: hostname + picString)
                         if let pic = NSData(contentsOfURL: picURL!) {
                             dispatch_async(dispatch_get_main_queue()){
                                 self.pictures.append(UIImage(data: pic)!)

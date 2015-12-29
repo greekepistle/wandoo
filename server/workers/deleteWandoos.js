@@ -1,20 +1,21 @@
 var _ = require('underscore');
 var wandoo = require('../models/wandoo');
 var interested = require('../models/interested');
+var room = require('../models/room');
 
 var expiredWandoos = function (data) {
   return Date.parse(data.start_time) < Date.parse(new Date());
 }
 
 var expiredRooms = function(data) {
-  return Date.parse(data.expiry) >= Date.parse(new Date());
+  return Date.parse(data.expiry) <= Date.parse(new Date());
 }
 
 var processWandooData = function (data) {
   var expiredEntries = data.filter(expiredWandoos);
   
-  console.log('Expired entries:', expiredEntries);
-  console.log('Expired entries count:', expiredEntries.length);
+  // console.log('Expired entries:', expiredEntries);
+  // console.log('Expired entries count:', expiredEntries.length);
 
   _.each(expiredEntries, function (entry) {
     if (entry.status === 'E') {
@@ -33,6 +34,10 @@ var processWandooData = function (data) {
   var toDelete = _.pluck(_.filter(expiredEntries, function (entry) {
     return ('delete' in entry);
   }), 'wandooID');
+  console.log('Wandoos updated to status P:', toPassive);
+  console.log('Total wandoos updated to status P:', toPassive.length);
+  console.log('Wandoos deleted:', toDelete);
+  console.log('Total wandoos deleted:', toDelete.length)
 
   // console.log('passive', toPassive);
   // console.log('delete', toDelete);
@@ -45,24 +50,28 @@ var processWandooData = function (data) {
         if (err) {
           console.log(err);
         } else {
-          console.log('Wandoos successfully deleted and updated.');
+          console.log('Wandoos updated and deleted successfully');
         }
       });
     }
   });
 }
 
-var processRoomData = function (data) {
+var processRoomData = function (data, cb) {
   // filter for rooms which are expired
   var expiredEntries = data.filter(expiredRooms);
   // get the wandooID for each of the rooms that are expired
-  var toExpire = _.pluck(data);
+  var toExpire = _.pluck(data,'wandooID');
   // update the status for all wandooIDs to be 'E'
+  console.log('Expired wandoos:',toExpire);
+  console.log('Expired wandoos count:', toExpire.length);
+
   wandoo.updateToExpired(toExpire, function (err, result) {
     if (err) {
       console.log(err);
     } else {
-      console.log('Wandoos successfully expired.')
+      console.log('Wandoos expired successfully')
+      cb();
     }
   });
   
@@ -79,11 +88,22 @@ var job1 = function () {
   });
 }
 
-var job2 = function () {
+var job2 = function (cb) {
   // get all rooms
-  
+  room.getAll([], function (err, result) {
+    if (err) {
+      console.log('DB entries not retrieved');
+      console.log(err);
+    } else {
+      processRoomData(result, cb);
+    }
+  });  
 }
 
-module.exports = job1;
+job2(job1);
+// job2(function() {console.log('complete')});
 
-job1(
+// module.exports  = {
+
+// }
+

@@ -17,7 +17,7 @@ module.exports = {
       if (err) {
         callback(err);
       } else {
-        var cleanedResult = util.entriesToArray('roomID', result);
+        var cleanedResult = util.entriesToArray(result);
         callback(null, cleanedResult);
       }
     });
@@ -74,23 +74,27 @@ module.exports = {
   },
 
   delete : function (roomIDs, callback) {
+    if (!roomIDs.length) {
+      callback(null, 'No entries were updated.');
+    } else {
+      var qs1 = "delete from room_user where roomID in (?);"
+      var qs2 = "delete from room where roomID in (?);"
 
-    var qs1 = "delete from room_user where roomID in (?);"
-    var qs2 = "delete from room where roomID in (?);"
-
-    db.query(qs1, [roomIDs], function (err, results1) {
-      if ( err ) {
-        callback(err);
-      } else {
-        db.query(qs2, [roomIDs], function (err, results2) {
-          if ( err ) {
-            callback(err);
-          } else {
-            callback(null, results1, results2);
-          }
-        });
-      }
-    });
+      db.query(qs1, [roomIDs], function (err, results1) {
+        if ( err ) {
+          callback(err);
+        } else {
+          db.query(qs2, [roomIDs], function (err, results2) {
+            if ( err ) {
+              callback(err);
+            } else {
+              callback(null, results1, results2);
+            }
+          });
+        }
+      });
+    }
+  
 
   },
 

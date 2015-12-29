@@ -3,7 +3,6 @@ var room = require('../models/room');
 
 var queryBuilder = function (qs, data, callback) {
   db.query(qs, data, function (err, result) {
-    console.log(callback);
     if (err) {
       callback(err);
     } else {
@@ -60,35 +59,39 @@ module.exports = {
   },
 
   delete : function (wandooIDs, callback) {
-    var qs1 = "delete from wandoo_interest where wandooID in (?);" 
-    var qs2 = "delete from wandoo_tag where wandooID in (?);"
-    var qs3 = "delete from wandoo where wandooID in (?);"
+    if (!wandooIDs.length) {
+      callback(null, 'No entries were updated.');
+    } else {
+      var qs1 = "delete from wandoo_interest where wandooID in (?);" 
+      var qs2 = "delete from wandoo_tag where wandooID in (?);"
+      var qs3 = "delete from wandoo where wandooID in (?);"
 
-    db.query(qs1,[wandooIDs], function (err, results1) {
-      if (err) {
-        callback(err);
-      } else {
-        db.query(qs1,[wandooIDs], function (err, results2) {
-          if (err) {
-            callback(err);
-          } else {
-            room.deleteByWandoo(wandooIDs, function (err, results3) {
-              if (err) {
-                callback(err);
-              } else {
-                db.query(qs3,[wandooIDs], function (err, results4) {
-                  if (err) {
-                    callback(err);
-                  } else {
-                    callback(null, results1, results2, results3, results4);
-                  }
-                });
-              }
-            });
-          }
-        });
-      }
-    });
+      db.query(qs1,[wandooIDs], function (err, results1) {
+        if (err) {
+          callback(err);
+        } else {
+          db.query(qs1,[wandooIDs], function (err, results2) {
+            if (err) {
+              callback(err);
+            } else {
+              room.deleteByWandoo(wandooIDs, function (err, results3) {
+                if (err) {
+                  callback(err);
+                } else {
+                  db.query(qs3,[wandooIDs], function (err, results4) {
+                    if (err) {
+                      callback(err);
+                    } else {
+                      callback(null, results1, results2, results3, results4);
+                    }
+                  });
+                }
+              });
+            }
+          });
+        }
+      });
+    }
   },
 
   getForDW : function (callback) {
@@ -102,13 +105,21 @@ module.exports = {
   },
 
   updateToPassive : function (wandooIDs, callback) {
-    var qs = "update wandoo set status = 'P' where wandooID in (?);"
-    queryBuilder(qs, [wandooIDs], callback);
+    if (!wandooIDs.length) {
+      callback(null, 'No entries were updated.');
+    } else {
+      var qs = "update wandoo set status = 'P' where wandooID in (?);"
+      queryBuilder(qs, [wandooIDs], callback);
+    }
   },
 
   updateToExpired : function (wandooIDs, callback) {
-    var qs = "update wandoo set status = 'E' where wandooID in (?);"
-    queryBuilder(qs, [wandooIDs], callback);
+    if (!wandooIDs.length) {
+      callback(null, 'No entries were updated.');
+    } else {
+      var qs = "update wandoo set status = 'E' where wandooID in (?);"
+      queryBuilder(qs, [wandooIDs], callback);
+    }
 
   }
 }
