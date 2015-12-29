@@ -11,8 +11,6 @@ import FBSDKCoreKit
 
 class WandooModel {
     
-    var hostname = "http://localhost:8000"
-    
     var userID: String?
     var text: String?
     var startTime: String?
