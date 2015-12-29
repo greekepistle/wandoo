@@ -34,8 +34,6 @@ var isExpired = function(data) {
 // 						set wandoo_table status flag to expired where corresponding wandoo_id 
 
 
-
-
 var processWandooData = function(dataset) {
 
 		//Filter for all expired entries and collect those wandoo ids
@@ -63,7 +61,6 @@ var processWandooData = function(dataset) {
 				console.log("Worker Wandoo delete sucesses");
 			}
 		})
-
 	});
 
 	}

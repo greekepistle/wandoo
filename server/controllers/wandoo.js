@@ -87,7 +87,7 @@ module.exports = {
   },
 
   delete : function (req,res) {
-    wandoo.delete(req.params.wandooID, function (err, result) {
+    wandoo.delete(req.body.wandooIDs, function (err, result) {
       if ( err ) {
         console.error(err);
         res.status('400').send('Error with deletion');

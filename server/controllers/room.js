@@ -62,7 +62,7 @@ module.exports = {
     if (roomMethod) {
       roomMethod(resourceID, function (err, result) {
         getQueryCB(err, result, res);
-      })
+      });
     }
   },
 
@@ -78,7 +78,7 @@ module.exports = {
   },
 
   delete : function (req, res) {
-    room.delete(req.params.roomID, function (err, result) {
+    room.delete(req.body.roomIDs, function (err, result) {
       deleteQueryCB(err, result, res);
     });
   },

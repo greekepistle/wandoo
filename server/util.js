@@ -1,4 +1,5 @@
 var fs = require('fs');
+var _ = require('underscore');
 
 module.exports = {
   isoDateToMySQL : function (date) {
@@ -46,6 +47,23 @@ module.exports = {
             (1 - c((lon2 - lon1) * p))/2;
 
     return 7917.5 * Math.asin(Math.sqrt(a)); // Diameter of the earth: 7917.5
+  },
+
+  entriesToArray : function (field, data) {
+    var set = [];
+    var cleanedResult = [];
+
+    for (var i = 0; i < data.length; i ++) {
+      if (!data[i + 1] || data[i] !== data[i + 1]) {
+        data[i]['userIDs'] = set;
+        cleanedResult.push(data[i]);
+      } else if (!data[i].userID) {
+        set = null;        
+      } else {
+        set.push(data[i].userID);
+      }
+    }
+    return cleanedResult;
   }
 
 }

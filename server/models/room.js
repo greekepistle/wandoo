@@ -1,4 +1,5 @@
 var db = require('../db');
+var util = require('../util');
 var queryBuilder = function (qs, data, callback) {
   db.query(qs, data, function (err, result) {
     if (err) {
@@ -10,9 +11,16 @@ var queryBuilder = function (qs, data, callback) {
 }
 
 module.exports = {
-  getAll : function (callback) {
-    var qs = "select room.*,userID from room inner join room_user on (room.roomID = room_user.roomID);"
-    queryBuilder(qs, [], callback);
+  getAll : function (data, callback) {
+    var qs = "select room.*,userID from room left join room_user on (room.roomID = room_user.roomID);"
+    db.query(qs, [], function (err, result) {
+      if (err) {
+        callback(err);
+      } else {
+        var cleanedResult = util.entriesToArray('roomID', result);
+        callback(null, cleanedResult);
+      }
+    });
   },
 
   getByRoom : function (roomID, callback) {
@@ -65,16 +73,16 @@ module.exports = {
     });
   },
 
-  delete : function (roomID, callback) {
+  delete : function (roomIDs, callback) {
 
-    var qs1 = "delete from room_user where roomID = ?;"
-    var qs2 = "delete from room where roomID = ?;"
+    var qs1 = "delete from room_user where roomID in (?);"
+    var qs2 = "delete from room where roomID in (?);"
 
-    db.query(qs1, roomID, function (err, results1) {
+    db.query(qs1, [roomIDs], function (err, results1) {
       if ( err ) {
         callback(err);
       } else {
-        db.query(qs2, roomID, function (err, results2) {
+        db.query(qs2, [roomIDs], function (err, results2) {
           if ( err ) {
             callback(err);
           } else {
@@ -86,16 +94,16 @@ module.exports = {
 
   },
 
-  deleteByWandoo : function (wandooID, callback) {
+  deleteByWandoo : function (wandooIDs, callback) {
 
-    var qs1 = "delete from room_user where roomID in (select roomID from room where wandooID = ?);";
-    var qs2 = "delete from room where wandooID = ?;";
+    var qs1 = "delete from room_user where roomID in (select roomID from room where wandooID in (?));";
+    var qs2 = "delete from room where wandooID in (?);";
 
-    db.query(qs1, wandooID, function (err, results1) {
+    db.query(qs1,[wandooIDs], function (err, results1) {
       if (err) {
         callback(err);
       } else {
-        db.query(qs2, wandooID, function (err, results2) {
+        db.query(qs2,[wandooIDs], function (err, results2) {
           if (err) {
             callback(err);
           } else {

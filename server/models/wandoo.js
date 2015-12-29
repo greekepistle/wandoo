@@ -3,6 +3,7 @@ var room = require('../models/room');
 
 var queryBuilder = function (qs, data, callback) {
   db.query(qs, data, function (err, result) {
+    console.log(callback);
     if (err) {
       callback(err);
     } else {
@@ -58,24 +59,24 @@ module.exports = {
     queryBuilder(qs, wandooData, callback);
   },
 
-  delete : function (wandooID, callback) {
-    var qs1 = "delete from wandoo_interest where wandooID = ?;" 
-    var qs2 = "delete from wandoo_tag where wandooID = ?;"
-    var qs3 = "delete from wandoo where wandooID = ?;"
+  delete : function (wandooIDs, callback) {
+    var qs1 = "delete from wandoo_interest where wandooID in (?);" 
+    var qs2 = "delete from wandoo_tag where wandooID in (?);"
+    var qs3 = "delete from wandoo where wandooID in (?);"
 
-    db.query(qs1, wandooID, function (err, results1) {
+    db.query(qs1,[wandooIDs], function (err, results1) {
       if (err) {
         callback(err);
       } else {
-        db.query(qs1, wandooID, function (err, results2) {
+        db.query(qs1,[wandooIDs], function (err, results2) {
           if (err) {
             callback(err);
           } else {
-            room.deleteByWandoo(wandooID, function (err, results3) {
+            room.deleteByWandoo(wandooIDs, function (err, results3) {
               if (err) {
                 callback(err);
               } else {
-                db.query(qs3, wandooID, function (err, results4) {
+                db.query(qs3,[wandooIDs], function (err, results4) {
                   if (err) {
                     callback(err);
                   } else {
@@ -88,5 +89,26 @@ module.exports = {
         });
       }
     });
+  },
+
+  getForDW : function (callback) {
+    var qs = "select wandoo.*, 0 as room from wandoo where status='A' and \
+    wandooID not in (select wandooID from room) union \
+    select wandoo.*, 1 as room from wandoo where status='A' and \
+    wandooID in (select wandooID from room) union \
+    select wandoo.*, 0 as room from wandoo where status='E';"
+
+    queryBuilder(qs, [], callback);
+  },
+
+  updateToPassive : function (wandooIDs, callback) {
+    var qs = "update wandoo set status = 'P' where wandooID in (?);"
+    queryBuilder(qs, [wandooIDs], callback);
+  },
+
+  updateToExpired : function (wandooIDs, callback) {
+    var qs = "update wandoo set status = 'E' where wandooID in (?);"
+    queryBuilder(qs, [wandooIDs], callback);
+
   }
 }
