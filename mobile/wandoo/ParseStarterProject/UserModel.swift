@@ -19,6 +19,8 @@ Add http requests to FB parse database
 
 class UserModel {
     
+    var hostname = "http://localhost:8000"
+    
     var name: String?
     var gender: String?
     var photo: PFFile?
@@ -51,17 +53,17 @@ class UserModel {
                 
                 // Parsing facebook data and setting them to our global variables
                 // Some of these need special logic, considering the user might not have certain information on facebook
-                self.id = userData["id"] as! String
+                self.id = userData["id"] as? String
                 self.name = userData["name"] as? String
-                self.age = self.getAgeFromFBBirthday(userData["birthday"] as! String) as? Int
+                self.age = self.getAgeFromFBBirthday(userData["birthday"] as! String)
                 self.email = userData["email"] as? String
                 
-                var gender = userData["gender"]! as! String
+                let gender = userData["gender"]! as! String
                 self.gender = String(gender[gender.startIndex])
                 
                 
                 if userData["work"] != nil && userData["work"]![0]["employer"]! != nil {
-                    self.employer = userData["work"]![0]["employer"]!!["name"] as! String
+                    self.employer = userData["work"]![0]["employer"]!!["name"] as? String
                 }
                 
                 if userData["work"] != nil && userData["work"]![0]["position"]! != nil {
@@ -71,7 +73,7 @@ class UserModel {
                 if userData["education"] != nil {
                     for var i = 0; i < userData["education"]!.count; i++ {
                         if userData["education"]![i]["type"]! as! String == "College" {
-                            self.education = userData["education"]![i]["school"]!!["name"] as! String
+                            self.education = userData["education"]![i]["school"]!!["name"] as? String
                         }
                     }
                 }
@@ -101,7 +103,7 @@ class UserModel {
                 
                 
                 //starting our POST request to backend
-                let url = NSURL(string: "http://localhost:8000/api/users")
+                let url = NSURL(string: self.hostname + "/api/users")
                 
                 let request = NSMutableURLRequest(URL: url!)
                 
@@ -143,7 +145,7 @@ class UserModel {
     //POST request for user's current location
     func postLocation(completion: () -> Void) {
         
-        var userLocation : [String: AnyObject] = [
+        let userLocation : [String: AnyObject] = [
             "latitude": self.latitude!,
             "longitude": self.longitude!
         ]
@@ -152,7 +154,7 @@ class UserModel {
         getUserInfo(fbID) { (result) -> Void in
             print(result["userID"])
             
-            let url = NSURL(string: "http://localhost:8000/api/users/" + String(result["userID"]!))
+            let url = NSURL(string: self.hostname + "/api/users/" + String(result["userID"]!))
             
             let request = NSMutableURLRequest(URL: url!)
             
@@ -172,7 +174,7 @@ class UserModel {
     
     //GET request for all user's info
     func getUserInfo(facebookID: String, completion: (result: NSDictionary) -> Void) {
-        let url = NSURL(string: "http://localhost:8000/api/users/?facebookID=" + facebookID)
+        let url = NSURL(string: hostname + "/api/users/?facebookID=" + facebookID)
         print("i have come here!")
         let task = NSURLSession.sharedSession().dataTaskWithURL(url!) {(data, response, error) in
             if let data = data {
@@ -199,12 +201,12 @@ class UserModel {
     }
     
     func getUserInfoByUserID(userID: Int, completion: (result: NSDictionary) -> Void) {
-        let id = NSURL(string: "http://localhost:8000/api/users/" + String(userID))
+        let id = NSURL(string: hostname + "/api/users/" + String(userID))
         let task = NSURLSession.sharedSession().dataTaskWithURL(id!) {(data, response, error) in
             if let data = data {
                 do {
                     let parsedData = try NSJSONSerialization.JSONObjectWithData(data, options: .MutableContainers) as? NSDictionary
-                    var unwrappedData = parsedData!["data"]![0] as! NSDictionary
+                    let unwrappedData = parsedData!["data"]![0] as! NSDictionary
                     completion(result: unwrappedData)
                 } catch {
                     print("Something went wrong")

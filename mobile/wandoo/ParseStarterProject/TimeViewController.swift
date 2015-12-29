@@ -38,7 +38,7 @@ class TimeViewController: UIViewController {
     @IBOutlet weak var endTimeDatePicker: UIDatePicker!
    
     func startDatePickerChanged(datePicker:UIDatePicker) {
-        let dateFormatter = NSDateFormatter()
+        _ = NSDateFormatter()
 
     }
     
@@ -48,10 +48,10 @@ class TimeViewController: UIViewController {
 //    }
     
     func timePickerToString(sender: UIDatePicker) -> String {
-        var timeFormatter = NSDateFormatter()
+        let timeFormatter = NSDateFormatter()
         timeFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
         
-        var stringDate = timeFormatter.stringFromDate(sender.date)
+        let stringDate = timeFormatter.stringFromDate(sender.date)
         
         return stringDate
     }
