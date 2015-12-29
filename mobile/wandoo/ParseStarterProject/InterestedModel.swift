@@ -10,8 +10,6 @@ import Foundation
 
 class InterestedModel {
     
-    var hostname = "http://localhost:8000"
-    
     var interestedPeople: Array<Int>?
     var userModel = UserModel.sharedUserInstance
     

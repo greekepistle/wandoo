@@ -19,8 +19,6 @@ Add http requests to FB parse database
 
 class UserModel {
     
-    var hostname = "http://localhost:8000"
-    
     var name: String?
     var gender: String?
     var photo: PFFile?
@@ -103,7 +101,7 @@ class UserModel {
                 
                 
                 //starting our POST request to backend
-                let url = NSURL(string: self.hostname + "/api/users")
+                let url = NSURL(string: hostname + "/api/users")
                 
                 let request = NSMutableURLRequest(URL: url!)
                 
@@ -154,7 +152,7 @@ class UserModel {
         getUserInfo(fbID) { (result) -> Void in
             print(result["userID"])
             
-            let url = NSURL(string: self.hostname + "/api/users/" + String(result["userID"]!))
+            let url = NSURL(string: hostname + "/api/users/" + String(result["userID"]!))
             
             let request = NSMutableURLRequest(URL: url!)
             
