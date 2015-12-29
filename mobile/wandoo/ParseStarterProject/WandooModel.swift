@@ -11,6 +11,8 @@ import FBSDKCoreKit
 
 class WandooModel {
     
+    var hostname = "http://localhost:8000"
+    
     var userID: String?
     var text: String?
     var startTime: String?
@@ -29,7 +31,7 @@ class WandooModel {
         self.longitude = userModel.longitude
         
         let userID = userModel.userID
-            var postInfo: [String: AnyObject] = [
+            let postInfo: [String: AnyObject] = [
                 "userID": userID!,
                 "text": self.text!,
                 "startTime": convertTimeToUTC(self.startTime!),
@@ -40,7 +42,7 @@ class WandooModel {
                 "numPeople": self.numPeople!
             ]
         
-            let url = NSURL(string: "http://localhost:8000/api/wandoos")
+            let url = NSURL(string: hostname + "/api/wandoos")
             
             let request = NSMutableURLRequest(URL: url!)
             
@@ -59,7 +61,7 @@ class WandooModel {
     
     //GET request for a specific user's wandoos
     func getUserWandoo(completion: (result: NSArray) -> Void) {
-        let url = NSURL(string: "http://localhost:8000/api/wandoos?hostID=" + String(userModel.userID!))
+        let url = NSURL(string: hostname + "/api/wandoos?hostID=" + String(userModel.userID!))
         
         let task = NSURLSession.sharedSession().dataTaskWithURL(url!) {(data, response, error) in
             
@@ -81,7 +83,7 @@ class WandooModel {
     
     //GET request for wandoos with offset and limit
     func getWandoos(offset: Int, limit: Int, completion: (result: NSArray) -> Void) {
-        let url = NSURL(string: "http://localhost:8000/api/wandoos/?offset=" + String(offset) + "&limit=" + String(limit))
+        let url = NSURL(string: hostname + "/api/wandoos/?offset=" + String(offset) + "&limit=" + String(limit))
         
         let task = NSURLSession.sharedSession().dataTaskWithURL(url!) {(data, response, error) in
             
@@ -101,7 +103,7 @@ class WandooModel {
     
     //GET requet for all wandoos
     func getAllWandoos(completion: (result: NSArray) -> Void) {
-        let url = NSURL(string: "http://localhost:8000/api/wandoos?userID=" + String(userModel.userID!))
+        let url = NSURL(string: hostname + "/api/wandoos?userID=" + String(userModel.userID!))
         
         let task = NSURLSession.sharedSession().dataTaskWithURL(url!) {(data, response, error) in
             

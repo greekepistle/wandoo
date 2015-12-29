@@ -48,7 +48,7 @@ class FacebookLoginController: UIViewController, CLLocationManagerDelegate {
                         self.userModel.getUserInfo(fbID, completion: { (result) -> Void in
                             print(result)
                             
-                            self.userModel.userID = result["userID"]! as! Int
+                            self.userModel.userID = result["userID"]! as? Int
                             dispatch_async(dispatch_get_main_queue()) {
                                 self.performSegueWithIdentifier("LoginFacebook", sender: self)
                                 
