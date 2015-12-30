@@ -14,7 +14,7 @@ import FBSDKCoreKit
 import FBSDKLoginKit
 import ParseFacebookUtilsV4
 
-let hostname = "http://10.6.5.198:8000"
+let hostname = "http://localhost:8000"
 
 // If you want to use any of the UI components, uncomment this line
 // import ParseUI
