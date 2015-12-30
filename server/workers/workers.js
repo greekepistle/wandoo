@@ -4,7 +4,7 @@ var CronJob = require('cron').CronJob;
 
 module.exports = {
   schedulejob: function() {
-    new CronJob('*/1 * * * *', cleanUpWandoos, null, true, 'America/Los_Angeles');
+    new CronJob('*/15 * * * *', cleanUpWandoos, null, true, 'America/Los_Angeles');
   }
 };
 
