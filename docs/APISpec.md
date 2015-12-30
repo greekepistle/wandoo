@@ -65,8 +65,9 @@ curl -i -X POST -H 'Content-Type: application/json' -d '{"name":"Pete Zurish","f
 
 ### DELETE /api/users:\<userID\>
 
-#### Example
+POST MVP
 
+#### Example
 TODO
 
 ```json
@@ -147,15 +148,35 @@ numPeople | | 4 |
 curl -i -X POST -H 'Content-Type: application/json' localhost:8000/api/wandoos -d '{"userID":63,"text":"I want to go out to lunch","startTime":"2015-12-12T01:30:00.040Z","endTime":"2015-12-12T02:30:00.040Z","postTime":"2015-12-12T01:00:00.040Z","latitude":37.7836675,"longitude":-122.4091699,"numPeople":4}'
 ```
 
-### DELETE /api/wandoos/\<wandooID\>
+### DELETE /api/wandoos
 
-
+#### Payload
+Name | Notes | Example
+-----|-------|--------
+wandooID|An array of wandooIDs that identify the wandoos to be deleted|[24,43,56]
 
 #### Examples
 
 #### Usage
 1. When a user deletes a wandoo (delete room, tags, interests)
 2. When a wandoo expires and the worker deletes it
+
+### PUT /api/wandoos/<wandooID>
+
+#### Payload
+Name | Notes | Example
+-----|-------|---------
+status|Update the status of the wandoo to 'P' (passive). This can only change the status of the wandoo to 'P'. | P
+
+#### Examples
+```json
+curl -i -X PUT -H 'Content-Type: application/json' http://localhost:8000/api/wandoos/168 -d '{"status":"P"}'
+```
+
+
+#### Usage
+1. When a wandoo has been filled, the wandoo should no longer be visible within the main feed. This PUT request should be sent when this wandoo has been filled.
+
 
 ## Interested 
 
@@ -224,7 +245,7 @@ userIDs| An array of userIDs | [235435, 53466]|
 #### Examples
 
 ```json
-curl -i -X POST -H 'Content-Type: application/json' localhost:8000/api/rooms -d '{"wandooID":1,"userID":1}'
+curl -i -X POST -H 'Content-Type: application/json' localhost:8000/api/rooms -d '{"wandooID":1,"userID":[1,2]}'
 ```
 
 #### Usage
@@ -244,12 +265,17 @@ userIDs| An array of userIDs | 2354|
 curl -i -X PUT -H 'Content-Type: application/json' http://localhost:8000/api/rooms/10 -d '{"userIDs":[3,4]}'
 ```
 
-### DELETE /api/rooms/\<roomID\>
+### DELETE /api/rooms
+
+#### Payload 
+Name | Notes | Example
+-----|-------|--------
+roomIDs| An array of roomIDs, which identify the rooms that will be deleted| [2,3,4]
 
 #### Examples
 
 ```json
-curl -i -X DELETE localhost:8000/api/rooms/3
+curl -i -X DELETE localhost:8000/api/rooms -d '{"roomIDs":[2,3,4]}'
 ```
 
 #### Usage

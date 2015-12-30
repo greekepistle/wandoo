@@ -56,7 +56,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let userID = self.allWandoosArray[indexPath.row]["userID"] as! Int
         userModel.getUserInfoByUserID(userID) { (result) -> Void in
             let picString = result["profile_picture"] as! String
-            let picURL = NSURL(string: "http://localhost:8000" + picString)
+            let picURL = NSURL(string: hostname + picString)
             if let pic = NSData(contentsOfURL: picURL!) {
                 dispatch_async(dispatch_get_main_queue()){
                     wandooCell.profileImage.image = UIImage(data: pic)

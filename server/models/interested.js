@@ -28,7 +28,6 @@ module.exports = {
   },
 
   update : function (updateData, callback) {
-    //update wandoo_interest set selected = 1 where wandooID=6 and userID=60
     var qs = "update wandoo_interest set ? where wandooID=? and userID=?;"
     queryBuilder(qs, updateData, callback);
   

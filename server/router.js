@@ -23,7 +23,9 @@ module.exports = function (router) {
 
   router.post('/api/wandoos', wandoo.post);
 
-  router.delete('/api/wandoos/:wandooID', wandoo.delete);
+  router.delete('/api/wandoos', wandoo.delete);
+
+  router.put('/api/wandoos/:wandooID', wandoo.put);
 
   router.get('/api/interested', interested.get);
 
@@ -37,7 +39,7 @@ module.exports = function (router) {
 
   router.post('/api/rooms', room.post);
 
-  router.delete('/api/rooms/:roomID', room.delete);
+  router.delete('/api/rooms', room.delete);
 
   router.put('/api/rooms/:roomID', room.put);
 
