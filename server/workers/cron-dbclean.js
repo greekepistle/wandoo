@@ -1,6 +1,6 @@
 var _ = require('underscore');
-var wandoo = require('./models/wandoo.js');
-var interested = require('./models/interested.js');
+var wandoo = require('../models/wandoo.js');
+var interested = require('../models/interested.js');
 
 
 

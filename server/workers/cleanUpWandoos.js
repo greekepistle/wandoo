@@ -14,9 +14,6 @@ var expiredRooms = function(data) {
 var processWandooData = function (data, cb) {
   var expiredEntries = data.filter(expiredWandoos);
   
-  // console.log('Expired entries:', expiredEntries);
-  // console.log('Expired entries count:', expiredEntries.length);
-
   _.each(expiredEntries, function (entry) {
     if (entry.status === 'E') {
       entry.delete = true;
@@ -38,9 +35,6 @@ var processWandooData = function (data, cb) {
   console.log('Total wandoos updated to status P:', toPassive.length);
   console.log('Wandoos deleted:', toDelete);
   console.log('Total wandoos deleted:', toDelete.length)
-
-  // console.log('passive', toPassive);
-  // console.log('delete', toDelete);
 
   wandoo.updateToPassive(toPassive, function (err, result1) {
     if (err) {
@@ -84,13 +78,12 @@ var job1 = function (cb) {
       console.log('DB entries not retrieved');
       console.log(err);
     } else { 
-      processWandooData(result);
+      processWandooData(result, cb);
     }
   });
 }
 
 var job2 = function (cb) {
-  // get all rooms
   room.getAll([], function (err, result) {
     if (err) {
       console.log('DB entries not retrieved');
@@ -101,14 +94,13 @@ var job2 = function (cb) {
   });  
 }
 
-job1(job2(function () {
-  console.log('Worker complete');
-}));
-// job2(function() {console.log('complete')});
-// job1();
-
-
-// module.exports  = {
-
-// }
+module.exports  = function () {
+  console.log('--------------------------------------------');
+  job1(function () {
+    job2(function () {
+      console.log('Worker complete. Next run will be in 15min');
+      console.log('--------------------------------------------');
+    });
+  });
+}
 
