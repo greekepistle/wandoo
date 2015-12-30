@@ -73,7 +73,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XtG-mv-UVS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6553" y="854"/>
+            <point key="canvasLocation" x="5585" y="1026"/>
         </scene>
         <!--Post View Controller-->
         <scene sceneID="tp1-me-Nlj">
@@ -143,7 +143,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O9S-oO-RAd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6219" y="233"/>
+            <point key="canvasLocation" x="6843" y="955"/>
         </scene>
         <!--People View Controller-->
         <scene sceneID="eCv-ep-pzj">
@@ -272,7 +272,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vhh-9w-Eh6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6858" y="-230"/>
+            <point key="canvasLocation" x="6166" y="1013"/>
         </scene>
         <!--Swipe Controller-->
         <scene sceneID="xTD-lm-beX">
@@ -291,7 +291,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L1Y-9S-zeO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4423" y="820"/>
+            <point key="canvasLocation" x="4759" y="1724"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -443,6 +443,11 @@
                                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Gregmond Dungcaman" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oq9-km-CJq">
+                                                            <rect key="frame" x="5" y="0.0" width="299" height="36"/>
+                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g6G-dA-SId">
                                                             <rect key="frame" x="68" y="32" width="203" height="39"/>
                                                             <constraints>
@@ -460,16 +465,11 @@ Msg</string>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yl1-Lo-Jsl">
-                                                            <rect key="frame" x="68" y="90" width="190" height="16"/>
+                                                            <rect key="frame" x="68" y="91" width="190" height="16"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="16" id="OxR-Yu-YCo"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Gregmond Dungcaman" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oq9-km-CJq">
-                                                            <rect key="frame" x="0.0" y="0.0" width="299" height="36"/>
-                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
@@ -479,13 +479,13 @@ Msg</string>
                                                         <constraint firstItem="Yl1-Lo-Jsl" firstAttribute="trailing" secondItem="nS1-Lu-TUA" secondAttribute="trailing" id="A2D-W5-Po7"/>
                                                         <constraint firstItem="Yl1-Lo-Jsl" firstAttribute="leading" secondItem="lvh-Ad-hhl" secondAttribute="trailing" constant="8" symbolic="YES" id="D56-eE-Z9g"/>
                                                         <constraint firstItem="g6G-dA-SId" firstAttribute="leading" secondItem="lvh-Ad-hhl" secondAttribute="trailing" constant="8" symbolic="YES" id="FQg-h1-1E3"/>
-                                                        <constraint firstAttribute="trailing" secondItem="Oq9-km-CJq" secondAttribute="trailing" constant="13" id="HPK-AV-wPl"/>
+                                                        <constraint firstAttribute="trailing" secondItem="Oq9-km-CJq" secondAttribute="trailing" constant="8" id="HPK-AV-wPl"/>
                                                         <constraint firstAttribute="bottom" secondItem="F8d-f0-Lb3" secondAttribute="bottom" constant="10" id="Ik7-Xm-0D0"/>
-                                                        <constraint firstItem="Yl1-Lo-Jsl" firstAttribute="top" secondItem="nS1-Lu-TUA" secondAttribute="bottom" constant="-10" id="IqI-QI-U6v"/>
+                                                        <constraint firstItem="Yl1-Lo-Jsl" firstAttribute="top" secondItem="nS1-Lu-TUA" secondAttribute="bottom" constant="-9" id="IqI-QI-U6v"/>
                                                         <constraint firstItem="lvh-Ad-hhl" firstAttribute="top" secondItem="Oq9-km-CJq" secondAttribute="bottom" constant="8" symbolic="YES" id="Q3K-sV-WGx"/>
                                                         <constraint firstItem="F8d-f0-Lb3" firstAttribute="leading" secondItem="Yl1-Lo-Jsl" secondAttribute="leading" id="QKT-hA-1fv"/>
                                                         <constraint firstAttribute="trailing" secondItem="Yl1-Lo-Jsl" secondAttribute="trailing" constant="54" id="Sb2-Zj-YRt"/>
-                                                        <constraint firstItem="Oq9-km-CJq" firstAttribute="leading" secondItem="72f-SP-h4z" secondAttribute="leading" id="TAp-WJ-wXv"/>
+                                                        <constraint firstItem="Oq9-km-CJq" firstAttribute="leading" secondItem="72f-SP-h4z" secondAttribute="leading" constant="5" id="TAp-WJ-wXv"/>
                                                         <constraint firstItem="nS1-Lu-TUA" firstAttribute="top" secondItem="g6G-dA-SId" secondAttribute="bottom" constant="-9" id="WJh-ES-grB"/>
                                                         <constraint firstAttribute="trailing" secondItem="g6G-dA-SId" secondAttribute="trailing" constant="41" id="WQg-Hs-72p"/>
                                                         <constraint firstItem="F8d-f0-Lb3" firstAttribute="top" secondItem="nS1-Lu-TUA" secondAttribute="bottom" constant="8" id="XGu-n2-9CJ"/>
@@ -854,6 +854,7 @@ Msg</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IfQ-3t-T84" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+<<<<<<< c3578041caee4b749fc4d2821e1c7e310f904de8
             <point key="canvasLocation" x="5320" y="968"/>
         </scene>
         <!--Table View Controller-->
@@ -884,6 +885,9 @@ Msg</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZQY-Bv-x8O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5670" y="983"/>
+=======
+            <point key="canvasLocation" x="5126" y="1013"/>
+>>>>>>> Changed the interested button on click to become black
         </scene>
         <!--Chat View Controller-->
         <scene sceneID="Rxp-00-u12">
@@ -983,14 +987,14 @@ Msg</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gg0-H6-FqO" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6075" y="989"/>
+            <point key="canvasLocation" x="3951" y="909"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="vYf-vO-lWg">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="UcQ-As-2ES" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" backIndicatorImage="8794449E-A12D-4457-891B-0506FC3EBAF0" id="LIG-kr-Btz">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" backIndicatorImage="8CDAC2AE-55B9-41A6-AEDB-076054C43AE0" id="LIG-kr-Btz">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -1245,11 +1249,11 @@ Msg</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F5k-h3-3d9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6536" y="-653"/>
+            <point key="canvasLocation" x="6488" y="-553"/>
         </scene>
     </scenes>
     <resources>
-        <image name="8794449E-A12D-4457-891B-0506FC3EBAF0" width="62" height="64">
+        <image name="8CDAC2AE-55B9-41A6-AEDB-076054C43AE0" width="62" height="64">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOzxYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBMU
 GR4fJSYsLzU4VSRudWxs1QkKCwwNDg8QERJWTlNTaXplViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBz

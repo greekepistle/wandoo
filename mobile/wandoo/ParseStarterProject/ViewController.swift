@@ -97,8 +97,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             let wandooID = allWandoosArray[sender.tag]["wandooID"] as! Int
             interestedModel.showInterest(wandooID)
             sender.backgroundColor = UIColor(red: 81.0/255.0, green: 255.0/255.0, blue: 85.0/255.0, alpha: 0.5)
+            sender.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
         } else {
             sender.backgroundColor = UIColor(red: 217.0/255.0, green: 217.0/255.0, blue: 217.0/255.0, alpha: 1.0)
+            sender.setTitleColor(UIColor.grayColor(), forState: UIControlState.Normal)
         }
 
     }
