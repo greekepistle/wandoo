@@ -1,165 +1,176 @@
-/**
-* Copyright (c) 2015-present, Parse, LLC.
-* All rights reserved.
-*
-* This source code is licensed under the BSD-style license found in the
-* LICENSE file in the root directory of this source tree. An additional grant
-* of patent rights can be found in the PATENTS file in the same directory.
-*/
-
 import UIKit
-
 import Parse
 import FBSDKCoreKit
 import FBSDKLoginKit
 import ParseFacebookUtilsV4
+import Atlas
+import SVProgressHUD
+import LayerKit
 
 let hostname = "http://localhost:8000"
 
-// If you want to use any of the UI components, uncomment this line
-// import ParseUI
-
-// If you want to use Crash Reporting - uncomment this line
-// import ParseCrashReporting
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    
     var window: UIWindow?
-
-    //--------------------------------------
-    // MARK: - UIApplicationDelegate
-    //--------------------------------------
-
+    var layerClient: LYRClient!
+    var controller: FacebookLoginController!
+    
+    // MARK TODO: Before first launch, update LayerAppIDString, ParseAppIDString or ParseClientKeyString values
+    // TODO:If LayerAppIDString, ParseAppIDString or ParseClientKeyString are not set, this app will crash"
+    let LayerAppIDString: NSURL! = NSURL(string: "layer:///apps/staging/35cf31e8-ac52-11e5-be54-e99ef71601e8")
+    
+    let ParseAppIDString: String = "HS5AbFE2AykpVi7QD2vBwutQJcytqHSPpaWAriy5"
+    
+    let ParseClientKeyString: String = "sxoaYg2v8qUk2Vz2Xu1HTkRVoH9VL0avcSd9aRwv"
+    
+    //Please note, You must set `LYRConversation *conversation` as a property of the ViewController.
+    var conversation: LYRConversation!
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Enable storing and querying data from Local Datastore.
-        // Remove this line if you do   't want to use Local Datastore features or want to use cachePolicy.
-        Parse.enableLocalDatastore()
-
-        // ****************************************************************************
-        // Uncomment this line if you want to enable Crash Reporting
-        // ParseCrashReporting.enable()
-        //
-        // Uncomment and fill in with your Parse credentials:
-//        Parse.setApplicationId("3DIlsEbkedwBE0AOCQ5sYW2ajV1s8vtlrd3Jm8yf",
-//            clientKey: "jHHs0Dmc0ryy6LXYDVDXmwjYtFUoFQNiKt1WSEN3")
-        //mmnm Parse appid
-        Parse.setApplicationId("HS5AbFE2AykpVi7QD2vBwutQJcytqHSPpaWAriy5",
-            clientKey: "sxoaYg2v8qUk2Vz2Xu1HTkRVoH9VL0avcSd9aRwv")
+        
+        setupParse()
+        layerClient = LYRClient(appID: LayerAppIDString)
+        layerClient.autodownloadMIMETypes = NSSet(objects: ATLMIMETypeImagePNG, ATLMIMETypeImageJPEG, ATLMIMETypeImageJPEGPreview, ATLMIMETypeImageGIF, ATLMIMETypeImageGIFPreview, ATLMIMETypeLocation) as? Set<String>
+        
+        // Show View Controller
+        controller = FacebookLoginController()
+        controller.layerClient = layerClient
+//        print(layerClient)
         
         PFFacebookUtils.initializeFacebookWithApplicationLaunchOptions(launchOptions)
-        //
-        // If you are using Facebook, uncomment and add your FacebookAppID to your bundle's plist as
-        // described here: https://developers.facebook.com/docs/getting-started/facebook-sdk-for-ios/
-        // Uncomment the line inside ParseStartProject-Bridging-Header and the following line here:
-        // PFFacebookUtils.initializeFacebook()
-        // ****************************************************************************
-
-        PFUser.enableAutomaticUser()
-
-        let defaultACL = PFACL();
-
-        // If you would like all objects to be private by default, remove this line.
-        defaultACL.publicReadAccess = true
-
-        PFACL.setDefaultACL(defaultACL, withAccessForCurrentUser:true)
-
-        if application.applicationState != UIApplicationState.Background {
-            // Track an app open here if we launch with a push, unless
-            // "content_available" was used to trigger a background push (introduced in iOS 7).
-            // In that case, we skip tracking here to avoid double counting the app-open.
-
-            let preBackgroundPush = !application.respondsToSelector("backgroundRefreshStatus")
-            let oldPushHandlerOnly = !self.respondsToSelector("application:didReceiveRemoteNotification:fetchCompletionHandler:")
-            var noPushPayload = false;
-            if let options = launchOptions {
-                noPushPayload = options[UIApplicationLaunchOptionsRemoteNotificationKey] != nil;
-            }
-            if (preBackgroundPush || oldPushHandlerOnly || noPushPayload) {
-                PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
-            }
-        }
-
-        //
-        //  Swift 1.2
-        //
-        //        if application.respondsToSelector("registerUserNotificationSettings:") {
-        //            let userNotificationTypes = UIUserNotificationType.Alert | UIUserNotificationType.Badge | UIUserNotificationType.Sound
-        //            let settings = UIUserNotificationSettings(forTypes: userNotificationTypes, categories: nil)
-        //            application.registerUserNotificationSettings(settings)
-        //            application.registerForRemoteNotifications()
-        //        } else {
-        //            let types = UIRemoteNotificationType.Badge | UIRemoteNotificationType.Alert | UIRemoteNotificationType.Sound
-        //            application.registerForRemoteNotificationTypes(types)
-        //        }
-
         
-//          Swift 2.0
-        
-                if #available(iOS 8.0, *) {
-                    let types: UIUserNotificationType = [.Alert, .Badge, .Sound]
-                    let settings = UIUserNotificationSettings(forTypes: types, categories: nil)
-                    application.registerUserNotificationSettings(settings)
-                    application.registerForRemoteNotifications()
-                } else {
-                    let types: UIRemoteNotificationType = [.Alert, .Badge, .Sound]
-                    application.registerForRemoteNotificationTypes(types)
-                }
-
+        // Register for push
+//        self.registerApplicationForPushNotifications(application)
+//        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+//        let viewController = mainStoryboard.instantiateViewControllerWithIdentifier("facebookLogin")
+//        UIApplication.sharedApplication().keyWindow?.rootViewController = viewController;
+//        self.window!.rootViewController = controller
+//        self.window!.backgroundColor = UIColor.whiteColor()
+//        self.window!.makeKeyAndVisible()
+    
         return true
     }
-
-    //--------------------------------------
-    // MARK: Push Notifications
-    //--------------------------------------
-
+    
+    // MARK:- Push Notification Registration
+    
+    func registerApplicationForPushNotifications(application: UIApplication) {
+        // Set up push notifications
+        // For more information about Push, check out:
+        // https://developer.layer.com/docs/guides/ios#push-notification
+        
+        // Register device for iOS8
+        let notificationSettings: UIUserNotificationSettings = UIUserNotificationSettings(forTypes: [UIUserNotificationType.Alert, UIUserNotificationType.Badge, UIUserNotificationType.Sound], categories: nil)
+        application.registerUserNotificationSettings(notificationSettings)
+        application.registerForRemoteNotifications()
+    }
+    
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
-        let installation = PFInstallation.currentInstallation()
-        installation.setDeviceTokenFromData(deviceToken)
-        installation.saveInBackground()
-
-        PFPush.subscribeToChannelInBackground("") { (succeeded: Bool, error: NSError?) in
-            if succeeded {
-                print("ParseStarterProject successfully subscribed to push notifications on the broadcast channel.\n");
-            } else {
-                print("ParseStarterProject failed to subscribe to push notifications on the broadcast channel with error = %@.\n", error)
+        // Store the deviceToken in the current installation and save it to Parse.
+        let currentInstallation: PFInstallation = PFInstallation.currentInstallation()
+        currentInstallation.setDeviceTokenFromData(deviceToken)
+        currentInstallation.saveInBackground()
+        
+        // Send device token to Layer so Layer can send pushes to this device.
+        // For more information about Push, check out:
+        // https://developer.layer.com/docs/ios/guides#push-notification
+        assert(self.layerClient != nil, "The Layer client has not been initialized!")
+        do {
+            try! self.layerClient.updateRemoteNotificationDeviceToken(deviceToken)
+            print("Application did register for remote notifications: \(deviceToken)")
+        } catch let error as NSError {
+            print("Failed updating device token with error: \(error)")
+        }
+    }
+    
+    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
+        if userInfo["layer"] == nil {
+            PFPush.handlePush(userInfo)
+            completionHandler(UIBackgroundFetchResult.NewData)
+            return
+        }
+        
+        let userTappedRemoteNotification: Bool = application.applicationState == UIApplicationState.Inactive
+        var conversation: LYRConversation? = nil
+        if userTappedRemoteNotification {
+            SVProgressHUD.show()
+            conversation = self.conversationFromRemoteNotification(userInfo)
+            if conversation != nil {
+                self.navigateToViewForConversation(conversation!)
             }
         }
+        
+        let success: Bool = self.layerClient.synchronizeWithRemoteNotification(userInfo, completion: { (changes, error) in
+            completionHandler(self.getBackgroundFetchResult(changes, error: error))
+            
+            if userTappedRemoteNotification && conversation == nil {
+                // Try navigating once the synchronization completed
+                self.navigateToViewForConversation(self.conversationFromRemoteNotification(userInfo))
+            }
+        })
+        
+        if !success {
+            // This should not happen?
+            completionHandler(UIBackgroundFetchResult.NoData)
+        }
     }
-
-    func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
-        if error.code == 3010 {
-            print("Push notifications are not supported in the iOS Simulator.\n")
+    
+    func getBackgroundFetchResult(changes: [AnyObject]!, error: NSError!) -> UIBackgroundFetchResult {
+        if changes?.count > 0 {
+            return UIBackgroundFetchResult.NewData
+        }
+        return error != nil ? UIBackgroundFetchResult.Failed : UIBackgroundFetchResult.NoData
+    }
+    
+    func conversationFromRemoteNotification(remoteNotification: [NSObject : AnyObject]) -> LYRConversation {
+        let layerMap = remoteNotification["layer"] as! [String: String]
+        let conversationIdentifier = NSURL(string: layerMap["conversation_identifier"]!)
+        return self.existingConversationForIdentifier(conversationIdentifier!)!
+    }
+    
+    func navigateToViewForConversation(conversation: LYRConversation) {
+        if self.controller.conversationListViewController != nil {
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(2 * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), {
+                SVProgressHUD.dismiss()
+                if (self.controller.navigationController!.topViewController as? ConversationViewController)?.conversation != conversation {
+                    self.controller.conversationListViewController.presentConversation(conversation)
+                }
+            });
         } else {
-            print("application:didFailToRegisterForRemoteNotificationsWithError: %@\n", error)
+            SVProgressHUD.dismiss()
         }
     }
-
-    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
-        PFPush.handlePush(userInfo)
-        if application.applicationState == UIApplicationState.Inactive {
-            PFAnalytics.trackAppOpenedWithRemoteNotificationPayload(userInfo)
+    
+    func existingConversationForIdentifier(identifier: NSURL) -> LYRConversation? {
+        let query: LYRQuery = LYRQuery(queryableClass: LYRConversation.self)
+        query.predicate = LYRPredicate(property: "identifier", predicateOperator: LYRPredicateOperator.IsEqualTo, value: identifier)
+        query.limit = 1
+        do {
+            return try self.layerClient.executeQuery(query).firstObject as? LYRConversation
+        } catch {
+            // This should never happen?
+            return nil
         }
     }
-
-    ///////////////////////////////////////////////////////////
-    // Uncomment this method if you want to use Push Notifications with Background App Refresh
-    ///////////////////////////////////////////////////////////
-    // func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
-    //     if application.applicationState == UIApplicationState.Inactive {
-    //         PFAnalytics.trackAppOpenedWithRemoteNotificationPayload(userInfo)
-    //     }
-    // }
-
-    //--------------------------------------
-    // MARK: Facebook SDK Integration
-    //--------------------------------------
-
-    ///////////////////////////////////////////////////////////
-    // Uncomment this method if you are using Facebook
-    ///////////////////////////////////////////////////////////
-    // func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
-    //     return FBAppCall.handleOpenURL(url, sourceApplication:sourceApplication, session:PFFacebookUtils.session())
-    // }
+    
+    func setupParse() {
+        // Enable Parse local data store for user persistence
+        Parse.enableLocalDatastore()
+        Parse.setApplicationId(ParseAppIDString, clientKey: ParseClientKeyString)
+        
+        // Set default ACLs
+        let defaultACL: PFACL = PFACL()
+//        defaultACL.setReadAccess(true, forUser: PFUser.currentUser()!)
+        defaultACL.publicReadAccess = true
+//        defaultACL.setPublicReadAccess(true)
+        PFACL.setDefaultACL(defaultACL, withAccessForCurrentUser: true)
+    }
+    
+    func setupLayer() {
+        layerClient = LYRClient(appID: LayerAppIDString)
+        layerClient.autodownloadMIMETypes = NSSet(objects: ATLMIMETypeImagePNG, ATLMIMETypeImageJPEG, ATLMIMETypeImageJPEGPreview, ATLMIMETypeImageGIF, ATLMIMETypeImageGIFPreview, ATLMIMETypeLocation) as? Set<String>
+    }
+    
     func application(application: UIApplication,
         openURL url: NSURL,
         sourceApplication: String?,
@@ -170,9 +181,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 annotation: annotation)
     }
     
-    
-    //Make sure it isn't already declared in the app delegate (possible redefinition of func error)
     func applicationDidBecomeActive(application: UIApplication) {
         FBSDKAppEvents.activateApp()
     }
 }
+

@@ -360,7 +360,7 @@
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                     <state key="normal" title="Chats" image="icon_ios_chat_filled.png"/>
                                                                     <connections>
-                                                                        <segue destination="Tj8-pm-6tv" kind="show" identifier="goToUserChatViewCtrl" id="UCj-JV-lXH"/>
+                                                                        <action selector="presentChat:" destination="BYZ-38-t0r" eventType="touchUpInside" id="x4X-c4-wnp"/>
                                                                     </connections>
                                                                 </button>
                                                             </barButtonItem>
@@ -684,7 +684,7 @@
         <!--FacebookLoginController-->
         <scene sceneID="m45-gS-bIz">
             <objects>
-                <viewController title="FacebookLoginController" id="qih-Dc-awY" customClass="FacebookLoginController" customModule="ParseStarterProject_Swift" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="facebookLogin" title="FacebookLoginController" id="qih-Dc-awY" customClass="FacebookLoginController" customModule="ParseStarterProject_Swift" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="zBC-5R-IRO"/>
                         <viewControllerLayoutGuide type="bottom" id="t6a-LW-n2H"/>
@@ -836,7 +836,36 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IfQ-3t-T84" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5546" y="921"/>
+            <point key="canvasLocation" x="5320" y="968"/>
+        </scene>
+        <!--Table View Controller-->
+        <scene sceneID="bD6-la-Bvk">
+            <objects>
+                <tableViewController id="YSa-Ap-pDA" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="5S3-rX-oBG">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Y1a-Pk-Tmp">
+                                <rect key="frame" x="0.0" y="28" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Y1a-Pk-Tmp" id="nEc-4g-JTu">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="YSa-Ap-pDA" id="jQW-NZ-DOt"/>
+                            <outlet property="delegate" destination="YSa-Ap-pDA" id="CVg-HQ-eQE"/>
+                        </connections>
+                    </tableView>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZQY-Bv-x8O" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5670" y="983"/>
         </scene>
         <!--Chat View Controller-->
         <scene sceneID="Rxp-00-u12">
@@ -943,7 +972,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="UcQ-As-2ES" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" backIndicatorImage="A1DF949A-8BD1-4195-BBB7-6BBB5E9B4DAE" id="LIG-kr-Btz">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" backIndicatorImage="3211251C-F568-4463-940B-0C3D014F9CC3" id="LIG-kr-Btz">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -1202,7 +1231,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="A1DF949A-8BD1-4195-BBB7-6BBB5E9B4DAE" width="62" height="64">
+        <image name="3211251C-F568-4463-940B-0C3D014F9CC3" width="62" height="64">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOzxYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBMU
 GR4fJSYsLzU4VSRudWxs1QkKCwwNDg8QERJWTlNTaXplViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBz
