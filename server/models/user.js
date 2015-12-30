@@ -13,13 +13,13 @@ var queryBuilder = function (qs, data, callback) {
 module.exports = {
   getByUserID : function (userID, callback) {
     console.log('getByUserID');
-    var qs = "select user.*, institution_name from user inner join \
+    var qs = "select user.*, institution_name from user left join \
     user_education on (user.userID = user_education.userID) where user.userID = ?;";
     queryBuilder(qs, userID, callback);
   },
 
   getByFBID : function (facebookID, callback) {
-    var qs = "select user.*, institution_name from user inner join \
+    var qs = "select user.*, institution_name from user left join \
     user_education on (user.userID = user_education.userID) where user.facebookID = ?;";
     queryBuilder(qs, facebookID, callback);
   },

@@ -1,4 +1,6 @@
 PODS:
+  - Atlas (1.0.15):
+    - LayerKit (>= 0.17.1)
   - Bolts (1.5.0):
     - Bolts/AppLinks (= 1.5.0)
     - Bolts/Tasks (= 1.5.0)
@@ -11,6 +13,7 @@ PODS:
     - FBSDKCoreKit (~> 4.9.0-beta)
   - FBSDKShareKit (4.8.0):
     - FBSDKCoreKit
+  - LayerKit (0.17.5)
   - Parse (1.11.0):
     - Bolts/Tasks (~> 1.5)
   - ParseFacebookUtilsV4 (1.10.0):
@@ -19,20 +22,31 @@ PODS:
     - FBSDKLoginKit (~> 4.9.0-beta)
     - FBSDKTVOSKit (~> 4.9.0-beta)
     - Parse (~> 1.11)
+  - ParseUI (1.1.7):
+    - Bolts/Tasks (~> 1.3)
+    - Parse (~> 1.9)
+  - SVProgressHUD (1.1.3)
 
 DEPENDENCIES:
-  - FBSDKCoreKit
-  - FBSDKLoginKit
+  - Atlas
+  - FBSDKCoreKit (~> 4.9.0-beta2)
+  - FBSDKLoginKit (~> 4.9.0-beta2)
   - FBSDKShareKit
   - Parse (~> 1.10)
   - ParseFacebookUtilsV4 (~> 1.9)
+  - ParseUI
+  - SVProgressHUD
 
 SPEC CHECKSUMS:
+  Atlas: bd66c5b17719857a6b9e22299f76527245e06e88
   Bolts: 722ab9a4f8b50fc4ed1b9998a5a7a2b3f16d80b4
   FBSDKCoreKit: d49cbf69741e3c5732166ec9ff4cbd9b288dd53e
   FBSDKLoginKit: d32e83c0d2d39ef74a942543cacae2dc4de7d088
   FBSDKShareKit: e7577ee3adf80fc04fb656dd133fbb522250672b
+  LayerKit: e9445015ef5f30a9777ba245aa48bd723ee8c697
   Parse: 886af46a0a677402f6374bb97ac212e795f70afe
   ParseFacebookUtilsV4: 3cd2d2d69653bad40c8c58131b935c353a0f3f15
+  ParseUI: c2bcdfbb00330e464b5b773266ae221697a3bb7b
+  SVProgressHUD: 748080e4f36e603f6c02aec292664239df5279c1
 
 COCOAPODS: 0.39.0

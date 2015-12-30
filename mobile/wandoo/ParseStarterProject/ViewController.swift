@@ -11,9 +11,17 @@ import UIKit
 import Parse
 import FBSDKCoreKit
 import ParseFacebookUtilsV4
+//import SVProgressHUD
+import Atlas
+
 
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    let delegate = UIApplication.sharedApplication().delegate as! AppDelegate
+    
+    var layerClient: LYRClient!
+    var conversationListViewController: ConversationListViewController!
 
     var userModel = UserModel.sharedUserInstance
     var wandooModel = WandooModel()
@@ -23,8 +31,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var profilePicture: UIImage?
     var interestedModel = InterestedModel()
     
+    @IBAction func presentChat(sender: UIButton) {
+        self.presentConversationListViewController()
+    }
     //Feed button to move to top of feed
     @IBAction func toTopPost(sender: UIButton) {
+        self.retrieveWandoos()
      wandooTable.setContentOffset(CGPointMake(0, -wandooTable.contentInset.top), animated: true)
     }
     @IBOutlet weak var wandooTable: UITableView!
@@ -34,6 +46,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        layerClient = delegate.layerClient
         // Do any additional setup after loading the view, typically from a nib.
         
         userModel.postLocation { () -> Void in
@@ -107,6 +120,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             let destinationVC = segue.destinationViewController as! DetailsViewController
             destinationVC.wandooInfo = wandooInfo
         }
+    }
+    
+    func presentConversationListViewController() {
+//        SVProgressHUD.dismiss()
+        self.conversationListViewController = ConversationListViewController(layerClient: self.layerClient)
+        self.conversationListViewController.displaysAvatarItem = true
+        self.navigationController!.pushViewController(self.conversationListViewController, animated: true)
     }
     
 //    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

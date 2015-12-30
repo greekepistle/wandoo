@@ -5,10 +5,13 @@ use_frameworks!
 
 target 'ParseStarterProject-Swift' do
     pod 'Parse', '~> 1.10'
-    pod 'FBSDKCoreKit'
-    pod 'FBSDKLoginKit'
+    pod 'FBSDKCoreKit', '~> 4.9.0-beta2'
+    pod 'FBSDKLoginKit', '~> 4.9.0-beta2'
     pod 'FBSDKShareKit'
     pod 'ParseFacebookUtilsV4', '~> 1.9'
+    pod 'Atlas'
+    pod 'ParseUI'
+    pod 'SVProgressHUD'
 
     workspace 'wandoo'
 end
