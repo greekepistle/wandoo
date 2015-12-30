@@ -52,15 +52,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         userModel.postLocation { () -> Void in
             self.retrieveWandoos()
         }
-        
-        //http GET request for all wandoos
-        
+
         self.navigationItem.hidesBackButton = true
-        
-//        print(allWandoosArray)
-//        userModel.getUserNameByUserID(userModel.userID!) { (result) -> Void in
-//            print(result)
-//        }
     }
     
     //renders wandoos into table view
@@ -89,13 +82,25 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         
         wandooCell.showInterestButton.tag = indexPath.row
+        wandooCell.showInterestButton.layer.borderWidth = 1
+        wandooCell.showInterestButton.layer.borderColor = UIColor.lightGrayColor().CGColor
         wandooCell.showInterestButton.addTarget(self, action: "toggleInterest:", forControlEvents: .TouchUpInside)
+        
+        wandooCell.cardView.layer.borderWidth = 1
+        wandooCell.cardView.layer.borderColor = UIColor.lightGrayColor().CGColor
+        
         return wandooCell
     }
     
     @IBAction func toggleInterest(sender: UIButton) {
-        let wandooID = allWandoosArray[sender.tag]["wandooID"] as! Int
-        interestedModel.showInterest(wandooID)
+        if(sender.backgroundColor != UIColor(red: 81.0/255.0, green: 255.0/255.0, blue: 85.0/255.0, alpha: 0.5)) {
+            let wandooID = allWandoosArray[sender.tag]["wandooID"] as! Int
+            interestedModel.showInterest(wandooID)
+            sender.backgroundColor = UIColor(red: 81.0/255.0, green: 255.0/255.0, blue: 85.0/255.0, alpha: 0.5)
+        } else {
+            sender.backgroundColor = UIColor(red: 217.0/255.0, green: 217.0/255.0, blue: 217.0/255.0, alpha: 1.0)
+        }
+
     }
     
     //number of sections in table.. we only have 1 section of wandoos
