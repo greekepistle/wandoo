@@ -4,7 +4,7 @@ var interested = require('../models/interested');
 var room = require('../models/room');
 
 var expiredWandoos = function (data) {
-  return Date.parse(data.start_time) < Date.parse(new Date());
+  return Date.parse(data.start_time) < Date.parse(new Date()) || data.status === 'E';
 }
 
 var expiredRooms = function(data) {
