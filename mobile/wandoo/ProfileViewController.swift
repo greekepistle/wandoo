@@ -57,9 +57,9 @@ class ProfileViewController: UIViewController, UITableViewDelegate {
                         self.profileInfo.text! += "\n"
                         if let jobTitle = result["job_title"]! as? String {
                             self.profileInfo.text! += jobTitle 
-                            self.profileInfo.text! += "at " + employer
+                            self.profileInfo.text! += " at " + employer
                         } else {
-                            self.profileInfo.text! += "at " + employer
+                            self.profileInfo.text! += " at " + employer
                         }
                     }
                     
@@ -70,8 +70,8 @@ class ProfileViewController: UIViewController, UITableViewDelegate {
                     if let profilePicture = result["profile_picture"]! as? UIImage {
                         self.profileImage.image = profilePicture
                         self.profileImage.layer.borderWidth = 1
-                        self.profileImage.layer.masksToBounds = false
                         self.profileImage.layer.borderColor = UIColor.blackColor().CGColor
+                        self.profileImage.layer.cornerRadius = self.profileImage.frame.width/2
                         self.profileImage.layer.cornerRadius = self.profileImage.frame.height/2
                         self.profileImage.clipsToBounds = true
                     }

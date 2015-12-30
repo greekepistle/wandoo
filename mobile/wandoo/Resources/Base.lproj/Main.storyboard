@@ -26,34 +26,39 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gxX-oT-OUj">
-                                <rect key="frame" x="2" y="72" width="316" height="226"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="226" id="mxh-sw-IK8"/>
-                                </constraints>
-                            </imageView>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="w1r-P2-w8y">
-                                <rect key="frame" x="2" y="306" width="316" height="254"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w1r-P2-w8y">
+                                <rect key="frame" x="-2" y="458" width="324" height="102"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="name sex age" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UVB-Mi-bWj">
-                                        <rect key="frame" x="19" y="20" width="291" height="242"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name sex age                                    " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UVB-Mi-bWj">
+                                        <rect key="frame" x="17" y="6" width="291" height="90"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="291" id="CGk-fe-Kb5"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="19"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="UVB-Mi-bWj" firstAttribute="centerY" secondItem="w1r-P2-w8y" secondAttribute="centerY" id="BBJ-He-slR"/>
+                                    <constraint firstItem="UVB-Mi-bWj" firstAttribute="leading" secondItem="w1r-P2-w8y" secondAttribute="leading" constant="17" id="Sld-I9-7qI"/>
+                                    <constraint firstItem="UVB-Mi-bWj" firstAttribute="centerX" secondItem="w1r-P2-w8y" secondAttribute="centerX" id="cKd-v0-92i"/>
+                                    <constraint firstItem="UVB-Mi-bWj" firstAttribute="top" secondItem="w1r-P2-w8y" secondAttribute="top" constant="6" id="zEf-f0-h0p"/>
+                                </constraints>
                             </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gxX-oT-OUj">
+                                <rect key="frame" x="10" y="28" width="300" height="300"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="gxX-oT-OUj" secondAttribute="trailing" constant="-14" id="ACW-09-KgE"/>
-                            <constraint firstItem="gxX-oT-OUj" firstAttribute="leading" secondItem="xnc-i9-TJY" secondAttribute="leadingMargin" constant="-14" id="Gpl-AP-sUd"/>
+                            <constraint firstItem="JXY-k7-cRS" firstAttribute="top" secondItem="gxX-oT-OUj" secondAttribute="bottom" constant="240" id="BGX-H3-75M"/>
+                            <constraint firstItem="gxX-oT-OUj" firstAttribute="centerX" secondItem="xnc-i9-TJY" secondAttribute="centerX" id="LNe-MK-5Cf"/>
+                            <constraint firstItem="gxX-oT-OUj" firstAttribute="leading" secondItem="xnc-i9-TJY" secondAttribute="leadingMargin" constant="-6" id="ONa-va-qvr"/>
+                            <constraint firstItem="gxX-oT-OUj" firstAttribute="top" secondItem="Rlj-Pd-Lfr" secondAttribute="bottom" constant="8" symbolic="YES" id="Q4m-H9-ueZ"/>
+                            <constraint firstItem="gxX-oT-OUj" firstAttribute="centerX" secondItem="w1r-P2-w8y" secondAttribute="centerX" id="SJb-9j-HpO"/>
                             <constraint firstItem="JXY-k7-cRS" firstAttribute="top" secondItem="w1r-P2-w8y" secondAttribute="bottom" constant="8" symbolic="YES" id="ZYn-Y1-ack"/>
-                            <constraint firstItem="w1r-P2-w8y" firstAttribute="top" secondItem="gxX-oT-OUj" secondAttribute="bottom" constant="8" symbolic="YES" id="goe-F9-2fO"/>
-                            <constraint firstItem="w1r-P2-w8y" firstAttribute="trailing" secondItem="gxX-oT-OUj" secondAttribute="trailing" id="iP5-My-Ta1"/>
-                            <constraint firstItem="gxX-oT-OUj" firstAttribute="top" secondItem="Rlj-Pd-Lfr" secondAttribute="bottom" constant="8" id="sR9-Jf-1zT"/>
-                            <constraint firstItem="w1r-P2-w8y" firstAttribute="leading" secondItem="gxX-oT-OUj" secondAttribute="leading" id="zDQ-2J-Qvg"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="L6a-bm-lXl"/>
@@ -135,7 +140,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O9S-oO-RAd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6685" y="819"/>
+            <point key="canvasLocation" x="6697" y="1026"/>
         </scene>
         <!--People View Controller-->
         <scene sceneID="eCv-ep-pzj">
@@ -252,6 +257,9 @@
                         </connections>
                     </tableView>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <segue destination="qih-Dc-awY" kind="show" identifier="backToLogin" id="jXb-3M-l0t"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vhh-9w-Eh6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -426,11 +434,6 @@
                                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Gregmond Dungcaman" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oq9-km-CJq">
-                                                            <rect key="frame" x="5" y="0.0" width="299" height="36"/>
-                                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g6G-dA-SId">
                                                             <rect key="frame" x="68" y="32" width="203" height="39"/>
                                                             <constraints>
@@ -452,6 +455,11 @@ Msg</string>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Where: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F8d-f0-Lb3">
                                                             <rect key="frame" x="68" y="108" width="190" height="16"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Gregmond Dungcaman" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oq9-km-CJq">
+                                                            <rect key="frame" x="5" y="0.0" width="299" height="36"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -729,7 +737,7 @@ Msg</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MAP-ul-j4w" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4780" y="161"/>
+            <point key="canvasLocation" x="4884" y="161"/>
         </scene>
         <!--My Wandoo View Controller-->
         <scene sceneID="czi-lg-MuD">
@@ -973,14 +981,14 @@ Msg</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gg0-H6-FqO" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7101" y="864"/>
+            <point key="canvasLocation" x="7217" y="884"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="vYf-vO-lWg">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="UcQ-As-2ES" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" backIndicatorImage="116E55EE-EE5F-43DC-A6D9-F22BAF9B27D0" id="LIG-kr-Btz">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" backIndicatorImage="DD972DBF-7BA9-4D48-B4E6-B61B18106D32" id="LIG-kr-Btz">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -1151,11 +1159,11 @@ Msg</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F5k-h3-3d9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6488" y="-553"/>
+            <point key="canvasLocation" x="6775" y="66"/>
         </scene>
     </scenes>
     <resources>
-        <image name="116E55EE-EE5F-43DC-A6D9-F22BAF9B27D0" width="62" height="64">
+        <image name="DD972DBF-7BA9-4D48-B4E6-B61B18106D32" width="62" height="64">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOzxYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBMU
 GR4fJSYsLzU4VSRudWxs1QkKCwwNDg8QERJWTlNTaXplViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBz
