@@ -8,23 +8,63 @@
 
 import UIKit
 
-class PostViewController: UIViewController {
+class PostViewController: UIViewController, UITextFieldDelegate {
 
     var wandooModel = WandooModel.sharedWandooInstance
     var userModel = UserModel.sharedUserInstance
+    var keyboardHeight:CGFloat = 0
+    
     
     @IBOutlet weak var wandooMessage: UITextField!
+    @IBOutlet weak var messageTextField: UITextField!
+    @IBOutlet weak var selectingView: UIToolbar!
+    @IBOutlet weak var postView: UIView!
     
+    @IBOutlet weak var selectingViewHeight: NSLayoutConstraint!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
+        self.messageTextField.delegate = self
         let postButton : UIBarButtonItem = UIBarButtonItem(title: "Post", style: UIBarButtonItemStyle.Done, target: self, action: "buttonAction:")
         self.navigationItem.rightBarButtonItem = postButton
-        
-        // Do any additional setup after loading the view.
-    }
 
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
+
+        let tapGesture:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "tableViewTapped")
+        self.postView.addGestureRecognizer(tapGesture)
+    }
+    
+    func keyboardWillShow(notification:NSNotification) {
+        let userInfo:NSDictionary = notification.userInfo!
+        let keyboardFrame:NSValue = userInfo.valueForKey(UIKeyboardFrameEndUserInfoKey) as! NSValue
+        let keyboardRectangle = keyboardFrame.CGRectValue()
+        keyboardHeight = keyboardRectangle.height
+    }
+    
+    func tableViewTapped() {
+        self.messageTextField.endEditing(true)
+    }
+    
+    func textFieldDidBeginEditing(textField: UITextField) {
+        self.view.layoutIfNeeded()
+        dispatch_async(dispatch_get_main_queue()) { () -> Void in
+            
+            UIView.animateWithDuration(0.5) { () -> Void in
+                self.selectingViewHeight.constant = self.keyboardHeight
+                self.view.layoutIfNeeded()
+            }
+        }
+        
+    }
+    
+    func textFieldDidEndEditing(textField: UITextField) {
+        self.view.layoutIfNeeded()
+        
+        UIView.animateWithDuration(0.5) { () -> Void in
+            self.selectingViewHeight.constant = 0
+            self.view.layoutIfNeeded()
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -44,8 +84,6 @@ class PostViewController: UIViewController {
                 self.performSegueWithIdentifier("toWandooController", sender: self)
             }
         }
-
-
     }
 
     @IBAction func cancelPeopleUnwind(segue:UIStoryboardSegue) {
