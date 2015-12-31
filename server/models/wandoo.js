@@ -21,7 +21,7 @@ var queryBuilder = function (qs, data, callback) {
 module.exports = {
   getAll : function (callback) {
     var qs = "select * from wandoo where status='A' order by start_time asc;";
-    queryBuilder(qs, [], callback, con);  
+    queryBuilder(qs, [], callback);  
   },
 
   getPartialRes : function (params, callback) {
