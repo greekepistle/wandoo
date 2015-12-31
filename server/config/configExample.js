@@ -7,5 +7,6 @@ module.exports = {
   dbUser : 'root',
   dbPassword : 'INSERT PASSWORD HERE',
   dbHost : 'localhost', // for development, this would be 'localhost'
+  db : 'wandoo', // for development, 'wandoo'
   serverURL : 'http://localhost:8000'  
 }

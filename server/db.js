@@ -5,7 +5,7 @@ db = mysql.createConnection({
   host: config.dbHost,
   user: config.dbUser,
   password: config.dbPassword,
-  database: 'wandoo',
+  database: config.db,
   timezone: 'Z'
 });
 
