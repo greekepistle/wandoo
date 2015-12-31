@@ -390,10 +390,10 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="350" height="47"/>
                                                         <color key="backgroundColor" red="0.19215686269999999" green="0.42745098040000001" blue="0.77647058820000003" alpha="1" colorSpace="calibratedRGB"/>
                                                         <items>
-                                                            <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="owO-A0-3iz"/>
+                                                            <barButtonItem width="14" style="plain" systemItem="fixedSpace" id="owO-A0-3iz"/>
                                                             <barButtonItem style="plain" id="ovT-Zy-Xm8">
                                                                 <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="O2A-bN-UQy">
-                                                                    <rect key="frame" x="58" y="9" width="29" height="29"/>
+                                                                    <rect key="frame" x="30" y="9" width="29" height="29"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                     <state key="normal" title="My Posts" image="icon_ios_topcharts.png"/>
                                                                     <connections>
@@ -404,7 +404,7 @@
                                                             <barButtonItem style="plain" systemItem="flexibleSpace" id="imy-fi-tFH"/>
                                                             <barButtonItem style="plain" id="s7Y-9N-aAB">
                                                                 <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="rGk-p9-Yqp">
-                                                                    <rect key="frame" x="122" y="9" width="30" height="30"/>
+                                                                    <rect key="frame" x="112" y="9" width="30" height="30"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                     <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="30"/>
                                                                     <state key="normal" title="W">
@@ -419,7 +419,7 @@
                                                             <barButtonItem style="plain" systemItem="flexibleSpace" id="Jau-Sj-Hf7"/>
                                                             <barButtonItem style="plain" id="y9X-V1-Kbm">
                                                                 <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="dIc-h1-6EO">
-                                                                    <rect key="frame" x="188" y="11" width="32" height="26"/>
+                                                                    <rect key="frame" x="195" y="9" width="32" height="30"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                     <state key="normal" title="Chats" image="icon_ios_chat_filled.png"/>
                                                                     <connections>
@@ -430,7 +430,7 @@
                                                             <barButtonItem style="plain" systemItem="flexibleSpace" id="AFr-rf-tRv"/>
                                                             <barButtonItem style="plain" id="T9T-rk-SUM">
                                                                 <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="U0f-Ja-tzi">
-                                                                    <rect key="frame" x="255" y="6" width="37" height="35"/>
+                                                                    <rect key="frame" x="280" y="6" width="37" height="35"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                     <state key="normal" title="Profile" image="icon_ios_user_filled"/>
                                                                     <connections>
@@ -438,7 +438,7 @@
                                                                     </connections>
                                                                 </button>
                                                             </barButtonItem>
-                                                            <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="ewP-dW-ctY"/>
+                                                            <barButtonItem width="17" style="plain" systemItem="fixedSpace" id="ewP-dW-ctY"/>
                                                         </items>
                                                         <color key="tintColor" red="0.16078431372549021" green="0.42745098039215684" blue="0.71372549019607845" alpha="1" colorSpace="calibratedRGB"/>
                                                         <color key="barTintColor" red="0.20392156862745098" green="0.59607843137254901" blue="0.85882352941176465" alpha="1" colorSpace="calibratedRGB"/>
@@ -1065,7 +1065,7 @@ Msg</string>
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="UcQ-As-2ES" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" backIndicatorImage="4FF4D1F9-0578-4BE5-B155-8FEC69F8B29F" id="LIG-kr-Btz">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" backIndicatorImage="3A7DDBF5-F251-4E2C-B087-7AC6242B9D77" id="LIG-kr-Btz">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -1250,7 +1250,7 @@ Msg</string>
         </scene>
     </scenes>
     <resources>
-        <image name="4FF4D1F9-0578-4BE5-B155-8FEC69F8B29F" width="62" height="64">
+        <image name="3A7DDBF5-F251-4E2C-B087-7AC6242B9D77" width="62" height="64">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOzxYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBMU
 GR4fJSYsLzU4VSRudWxs1QkKCwwNDg8QERJWTlNTaXplViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBz
