@@ -21,7 +21,7 @@ class MyWandooViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.titleView = UIImageView(image: UIImage(named: "wandoos"))
+        navigationItem.titleView = UIImageView(image: UIImage(named: "my wandoos"))
         
         self.retrieveMyWandoos()
     }
