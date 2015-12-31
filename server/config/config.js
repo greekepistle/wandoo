@@ -1,10 +1,9 @@
-// PRODUCTION CONFIGURATION
+// copy this file to a new config.js
 
 module.exports = {
-  port: process.env.PORT,
-  dbUser : process.env.DBUSER,
-  dbPassword : process.env.DBPASS,
-  dbHost : process.env.DBHOST,
-  serverURL : process.env.SERVERURL,
+  port: 8000,
+  dbUser : 'root',
+  dbPassword : '',
+  dbHost : 'localhost', // for development, this would be 'localhost'
+  serverURL : 'http://localhost:8000'  
 }
-
