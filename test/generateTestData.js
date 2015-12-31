@@ -2,18 +2,22 @@ var request = require('supertest'),
     fs = require('fs'),
     db = require('../server/db'),
     userData = require('./userData'),
-    wandooTextData = require('./wandooTextData');
+    wandooTextData = require('./wandooTextData'),
     locDataGenerator = require('./locDataGenerator'),
-    wandooTimeDataGenerator = require('./wandooTimeDataGenerator');
+    wandooTimeDataGenerator = require('./wandooTimeDataGenerator'),
+    config = require('../server/config/config');
 
-var server = request.agent('http://localhost:8000');
+var server = request.agent(config.serverURL);
 
 var numUsers = 6, // max is userData.length
     numLocations = 33,
     numWandoos = 33, //max 33, need to add more to wandooTextData if you want more
     numTimes = 33,
     locSeed = [37.7833669, -122.4088739], // location where you want to centre all locations
-    numInterests = 100
+    numInterests = 100,
+    wandoosRoomsProportion = 0.5, // proportion of wandoos with rooms
+    selectedInterestedRatio = 0.3, // ratio of total selected users in system to total interested users in system
+    rejectedInterestedRatio = 0.2; // ratio of total rejected users in system to total interested users in system
 
 var locData = locDataGenerator(locSeed, numLocations);
 var wandooTimeData = wandooTimeDataGenerator(numTimes);
@@ -146,6 +150,8 @@ var generateInterests = function (callback) {
         if (err) {
           throw err;
         }
+        // INSERT CODE HERE FOR INSERTING SELECTED OR REJECTED
+        // Math.round(Math.random() * 0.5);
         if (i < numInterests) {
           generateInterest(i + 1);
         } else {
@@ -156,6 +162,16 @@ var generateInterests = function (callback) {
   }
   generateInterest(0);
 }
+
+// var generateRooms = function(callback) {
+
+//   // get a random wandooID to generate a room for
+//   // 
+//   var generateRoom = function (i) {
+    
+//   }
+//   generateRoom(0);
+// }
 
 generateUsers(function () {
   getUserIDs(function () {

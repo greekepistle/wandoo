@@ -5,7 +5,8 @@ bower_components/
 build/
 dist/
 server/public/images/*
-config.js
+configDev.js
+.env
 
 # Created by https://www.gitignore.io/api/swift
 

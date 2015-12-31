@@ -245,7 +245,7 @@ userIDs| An array of userIDs | [235435, 53466]|
 #### Examples
 
 ```json
-curl -i -X POST -H 'Content-Type: application/json' localhost:8000/api/rooms -d '{"wandooID":1,"userID":[1,2]}'
+curl -i -X POST -H 'Content-Type: application/json' localhost:8000/api/rooms -d '{"wandooID":1,"userIDs":[1,2]}'
 ```
 
 #### Usage

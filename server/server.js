@@ -1,6 +1,6 @@
 var express = require('express');
 var fs = require('fs');
-var config = require('./config')
+var config = require('./config/config')
 var router = require('./router');
 var logger = require('./logger');
 var bodyParser = require('body-parser');

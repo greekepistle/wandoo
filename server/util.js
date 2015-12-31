@@ -3,7 +3,6 @@ var _ = require('underscore');
 
 module.exports = {
   isoDateToMySQL : function (date) {
-    console.log(date.substring(0,10) + ' ' + date.substring(11, 19));
     return date.substring(0,10) + ' ' + date.substring(11, 19);
   },
 
