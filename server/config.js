@@ -1,4 +1,4 @@
-// copy this file to a new config.js
+// PRODUCTION CONFIGURATION
 
 module.exports = {
   port: process.env.PORT,
@@ -7,4 +7,4 @@ module.exports = {
   dbHost : process.env.DBHOST,
   serverURL : process.env.SERVERURL,
 }
-console.log(process.env.TIMES);
+

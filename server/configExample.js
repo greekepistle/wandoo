@@ -1,4 +1,6 @@
-// copy this file to a new config.js
+// 1. Copy this file to configDev.js and input your environment-specific variables.
+//    This file is included within the .gitignore
+// 2. In your development environment, copy configDev.js to config.js
 
 module.exports = {
   port: 8000,
