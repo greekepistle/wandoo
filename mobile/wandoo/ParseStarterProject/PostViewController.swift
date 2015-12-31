@@ -19,6 +19,7 @@ class PostViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var messageTextField: UITextField!
     @IBOutlet weak var selectingView: UIToolbar!
     @IBOutlet weak var postView: UIView!
+    @IBOutlet weak var wandooPost: UIButton!
     
     @IBOutlet weak var selectingViewHeight: NSLayoutConstraint!
     override func viewDidLoad() {
@@ -31,6 +32,9 @@ class PostViewController: UIViewController, UITextFieldDelegate {
 
         let tapGesture:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "tableViewTapped")
         self.postView.addGestureRecognizer(tapGesture)
+        self.messageTextField.becomeFirstResponder()
+        
+
     }
     
     func keyboardWillShow(notification:NSNotification) {
@@ -52,6 +56,7 @@ class PostViewController: UIViewController, UITextFieldDelegate {
                 self.selectingViewHeight.constant = self.keyboardHeight
                 self.view.layoutIfNeeded()
             }
+            self.wandooPost.setTitleColor(UIColor(red: 41.0/255.0, green: 121.0/255.0, blue: 255.0/255.0, alpha: 1.0), forState: UIControlState.Normal)
         }
         
     }
@@ -63,11 +68,22 @@ class PostViewController: UIViewController, UITextFieldDelegate {
             self.selectingViewHeight.constant = 0
             self.view.layoutIfNeeded()
         }
+         self.wandooPost.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "toPeople" {
+            let wandooPostInput = wandooMessage.text
+            
+            let destinationVC = segue.destinationViewController as! PeopleViewController
+            destinationVC.wandooPostInput = wandooPostInput!
+            
+        }
     }
     
     //Upon tapping Post button: PUT request for user location and POST request for user's wandoo
@@ -78,31 +94,13 @@ class PostViewController: UIViewController, UITextFieldDelegate {
             print("suck it")
         }
         
-
         wandooModel.postWandoo { (result) -> Void in
             dispatch_async(dispatch_get_main_queue()) {
                 self.performSegueWithIdentifier("toWandooController", sender: self)
             }
         }
     }
-
-    @IBAction func cancelPeopleUnwind(segue:UIStoryboardSegue) {
-    }    
-    
-    @IBAction func submitPeopleUnwind(segue:UIStoryboardSegue) {
+    @IBAction func nextButton(sender: UIButton) {
+        
     }
-    
-    @IBAction func cancelTimeUnwind(segue:UIStoryboardSegue) {
-    }
-    
-    @IBAction func submitTimeUnwind(segue:UIStoryboardSegue) {
-    }
-    
-    @IBAction func cancelLocationUnwind(segue:UIStoryboardSegue) {
-    }
-    
-    @IBAction func submitLocationUnwind(segue:UIStoryboardSegue) {
-    }
-    
-    
 }
