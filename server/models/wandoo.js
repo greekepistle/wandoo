@@ -1,37 +1,21 @@
-var db = require('../db');
+var db = require('../db/db');
 var room = require('../models/room');
-
-var queryBuilder = function (qs, data, callback) {
-  db.getConnection(function (err, con) {
-    if (err) {
-      callback(err);
-    } else {
-      con.query(qs, data, function (err, result) {
-        con.release();
-        if (err) {
-          callback(err);
-        } else {
-          callback(null, result);
-        }
-      });
-    }
-  });
-}
+var dbUtils = require('../db/dbUtils');
 
 module.exports = {
   getAll : function (callback) {
     var qs = "select * from wandoo where status='A' order by start_time asc;";
-    queryBuilder(qs, [], callback);  
+    dbUtils.queryBuilder(qs, [], callback);  
   },
 
   getPartialRes : function (params, callback) {
     var qs = "select * from wandoo where wandooID >= ? order by start_time asc limit ?;";
-    queryBuilder(qs, params, callback);
+    dbUtils.queryBuilder(qs, params, callback);
   },
 
   getByHost : function (userID, callback) {
     var qs = "select * from wandoo where userID = ?;"
-    queryBuilder(qs, userID, callback);
+    dbUtils.queryBuilder(qs, userID, callback);
   },
 
   getByUser : function (userID, callback) {
@@ -62,7 +46,7 @@ module.exports = {
     var qs = 'INSERT INTO `wandoo` (`wandooID`,`userID`,`text`,`start_time`,\
     `end_time`,`post_time`,`latitude`,`longitude`,`num_people`,`status`) VALUES \
     (0,?,?,?,?,?,?,?,?,"A");';
-    queryBuilder(qs, wandooData, callback);
+    dbUtils.queryBuilder(qs, wandooData, callback);
   },
 
   delete : function (wandooIDs, callback) {
@@ -108,7 +92,7 @@ module.exports = {
     wandooID in (select wandooID from room) union \
     select wandoo.*, 0 as room from wandoo where status='E';"
 
-    queryBuilder(qs, [], callback);
+    dbUtils.queryBuilder(qs, [], callback);
   },
 
   updateToPassive : function (wandooIDs, callback) {
@@ -116,7 +100,7 @@ module.exports = {
       callback(null, 'No entries were updated.');
     } else {
       var qs = "update wandoo set status = 'P' where wandooID in (?);"
-      queryBuilder(qs, [wandooIDs], callback);
+      dbUtils.queryBuilder(qs, [wandooIDs], callback);
     }
   },
 
@@ -125,7 +109,7 @@ module.exports = {
       callback(null, 'No entries were updated.');
     } else {
       var qs = "update wandoo set status = 'E' where wandooID in (?);"
-      queryBuilder(qs, [wandooIDs], callback);
+      dbUtils.queryBuilder(qs, [wandooIDs], callback);
     }
 
   }

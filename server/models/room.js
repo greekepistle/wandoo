@@ -1,4 +1,4 @@
-var db = require('../db');
+var db = require('../db/db');
 var util = require('../util');
 var queryBuilder = function (qs, data, callback) {
   db.query(qs, data, function (err, result) {

@@ -1,4 +1,4 @@
-var db = require('../db');
+var db = require('../db/db');
 var _ = require('underscore');
 var queryBuilder = function (qs, data, callback) {
   db.query(qs, data, function (err, result) {
