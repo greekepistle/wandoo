@@ -1,8 +1,9 @@
 var db = require('../db');
 var room = require('../models/room');
 
-var queryBuilder = function (qs, data, callback) {
+var queryBuilder = function (qs, data, callback, con) {
   db.query(qs, data, function (err, result) {
+    con.release();
     if (err) {
       callback(err);
     } else {
@@ -13,8 +14,10 @@ var queryBuilder = function (qs, data, callback) {
 
 module.exports = {
   getAll : function (callback) {
-    var qs = "select * from wandoo where status='A' order by start_time asc;";
-    queryBuilder(qs, [], callback);  
+    db.getConnection(function (err, con) {
+      var qs = "select * from wandoo where status='A' order by start_time asc;";
+      queryBuilder(qs, [], callback, con);  
+    });
   },
 
   getPartialRes : function (params, callback) {
