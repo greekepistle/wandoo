@@ -26,8 +26,8 @@ module.exports = {
   
   post : function (userData, eduData, callback) {
     var qs1 = "INSERT INTO `user` (`userID`,`name`,`facebookID`,`email`,\
-      `age`,`sex`,`profile_picture`,`employer`,`job_title`,`latitude`,`longitude`) \
-      VALUES (0,?,?,?,?,?,?,?,?,?,?);";
+      `age`,`sex`,`profile_picture`,`employer`,`job_title`,`latitude`,`longitude`,`objectID`) \
+      VALUES (0,?,?,?,?,?,?,?,?,?,?,?);";
 
     var qs2 = "INSERT INTO `user_education` \
       (`userID`,`institution_name`) VALUES (?,?);";

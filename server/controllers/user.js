@@ -39,7 +39,8 @@ module.exports = {
       employer : 6,
       jobTitle : 7,
       latitude : 8,
-      longitude : 9
+      longitude : 9,
+      objectID: 10
     };
 
     var eduAttr = {
@@ -60,6 +61,7 @@ module.exports = {
       } else if ( i in eduAttr ) {
         eduValues[eduAttr[i]] = req.body[i];
       } else {
+        console.log(req.body[i])
         res.status('400').send('Wrong parameters');
         return;
       }
