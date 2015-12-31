@@ -1,6 +1,6 @@
 var request = require('supertest'),
     fs = require('fs'),
-    db = require('../server/db'),
+    db = require('../server/db/db'),
     userData = require('./userData'),
     wandooTextData = require('./wandooTextData'),
     locDataGenerator = require('./locDataGenerator'),
