@@ -163,15 +163,15 @@ var generateInterests = function (callback) {
   generateInterest(0);
 }
 
-var generateRooms = function(callback) {
+// var generateRooms = function(callback) {
 
-  // get a random wandooID to generate a room for
-  // 
-  var generateRoom = function (i) {
+//   // get a random wandooID to generate a room for
+//   // 
+//   var generateRoom = function (i) {
     
-  }
-  generateRoom(0);
-}
+//   }
+//   generateRoom(0);
+// }
 
 generateUsers(function () {
   getUserIDs(function () {
