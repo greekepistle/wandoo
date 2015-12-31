@@ -9,6 +9,8 @@ var dbConfig = {
   timezone: 'Z'
 }
 
+var db = mysql.createConnection(dbConfig);
+
 var handleDisconnect = function (client) {
   client.on('error', function (err) {
     if (!err.fatal) {
@@ -22,8 +24,6 @@ var handleDisconnect = function (client) {
     handleDisconnect(db);
   });
 };
-
-var db = mysql.createConnection(dbConfig);
 
 handleDisconnect(db);
 
