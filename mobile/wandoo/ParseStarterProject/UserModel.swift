@@ -84,7 +84,8 @@ class UserModel {
                     "age": self.age!,
                     "sex": self.gender!,
                     "latitude": NSNull(),
-                    "longitude": NSNull()
+                    "longitude": NSNull(),
+                    "objectID": PFUser.currentUser()!.objectId!
                 ]
                 
                 if self.employer != nil {
@@ -120,22 +121,25 @@ class UserModel {
                     
                     let task = session.dataTaskWithRequest(request) { data, response, error in
                         print("success")
-                        completion()
+                        let query = PFQuery(className:"_User")
+                        query.getObjectInBackgroundWithId(objectId) {
+                            (user: PFObject?, error: NSError?) -> Void in
+                            if error != nil {
+                                print(error)
+                            } else if let user = user {
+                                let fullName = self.name!
+                                let fullNameArr = fullName.characters.split{$0 == " "}.map(String.init)
+                                user["name"] = self.name!
+                                user["username"] = fullNameArr[0]
+                                user.saveInBackground()
+                                completion()
+                            }
+                        }
                     }
                     task.resume()
                 }
                 
                 //sending the user's name to parse to make our parse db more readable
-                let query = PFQuery(className:"_User")
-                query.getObjectInBackgroundWithId(objectId) {
-                    (user: PFObject?, error: NSError?) -> Void in
-                    if error != nil {
-                        print(error)
-                    } else if let user = user {
-                        user["name"] = self.name!
-                        user.saveInBackground()
-                    }
-                }
             }
         }
     }

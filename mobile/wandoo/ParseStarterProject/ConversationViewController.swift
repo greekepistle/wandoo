@@ -33,6 +33,8 @@ class ConversationViewController: ATLConversationViewController, ATLConversation
     
     func conversationViewController(viewController: ATLConversationViewController, didSendMessage message: LYRMessage) {
         print("Message sent!")
+        
+        //push notifications
     }
     
     func conversationViewController(viewController: ATLConversationViewController, didFailSendingMessage message: LYRMessage, error: NSError?) {
@@ -111,7 +113,6 @@ class ConversationViewController: ATLConversationViewController, ATLConversation
                     print("Users is empty")
                     return
                 }
-                
                 let participants = NSSet(array: pfusers) as Set<NSObject>
                 let controller = ParticipantTableViewController(participants: participants, sortType: ATLParticipantPickerSortType.FirstName)
                 controller.delegate = self

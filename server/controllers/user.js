@@ -39,7 +39,8 @@ module.exports = {
       employer : 6,
       jobTitle : 7,
       latitude : 8,
-      longitude : 9
+      longitude : 9,
+      objectID: 10
     };
 
     var eduAttr = {

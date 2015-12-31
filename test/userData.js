@@ -7,7 +7,8 @@ module.exports = [
     sex : 'M',
     employer : 'Government',
     educationInstitution : 'Stanford',
-    jobTitle : 'Senator'
+    jobTitle : 'Senator',
+    objectID: 'abcdefg'
   },
   {
     name : 'Harry',
@@ -17,7 +18,8 @@ module.exports = [
     sex : 'M',
     employer : 'Google',
     educationInstitution : 'Stanford',
-    jobTitle : 'Software Engineer'
+    jobTitle : 'Software Engineer',
+    objectID: 'abcdefg'
   },
   {
     name : 'Jorge',
@@ -27,7 +29,8 @@ module.exports = [
     sex : 'F',
     educationInstitution : 'Stanford',
     employer : 'Facebook' ,
-    jobTitle : 'Software Engineer'
+    jobTitle : 'Software Engineer',
+    objectID: 'abcdefg'
   },
   {
     name : 'Crooked Willis',
@@ -37,7 +40,8 @@ module.exports = [
     sex : 'M',
     employer : 'Facebook',
     educationInstitution : 'Stanford',
-    jobTitle : 'Data Analyst'
+    jobTitle : 'Data Analyst',
+    objectID: 'abcdefg'
   },
   {
     name : 'Harriet Tubman',
@@ -47,7 +51,8 @@ module.exports = [
     sex : 'F',
     employer : 'Yahoo',
     educationInstitution : 'Stanford',
-    jobTitle : 'Financial Analyst'
+    jobTitle : 'Financial Analyst',
+    objectID: 'abcdefg'
   },
   {
     name : 'Cindy',
@@ -57,7 +62,8 @@ module.exports = [
     sex : 'F',
     employer : 'Facebook',
     educationInstitution : 'Stanford',
-    jobTitle : 'CEO'
+    jobTitle : 'CEO',
+    objectID: 'abcdefg'
   },
   {
     name : 'Mark Hunderson',
@@ -67,6 +73,7 @@ module.exports = [
     sex : 'M',
     employer : 'Palantir' ,
     educationInstitution : 'Stanford',
-    jobTitle : 'CTO'
+    jobTitle : 'CTO',
+    objectID: 'abcdefg'
   }
 ]
