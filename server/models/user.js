@@ -14,6 +14,11 @@ module.exports = {
     user_education on (user.userID = user_education.userID) where user.facebookID = ?;";
     dbUtils.queryBuilder(qs, facebookID, callback);
   },
+
+  getObjID : function (userID, callback) {
+    var qs = "select objectID from user where userID = ?";
+    dbUtils.queryBuilder(qs, userID, callback);
+  },
   
   post : function (userData, eduData, callback) {
     var qs1 = "INSERT INTO `user` (`userID`,`name`,`facebookID`,`email`,\

@@ -48,7 +48,8 @@ employer | | Google |
 jobTitle | | Software Engineer |
 latitude | | 37.7836675 |
 longitude | | -122.4091699 |
-|educationInstitution | | Stanford |
+educationInstitution | | Stanford |
+objectID| Provided by Parse |IPyQqWYM0x | 
 friends | POST MVP | |
 interests | POST MVP | |
 likes | POST MVP |  |
@@ -57,7 +58,7 @@ likes | POST MVP |  |
 
 ```json
 
-curl -i -X POST -H 'Content-Type: application/json' -d '{"name":"Pete Zurish","facebookID":134515,"email":"pete.z@gmail.com","age":28,"sex":"M","profilePic":"need a profile pic","employer":"Google","jobTitle":"Software Engineer","latitude":"37.7836675","longitude":"-122.4091699","educationInstitution":"University of Toronto"}' localhost:8000/api/users
+curl -i -X POST -H 'Content-Type: application/json' -d '{"name":"Pete Zurish","facebookID":134515,"email":"pete.z@gmail.com","age":28,"sex":"M","profilePic":"need a profile pic","employer":"Google","jobTitle":"Software Engineer","latitude":"37.7836675","longitude":"-122.4091699","educationInstitution":"University of Toronto", "objectID":"adfgafh"}' localhost:8000/api/users
 
 ```
 #### Usage
