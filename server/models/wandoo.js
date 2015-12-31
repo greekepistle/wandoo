@@ -16,10 +16,8 @@ var queryBuilder = function (qs, data, callback) {
 
 module.exports = {
   getAll : function (callback) {
-    db.getConnection(function (err, con) {
-      var qs = "select * from wandoo where status='A' order by start_time asc;";
-      queryBuilder(qs, [], callback, con);  
-    });
+    var qs = "select * from wandoo where status='A' order by start_time asc;";
+    queryBuilder(qs, [], callback, con);  
   },
 
   getPartialRes : function (params, callback) {
