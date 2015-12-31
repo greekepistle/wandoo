@@ -1,32 +1,22 @@
 var mysql = require('mysql');
 var config = require('./config/config');
 
-// var dbConfig = {
+// db = mysql.createConnection({
 //   host: config.dbHost,
 //   user: config.dbUser,
 //   password: config.dbPassword,
 //   database: config.db,
 //   timezone: 'Z'
-// }
-
-// var db = mysql.createConnection(dbConfig);
-
-// connection pool start
 
 
-var db = mysql.createPool({
+var db  = mysql.createPool({
   connectionLimit : 10,
   host : config.dbHost,
   user : config.dbUser,
   password : config.dbPassword,
-  database: config.db,
-  timezone: 'Z'
+  database : config.db,
+  timezone : 'Z'
 });
-
-
-
-// connection pool end
-
 
 
 
@@ -37,11 +27,6 @@ var db = mysql.createPool({
 //   }
 //   console.log('Database successfully connected');
 // });
-
-// db.on('error', function(err) {
-//   console.log(err.code); // 'ER_BAD_DB_ERROR'
-// });
-
 
 
 module.exports = db;
