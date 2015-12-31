@@ -79,35 +79,35 @@ class ConversationListViewController: ATLConversationListViewController, ATLConv
     // MARK - ATLConversationListViewControllerDataSource Methods
     
     func conversationListViewController(conversationListViewController: ATLConversationListViewController, titleForConversation conversation: LYRConversation) -> String {
-//        if let title = conversation.metadata?["title"] {
-//            return title as! String
-//        } else {
-//            let listOfParticipant = Array(conversation.participants)
-//            let unresolvedParticipants: NSArray = UserManager.sharedManager.unCachedUserIDsFromParticipants(listOfParticipant)
-//            let resolvedNames: NSArray = UserManager.sharedManager.resolvedNamesFromParticipants(listOfParticipant)
-//            
-//            if (unresolvedParticipants.count > 0) {
-//                UserManager.sharedManager.queryAndCacheUsersWithIDs(unresolvedParticipants as! [String]) { (participants: NSArray?, error: NSError?) in
-//                    if (error == nil) {
-//                        if (participants?.count > 0) {
-//                            self.reloadCellForConversation(conversation)
-//                        }
-//                    } else {
-//                        print("Error querying for Users: \(error)")
-//                    }
-//                }
-//            }
-//            
-//            if (resolvedNames.count > 0 && unresolvedParticipants.count > 0) {
-//                let resolved = resolvedNames.componentsJoinedByString(", ")
-//                return "\(resolved) and \(unresolvedParticipants.count) others"
-//            } else if (resolvedNames.count > 0 && unresolvedParticipants.count == 0) {
-//                return resolvedNames.componentsJoinedByString(", ")
-//            } else {
-//                return "Conversation with \(conversation.participants.count) users..."
-//            }
-//        }
-        return "Mandoo"
+//        NSLog("Stack trace : %@", NSThread.callStackSymbols())
+        if let title = conversation.metadata?["title"] {
+            return title as! String
+        } else {
+            let listOfParticipant = Array(conversation.participants)
+            let unresolvedParticipants: NSArray = UserManager.sharedManager.unCachedUserIDsFromParticipants(listOfParticipant)
+            let resolvedNames: NSArray = UserManager.sharedManager.resolvedNamesFromParticipants(listOfParticipant)
+            
+            if (unresolvedParticipants.count > 0) {
+                UserManager.sharedManager.queryAndCacheUsersWithIDs(unresolvedParticipants as! [String]) { (participants: NSArray?, error: NSError?) in
+                    if (error == nil) {
+                        if (participants?.count > 0) {
+                            self.reloadCellForConversation(conversation)
+                        }
+                    } else {
+                        print("Error querying for Users: \(error)")
+                    }
+                }
+            }
+            
+            if (resolvedNames.count > 0 && unresolvedParticipants.count > 0) {
+                let resolved = resolvedNames.componentsJoinedByString(", ")
+                return "\(resolved) and \(unresolvedParticipants.count) others"
+            } else if (resolvedNames.count > 0 && unresolvedParticipants.count == 0) {
+                return resolvedNames.componentsJoinedByString(", ")
+            } else {
+                return "Conversation with \(conversation.participants.count) users..."
+            }
+        }
     }
     
     

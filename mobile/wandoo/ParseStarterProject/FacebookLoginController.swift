@@ -34,7 +34,7 @@ class FacebookLoginController: UIViewController, CLLocationManagerDelegate {
             {
                 if let user = user {
                     if user.isNew {
-                        self.loginLayer()
+//                        self.loginLayer()
                         let accessToken = FBSDKAccessToken.currentAccessToken().tokenString
                         self.userModel.storeFBDataIntoParse(user.objectId!, accessToken: accessToken) { () -> Void in
                             
