@@ -61,7 +61,6 @@ module.exports = {
       } else if ( i in eduAttr ) {
         eduValues[eduAttr[i]] = req.body[i];
       } else {
-        console.log(req.body[i])
         res.status('400').send('Wrong parameters');
         return;
       }
