@@ -2,11 +2,12 @@ var request = require('supertest'),
     fs = require('fs'),
     db = require('../server/db'),
     userData = require('./userData'),
-    wandooTextData = require('./wandooTextData');
+    wandooTextData = require('./wandooTextData'),
     locDataGenerator = require('./locDataGenerator'),
-    wandooTimeDataGenerator = require('./wandooTimeDataGenerator');
+    wandooTimeDataGenerator = require('./wandooTimeDataGenerator'),
+    config = require('../server/config');
 
-var server = request.agent('http://localhost:8000');
+var server = request.agent(config.serverURL);
 
 var numUsers = 6, // max is userData.length
     numLocations = 33,

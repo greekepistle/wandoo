@@ -2,6 +2,7 @@ var mysql = require('mysql');
 var config = require('./config');
 
 db = mysql.createConnection({
+  host: config.dbHost,
   user: config.dbUser,
   password: config.dbPassword,
   database: 'wandoo',
