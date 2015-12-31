@@ -70,7 +70,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate {
                     if let profilePicture = result["profile_picture"]! as? UIImage {
                         self.profileImage.image = profilePicture
                         self.profileImage.layer.borderWidth = 1
-                        self.profileImage.layer.borderColor = UIColor.blackColor().CGColor
+                        self.profileImage.layer.borderColor = UIColor.whiteColor().CGColor
                         self.profileImage.layer.cornerRadius = self.profileImage.frame.width/2
                         self.profileImage.layer.cornerRadius = self.profileImage.frame.height/2
                         self.profileImage.clipsToBounds = true

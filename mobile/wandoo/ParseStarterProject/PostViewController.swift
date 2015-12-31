@@ -25,9 +25,7 @@ class PostViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.messageTextField.delegate = self
-        let postButton : UIBarButtonItem = UIBarButtonItem(title: "Post", style: UIBarButtonItemStyle.Done, target: self, action: "buttonAction:")
-        self.navigationItem.rightBarButtonItem = postButton
-
+     
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
 
         let tapGesture:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "tableViewTapped")
@@ -35,6 +33,9 @@ class PostViewController: UIViewController, UITextFieldDelegate {
         self.messageTextField.becomeFirstResponder()
         
 
+    }
+    @IBAction func sendTextData(sender: UIButton) {
+        wandooModel.text = messageTextField.text
     }
     
     func keyboardWillShow(notification:NSNotification) {
@@ -76,15 +77,15 @@ class PostViewController: UIViewController, UITextFieldDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "toPeople" {
-            let wandooPostInput = wandooMessage.text
-            
-            let destinationVC = segue.destinationViewController as! PeopleViewController
-            destinationVC.wandooPostInput = wandooPostInput!
-            
-        }
-    }
+//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+//        if segue.identifier == "toPeople" {
+//            let wandooPostInput = wandooMessage.text
+//            
+//            let destinationVC = segue.destinationViewController as! PeopleViewController
+//            destinationVC.wandooPostInput = wandooPostInput!
+//            
+//        }
+//    }
     
     //Upon tapping Post button: PUT request for user location and POST request for user's wandoo
     func buttonAction(send: UIButton!) {

@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "My Wandoos.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "My Wandoos.png",
       "scale" : "2x"
     },
     {

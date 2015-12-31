@@ -69,8 +69,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     wandooCell.profileImage.image = UIImage(data: pic)
                     wandooCell.profileImage.layer.borderWidth = 1
                     wandooCell.profileImage.layer.masksToBounds = false
-                    wandooCell.profileImage.layer.borderColor = UIColor.blackColor().CGColor
+                    wandooCell.profileImage.layer.borderColor = UIColor.whiteColor().CGColor
                     wandooCell.profileImage.layer.cornerRadius = wandooCell.profileImage.frame.height/2
+                    wandooCell.profileImage.layer.cornerRadius = wandooCell.profileImage.frame.width/2
                     wandooCell.profileImage.clipsToBounds = true
                     wandooCell.name.text = result["name"] as? String
                     wandooCell.location.text = String(self.allWandoosArray[indexPath.row]["distance"]!) + " miles away"

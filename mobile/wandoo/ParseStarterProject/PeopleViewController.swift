@@ -25,15 +25,15 @@ class PeopleViewController: UIViewController {
 
     }
     
+    @IBAction func sendPeopleData(sender: UIButton) {
+        wandooModel.numPeople = Int(quantity.text!)
+    }
+    
     @IBOutlet weak var peopleButton: UIBarButtonItem!
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    func buttonAction(send: UIButton!) {
-        self.performSegueWithIdentifier("toPostViewController", sender: self)
     }
     
     @IBOutlet weak var quantity: UILabel!
@@ -49,19 +49,14 @@ class PeopleViewController: UIViewController {
     
     @IBAction func CancelButton(sender: UIButton) {
     }
-
-    @IBAction func SubmitButton(sender: UIButton) {
-        wandooModel.numPeople = Int(quantity.text!)
-        print(quantity.text)
-    }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "toTime" {
-            let wandooPeopleInput = Int(quantity.text!)
-            let wandooMessageInput = wandooPostInput
-            let destinationVC = segue.destinationViewController as! TimeViewController
-            destinationVC.wandooPeopleInput = wandooPeopleInput!
-            destinationVC.wandooMessageInput = wandooMessageInput
-        }
-    }
+//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+//        if segue.identifier == "toTime" {
+//            let wandooPeopleInput = Int(quantity.text!)
+//            let wandooMessageInput = wandooPostInput
+//            let destinationVC = segue.destinationViewController as! TimeViewController
+//            destinationVC.wandooPeopleInput = wandooPeopleInput!
+//            destinationVC.wandooMessageInput = wandooMessageInput
+//        }
+//    }
 }

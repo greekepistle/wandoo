@@ -12,8 +12,6 @@ class TimeViewController: UIViewController {
     
     let userModel = UserModel.sharedUserInstance
     let wandooModel = WandooModel.sharedWandooInstance
-    var wandooPeopleInput = Int()
-    var wandooMessageInput = String()
 
     @IBOutlet weak var timeButton: UIBarButtonItem!
     
@@ -28,8 +26,6 @@ class TimeViewController: UIViewController {
     }
 
     @IBAction func postButton(sender: UIButton) {
-        wandooModel.text = wandooMessageInput
-        wandooModel.numPeople = wandooPeopleInput
         wandooModel.startTime = timePickerToString(datePicker)
         userModel.postLocation { () -> Void in
             print("suck it")
