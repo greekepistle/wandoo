@@ -3,14 +3,18 @@ var room = require('../models/room');
 
 var queryBuilder = function (qs, data, callback) {
   db.getConnection(function (err, con) {
-    db.query(qs, data, function (err, result) {
-      con.release();
-      if (err) {
-        callback(err);
-      } else {
-        callback(null, result);
-      }
-    });
+    if (err) {
+      callback(err);
+    } else {
+      con.query(qs, data, function (err, result) {
+        con.release();
+        if (err) {
+          callback(err);
+        } else {
+          callback(null, result);
+        }
+      });
+    }
   });
 }
 
