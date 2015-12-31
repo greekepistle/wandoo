@@ -8,11 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		07348D92EFA2476E8FC1D045 /* Pods_ParseStarterProject_Swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1EAEE4F7D20EAE0E8D11D42 /* Pods_ParseStarterProject_Swift.framework */; };
-		102426081C335E6F00F17CC7 /* ConversationListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102426071C335E6F00F17CC7 /* ConversationListViewController.swift */; };
-		1024260A1C335E7F00F17CC7 /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102426091C335E7F00F17CC7 /* ConversationViewController.swift */; };
-		1024260C1C335E8800F17CC7 /* ParticipantTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1024260B1C335E8800F17CC7 /* ParticipantTableViewController.swift */; };
-		1024260E1C335ED400F17CC7 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1024260D1C335ED400F17CC7 /* UserManager.swift */; };
-		102426101C3366EE00F17CC7 /* PFUser+ATLParticipant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1024260F1C3366EE00F17CC7 /* PFUser+ATLParticipant.swift */; };
+		102D13AB1C3477D900B823CD /* RoomManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102D13AA1C3477D900B823CD /* RoomManager.swift */; };
+		102D13B91C34AA7600B823CD /* ConversationListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102D13B31C34AA7600B823CD /* ConversationListViewController.swift */; };
+		102D13BA1C34AA7600B823CD /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102D13B41C34AA7600B823CD /* ConversationViewController.swift */; };
+		102D13BB1C34AA7600B823CD /* ParticipantTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102D13B51C34AA7600B823CD /* ParticipantTableViewController.swift */; };
+		102D13BC1C34AA7600B823CD /* PFUser+ATLParticipant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102D13B61C34AA7600B823CD /* PFUser+ATLParticipant.swift */; };
+		102D13BD1C34AA7600B823CD /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102D13B81C34AA7600B823CD /* UserManager.swift */; };
 		10348A6E1C2DF3CF00CA593D /* InterestedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10348A6D1C2DF3CF00CA593D /* InterestedModel.swift */; };
 		10348A701C2DF4FF00CA593D /* InterestedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10348A6F1C2DF4FF00CA593D /* InterestedViewController.swift */; };
 		10348A721C2F57BC00CA593D /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10348A711C2F57BC00CA593D /* DetailsViewController.swift */; };
@@ -45,12 +46,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		102426071C335E6F00F17CC7 /* ConversationListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConversationListViewController.swift; path = "../../../../../Layer-Parse-iOS-Swift-Example/Code/Controllers/ConversationListViewController.swift"; sourceTree = "<group>"; };
-		102426091C335E7F00F17CC7 /* ConversationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConversationViewController.swift; path = "../../../../../Layer-Parse-iOS-Swift-Example/Code/Controllers/ConversationViewController.swift"; sourceTree = "<group>"; };
-		1024260B1C335E8800F17CC7 /* ParticipantTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ParticipantTableViewController.swift; path = "../../../../../Layer-Parse-iOS-Swift-Example/Code/Controllers/ParticipantTableViewController.swift"; sourceTree = "<group>"; };
-		1024260D1C335ED400F17CC7 /* UserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserManager.swift; path = "../../../../../Layer-Parse-iOS-Swift-Example/Code/Models/UserManager.swift"; sourceTree = "<group>"; };
-		1024260F1C3366EE00F17CC7 /* PFUser+ATLParticipant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "PFUser+ATLParticipant.swift"; path = "../../../../../Layer-Parse-iOS-Swift-Example/Code/Extensions/PFUser+ATLParticipant.swift"; sourceTree = "<group>"; };
-		102426111C3394E700F17CC7 /* Layer-Parse-iOS-Swift-Example-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Layer-Parse-iOS-Swift-Example-Bridging-Header.h"; path = "../../../../../Layer-Parse-iOS-Swift-Example/Code/Layer-Parse-iOS-Swift-Example-Bridging-Header.h"; sourceTree = "<group>"; };
+		102D13AA1C3477D900B823CD /* RoomManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomManager.swift; sourceTree = "<group>"; };
+		102D13B31C34AA7600B823CD /* ConversationListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationListViewController.swift; sourceTree = "<group>"; };
+		102D13B41C34AA7600B823CD /* ConversationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationViewController.swift; sourceTree = "<group>"; };
+		102D13B51C34AA7600B823CD /* ParticipantTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParticipantTableViewController.swift; sourceTree = "<group>"; };
+		102D13B61C34AA7600B823CD /* PFUser+ATLParticipant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PFUser+ATLParticipant.swift"; sourceTree = "<group>"; };
+		102D13B71C34AA7600B823CD /* Layer-Parse-iOS-Swift-Example-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Layer-Parse-iOS-Swift-Example-Bridging-Header.h"; sourceTree = "<group>"; };
+		102D13B81C34AA7600B823CD /* UserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		10348A6D1C2DF3CF00CA593D /* InterestedModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterestedModel.swift; sourceTree = "<group>"; };
 		10348A6F1C2DF4FF00CA593D /* InterestedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterestedViewController.swift; sourceTree = "<group>"; };
 		10348A711C2F57BC00CA593D /* DetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
@@ -158,11 +160,13 @@
 				81BA814A1A49DA1800E65899 /* AppDelegate.swift */,
 				81BA814C1A49DA1800E65899 /* ViewController.swift */,
 				BEA742EB1C30B8440028332D /* MyWandooViewController.swift */,
-				102426071C335E6F00F17CC7 /* ConversationListViewController.swift */,
-				102426091C335E7F00F17CC7 /* ConversationViewController.swift */,
-				1024260B1C335E8800F17CC7 /* ParticipantTableViewController.swift */,
-				1024260D1C335ED400F17CC7 /* UserManager.swift */,
-				1024260F1C3366EE00F17CC7 /* PFUser+ATLParticipant.swift */,
+				102D13AA1C3477D900B823CD /* RoomManager.swift */,
+				102D13B31C34AA7600B823CD /* ConversationListViewController.swift */,
+				102D13B41C34AA7600B823CD /* ConversationViewController.swift */,
+				102D13B51C34AA7600B823CD /* ParticipantTableViewController.swift */,
+				102D13B61C34AA7600B823CD /* PFUser+ATLParticipant.swift */,
+				102D13B71C34AA7600B823CD /* Layer-Parse-iOS-Swift-Example-Bridging-Header.h */,
+				102D13B81C34AA7600B823CD /* UserManager.swift */,
 				32B24AE01C32356900F894DF /* ChatUserViewController.swift */,
 				10F9FE721C1B83FF00D3C4CC /* ChatViewController.swift */,
 				10F9FDF31C18F3B900D3C4CC /* ProfileViewController.swift */,
@@ -182,7 +186,6 @@
 				10F9FDEB1C18AFBB00D3C4CC /* SettingsController.swift */,
 				10F9FDE31C17BC9D00D3C4CC /* FacebookLoginController.swift */,
 				10F9FDE51C17DFF700D3C4CC /* SwipeController.swift */,
-				102426111C3394E700F17CC7 /* Layer-Parse-iOS-Swift-Example-Bridging-Header.h */,
 			);
 			path = ParseStarterProject;
 			sourceTree = "<group>";
@@ -339,6 +342,7 @@
 			files = (
 				10F9FDE61C17DFF700D3C4CC /* SwipeController.swift in Sources */,
 				BE928A501C20F245002C9C7D /* TimeViewController.swift in Sources */,
+				102D13BA1C34AA7600B823CD /* ConversationViewController.swift in Sources */,
 				10F9FDF01C18ECD800D3C4CC /* UserModel.swift in Sources */,
 				10F9FE731C1B83FF00D3C4CC /* ChatViewController.swift in Sources */,
 				BEA742EC1C30B8440028332D /* MyWandooViewController.swift in Sources */,
@@ -347,22 +351,22 @@
 				BEA742EA1C3077500028332D /* MyWandooCell.swift in Sources */,
 				BE95C7371C20AF80005CB21C /* PostViewController.swift in Sources */,
 				10348A701C2DF4FF00CA593D /* InterestedViewController.swift in Sources */,
+				102D13AB1C3477D900B823CD /* RoomManager.swift in Sources */,
 				10348A6E1C2DF3CF00CA593D /* InterestedModel.swift in Sources */,
 				BE928A521C20F26E002C9C7D /* LocationViewController.swift in Sources */,
+				102D13B91C34AA7600B823CD /* ConversationListViewController.swift in Sources */,
 				10348A741C3079F100CA593D /* HostProfileViewController.swift in Sources */,
-				1024260C1C335E8800F17CC7 /* ParticipantTableViewController.swift in Sources */,
 				10348A721C2F57BC00CA593D /* DetailsViewController.swift in Sources */,
 				10F9FDEC1C18AFBB00D3C4CC /* SettingsController.swift in Sources */,
-				102426081C335E6F00F17CC7 /* ConversationListViewController.swift in Sources */,
+				102D13BD1C34AA7600B823CD /* UserManager.swift in Sources */,
 				81BA814D1A49DA1800E65899 /* ViewController.swift in Sources */,
-				1024260E1C335ED400F17CC7 /* UserManager.swift in Sources */,
+				102D13BB1C34AA7600B823CD /* ParticipantTableViewController.swift in Sources */,
 				32B24AE11C32356900F894DF /* ChatUserViewController.swift in Sources */,
 				10F9FDF41C18F3B900D3C4CC /* ProfileViewController.swift in Sources */,
+				102D13BC1C34AA7600B823CD /* PFUser+ATLParticipant.swift in Sources */,
 				10F9FDE41C17BC9D00D3C4CC /* FacebookLoginController.swift in Sources */,
-				102426101C3366EE00F17CC7 /* PFUser+ATLParticipant.swift in Sources */,
 				10F9FE861C20D48500D3C4CC /* WandooModel.swift in Sources */,
 				81BA814B1A49DA1800E65899 /* AppDelegate.swift in Sources */,
-				1024260A1C335E7F00F17CC7 /* ConversationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
