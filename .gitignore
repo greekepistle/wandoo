@@ -6,6 +6,7 @@ build/
 dist/
 server/public/images/*
 configDev.js
+.env
 
 # Created by https://www.gitignore.io/api/swift
 
