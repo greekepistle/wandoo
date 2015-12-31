@@ -17,7 +17,7 @@ db = mysql.createConnection({
 //   console.log('Database successfully connected');
 // });
 
-connection.on('error', function(err) {
+db.on('error', function(err) {
   console.log(err.code); // 'ER_BAD_DB_ERROR'
 });
 
