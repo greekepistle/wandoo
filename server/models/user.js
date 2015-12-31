@@ -1,27 +1,18 @@
 var db = require('../db/db');
 var _ = require('underscore');
-var queryBuilder = function (qs, data, callback) {
-  db.query(qs, data, function (err, result) {
-    if (err) {
-      callback(err);
-    } else {
-      callback(null, result);
-    }
-  });
-}
+var dbUtils = require('../db/dbUtils');
 
 module.exports = {
   getByUserID : function (userID, callback) {
-    console.log('getByUserID');
     var qs = "select user.*, institution_name from user left join \
     user_education on (user.userID = user_education.userID) where user.userID = ?;";
-    queryBuilder(qs, userID, callback);
+    dbUtils.queryBuilder(qs, userID, callback);
   },
 
   getByFBID : function (facebookID, callback) {
     var qs = "select user.*, institution_name from user left join \
     user_education on (user.userID = user_education.userID) where user.facebookID = ?;";
-    queryBuilder(qs, facebookID, callback);
+    dbUtils.queryBuilder(qs, facebookID, callback);
   },
   
   post : function (userData, eduData, callback) {
@@ -75,7 +66,7 @@ module.exports = {
   put : function (locationData, callback) {
     var qs = "update user set latitude = ?, longitude = ? where userID = ?;"
 
-    queryBuilder(qs, locationData, callback);
+    dbUtils.queryBuilder(qs, locationData, callback);
 
   }
 
