@@ -5,7 +5,7 @@ var request = require('supertest'),
     wandooTextData = require('./wandooTextData'),
     locDataGenerator = require('./locDataGenerator'),
     wandooTimeDataGenerator = require('./wandooTimeDataGenerator'),
-    config = require('../server/config');
+    config = require('../server/config/config');
 
 var server = request.agent(config.serverURL);
 
