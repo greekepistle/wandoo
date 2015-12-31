@@ -9,13 +9,13 @@ db = mysql.createConnection({
   timezone: 'Z'
 });
 
-db.connect(function(err) {
-  if (err) {
-    console.error('Database Connection Error: ' + err.stack);
-    return;
-  }
-  console.log('Database successfully connected');
-});
+// db.connect(function(err) {
+//   if (err) {
+//     console.error('Database Connection Error: ' + err.stack);
+//     return;
+//   }
+//   console.log('Database successfully connected');
+// });
 
 
 module.exports = db;
