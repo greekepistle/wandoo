@@ -72,6 +72,8 @@ class FacebookLoginController: UIViewController, CLLocationManagerDelegate {
         super.viewDidLoad()
 
         layerClient = delegate.layerClient
+        print("this needs to print ", layerClient)
+        print("THE PFUSER", PFUser.currentUser())
         
         //location manager - request for user location only when in use
         locationManager.delegate = self
@@ -96,6 +98,7 @@ class FacebookLoginController: UIViewController, CLLocationManagerDelegate {
     
     func loginLayer() {
 //        SVProgressHUD.show()
+        print("logging in", layerClient)
         
         // Connect to Layer
         // See "Quick Start - Connect" for more details

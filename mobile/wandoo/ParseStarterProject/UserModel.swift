@@ -190,6 +190,8 @@ class UserModel {
                         print("yes")
                         unwrappedData.setValue(UIImage(data: data), forKey: "profile_picture")
                         completion(result: unwrappedData)
+                    } else {
+                        print("Can't get Image")
                     }
                 } catch {
                     print("Something went wrong")
