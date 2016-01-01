@@ -57,7 +57,7 @@ module.exports = {
       if (data[i].userID === null) {
         data[i]['userIDs'] = null;
         cleanedResult.push(data[i]);
-      } else if (!data[i + 1]['userID'] || data[i]['roomID'] !== data[i + 1]['roomID']) {
+      } else if (!data[i + 1] || data[i]['roomID'] !== data[i + 1]['roomID']) {
         set.push(data[i].userID);
         data[i]['userIDs'] = set;
         cleanedResult.push(data[i]);

@@ -48,7 +48,8 @@ employer | | Google |
 jobTitle | | Software Engineer |
 latitude | | 37.7836675 |
 longitude | | -122.4091699 |
-|educationInstitution | | Stanford |
+educationInstitution | | Stanford |
+objectID| Provided by Parse |IPyQqWYM0x | 
 friends | POST MVP | |
 interests | POST MVP | |
 likes | POST MVP |  |
@@ -57,7 +58,7 @@ likes | POST MVP |  |
 
 ```json
 
-curl -i -X POST -H 'Content-Type: application/json' -d '{"name":"Pete Zurish","facebookID":134515,"email":"pete.z@gmail.com","age":28,"sex":"M","profilePic":"need a profile pic","employer":"Google","jobTitle":"Software Engineer","latitude":"37.7836675","longitude":"-122.4091699","educationInstitution":"University of Toronto"}' localhost:8000/api/users
+curl -i -X POST -H 'Content-Type: application/json' -d '{"name":"Pete Zurish","facebookID":134515,"email":"pete.z@gmail.com","age":28,"sex":"M","profilePic":"need a profile pic","employer":"Google","jobTitle":"Software Engineer","latitude":"37.7836675","longitude":"-122.4091699","educationInstitution":"University of Toronto", "objectID":"adfgafh"}' localhost:8000/api/users
 
 ```
 #### Usage
@@ -190,6 +191,7 @@ wandooID| Cannot be specified if userID is specified| 22323|
 userID| Cannot be specified if wandooID is specified| 235245|
 
 #### Examples
+TODO
 
 #### Usage
 1. On the bulletin board, all wandoos which a user has already expressed interest in will be disabled
@@ -223,15 +225,18 @@ rejected| 1 indicates that a host has selected a user, 0 indicates that host has
 
 ## Rooms
 
-### GET /api/rooms/\<roomID\>
+### GET /api/rooms
 
 #### Parameters
 
 Name | Notes | Example
 -----|-------|---------
 userID| Cannot be specified if wandooID is specified| 22323|
-wandooID| Cannot be specified if userID is specified| 235245|
-expired| Boolean specifying if room is expired | true |
+
+#### Examples
+```js
+curl -i localhost:8000/api/rooms?userID=3
+```
 
 ### POST /api/rooms
 

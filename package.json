@@ -19,9 +19,11 @@
   },
   "homepage": "https://github.com/GregDungca/wandoo#readme",
   "dependencies": {
+    "aws-sdk": "^2.2.26",
     "body-parser": "^1.14.1",
     "cron": "^1.1.0",
     "express": "^4.13.3",
+    "layer-api": "^1.0.5",
     "mysql": "^2.9.0",
     "underscore": "^1.8.3"
   },

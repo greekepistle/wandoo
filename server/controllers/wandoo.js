@@ -1,5 +1,7 @@
-var wandoo = require('../models/wandoo.js');
+var wandoo = require('../models/wandoo');
+var user = require('../models/user');
 var util = require('../util');
+var layer = require('../layer');
 var _ = require('underscore');
 
 var maxDist = 5; // max dist in miles between user and wandoos returned

@@ -1,5 +1,8 @@
 var room = require('../models/room');
+var user = require('../models/user');
 var util = require('../util');
+var _ = require('underscore');
+var layer = require('../layer');
 
 var roomExpiry = 1;// number of days after end time when room will be expired
 
@@ -70,11 +73,59 @@ module.exports = {
     var expiryTime = new Date();
     expiryTime.setDate(expiryTime.getDate() + 1);
     util.isoDateToMySQL(expiryTime.toJSON());
-    
-    room.create([expiryTime, req.body.wandooID], req.body.userIDs, function(err, result) {
-      postQueryCB(err, result, res);
-    });
 
+    var objectIDs = [];
+    var group = false;
+
+    // Need to gracefully handle errors and send appropriate response to client
+  
+    var insertRoom = function (userIDs) {
+      user.getObjIDs(userIDs, function (err, result) {
+        if (err) {
+          console.log('Error in objectID retrieval')
+          console.error(err);
+        } else {
+          if (group) {
+            objectIDs.push(_.pluck(result, 'objectID')[0]);
+          } else {
+            objectIDs = _.pluck(result, 'objectID');
+          }
+          layer.createConversation(objectIDs, function (err, conversationID) {
+            if (err) {
+              console.log('Error in creating a conversation via Layer API');
+              console.error(err);
+            } else {
+              room.create([expiryTime, req.body.wandooID, conversationID],
+              req.body.userIDs, function(err, result) {
+                if (err) {
+                  console.error(err);
+                } else {
+                  // get count of the number of rooms with the provided wandooID
+                  room.getCountForWandoo(req.body.wandooID, function (err, result) {
+                    if (err) {
+                      console.error(err);
+                    } else if (result[0].count === 2) {
+                      room.getWandooUsers(req.body.wandooID, function (err, result) {
+                        if (err) {
+                          console.log('Error in getting wandoo users');
+                        } else {
+                          console.log(result);
+                          group = true;
+                          insertRoom(_.difference(_.pluck(result, 'userID'), userIDs));
+                        }
+                      });
+                    } else {
+                      res.send();
+                    }
+                  })
+                }
+              });
+            }
+          });
+        }
+      });
+    }
+    insertRoom(req.body.userIDs);
   },
 
   delete : function (req, res) {

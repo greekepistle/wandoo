@@ -1,6 +1,6 @@
 var request = require('supertest'),
     fs = require('fs'),
-    db = require('../server/db'),
+    db = require('../server/db/db'),
     userData = require('./userData'),
     wandooTextData = require('./wandooTextData'),
     locDataGenerator = require('./locDataGenerator'),
@@ -59,29 +59,42 @@ var generateUsers = function (callback) {
 
 var getUserIDs = function (callback) {
   var qs = 'select userID from user';
-  db.query(qs, function (err, result) {
+  db.getConnection(function (err, con) {
     if (err) {
-      throw err;
-    } 
-    userIDs = result.map(function (val) {
-      return val.userID;
-    });
-    callback();
+      console.error(err);
+    } else {
+      db.query(qs, function (err, result) {
+        con.release();
+        if (err) {
+          throw err;
+        } 
+        userIDs = result.map(function (val) {
+          return val.userID;
+        });
+        callback();
+      });
+    }
   });
 }
 
 var getWandooIDs = function (callback) {
   var qs = 'select wandooID, userID from wandoo';
-  db.query(qs, function (err, result) {
+  db.getConnection(function (err, con) {
     if (err) {
-      throw err;
-    } 
-    wandooIDs = result.map(function (val) {
-      return [val.wandooID, val.userID];
-    });
-    callback();
+      console.error(err);
+    } else {
+      db.query(qs, function (err, result) {
+        con.release();
+        if (err) {
+          throw err;
+        } 
+        wandooIDs = result.map(function (val) {
+          return [val.wandooID, val.userID];
+        });
+        callback();
+      });
+    }
   });
-
 }
 
 var generateWandoos = function (callback) {
