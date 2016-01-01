@@ -694,13 +694,6 @@ Msg</string>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="o88-EX-amt">
                                         <rect key="frame" x="-4" y="129" width="77" height="67"/>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0dn-4r-t4J">
-                                        <rect key="frame" x="136" y="166" width="93" height="30"/>
-                                        <state key="normal" title="View Profile"/>
-                                        <connections>
-                                            <segue destination="WkT-gl-84z" kind="show" identifier="fromDetails" id="nxH-KU-RAT"/>
-                                        </connections>
-                                    </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Gregmond Slamdungca" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ZP-Iu-vvx">
                                         <rect key="frame" x="81" y="152" width="203" height="21"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
@@ -1049,7 +1042,7 @@ Msg</string>
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="UcQ-As-2ES" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" backIndicatorImage="68797C5E-22A1-4D76-884B-A55DE9417B8F" id="LIG-kr-Btz">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" backIndicatorImage="A3D24C74-4E07-45FA-A1BB-D1589D88F15F" id="LIG-kr-Btz">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -1195,58 +1188,9 @@ Msg</string>
             </objects>
             <point key="canvasLocation" x="6971" y="1780"/>
         </scene>
-        <!--Host Profile View Controller-->
-        <scene sceneID="4Gm-YS-Z9K">
-            <objects>
-                <viewController id="WkT-gl-84z" customClass="HostProfileViewController" customModule="ParseStarterProject_Swift" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="JWo-Mn-ZS9"/>
-                        <viewControllerLayoutGuide type="bottom" id="daB-i0-h36"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="j6t-WI-gkd">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Us3-Cm-7OX">
-                                <rect key="frame" x="2" y="72" width="316" height="226"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="226" id="Eq9-2c-u7I"/>
-                                </constraints>
-                            </imageView>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YWa-2h-XMD">
-                                <rect key="frame" x="2" y="306" width="316" height="254"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="name sex age" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eIE-Lx-bUX">
-                                        <rect key="frame" x="19" y="20" width="291" height="242"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="Us3-Cm-7OX" secondAttribute="trailing" constant="-14" id="2GJ-BI-tIW"/>
-                            <constraint firstItem="Us3-Cm-7OX" firstAttribute="leading" secondItem="j6t-WI-gkd" secondAttribute="leadingMargin" constant="-14" id="O2r-Y5-9U7"/>
-                            <constraint firstItem="YWa-2h-XMD" firstAttribute="top" secondItem="Us3-Cm-7OX" secondAttribute="bottom" constant="8" symbolic="YES" id="R1X-Jt-5Ud"/>
-                            <constraint firstItem="Us3-Cm-7OX" firstAttribute="top" secondItem="JWo-Mn-ZS9" secondAttribute="bottom" constant="8" id="agb-om-Ckd"/>
-                            <constraint firstItem="daB-i0-h36" firstAttribute="top" secondItem="YWa-2h-XMD" secondAttribute="bottom" constant="8" symbolic="YES" id="mtu-Mn-rkH"/>
-                            <constraint firstItem="YWa-2h-XMD" firstAttribute="leading" secondItem="Us3-Cm-7OX" secondAttribute="leading" id="ydv-bb-C5r"/>
-                            <constraint firstItem="YWa-2h-XMD" firstAttribute="trailing" secondItem="Us3-Cm-7OX" secondAttribute="trailing" id="ypV-1O-5jg"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="qXo-ak-tmt"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="F5k-h3-3d9" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="6775" y="66"/>
-        </scene>
     </scenes>
     <resources>
-        <image name="68797C5E-22A1-4D76-884B-A55DE9417B8F" width="62" height="64">
+        <image name="A3D24C74-4E07-45FA-A1BB-D1589D88F15F" width="62" height="64">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOzxYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBMU
 GR4fJSYsLzU4VSRudWxs1QkKCwwNDg8QERJWTlNTaXplViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBz

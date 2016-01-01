@@ -95,10 +95,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
 
     @IBAction func toggleInterest(sender: UIButton) {
-        if(sender.backgroundColor != UIColor(red: 255.0/255.0, green: 245.0/255.0, blue: 157.0/255.0, alpha: 0.5)) {
+        if(sender.backgroundColor != UIColor(red: 52.0/255.0, green: 152.0/255.0, blue: 219.0/255.0, alpha: 0.5)) {
             let wandooID = allWandoosArray[sender.tag]["wandooID"] as! Int
             interestedModel.showInterest(wandooID)
-            sender.backgroundColor = UIColor(red: 255.0/255.0, green: 245.0/255.0, blue: 157.0/255.0, alpha: 0.5)
+            sender.backgroundColor = UIColor(red: 52.0/255.0, green: 152.0/255.0, blue: 219.0/255.0, alpha: 0.5)
         }
     }
 
