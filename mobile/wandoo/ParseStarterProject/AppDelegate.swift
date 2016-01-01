@@ -7,7 +7,7 @@ import Atlas
 import SVProgressHUD
 import LayerKit
 
-let hostname = "http://localhost:8000"
+let hostname = "https://wandoo-hs5abf-5804.herokuapp.com"
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

@@ -181,7 +181,6 @@ class UserModel {
         let task = NSURLSession.sharedSession().dataTaskWithURL(url!) {(data, response, error) in
             if let data = data {
                 do {
-//                    print(data)
                     let parsedData = try NSJSONSerialization.JSONObjectWithData(data, options: .MutableContainers) as? NSDictionary
                     print(parsedData)
                     let unwrappedData = parsedData!["data"]![0] as! NSDictionary

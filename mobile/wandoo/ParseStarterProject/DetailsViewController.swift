@@ -14,6 +14,7 @@ class DetailsViewController: UIViewController {
     var wandooInfo: NSDictionary!
     var interestedModel = InterestedModel()
     var userModel = UserModel()
+    var wandooModel = WandooModel()
     
     @IBOutlet weak var mapView: MKMapView!
 
@@ -35,7 +36,16 @@ class DetailsViewController: UIViewController {
         let gesture = UITapGestureRecognizer(target: self, action: "segueToProfile:")
         profileView.addGestureRecognizer(gesture)
         
+        self.profilePicture.image = wandooInfo["profile_picture"] as? UIImage
+        self.message.text = wandooInfo["text"] as? String
+        self.location.text = String(wandooInfo["distance"]!) + " miles away"
+        self.time.text = wandooModel.checkAndFormatWandooDate((wandooInfo["start_time"] as? String)!)
+        self.numPeople.text = String(wandooInfo["num_people"]!) + " people"
+        
+        
     }
+    
+    
     
     func segueToProfile(sender:UITapGestureRecognizer) {
         performSegueWithIdentifier("fromDetails", sender: nil)

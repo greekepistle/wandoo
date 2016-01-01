@@ -26,7 +26,6 @@
 		10F9FE731C1B83FF00D3C4CC /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F9FE721C1B83FF00D3C4CC /* ChatViewController.swift */; };
 		10F9FE7B1C1B9C9600D3C4CC /* icon_ios_chat_filled.png in Resources */ = {isa = PBXBuildFile; fileRef = 10F9FE751C1B9C9600D3C4CC /* icon_ios_chat_filled.png */; };
 		10F9FE7E1C1B9C9600D3C4CC /* icon_ios_topcharts.png in Resources */ = {isa = PBXBuildFile; fileRef = 10F9FE781C1B9C9600D3C4CC /* icon_ios_topcharts.png */; };
-		10F9FE801C1B9C9600D3C4CC /* icon_ios_user_filled.png in Resources */ = {isa = PBXBuildFile; fileRef = 10F9FE7A1C1B9C9600D3C4CC /* icon_ios_user_filled.png */; };
 		10F9FE841C1CFE9600D3C4CC /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10F9FE831C1CFE9600D3C4CC /* CoreLocation.framework */; };
 		10F9FE861C20D48500D3C4CC /* WandooModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F9FE851C20D48400D3C4CC /* WandooModel.swift */; };
 		10F9FEC21C21465900D3C4CC /* WandooCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F9FEC11C21465900D3C4CC /* WandooCell.swift */; };
@@ -65,7 +64,6 @@
 		10F9FE721C1B83FF00D3C4CC /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		10F9FE751C1B9C9600D3C4CC /* icon_ios_chat_filled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_ios_chat_filled.png; sourceTree = "<group>"; };
 		10F9FE781C1B9C9600D3C4CC /* icon_ios_topcharts.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_ios_topcharts.png; sourceTree = "<group>"; };
-		10F9FE7A1C1B9C9600D3C4CC /* icon_ios_user_filled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_ios_user_filled.png; sourceTree = "<group>"; };
 		10F9FE831C1CFE9600D3C4CC /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		10F9FE851C20D48400D3C4CC /* WandooModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WandooModel.swift; sourceTree = "<group>"; };
 		10F9FEC11C21465900D3C4CC /* WandooCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WandooCell.swift; sourceTree = "<group>"; };
@@ -110,7 +108,6 @@
 				BEF8B9501C1CDEB90080D0C7 /* Rectangle 43 + Login with facebook + Facebook.png */,
 				BEF8B9521C1CDFD60080D0C7 /* Wandoo.png */,
 				10F9FE781C1B9C9600D3C4CC /* icon_ios_topcharts.png */,
-				10F9FE7A1C1B9C9600D3C4CC /* icon_ios_user_filled.png */,
 			);
 			name = images;
 			sourceTree = "<group>";
@@ -263,7 +260,6 @@
 			files = (
 				BEF8B9511C1CDEB90080D0C7 /* Rectangle 43 + Login with facebook + Facebook.png in Resources */,
 				10F9FE7E1C1B9C9600D3C4CC /* icon_ios_topcharts.png in Resources */,
-				10F9FE801C1B9C9600D3C4CC /* icon_ios_user_filled.png in Resources */,
 				814C3ACB1B69877600E307BB /* Images.xcassets in Resources */,
 				BECE40231C1F6A3300894D06 /* Main.storyboard in Resources */,
 				10F9FE7B1C1B9C9600D3C4CC /* icon_ios_chat_filled.png in Resources */,

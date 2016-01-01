@@ -11,27 +11,29 @@ import UIKit
 class PeopleViewController: UIViewController {
     
     var wandooModel = WandooModel.sharedWandooInstance
-
+    var wandooPostInput = String()
+    
     override func viewDidLoad() {
-        super.viewDidLoad()
-        
         super.viewDidLoad()
         
         StepCounter.autorepeat = true
         StepCounter.maximumValue = 10.0
-        StepCounter.minimumValue = 1.0
-        print(StepCounter.value)
+        StepCounter.minimumValue = 2.0
         quantity.text = "\(Int(StepCounter.value))"
         StepCounter.addTarget(self, action: "stepperValueDidChange:", forControlEvents: .ValueChanged)
+        self.peopleButton.tintColor = UIColor(red: 41.0/255.0, green: 121.0/255.0, blue: 255.0/255.0, alpha: 1.0)
+
     }
+    
+    @IBAction func sendPeopleData(sender: UIButton) {
+        wandooModel.numPeople = Int(quantity.text!)
+    }
+    
+    @IBOutlet weak var peopleButton: UIBarButtonItem!
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    func buttonAction(send: UIButton!) {
-        self.performSegueWithIdentifier("toPostViewController", sender: self)
     }
     
     @IBOutlet weak var quantity: UILabel!
@@ -47,9 +49,14 @@ class PeopleViewController: UIViewController {
     
     @IBAction func CancelButton(sender: UIButton) {
     }
-
-    @IBAction func SubmitButton(sender: UIButton) {
-        wandooModel.numPeople = Int(quantity.text!)
-        print(quantity.text)
-    }
+    
+//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+//        if segue.identifier == "toTime" {
+//            let wandooPeopleInput = Int(quantity.text!)
+//            let wandooMessageInput = wandooPostInput
+//            let destinationVC = segue.destinationViewController as! TimeViewController
+//            destinationVC.wandooPeopleInput = wandooPeopleInput!
+//            destinationVC.wandooMessageInput = wandooMessageInput
+//        }
+//    }
 }
