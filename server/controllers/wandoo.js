@@ -86,29 +86,6 @@ module.exports = {
       }
     }
 
-    // Create the conversation
-    // 1. Get the objectID based on the userID
-    user.getObjID(req.body[0], function (err, result) {
-      if (err) {
-        console.log('Error in objectID retrieval')
-        console.error(err);
-      } else {
-        layer.createConversation(result[0].objectID, function (err, result) {
-          if (err) {
-            console.log('Error in creating a conversation via Layer API');
-            console.error(err);
-          } else {
-            
-          }
-        });
-      }
-    });
-
-
-    // 2. Send request to Layer API
-  
-    // End
-
     wandoo.create(wandooValues, function (err, result) {
       if (err) {
         console.error(err);

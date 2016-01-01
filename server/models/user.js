@@ -15,9 +15,13 @@ module.exports = {
     dbUtils.queryBuilder(qs, facebookID, callback);
   },
 
-  getObjID : function (userID, callback) {
-    var qs = "select objectID from user where userID = ?";
-    dbUtils.queryBuilder(qs, userID, callback);
+  getObjIDs : function (userIDs, callback) {
+    var qs = "select userID, objectID from user where userID in (?)";
+    if (!userIDs.length) {
+      callback(null, 'No userIDs were provided');
+    } else {
+      dbUtils.queryBuilder(qs, [userIDs], callback);
+    }
   },
   
   post : function (userData, eduData, callback) {

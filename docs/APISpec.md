@@ -191,6 +191,7 @@ wandooID| Cannot be specified if userID is specified| 22323|
 userID| Cannot be specified if wandooID is specified| 235245|
 
 #### Examples
+TODO
 
 #### Usage
 1. On the bulletin board, all wandoos which a user has already expressed interest in will be disabled
@@ -224,15 +225,18 @@ rejected| 1 indicates that a host has selected a user, 0 indicates that host has
 
 ## Rooms
 
-### GET /api/rooms/\<roomID\>
+### GET /api/rooms
 
 #### Parameters
 
 Name | Notes | Example
 -----|-------|---------
 userID| Cannot be specified if wandooID is specified| 22323|
-wandooID| Cannot be specified if userID is specified| 235245|
-expired| Boolean specifying if room is expired | true |
+
+#### Examples
+```js
+curl -i localhost:8000/api/rooms?userID=3
+```
 
 ### POST /api/rooms
 
