@@ -13,4 +13,6 @@ class MyWandooCell: UITableViewCell {
     @IBOutlet weak var myWandooTitle: UILabel!
    
     @IBOutlet weak var myWandooTime: UILabel!
+    
+    @IBOutlet weak var myWandooPeople: UILabel!
 }
