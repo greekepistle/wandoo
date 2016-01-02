@@ -1,11 +1,12 @@
-// PRODUCTION CONFIGURATION
+// 1. Copy this file to configDev.js and input your environment-specific variables.
+//    This file is included within the .gitignore
+// 2. In your development environment, copy configDev.js to config.js
 
 module.exports = {
-  port: process.env.PORT,
-  dbUser : process.env.DBUSER,
-  dbPassword : process.env.DBPASS,
-  dbHost : process.env.DBHOST,
-  db : process.env.DB,
-  serverURL : process.env.SERVERURL,
+  port: 8000,
+  dbUser : 'root',
+  dbPassword : '',
+  dbHost : 'localhost', // for development, this would be 'localhost'
+  db : 'wandoo', // for development, 'wandoo'
+  serverURL : 'http://localhost:8000'  
 }
-
