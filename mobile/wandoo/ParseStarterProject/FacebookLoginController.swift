@@ -30,6 +30,27 @@ class FacebookLoginController: UIViewController, CLLocationManagerDelegate {
     @IBAction func loginFacebookButtonThatTakesUsToTheLoginAtSafari(sender: AnyObject) {
         PFFacebookUtils.logInInBackgroundWithReadPermissions(["public_profile","user_education_history","user_birthday", "user_work_history","user_friends","user_likes", "email"], block: { (user:PFUser?, error:NSError?) -> Void in
             
+            
+            //PF Push - Start
+//            let defaultACL: PFACL = PFACL()
+////            print("Yo PFUser",PFUser.currentUser()!)
+//            defaultACL.setReadAccess(true, forUser: PFUser.currentUser()!)
+//            
+//            
+//            defaultACL.publicReadAccess = true
+//            //        defaultACL.setPublicReadAccess(true)
+//            PFACL.setDefaultACL(defaultACL, withAccessForCurrentUser: true)
+            
+            let installation:PFInstallation = PFInstallation.currentInstallation()
+            installation["user"] = PFUser.currentUser()
+            installation.saveInBackgroundWithBlock({ (success:Bool, error:NSError?) -> Void in
+                
+            })
+            
+            
+            //PF Push - End
+            
+            
             if(error == nil)
             {
                 if let user = user {

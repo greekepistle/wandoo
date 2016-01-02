@@ -76,6 +76,9 @@ class ConversationListViewController: ATLConversationListViewController, ATLConv
         guard let userID: String = lastMessage.sender.userID else {
             return nil
         }
+//        print("DeleteMe", PFUser.currentUser())
+
+        
         if userID == PFUser.currentUser()?.objectId {
             return PFUser.currentUser()
         }
@@ -141,6 +144,7 @@ class ConversationListViewController: ATLConversationListViewController, ATLConv
         let conversationViewController: ConversationViewController = ConversationViewController(layerClient: self.layerClient)
 //        conversationViewController.displaysAddressBar = shouldShowAddressBar
         conversationViewController.conversation = conversation
+        
         
         if self.navigationController!.topViewController == self {
             self.navigationController!.pushViewController(conversationViewController, animated: true)

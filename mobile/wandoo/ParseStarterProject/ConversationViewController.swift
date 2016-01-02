@@ -13,15 +13,26 @@ class ConversationViewController: ATLConversationViewController, ATLConversation
         print("addressBarController: \(self.addressBarController)")
         self.addressBarController?.delegate = self
         
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "getMessageFunc", name: "getMessage", object: nil)
+        
         // Uncomment the following line if you want to show avatars in 1:1 conversations
-        // self.shouldDisplayAvatarItemForOneOtherParticipant = true
+         self.shouldDisplayAvatarItemForOneOtherParticipant = true
         
         // Setup the dateformatter used by the dataSource.
         self.dateFormatter.dateStyle = NSDateFormatterStyle.ShortStyle
         self.dateFormatter.timeStyle = NSDateFormatterStyle.ShortStyle
         
+        
+        
         self.configureUI()
     }
+    
+    func getMessageFunc() {
+        
+        print("Push is calling getMessage")
+        
+    }
+    
     
     // MARK - UI Configuration methods
     
@@ -32,6 +43,36 @@ class ConversationViewController: ATLConversationViewController, ATLConversation
     // MARK - ATLConversationViewControllerDelegate methods
     
     func conversationViewController(viewController: ATLConversationViewController, didSendMessage message: LYRMessage) {
+
+      
+//        for participant in message.conversation.participants {
+//
+//            if participant == PFUser.currentUser()!.objectId! {
+//                print("They dont match", PFUser.currentUser()!.objectId!, participant)
+//                continue
+//            }
+//            
+//            let uQuery:PFQuery = PFUser.query()!
+//            uQuery.whereKey("objectId", equalTo: participant)
+//            
+//            let pushQuery:PFQuery = PFInstallation.query()!
+//            pushQuery.whereKey("user", matchesQuery: uQuery)
+//            
+//            let push:PFPush = PFPush()
+//            push.setQuery(pushQuery)
+//            let setMessage = "Message received from"
+//            push.setMessage(setMessage)
+//            
+//            do {
+//                try push.sendPushInBackground()
+//                
+//            } catch {
+//                
+//            }
+//            
+//            print("push sent for objectID: ", participant)
+//        }
+        
         print("Message sent!")
         
         //push notifications
