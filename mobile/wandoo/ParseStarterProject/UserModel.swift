@@ -200,7 +200,7 @@ class UserModel {
                         completion(result: unwrappedData)
                     }
                 } catch {
-                    print("Something went wrong")
+                    print("getUserInfo Something went wrong")
                 }
             }
         }
@@ -218,7 +218,7 @@ class UserModel {
                     let unwrappedData = parsedData!["data"]![0] as! NSDictionary
                     completion(result: unwrappedData)
                 } catch {
-                    print("Something went wrong")
+                    print("getUserInfoByUserID Something went wrong")
                 }
             }
         }

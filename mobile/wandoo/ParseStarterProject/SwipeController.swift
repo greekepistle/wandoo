@@ -37,17 +37,27 @@ class SwipeController: UIViewController {
     }
     
     func updateImage() {
-        print("this works")
+        print("SwipeController:updateImage() works")
         
+//        for var i = 0; i < pictures.count; i++ {
+//            print("not rejected")
+//            self.userIDs.append(self.interested![i]["userID"]! as! Int)
+//            self.photo = UIImageView(frame: CGRect(x: self.view.bounds.width/2 - 185, y: self.view.bounds.height/2 - 300, width: 370, height: 300))
+//            self.photo!.image = self.pictures[i]
+//            self.userInfo = UILabel(frame: CGRect(x: self.view.bounds.width/2 - 185, y: self.view.bounds.height/2 - 300, width: 370, height: 100))
+//            self.photoAndUserInfo = UIView(frame: CGRect(x: self.view.bounds.width/2 - 200, y: self.view.bounds.height/2 - 150, width: 400, height: 400))
+//            self.photoAndUserInfo?.addSubview(self.photo!)
+//            self.view.addSubview(self.photoAndUserInfo!)
+//            let gesture = UIPanGestureRecognizer(target: self, action: "wasDragged:")
+//            self.photo!.addGestureRecognizer(gesture)
+//            self.photo!.userInteractionEnabled = true
+//        }
         for var i = 0; i < pictures.count; i++ {
             print("not rejected")
             self.userIDs.append(self.interested![i]["userID"]! as! Int)
-            self.photo = UIImageView(frame: CGRect(x: self.view.bounds.width/2 - 185, y: self.view.bounds.height/2, width: 370, height: 300))
+            self.photo = UIImageView(frame: CGRect(x: self.view.bounds.width/2 - 100, y: self.view.bounds.height/2 - 50, width: 200, height: 100))
             self.photo!.image = self.pictures[i]
-            self.userInfo = UILabel(frame: CGRect(x: self.view.bounds.width/2 - 185, y: self.view.bounds.height/2 - 300, width: 370, height: 100))
-            self.photoAndUserInfo = UIView(frame: CGRect(x: self.view.bounds.width/2 - 200, y: self.view.bounds.height/2 - 150, width: 400, height: 400))
-            self.photoAndUserInfo?.addSubview(self.photo!)
-            self.view.addSubview(self.photoAndUserInfo!)
+            self.view.addSubview(self.photo!)
             let gesture = UIPanGestureRecognizer(target: self, action: "wasDragged:")
             self.photo!.addGestureRecognizer(gesture)
             self.photo!.userInteractionEnabled = true
