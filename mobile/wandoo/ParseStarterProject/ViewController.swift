@@ -34,6 +34,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     //Feed button to move to top of feed
     @IBAction func toTopPost(sender: UIButton) {
+        self.wandooTable.reloadData()
         self.retrieveWandoos()
      wandooTable.setContentOffset(CGPointMake(0, -wandooTable.contentInset.top), animated: true)
     }

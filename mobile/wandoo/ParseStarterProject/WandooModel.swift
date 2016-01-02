@@ -70,7 +70,7 @@ class WandooModel {
                     completion(result: unwrappedData)
                     print(unwrappedData)
                 } catch {
-                    print("Something went wrong")
+                    print("getUserWandoo Something went wrong")
                 }
             }
         }
@@ -91,7 +91,7 @@ class WandooModel {
                     let unwrappedData = parsedData!["data"] as! NSArray
                     completion(result: unwrappedData)
                 } catch {
-                    print("Something went wrong")
+                    print("getWandoos Something went wrong")
                 }
             }
         }
@@ -111,7 +111,7 @@ class WandooModel {
                     let unwrappedData = parsedData!["data"] as! [NSDictionary]
                     completion(result: unwrappedData)
                 } catch {
-                    print("Something went wrong")
+                    print("getAllWandoos Something went wrong")
                 }
             }
         }

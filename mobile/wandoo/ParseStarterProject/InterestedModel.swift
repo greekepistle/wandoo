@@ -52,7 +52,7 @@ class InterestedModel {
                     completion(result: parsedData as! [NSDictionary])
                     
                 } catch {
-                    print("Something went wrong")
+                    print("getInterestedPeople InSomething went wrong")
                 }
             }
         }
@@ -62,8 +62,10 @@ class InterestedModel {
     func acceptedOrRejected(wandooID: Int, userID: Int, accepted: Bool) {
         
         var nayOrYay : [String: AnyObject] = [
+            "hostID": userModel.userID!,
             "selected": 0,
-            "rejected": 0
+            "rejected": 0,
+            "userID": userID
         ]
         
         if accepted {
@@ -83,7 +85,7 @@ class InterestedModel {
         request.HTTPBody = try! NSJSONSerialization.dataWithJSONObject(nayOrYay, options: [])
         
         let task = session.dataTaskWithRequest(request) { data, response, error in
-            print("success")
+            print("success for acceptedOrRejected HTTP method update")
         }
         task.resume()
     }
