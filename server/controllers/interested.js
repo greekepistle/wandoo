@@ -66,7 +66,7 @@ module.exports = {
     } else {
 
       room.insertRoomAndConversation(req.params.wandooID, [req.body.hostID,
-        req.params.userID], function (err) {
+        +req.params.userID], function (err) {
         if (err) {
           res.status('400').send('Error in inserting room and conversation');
         } else {
@@ -77,7 +77,7 @@ module.exports = {
               console.error(err);
               res.status('400').send('There was an error in retrieval');
             } else {
-              res.send();
+                res.send();
             }
           });
         }

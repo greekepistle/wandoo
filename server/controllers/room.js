@@ -53,14 +53,14 @@ var insertRoomAndConversation = function (wandooID, userIDs, callback) {
   // Need to gracefully handle errors and send appropriate response to client
   
   var insertRoom = function (userIDs) {
-    user.getObjIDs(userIDs, function (err, result) {
+    user.getObjIDs(userIDs, function (err, result) { //expects userIDs []
       if (err) {
         console.log('Error in objectID retrieval')
         console.error(err);
         callback(err);
       } else {
         if (group) {
-          objectIDs.push(_.pluck(result, 'objectID')[0]);
+          objectIDs.push(result[0]['objectID']);
         } else {
           objectIDs = _.pluck(result, 'objectID');
         }
@@ -73,12 +73,14 @@ var insertRoomAndConversation = function (wandooID, userIDs, callback) {
             room.create([expiryTime, wandooID, conversationID],
             userIDs, function(err, result) {
               if (err) {
+                console.log('Error in room creation');
                 console.error(err);
                 callback(err);
               } else {
                 // get count of the number of rooms with the provided wandooID
                 room.getCountForWandoo(wandooID, function (err, result) {
                   if (err) {
+                    console.log('Error in getting room count for wandoos');
                     console.error(err);
                     callback(err);
                   } else if (result[0].count === 2) {
@@ -87,11 +89,12 @@ var insertRoomAndConversation = function (wandooID, userIDs, callback) {
                         console.log('Error in getting wandoo users');
                         callback(err);
                       } else {
-                        console.log(result);
                         group = true;
                         insertRoom(_.difference(_.pluck(result, 'userID'), userIDs));
                       }
                     });
+                  } else if (result[0].count > 2) {
+                    group = true;
                   } else {
                     callback();
                   }

@@ -1,6 +1,6 @@
-truncate wandoo_interest;
-truncate room_user;
-truncate room;
-truncate wandoo;
-truncate user_education;
-truncate user;
+delete from wandoo_interest;
+delete from room_user;
+delete from room;
+delete from wandoo;
+delete from user_education;
+delete from user;
