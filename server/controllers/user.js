@@ -1,6 +1,7 @@
 var user = require('../models/user');
 var _ = require('underscore');
 var util = require('../util');
+var s3 = require('../util/s3');
 
 module.exports = {
   get : function (req, res) {
@@ -53,8 +54,10 @@ module.exports = {
     for ( var i in req.body ) {
       if ( i in userAttr ) {
         if ( i === 'profilePic' ) {
-          userValues[userAttr[i]] = '/images/' + req.body['facebookID'] + '.png';
-          util.writeImage(userValues[userAttr[i]], req.body[i]);
+          // userValues[userAttr[i]] = '/images/' + req.body['facebookID'] + '.png';
+          // util.writeImage(userValues[userAttr[i]], req.body[i]);
+          userValues[userAttr[i]] = s3.fileURL();
+          s3.uploadFileToS3(req.body.facebookID, req.body.profilePic);
         } else {
           userValues[userAttr[i]] = req.body[i];
         }
