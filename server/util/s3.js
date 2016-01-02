@@ -13,7 +13,7 @@ var params = {Bucket: 'wandoo-images', ContentType: 'image/png'};
 var s3BucketURL = 'https://s3-us-west-1.amazonaws.com/wandoo-images/';
 
 var fileName = function (facebookID) {
-  return facebookID + '.png';
+  return 'fb-profile-pics/' + facebookID + '.png';
 }
 
 // fs.readFile('./public/images/1335833.png', function(err, data) {
@@ -27,7 +27,8 @@ var fileName = function (facebookID) {
 // });
 
 var uploadFileToS3 = function (facebookID, data) {
-  params.Key = 'fb-profile-pics/' + fileName(facebookID);
+  params.Key = fileName(facebookID);
+  params.Body = data;
   s3.putObject(params, function (err, data) {
     if (err)
       console.log(err);
@@ -43,7 +44,7 @@ var fileURL = function (facebookID) {
 
 module.exports = {
   uploadFileToS3 : uploadFileToS3,
-  fileName : fileName
+  fileURL : fileURL
 }
 
 

@@ -1,4 +1,5 @@
-var interested = require('../models/interested.js');
+var interested = require('../models/interested');
+var room = require('../controllers/room');
 var _ = require('underscore');
 
 module.exports = {
