@@ -219,6 +219,7 @@ Name | Notes | Example
 ----|------|------
 selected| 1 indicates that a host has selected a user, 0 indicates that host has not. Cannot be specified if **rejected** is specified.  | 1
 rejected| 1 indicates that a host has selected a user, 0 indicates that host has not. Cannot be specified if **selected** is specified. | 0
+hostID|userID of the host| 245626|
 
 #### Usage
 1. When a host selects/rejects a user, send a PUT to change respective flag
