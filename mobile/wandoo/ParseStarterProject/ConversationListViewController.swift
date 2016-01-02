@@ -6,22 +6,6 @@ import LayerKit
 class ConversationListViewController: ATLConversationListViewController, ATLConversationListViewControllerDelegate, ATLConversationListViewControllerDataSource {
     
     var layerQuery: LYRQuery!
-    var overrideSearch = false
-    
-    override var shouldDisplaySearchController: Bool {
-        
-        get {
-            return overrideSearch
-        }
-        
-        set {
-            overrideSearch = false
-        }
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
