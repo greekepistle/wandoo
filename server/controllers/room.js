@@ -42,6 +42,71 @@ var deleteQueryCB = function (err, result, res) {
   }
 }
 
+var insertRoomAndConversation = function (wandooID, userIDs, callback) {
+  var expiryTime = new Date();
+  expiryTime.setDate(expiryTime.getDate() + 1);
+  util.isoDateToMySQL(expiryTime.toJSON());
+
+  var objectIDs = [];
+  var group = false;
+
+  // Need to gracefully handle errors and send appropriate response to client
+  
+  var insertRoom = function (userIDs) {
+    user.getObjIDs(userIDs, function (err, result) {
+      if (err) {
+        console.log('Error in objectID retrieval')
+        console.error(err);
+        callback(err);
+      } else {
+        if (group) {
+          objectIDs.push(_.pluck(result, 'objectID')[0]);
+        } else {
+          objectIDs = _.pluck(result, 'objectID');
+        }
+        layer.createConversation(objectIDs, function (err, conversationID) {
+          if (err) {
+            console.log('Error in creating a conversation via Layer API');
+            console.error(err);
+            callback(err);
+          } else {
+            room.create([expiryTime, wandooID, conversationID],
+            userIDs, function(err, result) {
+              if (err) {
+                console.error(err);
+                callback(err);
+              } else {
+                // get count of the number of rooms with the provided wandooID
+                room.getCountForWandoo(wandooID, function (err, result) {
+                  if (err) {
+                    console.error(err);
+                    callback(err);
+                  } else if (result[0].count === 2) {
+                    room.getWandooUsers(wandooID, function (err, result) {
+                      if (err) {
+                        console.log('Error in getting wandoo users');
+                        callback(err);
+                      } else {
+                        console.log(result);
+                        group = true;
+                        insertRoom(_.difference(_.pluck(result, 'userID'), userIDs));
+                      }
+                    });
+                  } else {
+                    callback();
+                  }
+                })
+              }
+            });
+          }
+        });
+      }
+    });
+  }
+  insertRoom(userIDs);
+
+}
+
 module.exports = {
   get : function (req, res) {
     var roomMethod;
@@ -70,62 +135,10 @@ module.exports = {
   },
 
   post : function (req, res) {
-    var expiryTime = new Date();
-    expiryTime.setDate(expiryTime.getDate() + 1);
-    util.isoDateToMySQL(expiryTime.toJSON());
-
-    var objectIDs = [];
-    var group = false;
-
-    // Need to gracefully handle errors and send appropriate response to client
-  
-    var insertRoom = function (userIDs) {
-      user.getObjIDs(userIDs, function (err, result) {
-        if (err) {
-          console.log('Error in objectID retrieval')
-          console.error(err);
-        } else {
-          if (group) {
-            objectIDs.push(_.pluck(result, 'objectID')[0]);
-          } else {
-            objectIDs = _.pluck(result, 'objectID');
-          }
-          layer.createConversation(objectIDs, function (err, conversationID) {
-            if (err) {
-              console.log('Error in creating a conversation via Layer API');
-              console.error(err);
-            } else {
-              room.create([expiryTime, req.body.wandooID, conversationID],
-              req.body.userIDs, function(err, result) {
-                if (err) {
-                  console.error(err);
-                } else {
-                  // get count of the number of rooms with the provided wandooID
-                  room.getCountForWandoo(req.body.wandooID, function (err, result) {
-                    if (err) {
-                      console.error(err);
-                    } else if (result[0].count === 2) {
-                      room.getWandooUsers(req.body.wandooID, function (err, result) {
-                        if (err) {
-                          console.log('Error in getting wandoo users');
-                        } else {
-                          console.log(result);
-                          group = true;
-                          insertRoom(_.difference(_.pluck(result, 'userID'), userIDs));
-                        }
-                      });
-                    } else {
-                      res.send();
-                    }
-                  })
-                }
-              });
-            }
-          });
-        }
-      });
-    }
-    insertRoom(req.body.userIDs);
+    insertRoomAndConversation(req.body.wandooID, req.body.userIDs, function (err, result) {
+      postQueryCB(err, result, res);
+    });
+    
   },
 
   delete : function (req, res) {
@@ -139,5 +152,8 @@ module.exports = {
       putQueryCB(err, result, res);
     });
     
-  } 
+  },
+
+  insertRoomAndConversation : insertRoomAndConversation
 }
+

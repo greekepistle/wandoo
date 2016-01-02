@@ -1,4 +1,5 @@
-var interested = require('../models/interested.js');
+var interested = require('../models/interested');
+var room = require('../controllers/room');
 var _ = require('underscore');
 
 module.exports = {
@@ -63,15 +64,24 @@ module.exports = {
     }, true)) { // check if anything other than selected or rejected
       res.status('400').send('Passed invalid parameters');
     } else {
-      interestedData.unshift(req.body);
 
-      interested.update(interestedData, function (err, result) {
+      room.insertRoomAndConversation(req.params.wandooID, [req.body.hostID,
+        req.params.userID], function (err) {
         if (err) {
-          console.error(err);
-          res.status('400').send('There was an error in retrieval');
+          res.status('400').send('Error in inserting room and conversation');
         } else {
-          res.json(result);
+          delete req.body.hostID;
+          interestedData.unshift(req.body);
+          interested.update(interestedData, function (err, result) {
+            if (err) {
+              console.error(err);
+              res.status('400').send('There was an error in retrieval');
+            } else {
+              res.send();
+            }
+          });
         }
+
       });
       
     }
