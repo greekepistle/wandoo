@@ -37,30 +37,18 @@ class SwipeController: UIViewController {
     }
     
     func updateImage() {
-        print("SwipeController:updateImage() works")
-        
-//        for var i = 0; i < pictures.count; i++ {
-//            print("not rejected")
-//            self.userIDs.append(self.interested![i]["userID"]! as! Int)
-//            self.photo = UIImageView(frame: CGRect(x: self.view.bounds.width/2 - 185, y: self.view.bounds.height/2 - 300, width: 370, height: 300))
-//            self.photo!.image = self.pictures[i]
-//            self.userInfo = UILabel(frame: CGRect(x: self.view.bounds.width/2 - 185, y: self.view.bounds.height/2 - 300, width: 370, height: 100))
-//            self.photoAndUserInfo = UIView(frame: CGRect(x: self.view.bounds.width/2 - 200, y: self.view.bounds.height/2 - 150, width: 400, height: 400))
-//            self.photoAndUserInfo?.addSubview(self.photo!)
-//            self.view.addSubview(self.photoAndUserInfo!)
-//            let gesture = UIPanGestureRecognizer(target: self, action: "wasDragged:")
-//            self.photo!.addGestureRecognizer(gesture)
-//            self.photo!.userInteractionEnabled = true
-//        }
+        print("this works")
+
         for var i = 0; i < pictures.count; i++ {
             print("not rejected")
             self.userIDs.append(self.interested![i]["userID"]! as! Int)
             
-//            let shadowView = UIView(frame: CGRect(x: self.view.bounds.width/2 - 200, y: self.view.bounds.height/2 - 500, width: 400, height: 400))
+//            let shadowView = UIView(frame: CGRect(x: self.view.bounds.width/2 - 100, y: self.view.bounds.height/2 - 50, width: 200, height: 100))
 //            shadowView.layer.shadowColor = UIColor.blackColor().CGColor
 //            shadowView.layer.shadowOffset = CGSizeZero
 //            shadowView.layer.shadowOpacity = 0.5
 //            shadowView.layer.shadowRadius = 5
+//            shadowView.tintColor = UIColor.blueColor()
             
             self.photoAndUserInfo = UIView(frame: CGRect(x: self.view.bounds.width/2 - 200, y: self.view.bounds.height/2 - 500, width: 400, height: 400))
 //            self.photoAndUserInfo = UIView(frame: shadowView.bounds)
@@ -131,7 +119,7 @@ class SwipeController: UIViewController {
                     let interestedCount = result.count
                     self.userModel.getUserInfoByUserID(userID, completion: { (result) -> Void in
                         let picString = result["profile_picture"] as! String
-                        let picURL = NSURL(string: hostname + picString)
+                        let picURL = NSURL(string: picString)
                         if let pic = NSData(contentsOfURL: picURL!) {
                             dispatch_async(dispatch_get_main_queue()){
                                 self.pictures.append(UIImage(data: pic)!)

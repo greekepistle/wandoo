@@ -70,8 +70,10 @@ class InterestedModel {
         
         if accepted {
             nayOrYay["selected"] = 1
+            print("accepted")
         } else {
             nayOrYay["rejected"] = 1
+            print("rejected")
         }
         
         let url = NSURL(string: hostname + "/api/interested/" + String(wandooID) + "/" + String(userID))

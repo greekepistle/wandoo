@@ -109,10 +109,13 @@ class WandooModel {
                 do {
                     let parsedData = try NSJSONSerialization.JSONObjectWithData(data, options: .MutableContainers) as? NSMutableDictionary
                     let unwrappedData = parsedData!["data"] as! [NSDictionary]
+                    print("------------", unwrappedData)
                     completion(result: unwrappedData)
                 } catch {
                     print("getAllWandoos Something went wrong")
                 }
+            } else {
+                print("Can't get all Wandoos")
             }
         }
         

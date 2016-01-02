@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		07348D92EFA2476E8FC1D045 /* Pods_ParseStarterProject_Swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1EAEE4F7D20EAE0E8D11D42 /* Pods_ParseStarterProject_Swift.framework */; };
+		102561B31C37DE94007CF671 /* AcceptOrRejectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102561B21C37DE94007CF671 /* AcceptOrRejectViewController.swift */; };
+		102561B51C37DED6007CF671 /* InterestedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102561B41C37DED6007CF671 /* InterestedCell.swift */; };
 		102D13AB1C3477D900B823CD /* RoomManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102D13AA1C3477D900B823CD /* RoomManager.swift */; };
 		102D13C41C34AC3C00B823CD /* ConversationListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102D13BE1C34AC3C00B823CD /* ConversationListViewController.swift */; };
 		102D13C51C34AC3C00B823CD /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102D13BF1C34AC3C00B823CD /* ConversationViewController.swift */; };
@@ -45,6 +47,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		102561B21C37DE94007CF671 /* AcceptOrRejectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AcceptOrRejectViewController.swift; sourceTree = "<group>"; };
+		102561B41C37DED6007CF671 /* InterestedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterestedCell.swift; sourceTree = "<group>"; };
 		102D13AA1C3477D900B823CD /* RoomManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomManager.swift; sourceTree = "<group>"; };
 		102D13BE1C34AC3C00B823CD /* ConversationListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationListViewController.swift; sourceTree = "<group>"; };
 		102D13BF1C34AC3C00B823CD /* ConversationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationViewController.swift; sourceTree = "<group>"; };
@@ -156,7 +160,6 @@
 				10F9FE741C1B95D400D3C4CC /* images */,
 				81BA814A1A49DA1800E65899 /* AppDelegate.swift */,
 				81BA814C1A49DA1800E65899 /* ViewController.swift */,
-				BEA742EB1C30B8440028332D /* MyWandooViewController.swift */,
 				102D13AA1C3477D900B823CD /* RoomManager.swift */,
 				102D13BE1C34AC3C00B823CD /* ConversationListViewController.swift */,
 				102D13BF1C34AC3C00B823CD /* ConversationViewController.swift */,
@@ -168,7 +171,11 @@
 				10F9FE721C1B83FF00D3C4CC /* ChatViewController.swift */,
 				10F9FDF31C18F3B900D3C4CC /* ProfileViewController.swift */,
 				10F9FEC11C21465900D3C4CC /* WandooCell.swift */,
+				BEA742EB1C30B8440028332D /* MyWandooViewController.swift */,
+				102561B41C37DED6007CF671 /* InterestedCell.swift */,
+				10F9FDE51C17DFF700D3C4CC /* SwipeController.swift */,
 				BEA742E91C3077500028332D /* MyWandooCell.swift */,
+				102561B21C37DE94007CF671 /* AcceptOrRejectViewController.swift */,
 				10F9FDEF1C18ECD800D3C4CC /* UserModel.swift */,
 				BECE40211C1F6A3300894D06 /* Main.storyboard */,
 				10348A6F1C2DF4FF00CA593D /* InterestedViewController.swift */,
@@ -182,7 +189,6 @@
 				BE95C7361C20AF80005CB21C /* PostViewController.swift */,
 				10F9FDEB1C18AFBB00D3C4CC /* SettingsController.swift */,
 				10F9FDE31C17BC9D00D3C4CC /* FacebookLoginController.swift */,
-				10F9FDE51C17DFF700D3C4CC /* SwipeController.swift */,
 			);
 			path = ParseStarterProject;
 			sourceTree = "<group>";
@@ -358,7 +364,9 @@
 				81BA814D1A49DA1800E65899 /* ViewController.swift in Sources */,
 				102D13C61C34AC3C00B823CD /* ParticipantTableViewController.swift in Sources */,
 				32B24AE11C32356900F894DF /* ChatUserViewController.swift in Sources */,
+				102561B31C37DE94007CF671 /* AcceptOrRejectViewController.swift in Sources */,
 				10F9FDF41C18F3B900D3C4CC /* ProfileViewController.swift in Sources */,
+				102561B51C37DED6007CF671 /* InterestedCell.swift in Sources */,
 				102D13C71C34AC3C00B823CD /* PFUser+ATLParticipant.swift in Sources */,
 				10F9FDE41C17BC9D00D3C4CC /* FacebookLoginController.swift in Sources */,
 				10F9FE861C20D48500D3C4CC /* WandooModel.swift in Sources */,

@@ -189,7 +189,7 @@ class UserModel {
                     print(parsedData)
                     let unwrappedData = parsedData!["data"]![0] as! NSDictionary
                     let fbID = FBSDKAccessToken.currentAccessToken().userID
-                    let picURL = NSURL(string: hostname + "/images/" + fbID + ".png")
+                    let picURL = NSURL(string: "/images/" + fbID + ".png")
                     if let data = NSData(contentsOfURL: picURL!) {
                         print("yes")
                         unwrappedData.setValue(UIImage(data: data), forKey: "profile_picture")

@@ -20,17 +20,6 @@ class ConversationListViewController: ATLConversationListViewController, ATLConv
         }
     }
     
-    override var shouldDisplaySearchController: Bool {
-        
-        get {
-            return overrideSearch
-        }
-        
-        set {
-            overrideSearch = false
-        }
-    }
-    
     var overrideEdit = false
     
     override var allowsEditing: Bool {
