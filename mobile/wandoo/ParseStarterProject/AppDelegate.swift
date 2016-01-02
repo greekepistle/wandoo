@@ -7,6 +7,8 @@ import Atlas
 import SVProgressHUD
 import LayerKit
 
+
+//let hostname = "http://localhost:8000"
 let hostname = "https://wandoo-hs5abf-5804.herokuapp.com"
 
 @UIApplicationMain
@@ -41,7 +43,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         PFFacebookUtils.initializeFacebookWithApplicationLaunchOptions(launchOptions)
         
         // Register for push
-//        self.registerApplicationForPushNotifications(application)
+        self.registerApplicationForPushNotifications(application)
+        
+        //MARK for change PF PUSH Settings - Start
+        
+        let notificationTypes:UIUserNotificationType = [.Alert, .Badge, .Sound]
+        let notificationSettings:UIUserNotificationSettings = UIUserNotificationSettings(forTypes: notificationTypes, categories: nil)
+        UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
+        
+        //MARK for change PF PUSH Settings - End
+        
+        
 //        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
 //        let viewController = mainStoryboard.instantiateViewControllerWithIdentifier("facebookLogin")
 //        UIApplication.sharedApplication().keyWindow?.rootViewController = viewController;
@@ -51,7 +63,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
         return true
     }
-    
+
     // MARK:- Push Notification Registration
     
     func registerApplicationForPushNotifications(application: UIApplication) {
@@ -81,6 +93,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } catch let error as NSError {
             print("Failed updating device token with error: \(error)")
         }
+        
     }
     
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
@@ -113,6 +126,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             // This should not happen?
             completionHandler(UIBackgroundFetchResult.NoData)
         }
+        
+        NSNotificationCenter.defaultCenter().postNotificationName("getMessage", object: nil)
     }
     
     func getBackgroundFetchResult(changes: [AnyObject]!, error: NSError!) -> UIBackgroundFetchResult {
@@ -160,7 +175,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Set default ACLs
         let defaultACL: PFACL = PFACL()
+//        print("Yo", PFUser.currentUser());
 //        defaultACL.setReadAccess(true, forUser: PFUser.currentUser()!)
+        //PF push - Add
+//        let installation:PFInstallation = PFInstallation.currentInstallation()
+//        installation["user"] = PFUser.currentUser()
+//        installation.saveInBackgroundWithBlock({ (success:Bool, error:NSError?) -> Void in
+//        
+//        })
+        //PF push - Remove
+        
+        
         defaultACL.publicReadAccess = true
 //        defaultACL.setPublicReadAccess(true)
         PFACL.setDefaultACL(defaultACL, withAccessForCurrentUser: true)

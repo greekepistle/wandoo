@@ -119,7 +119,7 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="9lq-rG-ytB"/>
                                     <barButtonItem style="plain" id="e7L-MS-aA3">
                                         <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="OTL-Gr-R8m">
-                                            <rect key="frame" x="260" y="5" width="44" height="35"/>
+                                            <rect key="frame" x="260" y="4.5" width="44" height="35"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
                                             <state key="normal" title="Next">
@@ -221,7 +221,7 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="OmB-ho-hHe"/>
                                     <barButtonItem style="plain" id="2bi-c6-do9">
                                         <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="83q-7W-Nt2">
-                                            <rect key="frame" x="268" y="5" width="44" height="35"/>
+                                            <rect key="frame" x="268" y="4.5" width="44" height="35"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
                                             <state key="normal" title="Next">
@@ -282,7 +282,7 @@
                                 <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="khJ-sc-NNt" id="C4a-rt-hHO">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -374,7 +374,7 @@
                                                             <barButtonItem width="5" style="plain" systemItem="fixedSpace" id="8Pp-dh-08M"/>
                                                             <barButtonItem style="plain" id="ovT-Zy-Xm8">
                                                                 <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="O2A-bN-UQy">
-                                                                    <rect key="frame" x="21" y="11" width="29" height="29"/>
+                                                                    <rect key="frame" x="21" y="10.5" width="29" height="29"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                     <state key="normal" title="My Posts" image="icon_ios_topcharts.png"/>
                                                                     <connections>
@@ -411,7 +411,7 @@
                                                             <barButtonItem style="plain" systemItem="flexibleSpace" id="AFr-rf-tRv"/>
                                                             <barButtonItem style="plain" id="T9T-rk-SUM">
                                                                 <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="U0f-Ja-tzi">
-                                                                    <rect key="frame" x="271" y="9" width="37" height="33"/>
+                                                                    <rect key="frame" x="271" y="8.5" width="37" height="33"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                     <state key="normal" title="Profile" image="icon_ios_user_filled"/>
                                                                     <connections>
@@ -450,7 +450,7 @@
                                         <rect key="frame" x="0.0" y="28" width="328" height="173"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pnr-KV-Mmk" id="D0T-fk-2jN">
-                                            <rect key="frame" x="0.0" y="0.0" width="328" height="172"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="328" height="172.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="72f-SP-h4z">
@@ -796,7 +796,7 @@ Msg</string>
                                 <rect key="frame" x="0.0" y="28" width="320" height="108"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bs3-CR-khV" id="so2-O0-39r">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="107"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="107.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7B2-0Q-oYU">
@@ -893,7 +893,7 @@ Msg</string>
                                         <rect key="frame" x="0.0" y="28" width="240" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="z8V-ac-ush" id="2hm-BF-tWF">
-                                            <rect key="frame" x="0.0" y="0.0" width="240" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="240" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -921,7 +921,7 @@ Msg</string>
                                 <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Y1a-Pk-Tmp" id="nEc-4g-JTu">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -958,7 +958,7 @@ Msg</string>
                                         <rect key="frame" x="0.0" y="28" width="374" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="FGf-k1-lEZ" id="Fou-m9-WvC">
-                                            <rect key="frame" x="0.0" y="0.0" width="374" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -1105,7 +1105,7 @@ Msg</string>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="ZTH-QK-1pv"/>
                                     <barButtonItem style="plain" id="wLV-TK-2zm">
                                         <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="AWW-2d-6FP">
-                                            <rect key="frame" x="264" y="5" width="44" height="35"/>
+                                            <rect key="frame" x="264" y="4.5" width="44" height="35"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
                                             <state key="normal" title="Post">
