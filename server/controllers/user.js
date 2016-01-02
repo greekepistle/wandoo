@@ -54,10 +54,10 @@ module.exports = {
     for ( var i in req.body ) {
       if ( i in userAttr ) {
         if ( i === 'profilePic' ) {
-          // userValues[userAttr[i]] = '/images/' + req.body['facebookID'] + '.png';
-          // util.writeImage(userValues[userAttr[i]], req.body[i]);
-          userValues[userAttr[i]] = s3.fileURL();
-          s3.uploadFileToS3(req.body.facebookID, req.body.profilePic);
+          userValues[userAttr[i]] = '/images/' + req.body['facebookID'] + '.png';
+          util.writeImage(userValues[userAttr[i]], req.body[i]);
+          // userValues[userAttr[i]] = s3.fileURL();
+          // s3.uploadFileToS3(req.body.facebookID, req.body.profilePic);
         } else {
           userValues[userAttr[i]] = req.body[i];
         }
