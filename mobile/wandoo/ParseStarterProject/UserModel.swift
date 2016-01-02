@@ -146,6 +146,10 @@ class UserModel {
     
     //POST request for user's current location
     func postLocation(completion: () -> Void) {
+        if self.latitude == nil {
+            self.latitude = 37.785834
+            self.longitude = -122.406417
+        }
         
         let userLocation : [String: AnyObject] = [
             "latitude": self.latitude!,
@@ -192,6 +196,8 @@ class UserModel {
                         completion(result: unwrappedData)
                     } else {
                         print("Can't get Image")
+                        unwrappedData.setValue(UIImage(named: "default_user"), forKey: "profile_picture")
+                        completion(result: unwrappedData)
                     }
                 } catch {
                     print("Something went wrong")
