@@ -1,9 +1,6 @@
 var AWS = require('aws-sdk');
 var fs = require('fs');
 
-AWS.config.region = 'us-west-1';
-AWS.config.update({accessKeyId: 'AKIAIJSLXT6IKFWB6IHA', secretAccessKey: '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'});
-
 var s3 = new AWS.S3();
 
 var params = {Bucket: 'wandoo-images', ContentType: 'image/png'};
