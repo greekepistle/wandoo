@@ -9,20 +9,29 @@ class ConversationListViewController: ATLConversationListViewController, ATLConv
 
     var overrideSearch = false
     
-//    override var shouldDisplaySearchController: Bool {
-//        
-//        get {
-//            return overrideSearch
-//        }
-//        
-//        set {
-//            overrideSearch = false
-//        }
-//    }
-//    
-//    override func viewWillAppear(animated: Bool) {
-//        
-//    }
+    override var shouldDisplaySearchController: Bool {
+        
+        get {
+            return overrideSearch
+        }
+        
+        set {
+            overrideSearch = false
+        }
+    }
+    
+    var overrideEdit = false
+    
+    override var allowsEditing: Bool {
+        get {
+            return overrideEdit
+        }
+        
+        set {
+            overrideEdit = false
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
