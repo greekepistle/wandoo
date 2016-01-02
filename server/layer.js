@@ -6,8 +6,6 @@ var layer = new LayerAPI ({
 });
  
 module.exports = {
-  // Create a Conversation 
-
   createConversation : function (objectIDs, callback) {
     console.log('objectIDs',objectIDs);
     layer.conversations.create({participants: objectIDs}, function(err, result) {
@@ -16,18 +14,18 @@ module.exports = {
       } else {
         console.log('Conversation created with id:', result.body.id);
         console.log('Participants:', result.body.participants);
+
+        layer.messages.sendTexFromUser(result.body.id, objectIDs[0], 
+          "Congratulations! We're matched. Let's get to know each other. What are you up to?", 
+          function(err, res) {
+           if (err) {
+             console.error(err);
+           }
+           console.log('Message sent from host successfully');
+        });
         callback(null, result.body.id);
       }
     });
   }
-  
 }
 
-//TEST
-// createConversation('asg', function (err, result) {
-//   if (err) {
-//     console.log(err);
-//   } else {
-//     console.log(result);
-//   }
-// });
