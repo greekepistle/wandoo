@@ -146,6 +146,10 @@ class UserModel {
     
     //POST request for user's current location
     func postLocation(completion: () -> Void) {
+        if self.latitude == nil {
+            self.latitude = 37.785834
+            self.longitude = -122.406417
+        }
         
         let userLocation : [String: AnyObject] = [
             "latitude": self.latitude!,
