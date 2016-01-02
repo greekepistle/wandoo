@@ -23,6 +23,19 @@ class ConversationListViewController: ATLConversationListViewController, ATLConv
 //    override func viewWillAppear(animated: Bool) {
 //        
 //    }
+
+    var overrideEdit = false
+    
+    override var allowsEditing: Bool {
+        get {
+            return overrideEdit
+        }
+        
+        set {
+            overrideEdit = false
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
