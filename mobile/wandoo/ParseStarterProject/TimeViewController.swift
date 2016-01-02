@@ -32,9 +32,9 @@ class TimeViewController: UIViewController {
         }
             
         wandooModel.postWandoo { (result) -> Void in
-            dispatch_async(dispatch_get_main_queue()) {
-                self.performSegueWithIdentifier("toWandooController", sender: self)
-            }
+//            dispatch_async(dispatch_get_main_queue()) {
+//                self.performSegueWithIdentifier("toWandooController", sender: self)
+//            }
         }
     }
    

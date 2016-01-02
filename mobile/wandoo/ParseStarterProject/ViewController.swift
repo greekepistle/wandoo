@@ -64,7 +64,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let userID = self.allWandoosArray[indexPath.row]["userID"] as! Int
         userModel.getUserInfoByUserID(userID) { (result) -> Void in
             let picString = result["profile_picture"] as! String
-            let picURL = NSURL(string: hostname + picString)
+            let picURL = NSURL(string: picString)
             if let pic = NSData(contentsOfURL: picURL!) {
                 dispatch_async(dispatch_get_main_queue()){
                     wandooCell.profileImage.image = UIImage(data: pic)
@@ -144,9 +144,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func retrieveWandoos() {
 
         getAllWandoos { (allWandoos) -> Void in
+            print("-------GET ALL")
             let fbID = FBSDKAccessToken.currentAccessToken().userID
             self.userModel.getUserInfo(fbID, completion: { (userInfo) -> Void in
-
+                print("------------ARE WE COMING HERE")
                 self.profilePicture = userInfo["profile_picture"] as? UIImage
                 self.allWandoosArray = allWandoos as! [NSDictionary]
 

@@ -50,11 +50,11 @@ class MyWandooViewController: UITableViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "toSwipe" {
+        if segue.identifier == "toSelection" {
             let selectedIndex = wandooTable.indexPathForCell(sender as! MyWandooCell)
             
             let myWandooInfo = myWandoosArray[selectedIndex!.row]
-            let destinationVC = segue.destinationViewController as! SwipeController
+            let destinationVC = segue.destinationViewController as! AcceptOrRejectViewController
             destinationVC.myWandooInfo = myWandooInfo
             
         }
