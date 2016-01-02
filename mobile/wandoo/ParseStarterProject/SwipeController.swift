@@ -18,7 +18,9 @@ class SwipeController: UIViewController {
     var pictures: [UIImage] = []
     
     var photo: UIImageView?
+    var userInfo: UILabel?
     var userIDs: [Int] = []
+    var photoAndUserInfo: UIView?
     
     var index = 0
     
@@ -40,9 +42,12 @@ class SwipeController: UIViewController {
         for var i = 0; i < pictures.count; i++ {
             print("not rejected")
             self.userIDs.append(self.interested![i]["userID"]! as! Int)
-            self.photo = UIImageView(frame: CGRect(x: self.view.bounds.width/2 - 100, y: self.view.bounds.height/2 - 50, width: 200, height: 100))
+            self.photo = UIImageView(frame: CGRect(x: self.view.bounds.width/2 - 185, y: self.view.bounds.height/2, width: 370, height: 300))
             self.photo!.image = self.pictures[i]
-            self.view.addSubview(self.photo!)
+            self.userInfo = UILabel(frame: CGRect(x: self.view.bounds.width/2 - 185, y: self.view.bounds.height/2 - 300, width: 370, height: 100))
+            self.photoAndUserInfo = UIView(frame: CGRect(x: self.view.bounds.width/2 - 200, y: self.view.bounds.height/2 - 150, width: 400, height: 400))
+            self.photoAndUserInfo?.addSubview(self.photo!)
+            self.view.addSubview(self.photoAndUserInfo!)
             let gesture = UIPanGestureRecognizer(target: self, action: "wasDragged:")
             self.photo!.addGestureRecognizer(gesture)
             self.photo!.userInteractionEnabled = true
@@ -67,13 +72,13 @@ class SwipeController: UIViewController {
             if photo.center.x < 100 {
                 print("Not Chosen")
                 interestedModel.acceptedOrRejected(wandooID, userID: self.userIDs[self.index], accepted: false)
-                photo.center = CGPoint(x: self.view.bounds.width - 500, y: self.view.bounds.height/2)
+                photo.center = CGPoint(x: self.view.bounds.width - 1000, y: self.view.bounds.height/2)
                 self.index--
             
             } else if photo.center.x > self.view.bounds.width - 100 {
                 print("Chosen")
                 interestedModel.acceptedOrRejected(wandooID, userID: self.userIDs[self.index], accepted: true)
-                photo.center = CGPoint(x: self.view.bounds.width + 500, y: self.view.bounds.height/2)
+                photo.center = CGPoint(x: self.view.bounds.width + 1000, y: self.view.bounds.height/2)
                 self.index--
             } else {
                 photo.center = CGPoint(x: self.view.bounds.width/2, y: self.view.bounds.height/2)

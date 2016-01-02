@@ -192,6 +192,8 @@ class UserModel {
                         completion(result: unwrappedData)
                     } else {
                         print("Can't get Image")
+                        unwrappedData.setValue(UIImage(named: "default_user"), forKey: "profile_picture")
+                        completion(result: unwrappedData)
                     }
                 } catch {
                     print("Something went wrong")
