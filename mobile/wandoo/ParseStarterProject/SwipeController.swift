@@ -55,12 +55,26 @@ class SwipeController: UIViewController {
         for var i = 0; i < pictures.count; i++ {
             print("not rejected")
             self.userIDs.append(self.interested![i]["userID"]! as! Int)
-            self.photo = UIImageView(frame: CGRect(x: self.view.bounds.width/2 - 100, y: self.view.bounds.height/2 - 50, width: 200, height: 100))
+            
+//            let shadowView = UIView(frame: CGRect(x: self.view.bounds.width/2 - 200, y: self.view.bounds.height/2 - 500, width: 400, height: 400))
+//            shadowView.layer.shadowColor = UIColor.blackColor().CGColor
+//            shadowView.layer.shadowOffset = CGSizeZero
+//            shadowView.layer.shadowOpacity = 0.5
+//            shadowView.layer.shadowRadius = 5
+            
+            self.photoAndUserInfo = UIView(frame: CGRect(x: self.view.bounds.width/2 - 200, y: self.view.bounds.height/2 - 500, width: 400, height: 400))
+//            self.photoAndUserInfo = UIView(frame: shadowView.bounds)
+            self.photo = UIImageView(frame: CGRect(x: self.photoAndUserInfo!.bounds.width/2 - 185, y: self.photoAndUserInfo!.bounds.height/2, width: 370, height: 300))
             self.photo!.image = self.pictures[i]
-            self.view.addSubview(self.photo!)
+            self.userInfo = UILabel(frame: CGRect(x: self.photoAndUserInfo!.bounds.width/2 - 185, y: self.photoAndUserInfo!.bounds.height/2 - 100, width: 370, height: 100))
+//            shadowView.addSubview(self.photo!)
+            self.photoAndUserInfo!.addSubview(self.photo!)
+            self.photoAndUserInfo!.addSubview(self.userInfo!)
+            self.view.addSubview(self.photoAndUserInfo!)
+
             let gesture = UIPanGestureRecognizer(target: self, action: "wasDragged:")
-            self.photo!.addGestureRecognizer(gesture)
-            self.photo!.userInteractionEnabled = true
+            self.photoAndUserInfo!.addGestureRecognizer(gesture)
+            self.photoAndUserInfo!.userInteractionEnabled = true
         }
     }
     

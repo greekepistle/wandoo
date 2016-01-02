@@ -8,6 +8,17 @@ class ConversationListViewController: ATLConversationListViewController, ATLConv
     var layerQuery: LYRQuery!
 
     var overrideSearch = false
+
+    override var shouldDisplaySearchController: Bool {
+        
+        get {
+            return overrideSearch
+        }
+        
+        set {
+            overrideSearch = false
+        }
+    }
     
     override var shouldDisplaySearchController: Bool {
         
