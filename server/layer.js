@@ -7,7 +7,7 @@ var layer = new LayerAPI ({
  
 module.exports = {
   createConversation : function (objectIDs, callback) {
-    console.log('objectIDs',objectIDs);
+    console.log('objectIDs received:',objectIDs);
     layer.conversations.create({participants: objectIDs}, function(err, result) {
       if (err) {
         callback(err);
@@ -24,6 +24,22 @@ module.exports = {
            console.log('Message sent from host successfully');
         });
         callback(null, result.body.id);
+      }
+    });
+  },
+
+  updateConversation : function (cid, objectID, callback) {
+    var operations = [
+      {"operation": "add", "property": "participants", "value": objectID}
+    ];
+    layer.conversations.edit(cid, operations, function (err, result) {
+      if (err) {
+        callback(err);
+      } else {
+        // verify what result is provided here to us
+        console.log('Coversation updated');
+        console.log(result);
+        callback(null, result);
       }
     });
   }
