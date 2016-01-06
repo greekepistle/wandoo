@@ -40,12 +40,13 @@ class ConversationListViewController: ATLConversationListViewController, ATLConv
         
         self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
         
+//        The below code is for enabling Chat selector button. We don't need it for now
 //        let title = NSLocalizedString("Logout", comment: "")
 //        let logoutItem = UIBarButtonItem(title: title, style: UIBarButtonItemStyle.Plain, target: self, action: Selector("logoutButtonTapped:"))
 //        self.navigationItem.setLeftBarButtonItem(logoutItem, animated: false)
-        let composeItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Compose, target: self, action: Selector("composeButtonTapped:"))
-        composeItem.tintColor = UIColor.whiteColor()
-        self.navigationItem.setRightBarButtonItem(composeItem, animated: false)
+//        let composeItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Compose, target: self, action: Selector("composeButtonTapped:"))
+//        composeItem.tintColor = UIColor.whiteColor()
+//        self.navigationItem.setRightBarButtonItem(composeItem, animated: false)
     }
     
     // MARK - ATLConversationListViewControllerDelegate Methods
