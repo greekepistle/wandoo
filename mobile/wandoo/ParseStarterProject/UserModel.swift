@@ -186,7 +186,7 @@ class UserModel {
             if let data = data {
                 do {
                     let parsedData = try NSJSONSerialization.JSONObjectWithData(data, options: .MutableContainers) as? NSDictionary
-                    print(parsedData)
+//                    print(parsedData)
                     let unwrappedData = parsedData!["data"]![0] as! NSDictionary
                     let picString = unwrappedData["profile_picture"] as! String
             
