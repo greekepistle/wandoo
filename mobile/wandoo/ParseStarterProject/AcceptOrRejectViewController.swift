@@ -21,7 +21,6 @@ class AcceptOrRejectViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         getInterestedPeople { () -> Void in
-            print("poop")
 
             for (index, interestedPeople) in self.allInterestedInfo!.enumerate() {
                 if(interestedPeople["selected"] as! Int == 1) {

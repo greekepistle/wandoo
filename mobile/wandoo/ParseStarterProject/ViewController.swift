@@ -28,12 +28,18 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var allWandoosArray = [NSDictionary]()
     var profilePicture: UIImage?
     var interestedModel = InterestedModel()
+    
+    var ignoreFlag = true
 
     @IBAction func presentChat(sender: UIButton) {
         self.presentConversationListViewController()
     }
     //Feed button to move to top of feed
     @IBAction func toTopPost(sender: UIButton) {
+        self.retrieveWandoos()
+        sender.userInteractionEnabled = false
+        refreshDataAfterTwoSec(sender)
+        
         self.wandooTable.reloadData()
         self.retrieveWandoos()
      wandooTable.setContentOffset(CGPointMake(0, -wandooTable.contentInset.top), animated: true)
@@ -171,6 +177,16 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         wandooModel.getWandoos(1, limit: 3) { (result) -> Void in
             completion(result: result)
         }
+    }
+    
+    func refreshDataAfterTwoSec(sender: UIButton) {
+        let delta: Int64 = 2 * Int64(NSEC_PER_SEC)
+        
+        let time = dispatch_time(DISPATCH_TIME_NOW, delta)
+        
+        dispatch_after(time, dispatch_get_main_queue(), {
+            sender.userInteractionEnabled = true
+        });
     }
 
     override func didReceiveMemoryWarning() {
