@@ -100,6 +100,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             let wandooID = allWandoosArray[sender.tag]["wandooID"] as! Int
             interestedModel.showInterest(wandooID)
             sender.backgroundColor = UIColor(red: 52.0/255.0, green: 152.0/255.0, blue: 219.0/255.0, alpha: 0.5)
+            let indexPath = NSIndexPath(forRow: sender.tag, inSection: 0)
+            let cell = wandooTable.cellForRowAtIndexPath(indexPath)
+            cell!.userInteractionEnabled = false
         }
     }
 
