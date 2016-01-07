@@ -71,6 +71,9 @@ class AcceptOrRejectViewController: UITableViewController {
         else {
             interestedCell.employer.text = ""
         }
+        interestedCell.reject.tag = indexPath.row
+        interestedCell.accept.tag = indexPath.row
+        
         interestedCell.picture.image = self.allInterestedInfo![indexPath.row]["profile_picture"] as? UIImage
         interestedCell.picture.layer.borderWidth = 1
         interestedCell.picture.layer.masksToBounds = false
@@ -122,7 +125,6 @@ class AcceptOrRejectViewController: UITableViewController {
                             count++
                             if count == self.allInterestedInfo!.count {
                                 dispatch_async(dispatch_get_main_queue()) {
-                                    
                                     self.interestedTable.reloadData()
                                 }
                             }
