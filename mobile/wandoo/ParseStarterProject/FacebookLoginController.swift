@@ -12,7 +12,7 @@ import FBSDKLoginKit
 import ParseFacebookUtilsV4
 import Parse
 import CoreLocation
-//import SVProgressHUD
+import SVProgressHUD
 import Atlas
 import ParseUI
 import LayerKit
@@ -69,11 +69,11 @@ class FacebookLoginController: UIViewController, CLLocationManagerDelegate {
                         //segue into profile editing page
                         print("New user signed up")
                     } else {
+                        SVProgressHUD.show()
                         let fbID = FBSDKAccessToken.currentAccessToken().userID
                         print("reaching here")
                         self.userModel.getUserInfo(fbID, completion: { (result) -> Void in
                             print(result)
-                            
                             self.userModel.userID = result["userID"]! as? Int
                             self.loginLayer()
                         })
@@ -137,6 +137,7 @@ class FacebookLoginController: UIViewController, CLLocationManagerDelegate {
                     } else {
                         print("Authenticated")
                         dispatch_async(dispatch_get_main_queue()) {
+                            SVProgressHUD.dismiss()
                             self.performSegueWithIdentifier("LoginFacebook", sender: self)
                         }
                     }

@@ -46,7 +46,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate {
                     self.profileInfo.text = result["name"]! as? String
                     
                     if let sex = result["sex"]! as? String {
-                        self.profileInfo.text! += ", " + sex
+                        self.profileInfo.text! += ", " + sex.uppercaseString
                     }
                     
                     if let age = result["age"]! as? Int {
