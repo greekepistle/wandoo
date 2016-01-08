@@ -36,7 +36,7 @@ class MyWandooViewController: UITableViewController {
         
         wandooCell.myWandooTitle.text = self.myWandoosArray[indexPath.row]["text"] as? String
         wandooCell.myWandooTime.text = self.wandooModel.checkAndFormatWandooDate((self.myWandoosArray[indexPath.row]["start_time"] as? String)!)
-        wandooCell.myWandooPeople.text = String(self.myWandoosArray[indexPath.row]["num_people"]!) + " people"
+        wandooCell.myWandooPeople.text = "With " + String(self.myWandoosArray[indexPath.row]["num_people"]!) + " people"
     
         return wandooCell
     }
