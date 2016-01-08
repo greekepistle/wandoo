@@ -41,6 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        print(layerClient)
         
         PFFacebookUtils.initializeFacebookWithApplicationLaunchOptions(launchOptions)
+        PFFacebookUtils.facebookLoginManager().loginBehavior = FBSDKLoginBehavior.SystemAccount
         
         // Register for push
         self.registerApplicationForPushNotifications(application)
