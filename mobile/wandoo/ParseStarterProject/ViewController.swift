@@ -28,7 +28,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var allWandoosArray = [NSDictionary]()
     var profilePicture: UIImage?
     var interestedModel = InterestedModel()
-    
+
     var ignoreFlag = true
 
     @IBAction func presentChat(sender: UIButton) {
@@ -39,7 +39,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.retrieveWandoos()
         sender.userInteractionEnabled = false
         refreshDataAfterTwoSec(sender)
-        
+
         self.wandooTable.reloadData()
         self.retrieveWandoos()
      wandooTable.setContentOffset(CGPointMake(0, -wandooTable.contentInset.top), animated: true)
@@ -63,6 +63,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 self.retrieveWandoos()
             }
         })
+
+        navigationItem.titleView = UIImageView(image: UIImage(named: "wandoos"))
+
+        userModel.postLocation { () -> Void in
+            self.retrieveWandoos()
+        }
         self.navigationItem.hidesBackButton = true
     }
 
@@ -115,11 +121,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             sender.backgroundColor = UIColor(red: 52.0/255.0, green: 152.0/255.0, blue: 219.0/255.0, alpha: 0.5)
             let indexPath = NSIndexPath(forRow: sender.tag, inSection: 0)
             let cell = wandooTable.cellForRowAtIndexPath(indexPath) as! WandooCell
-            
+
             //PUT YOUR PUSH CODE HERE FOR FEED
             print(cell.objectID)
             //-----------------------
-            
+
             cell.userInteractionEnabled = false
         }
     }
@@ -191,12 +197,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             completion(result: result)
         }
     }
-    
+
     func refreshDataAfterTwoSec(sender: UIButton) {
         let delta: Int64 = 2 * Int64(NSEC_PER_SEC)
-        
+
         let time = dispatch_time(DISPATCH_TIME_NOW, delta)
-        
+
         dispatch_after(time, dispatch_get_main_queue(), {
             sender.userInteractionEnabled = true
         });
