@@ -52,6 +52,10 @@ class AcceptOrRejectViewController: UITableViewController {
             let userID = allInterestedInfo![sender.tag]["userID"] as! Int
             interestedModel.acceptedOrRejected(wandooID, userID: userID, accepted: true)
             sender.backgroundColor = UIColor(red: 52.0/255.0, green: 152.0/255.0, blue: 219.0/255.0, alpha: 0.5)
+            
+            //PUT YOUR PUSH CODE HERE FOR ACCEPT AND REJECT
+            print(allInterestedInfo![sender.tag]["objectID"])
+            //----------------------------
             cell!.userInteractionEnabled = false
         }
     }
@@ -117,6 +121,7 @@ class AcceptOrRejectViewController: UITableViewController {
                         interestedPeople["age"] = String(result["age"]!)
                         interestedPeople["sex"] = result["sex"]
                         interestedPeople["employer"] = result["employer"]
+                        interestedPeople["objectID"] = result["objectID"]
                         let picString = result["profile_picture"] as! String
                         let picURL = NSURL(string: picString)
                         if let pic = NSData(contentsOfURL: picURL!) {

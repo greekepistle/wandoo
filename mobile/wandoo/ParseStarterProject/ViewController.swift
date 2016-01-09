@@ -85,6 +85,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     wandooCell.message.text = self.allWandoosArray[indexPath.row]["text"] as? String
                     wandooCell.time.text = self.wandooModel.checkAndFormatWandooDate((self.allWandoosArray[indexPath.row]["start_time"] as? String)!)
                     wandooCell.numPeople.text = String(self.allWandoosArray[indexPath.row]["num_people"]!) + " people"
+                    wandooCell.objectID = result["objectID"] as? String
                 }
             }
 
@@ -107,8 +108,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             interestedModel.showInterest(wandooID)
             sender.backgroundColor = UIColor(red: 52.0/255.0, green: 152.0/255.0, blue: 219.0/255.0, alpha: 0.5)
             let indexPath = NSIndexPath(forRow: sender.tag, inSection: 0)
-            let cell = wandooTable.cellForRowAtIndexPath(indexPath)
-            cell!.userInteractionEnabled = false
+            let cell = wandooTable.cellForRowAtIndexPath(indexPath) as! WandooCell
+            
+            //PUT YOUR PUSH CODE HERE FOR FEED
+            print(cell.objectID)
+            //-----------------------
+            
+            cell.userInteractionEnabled = false
         }
     }
 
