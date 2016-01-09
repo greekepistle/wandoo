@@ -2,9 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:ParseStarterProject-Swift.xcodeproj">
+      location = "group:/Users/katsup/Movies/wandoo/mobile/wandoo/Wandoo.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Wandoo.xcodeproj">
    </FileRef>
 </Workspace>
