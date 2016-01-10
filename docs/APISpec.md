@@ -105,7 +105,7 @@ curl -i -X PUT -H "Content-Type: application/json" localhost:8000/api/users/21 -
 
 Name | Notes | Example
 -----|-------|------------|
-offset| The record number to start from. Must be used with limit. | 1 |
+offset| The record number to start from. Must be used with limit. Starts from 0.| 0 |
 limit | Limits the number of return values | 25 |
 hostID | Returns all wandoos of the host identified by the host's userID. Cannot be used with offset and limit.| 222 |
 userID | Returns all wandoos that are 5 miles away from user. | 3345 |
