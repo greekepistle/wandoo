@@ -108,7 +108,7 @@ Name | Notes | Example
 offset| The record number to start from. Must be used with limit. | 1 |
 limit | Limits the number of return values | 25 |
 hostID | Returns all wandoos of the host identified by the host's userID. Cannot be used with offset and limit.| 222 |
-userID | Returns all wandoos that are 5 miles away from user. Currenly cannot be used with offset and limit -- though may choose to do so post-MVP.  | 3345 |
+userID | Returns all wandoos that are 5 miles away from user. | 3345 |
 startTime | ISO:8601 String (use Date.prototype.toJSON()) POST MVP| 2015-12-12T01:30:00.040Z |
 endTime | ISO:8601 String (use Date.prototype.toJSON()) POST MVP| 2015-12-12T02:30:00.040Z |
 postTime | ISO:8601 String (use Date.prototype.toJSON()) POST MVP | 2015-12-12T01:00:00.040Z |
