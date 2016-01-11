@@ -2,7 +2,7 @@ var request = require('supertest'),
     fs = require('fs'),
     db = require('../server/db/db'),
     userData = require('./userData'),
-    wandooTextData = require('./wandooTextData'),
+    wandooTextData = require('./wandooGenerator'),
     locDataGenerator = require('./locDataGenerator'),
     wandooTimeDataGenerator = require('./wandooTimeDataGenerator'),
     config = require('../server/config/config');
@@ -10,11 +10,11 @@ var request = require('supertest'),
 var server = request.agent(config.serverURL);
 
 var numUsers = 6, // max is userData.length
-    numLocations = 33,
-    numWandoos = 33, //max 33, need to add more to wandooTextData if you want more
-    numTimes = 33,
+    numLocations = 1000,
+    numWandoos = 1000, //max 33, need to add more to wandooTextData if you want more
+    numTimes = 1000,
     locSeed = [37.7833669, -122.4088739], // location where you want to centre all locations
-    numInterests = 100,
+    numInterests = 3000,
     wandoosRoomsProportion = 0.5, // proportion of wandoos with rooms
     selectedInterestedRatio = 0.3, // ratio of total selected users in system to total interested users in system
     rejectedInterestedRatio = 0.2; // ratio of total rejected users in system to total interested users in system
@@ -101,7 +101,7 @@ var generateWandoos = function (callback) {
   var generateWandoo = function (i) {
     var wandoo = {
       userID : userIDs[Math.round(Math.random() * (userIDs.length - 1))],
-      text : wandooTextData[i],
+      text : wandooTextData(),
       startTime : wandooTimeData[i][1],
       postTime : wandooTimeData[i][0],
       latitude : locData[i][0],
