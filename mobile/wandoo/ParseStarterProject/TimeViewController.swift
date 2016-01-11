@@ -17,6 +17,7 @@ class TimeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        datePicker.minimumDate = NSDate()
         datePicker.addTarget(self, action: Selector("startDatePickerChanged:"), forControlEvents: UIControlEvents.ValueChanged)
          self.timeButton.tintColor = UIColor(red: 41.0/255.0, green: 121.0/255.0, blue: 255.0/255.0, alpha: 1.0)
     }

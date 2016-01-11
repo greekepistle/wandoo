@@ -27,7 +27,7 @@ class FacebookLoginController: UIViewController, CLLocationManagerDelegate {
     var layerClient: LYRClient!
     var conversationListViewController: ConversationListViewController!
     
-    @IBAction func loginFacebookButtonThatTakesUsToTheLoginAtSafari(sender: AnyObject) {
+    @IBAction func loginFacebookButtonThatTakesUsToTheLoginAtSafari(sender: AnyObject?) {
         PFFacebookUtils.logInInBackgroundWithReadPermissions(["public_profile","user_education_history","user_birthday", "user_work_history","user_friends","user_likes", "email"], block: { (user:PFUser?, error:NSError?) -> Void in
             
             
@@ -56,6 +56,7 @@ class FacebookLoginController: UIViewController, CLLocationManagerDelegate {
                 if let user = user {
                     if user.isNew {
 //                        self.loginLayer()
+                        SVProgressHUD.show()
                         let accessToken = FBSDKAccessToken.currentAccessToken().tokenString
                         self.userModel.storeFBDataIntoParse(user.objectId!, accessToken: accessToken) { () -> Void in
                             
@@ -105,6 +106,7 @@ class FacebookLoginController: UIViewController, CLLocationManagerDelegate {
         if self.navigationController != nil {
             self.navigationController!.navigationBarHidden = true
         }
+        print(FBSDKAccessToken.currentAccessToken() != nil)
     }
     
     //continually spits out user location
@@ -247,6 +249,13 @@ class FacebookLoginController: UIViewController, CLLocationManagerDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+        if FBSDKAccessToken.currentAccessToken() != nil {
+            var overlay = UIView(frame: view.frame)
+            overlay.backgroundColor = UIColor.blackColor()
+            overlay.alpha = 0.8
+            
+            view.addSubview(overlay)
+        }
     }
 }
 

@@ -17,6 +17,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var layerClient: LYRClient!
     var controller: FacebookLoginController!
+    var feedController: ViewController!
+    
+    var userModel = UserModel.sharedUserInstance
     
     // MARK TODO: Before first launch, update LayerAppIDString, ParseAppIDString or ParseClientKeyString values
     // TODO:If LayerAppIDString, ParseAppIDString or ParseClientKeyString are not set, this app will crash"
@@ -34,10 +37,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         setupParse()
         layerClient = LYRClient(appID: LayerAppIDString)
         layerClient.autodownloadMIMETypes = NSSet(objects: ATLMIMETypeImagePNG, ATLMIMETypeImageJPEG, ATLMIMETypeImageJPEGPreview, ATLMIMETypeImageGIF, ATLMIMETypeImageGIFPreview, ATLMIMETypeLocation) as? Set<String>
-        
+        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         // Show View Controller
-        controller = FacebookLoginController()
-        controller.layerClient = layerClient
+//        controller = FacebookLoginController()
+//        controller.layerClient = layerClient
 //        print(layerClient)
         
         PFFacebookUtils.initializeFacebookWithApplicationLaunchOptions(launchOptions)
@@ -52,7 +55,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let notificationSettings:UIUserNotificationSettings = UIUserNotificationSettings(forTypes: notificationTypes, categories: nil)
         UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
         
+        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        self.window!.backgroundColor = UIColor.whiteColor()
+        print(self.window!.backgroundColor)
+        var storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
         //MARK for change PF PUSH Settings - End
+        print("------------",FBSDKAccessToken.currentAccessToken() != nil)
+        if FBSDKAccessToken.currentAccessToken() != nil {
+            loginLayer()
+            
+            
+            
+            var feedController = storyboard.instantiateViewControllerWithIdentifier("initialNav") as! UINavigationController
+            
+            self.window?.rootViewController = feedController
+            self.window?.makeKeyAndVisible()
+            SVProgressHUD.dismiss()
+        } else {
+            
+            var initialViewController = storyboard.instantiateViewControllerWithIdentifier("facebookLogin") as! FacebookLoginController
+            
+            self.window?.rootViewController = initialViewController
+            self.window?.makeKeyAndVisible()
+            SVProgressHUD.dismiss()
+        }
         
         
 //        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
@@ -62,7 +89,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        self.window!.backgroundColor = UIColor.whiteColor()
 //        self.window!.makeKeyAndVisible()
     
-        return true
+        return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
     }
 
     // MARK:- Push Notification Registration
@@ -209,6 +236,119 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationDidBecomeActive(application: UIApplication) {
         FBSDKAppEvents.activateApp()
+    }
+    
+    func loginLayer() {
+        //        SVProgressHUD.show()
+        print("logging in", layerClient)
+        
+        // Connect to Layer
+        // See "Quick Start - Connect" for more details
+        // https://developer.layer.com/docs/quick-start/ios#connect
+        self.layerClient.connectWithCompletion { success, error in
+            if (!success) {
+                print("Failed to connect to Layer: \(error)")
+            } else {
+                let userID: String = PFUser.currentUser()!.objectId!
+                // Once connected, authenticate user.
+                // Check Authenticate step for authenticateLayerWithUserID source
+                self.authenticateLayerWithUserID(userID, completion: { success, error in
+                    if (!success) {
+                        print("Failed Authenticating Layer Client with error:\(error)")
+                    } else {
+                        print("Authenticated")
+                    }
+                })
+            }
+        }
+    }
+    
+    func authenticateLayerWithUserID(userID: NSString, completion: ((success: Bool , error: NSError!) -> Void)!) {
+        // Check to see if the layerClient is already authenticated.
+        if self.layerClient.authenticatedUserID != nil {
+            // If the layerClient is authenticated with the requested userID, complete the authentication process.
+            if self.layerClient.authenticatedUserID == userID {
+                print("Layer Authenticated as User \(self.layerClient.authenticatedUserID)")
+                if completion != nil {
+                    completion(success: true, error: nil)
+                }
+                return
+            } else {
+                //If the authenticated userID is different, then deauthenticate the current client and re-authenticate with the new userID.
+                self.layerClient.deauthenticateWithCompletion { (success: Bool, error: NSError?) in
+                    if error != nil {
+                        self.authenticationTokenWithUserId(userID, completion: { (success: Bool, error: NSError?) in
+                            if (completion != nil) {
+                                completion(success: success, error: error)
+                            }
+                        })
+                    } else {
+                        if completion != nil {
+                            completion(success: true, error: error)
+                        }
+                    }
+                }
+            }
+        } else {
+            // If the layerClient isn't already authenticated, then authenticate.
+            self.authenticationTokenWithUserId(userID, completion: { (success: Bool, error: NSError!) in
+                if completion != nil {
+                    completion(success: success, error: error)
+                }
+            })
+        }
+    }
+    
+    func authenticationTokenWithUserId(userID: NSString, completion:((success: Bool, error: NSError!) -> Void)!) {
+        /*
+        * 1. Request an authentication Nonce from Layer
+        */
+        self.layerClient.requestAuthenticationNonceWithCompletion { (nonceString: String?, error: NSError?) in
+            guard let nonce = nonceString else {
+                if (completion != nil) {
+                    completion(success: false, error: error)
+                }
+                return
+            }
+            
+            if (nonce.isEmpty) {
+                if (completion != nil) {
+                    completion(success: false, error: error)
+                }
+                return
+            }
+            
+            /*
+            * 2. Acquire identity Token from Layer Identity Service
+            */
+            PFCloud.callFunctionInBackground("generateToken", withParameters: ["nonce": nonce, "userID": userID]) { (object:AnyObject?, error: NSError?) -> Void in
+                if error == nil {
+                    let identityToken = object as! String
+                    self.layerClient.authenticateWithIdentityToken(identityToken) { authenticatedUserID, error in
+                        guard let userID = authenticatedUserID else {
+                            if (completion != nil) {
+                                completion(success: false, error: error)
+                            }
+                            return
+                        }
+                        
+                        if (userID.isEmpty) {
+                            if (completion != nil) {
+                                completion(success: false, error: error)
+                            }
+                            return
+                        }
+                        
+                        if (completion != nil) {
+                            completion(success: true, error: nil)
+                        }
+                        print("Layer Authenticated as User: \(userID)")
+                    }
+                } else {
+                    print("Parse Cloud function failed to be called to generate token with error: \(error)")
+                }
+            }
+        }
     }
 }
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="qih-Dc-awY">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -15,7 +15,7 @@
         <!--Profile View Controller-->
         <scene sceneID="Ncs-Bo-DCh">
             <objects>
-                <viewController id="GE1-r1-u3t" customClass="ProfileViewController" customModule="ParseStarterProject_Swift" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="GE1-r1-u3t" customClass="ProfileViewController" customModule="Wandoo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Rlj-Pd-Lfr"/>
                         <viewControllerLayoutGuide type="bottom" id="JXY-k7-cRS"/>
@@ -74,7 +74,7 @@
         <!--Post View Controller-->
         <scene sceneID="tp1-me-Nlj">
             <objects>
-                <viewController id="iS5-sY-owf" customClass="PostViewController" customModule="ParseStarterProject_Swift" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="iS5-sY-owf" customClass="PostViewController" customModule="Wandoo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="5Bt-Rj-7r6"/>
                         <viewControllerLayoutGuide type="bottom" id="Awk-Vm-pxL"/>
@@ -170,7 +170,7 @@
         <!--People View Controller-->
         <scene sceneID="eCv-ep-pzj">
             <objects>
-                <viewController id="alw-hr-aHg" customClass="PeopleViewController" customModule="ParseStarterProject_Swift" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="alw-hr-aHg" customClass="PeopleViewController" customModule="Wandoo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="rUl-Wa-8pI"/>
                         <viewControllerLayoutGuide type="bottom" id="ToV-Th-pun"/>
@@ -272,14 +272,14 @@
         <!--Settings Controller-->
         <scene sceneID="U7p-YT-ZLt">
             <objects>
-                <tableViewController id="xTP-PA-TSO" customClass="SettingsController" customModule="ParseStarterProject_Swift" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="xTP-PA-TSO" customClass="SettingsController" customModule="Wandoo" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleAspectFit" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="cuX-Mp-SPI">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="bottomRight" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="khJ-sc-NNt">
-                                <rect key="frame" x="0.0" y="28" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="92" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="khJ-sc-NNt" id="C4a-rt-hHO">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -304,7 +304,7 @@
         <!--Swipe Controller-->
         <scene sceneID="xTD-lm-beX">
             <objects>
-                <viewController id="LF4-Yy-DDe" customClass="SwipeController" customModule="ParseStarterProject_Swift" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="LF4-Yy-DDe" customClass="SwipeController" customModule="Wandoo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ou5-te-ImH"/>
                         <viewControllerLayoutGuide type="bottom" id="j96-4a-RsU"/>
@@ -323,7 +323,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="ParseStarterProject_Swift" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Wandoo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -446,7 +446,7 @@
                                 <color key="backgroundColor" red="0.8784313725490196" green="0.8784313725490196" blue="0.8784313725490196" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="sectionIndexBackgroundColor" red="0.8784313725490196" green="0.8784313725490196" blue="0.8784313725490196" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="wandooCell" rowHeight="173" id="pnr-KV-Mmk" customClass="WandooCell" customModule="ParseStarterProject_Swift" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="wandooCell" rowHeight="173" id="pnr-KV-Mmk" customClass="WandooCell" customModule="Wandoo" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="328" height="173"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pnr-KV-Mmk" id="D0T-fk-2jN">
@@ -638,7 +638,7 @@
         <!--Details View Controller-->
         <scene sceneID="HRX-Gw-VkV">
             <objects>
-                <viewController id="a7A-M2-OfK" customClass="DetailsViewController" customModule="ParseStarterProject_Swift" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="a7A-M2-OfK" customClass="DetailsViewController" customModule="Wandoo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="lKu-xN-Wec"/>
                         <viewControllerLayoutGuide type="bottom" id="7n2-qK-lXR"/>
@@ -738,7 +738,7 @@
         <!--FacebookLoginController-->
         <scene sceneID="m45-gS-bIz">
             <objects>
-                <viewController storyboardIdentifier="facebookLogin" title="FacebookLoginController" id="qih-Dc-awY" customClass="FacebookLoginController" customModule="ParseStarterProject_Swift" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="facebookLogin" title="FacebookLoginController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="qih-Dc-awY" customClass="FacebookLoginController" customModule="Wandoo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="zBC-5R-IRO"/>
                         <viewControllerLayoutGuide type="bottom" id="t6a-LW-n2H"/>
@@ -757,7 +757,7 @@
                                     <action selector="loginFacebookButtonThatTakesUsToTheLoginAtSafari:" destination="qih-Dc-awY" eventType="touchUpInside" id="seu-Ec-F76"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Wandoo.png" translatesAutoresizingMaskIntoConstraints="NO" id="yZE-cA-GR7">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Wandoo.png" translatesAutoresizingMaskIntoConstraints="NO" id="yZE-cA-GR7">
                                 <rect key="frame" x="40" y="55" width="241" height="54"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="54" id="tcF-wS-cXg"/>
@@ -782,31 +782,31 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MAP-ul-j4w" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4884" y="161"/>
+            <point key="canvasLocation" x="4376" y="247"/>
         </scene>
         <!--My Wandoo View Controller-->
         <scene sceneID="czi-lg-MuD">
             <objects>
-                <tableViewController id="HcV-Jv-mYw" customClass="MyWandooViewController" customModule="ParseStarterProject_Swift" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="HcV-Jv-mYw" customClass="MyWandooViewController" customModule="Wandoo" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="143" sectionHeaderHeight="28" sectionFooterHeight="28" id="e7o-qy-Ulw">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="myWandooCell" rowHeight="143" id="bs3-CR-khV" customClass="MyWandooCell" customModule="ParseStarterProject_Swift" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="320" height="143"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="myWandooCell" rowHeight="143" id="bs3-CR-khV" customClass="MyWandooCell" customModule="Wandoo" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="92" width="320" height="143"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bs3-CR-khV" id="so2-O0-39r">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="142"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7B2-0Q-oYU">
+                                        <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7B2-0Q-oYU">
                                             <rect key="frame" x="8" y="8" width="304" height="134"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bw9-Eu-aNJ">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bw9-Eu-aNJ">
                                                     <rect key="frame" x="28" y="79" width="249" height="55"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Wd-wR-Dly">
@@ -878,14 +878,14 @@
         <!--Accept Or Reject View Controller-->
         <scene sceneID="cdA-bS-auK">
             <objects>
-                <tableViewController id="WHd-vo-GQn" customClass="AcceptOrRejectViewController" customModule="ParseStarterProject_Swift" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="WHd-vo-GQn" customClass="AcceptOrRejectViewController" customModule="Wandoo" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="196" sectionHeaderHeight="28" sectionFooterHeight="28" id="Qej-y8-tFK">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.85030777710000005" green="0.85030777710000005" blue="0.85030777710000005" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="interestedCell" rowHeight="196" id="eqh-P4-qBe" customClass="InterestedCell" customModule="ParseStarterProject_Swift" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="320" height="196"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="interestedCell" rowHeight="196" id="eqh-P4-qBe" customClass="InterestedCell" customModule="Wandoo" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="92" width="320" height="196"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eqh-P4-qBe" id="klB-DA-5yu">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="195"/>
@@ -1017,7 +1017,7 @@
         <!--Chat User View Controller-->
         <scene sceneID="xGk-1p-oxt">
             <objects>
-                <viewController id="Tj8-pm-6tv" customClass="ChatUserViewController" customModule="ParseStarterProject_Swift" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Tj8-pm-6tv" customClass="ChatUserViewController" customModule="Wandoo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="r6K-Ug-6K3"/>
                         <viewControllerLayoutGuide type="bottom" id="G33-9l-KKk"/>
@@ -1047,7 +1047,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IfQ-3t-T84" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4749" y="884"/>
+            <point key="canvasLocation" x="4819" y="994"/>
         </scene>
         <!--Table View Controller-->
         <scene sceneID="bD6-la-Bvk">
@@ -1076,12 +1076,12 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZQY-Bv-x8O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4440" y="892"/>
+            <point key="canvasLocation" x="4440" y="994"/>
         </scene>
         <!--Chat View Controller-->
         <scene sceneID="Rxp-00-u12">
             <objects>
-                <viewController id="Icf-DR-ry9" customClass="ChatViewController" customModule="ParseStarterProject_Swift" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Icf-DR-ry9" customClass="ChatViewController" customModule="Wandoo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="KdO-sW-Etq"/>
                         <viewControllerLayoutGuide type="bottom" id="V84-Ve-zBZ"/>
@@ -1181,9 +1181,9 @@
         <!--Navigation Controller-->
         <scene sceneID="vYf-vO-lWg">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="UcQ-As-2ES" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="initialNav" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="UcQ-As-2ES" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" backIndicatorImage="B2617F7C-281C-4B4F-8773-86660AED6453" id="LIG-kr-Btz">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" backIndicatorImage="35C26CE1-222A-4B71-ACB0-29F33308255D" id="LIG-kr-Btz">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -1196,12 +1196,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fOF-Yn-4u3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5132" y="115"/>
+            <point key="canvasLocation" x="5082" y="281"/>
         </scene>
         <!--Time View Controller-->
         <scene sceneID="d03-63-TeY">
             <objects>
-                <viewController id="EQg-eG-Ch2" customClass="TimeViewController" customModule="ParseStarterProject_Swift" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="EQg-eG-Ch2" customClass="TimeViewController" customModule="Wandoo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="tue-Ux-M6B"/>
                         <viewControllerLayoutGuide type="bottom" id="nuU-vI-2sO"/>
@@ -1210,16 +1210,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="15" translatesAutoresizingMaskIntoConstraints="NO" id="RdB-VP-b5V">
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="15" translatesAutoresizingMaskIntoConstraints="NO" id="RdB-VP-b5V">
                                 <rect key="frame" x="0.0" y="208" width="324" height="151"/>
                                 <date key="date" timeIntervalSinceReferenceDate="471942631.135037">
                                     <!--2015-12-16 07:10:31 +0000-->
-                                </date>
-                                <date key="minimumDate" timeIntervalSinceReferenceDate="-949410000">
-                                    <!--1970-12-01 11:00:00 +0000-->
-                                </date>
-                                <date key="maximumDate" timeIntervalSinceReferenceDate="1167562800">
-                                    <!--2037-12-31 11:00:00 +0000-->
                                 </date>
                             </datePicker>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ncx-yy-hT0">
@@ -1349,7 +1343,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="B2617F7C-281C-4B4F-8773-86660AED6453" width="62" height="64">
+        <image name="35C26CE1-222A-4B71-ACB0-29F33308255D" width="62" height="64">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOzxYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBMU
 GR4fJSYsLzU4VSRudWxs1QkKCwwNDg8QERJWTlNTaXplViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBz
@@ -1375,6 +1369,6 @@ Afg
         <image name="time" width="15" height="15"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="6Yl-GL-7dd"/>
+        <segue reference="JT1-qN-DeI"/>
     </inferredMetricsTieBreakers>
 </document>

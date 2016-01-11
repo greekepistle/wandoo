@@ -10,7 +10,7 @@ import UIKit
 import Parse
 import FBSDKCoreKit
 import ParseFacebookUtilsV4
-//import SVProgressHUD
+import SVProgressHUD
 import Atlas
 
 
@@ -53,10 +53,16 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         super.viewDidLoad()
         layerClient = delegate.layerClient
         // Do any additional setup after loading the view, typically from a nib.
-
-        userModel.postLocation { () -> Void in
-            self.retrieveWandoos()
-        }
+        let fbID = FBSDKAccessToken.currentAccessToken().userID
+        print("reaching here")
+        SVProgressHUD.show()
+        self.userModel.getUserInfo(fbID, completion: { (result) -> Void in
+            print(result)
+            self.userModel.userID = result["userID"]! as? Int
+            self.userModel.postLocation { () -> Void in
+                self.retrieveWandoos()
+            }
+        })
         self.navigationItem.hidesBackButton = true
     }
 
@@ -167,6 +173,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 self.allWandoosArray = allWandoos as! [NSDictionary]
 
                 dispatch_async(dispatch_get_main_queue()){
+                    SVProgressHUD.dismiss()
                     self.wandooTable.reloadData()
                 }
             })

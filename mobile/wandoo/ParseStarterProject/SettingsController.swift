@@ -9,13 +9,18 @@
 import UIKit
 import FBSDKCoreKit
 import ParseFacebookUtilsV4
+import LayerKit
 
 class SettingsController: UITableViewController {
+    
+    let delegate = UIApplication.sharedApplication().delegate as! AppDelegate
+    var layerClient: LYRClient!
     
     var settings = ["setting1", "setting2", "setting3", "Log Out"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        layerClient = delegate.layerClient
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -51,7 +56,12 @@ class SettingsController: UITableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         if (indexPath.row == 3) {
-            print("Current user token=\(FBSDKAccessToken.currentAccessToken().tokenString)")
+//            print("Current user token=\(FBSDKAccessToken.currentAccessToken().tokenString)")
+            PFUser.logOut()
+            layerClient.deauthenticateWithCompletion({ (success, error) -> Void in
+                print("successfully logged out of layer")
+            })
+            
             let loginManager = FBSDKLoginManager()
             loginManager.logOut()
             print("User Logged Out!")
