@@ -44,7 +44,7 @@ var deleteQueryCB = function (err, result, res) {
 
 var insertRoomAndConversation = function (wandooID, userIDs, callback) {
   var expiryTime = new Date();
-  expiryTime.setDate(expiryTime.getDate() + 1);
+  expiryTime.setDate(expiryTime.getDate() + roomExpiry);
   util.isoDateToMySQL(expiryTime.toJSON());
 
   var objectIDs = [];

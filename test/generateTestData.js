@@ -9,8 +9,8 @@ var request = require('supertest'),
 
 var server = request.agent(config.serverURL);
 
-var numUsers = 3, // max is userData.length
-    numWandoos = 5,
+var numUsers = 1000, // max is userData.length
+    numWandoos = 10000,
     // location where you want to centre all locations
     // locSeed = [37.7833669, -122.4088739], // SF
     locSeed = [32.8724048054, -117.2019943782], // San Diego
