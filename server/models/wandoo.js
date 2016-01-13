@@ -24,6 +24,7 @@ module.exports = {
 
     db.getConnection(function (err, con) {
       if (err) {
+        con.release();
         callback(err);
       } else {
         db.query(qs1, userID, function (err, results1) {
