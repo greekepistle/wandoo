@@ -12,65 +12,37 @@ import MapKit
 class DetailsViewController: UIViewController {
 
     var wandooInfo: NSDictionary!
-    var interestedModel = InterestedModel()
     var userModel = UserModel()
     var wandooModel = WandooModel()
     
-    @IBOutlet weak var mapView: MKMapView!
-
     @IBOutlet weak var profilePicture: UIImageView!
-    @IBOutlet weak var profileView: UIView!
-    @IBOutlet weak var message: UILabel!
-    @IBOutlet weak var location: UILabel!
-    @IBOutlet weak var time: UILabel!
-    @IBOutlet weak var numPeople: UILabel!
-    
-    @IBAction func showInterestButton(sender: UIButton) {
-        let wandooID = wandooInfo["wandooID"] as! Int
-        interestedModel.showInterest(wandooID)
-    }
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        let gesture = UITapGestureRecognizer(target: self, action: "segueToProfile:")
-        profileView.addGestureRecognizer(gesture)
+        print(wandooInfo)
         
-        self.profilePicture.image = wandooInfo["profile_picture"] as? UIImage
-        self.message.text = wandooInfo["text"] as? String
-        self.location.text = String(wandooInfo["distance"]!) + " miles away"
-        self.time.text = wandooModel.checkAndFormatWandooDate((wandooInfo["start_time"] as? String)!)
-        self.numPeople.text = String(wandooInfo["num_people"]!) + " people"
-        
-        
+        let userID = self.wandooInfo["userID"] as! Int
+        userModel.getUserInfoByUserID(userID) { (result) -> Void in
+            let picString = result["profile_picture"] as! String
+            let picURL = NSURL(string: picString)
+            if let pic = NSData(contentsOfURL: picURL!) {
+                 dispatch_async(dispatch_get_main_queue()){
+                    self.profilePicture.image = UIImage(data: pic)
+                    self.profilePicture.layer.borderWidth = 1
+                    self.profilePicture.layer.masksToBounds = false
+                    self.profilePicture.layer.borderColor = UIColor.whiteColor().CGColor
+                    self.profilePicture.layer.cornerRadius = self.profilePicture.frame.height/2
+                    self.profilePicture.layer.cornerRadius = self.profilePicture.frame.width/2
+                    self.profilePicture.clipsToBounds = true
+                }
+            }
+        }
     }
     
-    
-    
-    func segueToProfile(sender:UITapGestureRecognizer) {
-        performSegueWithIdentifier("fromDetails", sender: nil)
-    }
-    
-//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        if segue.identifier == "fromDetails" {
-//            _ = segue.destinationViewController as! HostProfileViewController
-//        }
-//    }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
