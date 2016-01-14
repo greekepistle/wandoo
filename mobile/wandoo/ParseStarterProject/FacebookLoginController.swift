@@ -27,6 +27,8 @@ class FacebookLoginController: UIViewController, CLLocationManagerDelegate {
     var layerClient: LYRClient!
     var conversationListViewController: ConversationListViewController!
     
+    @IBOutlet weak var titleWandoo: UIImageView!
+    
     @IBAction func loginFacebookButtonThatTakesUsToTheLoginAtSafari(sender: AnyObject?) {
         PFFacebookUtils.logInInBackgroundWithReadPermissions(["public_profile","user_education_history","user_birthday", "user_work_history","user_friends","user_likes", "email"], block: { (user:PFUser?, error:NSError?) -> Void in
             
@@ -102,6 +104,17 @@ class FacebookLoginController: UIViewController, CLLocationManagerDelegate {
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
+        
+        self.titleWandoo.transform = CGAffineTransformMakeScale(0.1, 0.1)
+        UIView.animateWithDuration(2.0,
+            delay: 0,
+            usingSpringWithDamping: 0.2,
+            initialSpringVelocity: 6.0,
+            options: UIViewAnimationOptions.AllowUserInteraction,
+            animations: {
+                self.titleWandoo.transform = CGAffineTransformIdentity
+            }, completion: nil)
+        
 
         if self.navigationController != nil {
             self.navigationController!.navigationBarHidden = true

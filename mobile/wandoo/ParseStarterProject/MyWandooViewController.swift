@@ -34,10 +34,31 @@ class MyWandooViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let wandooCell = tableView.dequeueReusableCellWithIdentifier("myWandooCell", forIndexPath: indexPath) as! MyWandooCell
         
-        wandooCell.myWandooTitle.text = self.myWandoosArray[indexPath.row]["text"] as? String
-        wandooCell.myWandooTime.text = self.wandooModel.checkAndFormatWandooDate((self.myWandoosArray[indexPath.row]["start_time"] as? String)!)
-        wandooCell.myWandooPeople.text = "With " + String(self.myWandoosArray[indexPath.row]["num_people"]!) + " people"
-    
+        
+        let userID = self.myWandoosArray[indexPath.row]["userID"] as! Int
+
+        userModel.getUserInfoByUserID(userID) { (result) -> Void in
+            let picString = result["profile_picture"] as! String
+            let picURL = NSURL(string: picString)
+            if let pic = NSData(contentsOfURL: picURL!) {
+                dispatch_async(dispatch_get_main_queue()){
+                    wandooCell.profileImage.image = UIImage(data: pic)
+                    wandooCell.profileImage.layer.borderWidth = 1
+                    wandooCell.profileImage.layer.masksToBounds = false
+                    wandooCell.profileImage.layer.borderColor = UIColor.whiteColor().CGColor
+                    wandooCell.profileImage.layer.cornerRadius = wandooCell.profileImage.frame.height/2
+                    wandooCell.profileImage.layer.cornerRadius = wandooCell.profileImage.frame.width/2
+                    wandooCell.profileImage.clipsToBounds = true
+                    wandooCell.myWandooTitle.text = self.myWandoosArray[indexPath.row]["text"] as? String
+                    wandooCell.myWandooTime.text = self.wandooModel.checkAndFormatWandooDate((self.myWandoosArray[indexPath.row]["start_time"] as? String)!)
+                    wandooCell.myWandooPeople.text = String(self.myWandoosArray[indexPath.row]["num_people"]!) + " people"
+                }
+            }
+        }
+        
+        wandooCell.cardView.layer.borderWidth = 1
+        wandooCell.cardView.layer.borderColor = UIColor.lightGrayColor().CGColor
+        
         return wandooCell
     }
 
