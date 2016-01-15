@@ -15,6 +15,8 @@ class MyWandooCell: UITableViewCell {
     @IBOutlet weak var myWandooTime: UILabel!
     
     @IBOutlet weak var profileImage: UIImageView!
+    
     @IBOutlet weak var cardView: UIView!
+    
     @IBOutlet weak var myWandooPeople: UILabel!
 }
