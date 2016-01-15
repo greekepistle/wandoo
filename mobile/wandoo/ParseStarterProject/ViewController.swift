@@ -112,7 +112,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         wandooCell.cardView.layer.borderColor = UIColor.lightGrayColor().CGColor
 
         wandooCell.heartButton.addTarget(self, action: Selector("tapped:"), forControlEvents: .TouchUpInside)
-        let origImage = UIImage(named: "heart.png")
+        let origImage = UIImage(named: "star.png")
         let tintedImage = origImage?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
         wandooCell.heartButton.setImage(tintedImage, forState: UIControlState.Normal)
         wandooCell.heartButton.tintColor = UIColor.lightGrayColor()
@@ -123,7 +123,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tapped(sender: UIButton) {
         if sender.selected {
             // deselect
-            sender.tintColor = UIColor.redColor()
+            sender.tintColor = UIColor.yellowColor()
         } else {
             // select with animation
         }
@@ -133,9 +133,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let wandooID = allWandoosArray[sender.tag]["wandooID"] as! Int
         interestedModel.showInterest(wandooID)
 
-        sender.tintColor = UIColor.redColor()
+        sender.tintColor = UIColor.yellowColor()
 
-        print("heart")
+        print("star power")
         sender.userInteractionEnabled = false
     }
 
