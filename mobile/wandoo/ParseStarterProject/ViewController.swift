@@ -135,10 +135,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
         sender.tintColor = UIColor.redColor()
 
-        let indexPath = NSIndexPath(forRow: sender.tag, inSection: 0)
-        let cell = wandooTable.cellForRowAtIndexPath(indexPath) as! WandooCell
         print("heart")
-        cell.userInteractionEnabled = false
+        sender.userInteractionEnabled = false
     }
 
     //number of sections in table.. we only have 1 section of wandoos
