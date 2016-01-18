@@ -17,7 +17,10 @@ class TimeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let calendar = NSCalendar.currentCalendar()
+        datePicker.date = calendar.dateByAddingUnit(.Minute, value: 30, toDate: NSDate(), options: [])!
         datePicker.minimumDate = NSDate()
+        datePicker.maximumDate = calendar.dateByAddingUnit(.Minute, value: 10080, toDate: NSDate(), options: [])!
         datePicker.addTarget(self, action: Selector("startDatePickerChanged:"), forControlEvents: UIControlEvents.ValueChanged)
          self.timeButton.tintColor = UIColor(red: 41.0/255.0, green: 121.0/255.0, blue: 255.0/255.0, alpha: 1.0)
     }
@@ -29,7 +32,7 @@ class TimeViewController: UIViewController {
     @IBAction func postButton(sender: UIButton) {
         wandooModel.startTime = timePickerToString(datePicker)
         userModel.postLocation { () -> Void in
-            print("suck it")
+            print("usermodel postLocation it")
         }
             
         wandooModel.postWandoo { (result) -> Void in
