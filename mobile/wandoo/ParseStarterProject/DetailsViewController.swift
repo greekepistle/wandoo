@@ -61,7 +61,7 @@ class DetailsViewController: UIViewController {
                 }
                 
                 if let edu = result["institution_name"]! as? String {
-                    self.education.text! += "\n" + edu
+                    self.education.text! = edu
                 } else {
                     self.education.text = ""
                 }

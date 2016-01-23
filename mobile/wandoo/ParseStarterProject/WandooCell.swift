@@ -28,6 +28,5 @@ class WandooCell: UITableViewCell {
     
     @IBOutlet weak var cardView: UIView!
     
-    @IBOutlet weak var heartButton: UIButton!
     var objectID: String?
 }
