@@ -31,6 +31,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     var ignoreFlag = true
 
+    @IBOutlet weak var wandooButton: UIButton!
     @IBAction func presentChat(sender: UIButton) {
         self.presentConversationListViewController()
     }
@@ -63,8 +64,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 self.retrieveWandoos()
             }
         })
+        
+        self.wandooButton.layer.borderWidth = 1
+        self.wandooButton.layer.borderColor = UIColor.lightGrayColor().CGColor
 
-        navigationItem.titleView = UIImageView(image: UIImage(named: "wandoos"))
+        navigationItem.titleView = UIImageView(image: UIImage(named: "Wandoo"))
 
         userModel.postLocation { () -> Void in
             self.retrieveWandoos()
@@ -103,40 +107,22 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
         }
 
-//        wandooCell.showInterestButton.tag = indexPath.row
-//        wandooCell.showInterestButton.layer.borderWidth = 1
-//        wandooCell.showInterestButton.layer.borderColor = UIColor.lightGrayColor().CGColor
-//        wandooCell.showInterestButton.addTarget(self, action: "toggleInterest:", forControlEvents: .TouchUpInside)
+        wandooCell.showInterestButton.tag = indexPath.row
+        wandooCell.showInterestButton.addTarget(self, action: "toggleInterest:", forControlEvents: .TouchUpInside)
 
         wandooCell.cardView.layer.borderWidth = 1
         wandooCell.cardView.layer.borderColor = UIColor.lightGrayColor().CGColor
 
-        wandooCell.heartButton.addTarget(self, action: Selector("tapped:"), forControlEvents: .TouchUpInside)
-        let origImage = UIImage(named: "star.png")
-        let tintedImage = origImage?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
-        wandooCell.heartButton.setImage(tintedImage, forState: UIControlState.Normal)
-        wandooCell.heartButton.tintColor = UIColor.lightGrayColor()
-
         return wandooCell
     }
 
-    func tapped(sender: UIButton) {
-        if sender.selected {
-            // deselect
-            sender.tintColor = UIColor.yellowColor()
-        } else {
-            // select with animation
-        }
-    }
-
-    @IBAction func heartInterest(sender: UIButton) {
+    @IBAction func toggleInterest(sender: UIButton) {
         let wandooID = allWandoosArray[sender.tag]["wandooID"] as! Int
         interestedModel.showInterest(wandooID)
-
-        sender.tintColor = UIColor.yellowColor()
-
-        print("star power")
+        sender.backgroundColor = UIColor(red: 100.0/255.0, green: 181.0/255.0, blue: 246.0/255.0, alpha: 0.5)
         sender.userInteractionEnabled = false
+        
+
     }
 
     //number of sections in table.. we only have 1 section of wandoos

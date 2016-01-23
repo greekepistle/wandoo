@@ -62,6 +62,15 @@ class PostViewController: UIViewController, UITextFieldDelegate {
         
     }
     
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange,
+        replacementString string: String) -> Bool {
+        let maxLength = 32
+        let currentString: NSString = textField.text!
+        let newString: NSString =
+        currentString.stringByReplacingCharactersInRange(range, withString: string)
+        return newString.length <= maxLength
+    }
+    
     func textFieldDidEndEditing(textField: UITextField) {
         self.view.layoutIfNeeded()
         
