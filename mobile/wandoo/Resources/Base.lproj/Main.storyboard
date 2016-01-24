@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="npS-g9-Igu">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
@@ -682,13 +682,13 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C1l-g3-qtl">
                                 <rect key="frame" x="110" y="292" width="102" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Age" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3KQ-Lk-wCL">
                                 <rect key="frame" x="113" y="329" width="94" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hIo-nA-Apw">
@@ -696,13 +696,13 @@
                                 <string key="text">Label
 </string>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fuF-nM-lMS">
                                 <rect key="frame" x="27" y="407" width="266" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -738,6 +738,36 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gzu-d2-Xh6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="6294" y="77"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Yvt-bd-siI">
+            <objects>
+                <viewController id="npS-g9-Igu" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="vab-mS-dxQ"/>
+                        <viewControllerLayoutGuide type="bottom" id="AB4-k1-bJn"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Cln-Mx-f8X">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="wandoo-logo (1)" translatesAutoresizingMaskIntoConstraints="NO" id="NEh-fm-QPb">
+                                <rect key="frame" x="0.0" y="184" width="320" height="200"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="NEh-fm-QPb" firstAttribute="leading" secondItem="Cln-Mx-f8X" secondAttribute="leadingMargin" constant="-20" id="AOw-YS-9Kr"/>
+                            <constraint firstItem="AB4-k1-bJn" firstAttribute="top" secondItem="NEh-fm-QPb" secondAttribute="bottom" constant="184" id="b0f-pE-enN"/>
+                            <constraint firstItem="NEh-fm-QPb" firstAttribute="top" secondItem="vab-mS-dxQ" secondAttribute="bottom" constant="164" id="bSo-UG-ojf"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="NEh-fm-QPb" secondAttribute="trailing" constant="-20" id="ihf-fI-ppb"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ONO-Nb-W4d" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3989" y="433"/>
         </scene>
         <!--FacebookLoginController-->
         <scene sceneID="m45-gS-bIz">
@@ -1217,7 +1247,7 @@
             <objects>
                 <navigationController storyboardIdentifier="initialNav" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="UcQ-As-2ES" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" backIndicatorImage="86540647-565F-4BB8-A91B-2A5FD3A73FA3" id="LIG-kr-Btz">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" backIndicatorImage="A260F927-68F8-497E-A7BE-2F4B5C42AEDD" id="LIG-kr-Btz">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -1377,7 +1407,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="86540647-565F-4BB8-A91B-2A5FD3A73FA3" width="62" height="64">
+        <image name="A260F927-68F8-497E-A7BE-2F4B5C42AEDD" width="62" height="64">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOzxYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBMU
 GR4fJSYsLzU4VSRudWxs1QkKCwwNDg8QERJWTlNTaXplViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBz
@@ -1401,6 +1431,7 @@ Afg
         <image name="people" width="16" height="16"/>
         <image name="people darken" width="16" height="16"/>
         <image name="time" width="15" height="15"/>
+        <image name="wandoo-logo (1)" width="400" height="201"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="6Yl-GL-7dd"/>
