@@ -751,11 +751,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="wandoo_logo" translatesAutoresizingMaskIntoConstraints="NO" id="V8C-He-RcM">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="wandoo_logo" translatesAutoresizingMaskIntoConstraints="NO" id="V8C-He-RcM">
                                 <rect key="frame" x="0.0" y="168" width="320" height="232"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="V8C-He-RcM" secondAttribute="trailing" constant="-20" id="4yp-Ky-zTV"/>
+                            <constraint firstItem="V8C-He-RcM" firstAttribute="leading" secondItem="nPr-aa-ht7" secondAttribute="leadingMargin" constant="-20" id="FCX-Ze-gEj"/>
+                            <constraint firstItem="V8C-He-RcM" firstAttribute="top" secondItem="GH7-Xl-8R8" secondAttribute="bottom" constant="148" id="hMJ-K5-hYk"/>
+                            <constraint firstItem="5eR-8C-NqI" firstAttribute="top" secondItem="V8C-He-RcM" secondAttribute="bottom" constant="168" id="xnF-Xe-jtg"/>
+                        </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                 </viewController>
@@ -1241,7 +1247,7 @@
             <objects>
                 <navigationController storyboardIdentifier="initialNav" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="UcQ-As-2ES" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" backIndicatorImage="D873B977-F12C-4508-867B-E3333F9DA773" id="LIG-kr-Btz">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" backIndicatorImage="7CF5A6D5-82D9-40D7-BDC3-A4DE8099A7C6" id="LIG-kr-Btz">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -1401,7 +1407,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="D873B977-F12C-4508-867B-E3333F9DA773" width="62" height="64">
+        <image name="7CF5A6D5-82D9-40D7-BDC3-A4DE8099A7C6" width="62" height="64">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOzxYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBMU
 GR4fJSYsLzU4VSRudWxs1QkKCwwNDg8QERJWTlNTaXplViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBz
