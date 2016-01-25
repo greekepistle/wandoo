@@ -12,10 +12,9 @@ import FBSDKCoreKit
 import ParseFacebookUtilsV4
 import SVProgressHUD
 import Atlas
-import CoreData
 
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     let delegate = UIApplication.sharedApplication().delegate as! AppDelegate
 
@@ -31,8 +30,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var interestedModel = InterestedModel()
 
     var ignoreFlag = true
-    
-    var locationManager = CLLocationManager()
 
     @IBOutlet weak var wandooButton: UIButton!
     @IBAction func presentChat(sender: UIButton) {
@@ -55,11 +52,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.startUpdatingLocation()
-        
         layerClient = delegate.layerClient
         // Do any additional setup after loading the view, typically from a nib.
         let fbID = FBSDKAccessToken.currentAccessToken().userID
@@ -114,40 +106,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             }
 
         }
-        
+
         wandooCell.showInterestButton.tag = indexPath.row
         wandooCell.showInterestButton.addTarget(self, action: "toggleInterest:", forControlEvents: .TouchUpInside)
-        
-        let request = NSFetchRequest(entityName: "Interested")
-        let context: NSManagedObjectContext = delegate.managedObjectContext
-        request.returnsObjectsAsFaults = false;
-        
-        let results: NSArray = try! context.executeFetchRequest(request)
-        let wandooID = allWandoosArray[indexPath.row]["wandooID"] as! Int
-        
-//        for res in results {
-//            print(res.valueForKey("wandooID"))
-//            print(res.valueForKey("wandooID") as! Int == wandooID)
-//            if res.valueForKey("wandooID") as! Int == wandooID {
-//                dispatch_async(dispatch_get_main_queue()) {
-//                    wandooCell.showInterestButton.backgroundColor = UIColor(red: 100.0/255.0, green: 181.0/255.0, blue: 246.0/255.0, alpha: 0.5)
-//                    wandooCell.showInterestButton.userInteractionEnabled = false
-//                }
-//            } else {
-//                dispatch_async(dispatch_get_main_queue()) {
-//                    wandooCell.showInterestButton.backgroundColor = UIColor(white:0.88, alpha:1.0)
-//                    wandooCell.showInterestButton.userInteractionEnabled = true
-//                }
-//            }
-//        }
-        
-        if let _ = userModel.interestedWandooIDs.objectForKey(wandooID) {
-            wandooCell.showInterestButton.backgroundColor = UIColor(red: 100.0/255.0, green: 181.0/255.0, blue: 246.0/255.0, alpha: 0.5)
-            wandooCell.showInterestButton.userInteractionEnabled = false
-        } else {
-            wandooCell.showInterestButton.backgroundColor = UIColor(white:0.88, alpha:1.0)
-            wandooCell.showInterestButton.userInteractionEnabled = true
-        }
 
         wandooCell.cardView.layer.borderWidth = 1
         wandooCell.cardView.layer.borderColor = UIColor.lightGrayColor().CGColor
@@ -160,22 +121,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         interestedModel.showInterest(wandooID)
         sender.backgroundColor = UIColor(red: 100.0/255.0, green: 181.0/255.0, blue: 246.0/255.0, alpha: 0.5)
         sender.userInteractionEnabled = false
+        
 
-//        let context: NSManagedObjectContext = delegate.managedObjectContext
-//        let addWandooID = NSEntityDescription.insertNewObjectForEntityForName("Interested", inManagedObjectContext: context) as NSManagedObject
-//        addWandooID.setValue(wandooID, forKey: "wandooID")
-        
-        userModel.interestedWandooIDs[wandooID] = true
-
-    }
-    
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
-        let userLocation:CLLocation = locations[0]
-        
-        userModel.latitude = userLocation.coordinate.latitude
-        userModel.longitude = userLocation.coordinate.longitude
-        
     }
 
     //number of sections in table.. we only have 1 section of wandoos

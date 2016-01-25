@@ -19,7 +19,6 @@
 		10348A701C2DF4FF00CA593D /* InterestedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10348A6F1C2DF4FF00CA593D /* InterestedViewController.swift */; };
 		10348A721C2F57BC00CA593D /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10348A711C2F57BC00CA593D /* DetailsViewController.swift */; };
 		10348A741C3079F100CA593D /* HostProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10348A731C3079F000CA593D /* HostProfileViewController.swift */; };
-		10F4192B1C556A1F00AA1F38 /* UserModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 10F419291C556A1F00AA1F38 /* UserModel.xcdatamodeld */; };
 		10F9FDE41C17BC9D00D3C4CC /* FacebookLoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F9FDE31C17BC9D00D3C4CC /* FacebookLoginController.swift */; };
 		10F9FDE61C17DFF700D3C4CC /* SwipeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F9FDE51C17DFF700D3C4CC /* SwipeController.swift */; };
 		10F9FDEC1C18AFBB00D3C4CC /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F9FDEB1C18AFBB00D3C4CC /* SettingsController.swift */; };
@@ -61,7 +60,6 @@
 		10348A6F1C2DF4FF00CA593D /* InterestedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterestedViewController.swift; sourceTree = "<group>"; };
 		10348A711C2F57BC00CA593D /* DetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		10348A731C3079F000CA593D /* HostProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HostProfileViewController.swift; sourceTree = "<group>"; };
-		10F4192A1C556A1F00AA1F38 /* UserModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UserModel.xcdatamodel; sourceTree = "<group>"; };
 		10F9FDE31C17BC9D00D3C4CC /* FacebookLoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookLoginController.swift; sourceTree = "<group>"; };
 		10F9FDE51C17DFF700D3C4CC /* SwipeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeController.swift; sourceTree = "<group>"; };
 		10F9FDEB1C18AFBB00D3C4CC /* SettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
@@ -170,7 +168,6 @@
 			children = (
 				10F9FE741C1B95D400D3C4CC /* images */,
 				81BA814A1A49DA1800E65899 /* AppDelegate.swift */,
-				10F419291C556A1F00AA1F38 /* UserModel.xcdatamodeld */,
 				10F9FDE31C17BC9D00D3C4CC /* FacebookLoginController.swift */,
 				81BA814C1A49DA1800E65899 /* ViewController.swift */,
 				102D13AA1C3477D900B823CD /* RoomManager.swift */,
@@ -365,7 +362,6 @@
 				10F9FDEC1C18AFBB00D3C4CC /* SettingsController.swift in Sources */,
 				102D13C81C34AC3C00B823CD /* UserManager.swift in Sources */,
 				81BA814D1A49DA1800E65899 /* ViewController.swift in Sources */,
-				10F4192B1C556A1F00AA1F38 /* UserModel.xcdatamodeld in Sources */,
 				102D13C61C34AC3C00B823CD /* ParticipantTableViewController.swift in Sources */,
 				32B24AE11C32356900F894DF /* ChatUserViewController.swift in Sources */,
 				102561B31C37DE94007CF671 /* AcceptOrRejectViewController.swift in Sources */,
@@ -530,19 +526,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		10F419291C556A1F00AA1F38 /* UserModel.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				10F4192A1C556A1F00AA1F38 /* UserModel.xcdatamodel */,
-			);
-			currentVersion = 10F4192A1C556A1F00AA1F38 /* UserModel.xcdatamodel */;
-			path = UserModel.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 81BA813D1A49DA1800E65899 /* Project object */;
 }
