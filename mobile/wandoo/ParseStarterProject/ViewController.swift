@@ -14,7 +14,7 @@ import SVProgressHUD
 import Atlas
 //import CoreData
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate {
 
     let delegate = UIApplication.sharedApplication().delegate as! AppDelegate
 
@@ -31,7 +31,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     var ignoreFlag = true
     
-//    var locationManager = CLLocationManager()
+    var locationManager = CLLocationManager()
 
     @IBOutlet weak var wandooButton: UIButton!
     @IBAction func presentChat(sender: UIButton) {
@@ -55,9 +55,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        locationManager.delegate = self
-//        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-//        locationManager.startUpdatingLocation()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.startUpdatingLocation()
         
         layerClient = delegate.layerClient
         // Do any additional setup after loading the view, typically from a nib.
@@ -163,14 +163,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     }
     
-//    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-//        
-//        let userLocation:CLLocation = locations[0]
-//        
-//        userModel.latitude = userLocation.coordinate.latitude
-//        userModel.longitude = userLocation.coordinate.longitude
-//        
-//    }
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
+        let userLocation:CLLocation = locations[0]
+        
+        userModel.latitude = userLocation.coordinate.latitude
+        userModel.longitude = userLocation.coordinate.longitude
+        
+    }
 
     //number of sections in table.. we only have 1 section of wandoos
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
