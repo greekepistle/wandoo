@@ -32,8 +32,6 @@ class UserModel {
     var longitude: Double?
     var userID: Int?
     
-    var interestedWandooIDs = NSMutableDictionary()
-    
     //shared user instance - multiple view controllers can use the same instance of this user
     static let sharedUserInstance = UserModel()
 
