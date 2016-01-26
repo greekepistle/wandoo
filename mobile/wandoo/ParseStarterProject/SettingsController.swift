@@ -16,7 +16,7 @@ class SettingsController: UITableViewController {
     let delegate = UIApplication.sharedApplication().delegate as! AppDelegate
     var layerClient: LYRClient!
     
-    var settings = ["setting1", "setting2", "setting3", "Log Out"]
+    var settings = ["About Us", "Contact Us", "Delete Account", "Log Out"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,6 +66,12 @@ class SettingsController: UITableViewController {
             loginManager.logOut()
             print("User Logged Out!")
             performSegueWithIdentifier("backToLogin", sender: nil)
+        } else if (indexPath.row == 0) {
+            
+        } else if (indexPath.row == 1) {
+            
+        } else if (indexPath.row == 2) {
+            
         }
     }
     

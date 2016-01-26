@@ -13,23 +13,31 @@ class AcceptOrRejectViewController: UITableViewController {
     @IBOutlet var interestedTable: UITableView!
     var allInterestedInfo: Array<NSMutableDictionary>?
     var interestedModel = InterestedModel.sharedInterestedInstance
-    var userModel = UserModel()
+    var userModel = UserModel.sharedUserInstance
     
     var myWandooInfo: NSDictionary?
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let userDefaults = NSUserDefaults.standardUserDefaults()
+        if let acceptOrRejectList = userDefaults.objectForKey("acceptOrRejectList") {
+            userModel.acceptOrRejectList = acceptOrRejectList as! Dictionary<String, Dictionary<String, Int>>
+            print(userModel.acceptOrRejectList)
+        }
+        
         getInterestedPeople { () -> Void in
 
-            for (index, interestedPeople) in self.allInterestedInfo!.enumerate() {
-                if(interestedPeople["selected"] as! Int == 1) {
-                    let indexPath = NSIndexPath(forRow: index, inSection: 0)
-                    let cell = self.interestedTable.cellForRowAtIndexPath(indexPath) as! InterestedCell
-                    cell.accept.backgroundColor = UIColor(red: 52.0/255.0, green: 152.0/255.0, blue: 219.0/255.0, alpha: 0.5)
-                }
-            }
+//            for (index, interestedPeople) in self.allInterestedInfo!.enumerate() {
+//                if(interestedPeople["selected"] as! Int == 1) {
+//                    let indexPath = NSIndexPath(forRow: index, inSection: 0)
+//                    let cell = self.interestedTable.cellForRowAtIndexPath(indexPath) as! InterestedCell
+//                    cell.accept.backgroundColor = UIColor(red: 52.0/255.0, green: 152.0/255.0, blue: 219.0/255.0, alpha: 0.5)
+//                }
+//            }
         }
+        print("view did load all the time?")
     }
     
     @IBAction func rejectButton(sender: UIButton) {
@@ -41,6 +49,9 @@ class AcceptOrRejectViewController: UITableViewController {
             interestedModel.acceptedOrRejected(wandooID, userID: userID, accepted: false)
             sender.backgroundColor = UIColor(red: 52.0/255.0, green: 152.0/255.0, blue: 219.0/255.0, alpha: 0.5)
             cell!.userInteractionEnabled = false
+            
+            userModel.acceptOrRejectList[String(wandooID)]![String(userID)] = 1
+            userModel.userDefaults.setObject(userModel.acceptOrRejectList, forKey: "acceptOrRejectList")
         }
     }
     
@@ -52,6 +63,11 @@ class AcceptOrRejectViewController: UITableViewController {
             let userID = allInterestedInfo![sender.tag]["userID"] as! Int
             interestedModel.acceptedOrRejected(wandooID, userID: userID, accepted: true)
             sender.backgroundColor = UIColor(red: 52.0/255.0, green: 152.0/255.0, blue: 219.0/255.0, alpha: 0.5)
+            
+            userModel.acceptOrRejectList[String(wandooID)]![String(userID)] = 2
+            print(userModel.acceptOrRejectList[String(wandooID)]!)
+            print(userModel.acceptOrRejectList[String(wandooID)]![String(userID)])
+            userModel.userDefaults.setObject(userModel.acceptOrRejectList, forKey: "acceptOrRejectList")
             
             //PUT YOUR PUSH CODE HERE FOR ACCEPT AND REJECT
             print(allInterestedInfo![sender.tag]["objectID"])
@@ -91,6 +107,34 @@ class AcceptOrRejectViewController: UITableViewController {
         interestedCell.accept.layer.borderWidth = 1
         interestedCell.accept.layer.borderColor = UIColor.lightGrayColor().CGColor
         
+        print(allInterestedInfo![indexPath.row])
+        
+        let wandooID = self.myWandooInfo!["wandooID"] as! Int
+        let userID = self.allInterestedInfo![indexPath.row]["userID"] as! Int
+        print(wandooID)
+        print(userID)
+        
+        if let acceptOrRejectList = userModel.acceptOrRejectList[String(wandooID)] {
+            print(acceptOrRejectList)
+            if let decision = acceptOrRejectList[String(userID)] {
+                print(decision)
+                if decision == 1 {
+                    interestedCell.reject.backgroundColor = UIColor(red: 100.0/255.0, green: 181.0/255.0, blue: 246.0/255.0, alpha: 0.5)
+                    interestedCell.reject.userInteractionEnabled = false
+                    interestedCell.accept.userInteractionEnabled = false
+                } else if decision == 2 {
+                    interestedCell.accept.backgroundColor = UIColor(red: 100.0/255.0, green: 181.0/255.0, blue: 246.0/255.0, alpha: 0.5)
+                    interestedCell.accept.userInteractionEnabled = false
+                    interestedCell.reject.userInteractionEnabled = false
+                } else {
+                    interestedCell.reject.backgroundColor = UIColor(white:0.88, alpha:1.0)
+                    interestedCell.reject.userInteractionEnabled = true
+                    interestedCell.accept.backgroundColor = UIColor(white:0.88, alpha:1.0)
+                    interestedCell.accept.userInteractionEnabled = true
+                }
+            }
+        }
+        
         return interestedCell
     }
     
@@ -110,12 +154,23 @@ class AcceptOrRejectViewController: UITableViewController {
     func getInterestedPeople(completion: () -> Void) {
         let wandooID = self.myWandooInfo!["wandooID"] as! Int
         
+        if let _ = userModel.acceptOrRejectList[String(wandooID)] {
+            print("available")
+        } else {
+            userModel.acceptOrRejectList[String(wandooID)] = [:]
+        }
+        
         interestedModel.getInterestedPeople(wandooID, completion: { (result) -> Void in
 
             self.allInterestedInfo = result as? Array<NSMutableDictionary>
             var count = 0
-            dispatch_async(dispatch_get_main_queue()){
+//            dispatch_async(dispatch_get_main_queue()){
                 for interestedPeople in self.allInterestedInfo! {
+                    if let _ = self.userModel.acceptOrRejectList[String(wandooID)]![String(interestedPeople["userID"]!)] {
+                        print("userID already exists")
+                    } else {
+                        self.userModel.acceptOrRejectList[String(wandooID)]![String(interestedPeople["userID"]!)] = 0
+                    }
                     self.userModel.getUserInfoByUserID(interestedPeople["userID"] as! Int, completion: { (result) -> Void in
                         interestedPeople["name"] = result["name"]
                         interestedPeople["age"] = String(result["age"]!)
@@ -131,13 +186,16 @@ class AcceptOrRejectViewController: UITableViewController {
                                 dispatch_async(dispatch_get_main_queue()) {
                                     self.interestedTable.reloadData()
                                 }
+                                let acceptOrRejectList = self.userModel.acceptOrRejectList as NSDictionary
+                                self.userModel.userDefaults.setObject(acceptOrRejectList, forKey: "acceptOrRejectList")
+                                self.userModel.userDefaults.synchronize()
                             }
                             
                         }
                         
                     })
                 }
-            }
+//            }
         })
     }
     
