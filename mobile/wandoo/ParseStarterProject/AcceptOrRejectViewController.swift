@@ -46,7 +46,7 @@ class AcceptOrRejectViewController: UITableViewController {
             let cell = interestedTable.cellForRowAtIndexPath(indexPath)
             let wandooID = allInterestedInfo![sender.tag]["wandooID"] as! Int
             let userID = allInterestedInfo![sender.tag]["userID"] as! Int
-            interestedModel.acceptedOrRejected(wandooID, userID: userID, accepted: false)
+//            interestedModel.acceptedOrRejected(wandooID, userID: userID, accepted: false)
             sender.backgroundColor = UIColor(red: 52.0/255.0, green: 152.0/255.0, blue: 219.0/255.0, alpha: 0.5)
             cell!.userInteractionEnabled = false
             
