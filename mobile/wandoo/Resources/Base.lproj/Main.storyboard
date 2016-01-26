@@ -430,7 +430,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="173" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bgm-xG-8Lr">
                                 <rect key="frame" x="-4" y="105" width="328" height="420"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="sectionIndexBackgroundColor" red="0.8784313725490196" green="0.8784313725490196" blue="0.8784313725490196" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="sectionIndexBackgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="wandooCell" rowHeight="173" id="pnr-KV-Mmk" customClass="WandooCell" customModule="Wandoo" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="328" height="173"/>
@@ -485,6 +485,7 @@
                                                             <subviews>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ecs-aM-Auk">
                                                                     <rect key="frame" x="0.0" y="0.0" width="300" height="30"/>
+                                                                    <color key="backgroundColor" red="0.85030777710000005" green="0.85030777710000005" blue="0.85030777710000005" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                                     <state key="normal" title="Interested?">
                                                                         <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -583,7 +584,7 @@
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <outlet property="cardView" destination="72f-SP-h4z" id="1yg-hJ-EPl"/>
                                             <outlet property="location" destination="nS1-Lu-TUA" id="ZIo-Ic-RxL"/>
@@ -751,16 +752,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="wandoo_logo" translatesAutoresizingMaskIntoConstraints="NO" id="L2l-yp-tir">
-                                <rect key="frame" x="20" y="203" width="280" height="162"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="wandoo-logo" translatesAutoresizingMaskIntoConstraints="NO" id="sL1-f1-q8Q">
+                                <rect key="frame" x="40" y="220" width="240" height="128"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="L2l-yp-tir" firstAttribute="leading" secondItem="nPr-aa-ht7" secondAttribute="leadingMargin" id="66q-5e-vND"/>
-                            <constraint firstItem="L2l-yp-tir" firstAttribute="top" secondItem="GH7-Xl-8R8" secondAttribute="bottom" constant="183" id="Sw8-1X-h09"/>
-                            <constraint firstItem="5eR-8C-NqI" firstAttribute="top" secondItem="L2l-yp-tir" secondAttribute="bottom" constant="203" id="h0r-O4-5jh"/>
-                            <constraint firstItem="L2l-yp-tir" firstAttribute="trailing" secondItem="nPr-aa-ht7" secondAttribute="trailingMargin" id="jLn-9j-Xhw"/>
+                            <constraint firstItem="sL1-f1-q8Q" firstAttribute="top" secondItem="GH7-Xl-8R8" secondAttribute="bottom" constant="200" id="1zG-dp-1qR"/>
+                            <constraint firstItem="5eR-8C-NqI" firstAttribute="top" secondItem="sL1-f1-q8Q" secondAttribute="bottom" constant="220" id="QNk-zS-HAJ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="sL1-f1-q8Q" secondAttribute="trailing" constant="20" id="gVG-WC-aaO"/>
+                            <constraint firstItem="sL1-f1-q8Q" firstAttribute="leading" secondItem="nPr-aa-ht7" secondAttribute="leadingMargin" constant="20" id="tDG-D9-Qsm"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
@@ -946,7 +947,8 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="196" sectionHeaderHeight="28" sectionFooterHeight="28" id="Qej-y8-tFK">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.85030777710000005" green="0.85030777710000005" blue="0.85030777710000005" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="sectionIndexBackgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="interestedCell" rowHeight="196" id="eqh-P4-qBe" customClass="InterestedCell" customModule="Wandoo" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="320" height="196"/>
@@ -1040,7 +1042,7 @@
                                             </connections>
                                         </button>
                                     </subviews>
-                                    <color key="backgroundColor" red="0.85030777710000005" green="0.85030777710000005" blue="0.85030777710000005" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstAttribute="leadingMargin" secondItem="tZ3-1y-AJv" secondAttribute="leading" id="1lA-hC-KFD"/>
                                         <constraint firstItem="pmL-4b-pxx" firstAttribute="top" secondItem="FfD-xg-NeN" secondAttribute="bottom" constant="-1" id="5g5-pz-nj1"/>
@@ -1053,6 +1055,7 @@
                                         <constraint firstItem="FfD-xg-NeN" firstAttribute="leading" secondItem="klB-DA-5yu" secondAttribute="leadingMargin" id="uTU-ur-i96"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="accept" destination="pmL-4b-pxx" id="Qep-YB-7E6"/>
                                     <outlet property="age" destination="zav-6T-ReV" id="HAU-ty-FOf"/>
@@ -1247,7 +1250,7 @@
             <objects>
                 <navigationController storyboardIdentifier="initialNav" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="UcQ-As-2ES" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" backIndicatorImage="DECA66FA-B1A4-49B7-939D-3041DE04EA94" id="LIG-kr-Btz">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" backIndicatorImage="FF27DC48-9081-4DA0-8A41-630CD80FB227" id="LIG-kr-Btz">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -1407,7 +1410,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="DECA66FA-B1A4-49B7-939D-3041DE04EA94" width="62" height="64">
+        <image name="FF27DC48-9081-4DA0-8A41-630CD80FB227" width="62" height="64">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOzxYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBMU
 GR4fJSYsLzU4VSRudWxs1QkKCwwNDg8QERJWTlNTaXplViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBz
@@ -1431,7 +1434,7 @@ Afg
         <image name="people" width="16" height="16"/>
         <image name="people darken" width="16" height="16"/>
         <image name="time" width="15" height="15"/>
-        <image name="wandoo_logo" width="400" height="201"/>
+        <image name="wandoo-logo" width="400" height="201"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="6Yl-GL-7dd"/>

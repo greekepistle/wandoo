@@ -57,7 +57,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         let userDefaults = NSUserDefaults.standardUserDefaults()
         if let interestedWandooIDs = userDefaults.objectForKey("interestedWandooIDs") {
-            userModel.interestedWandooIDs = interestedWandooIDs as! NSMutableDictionary
+            let auxInterestedWandooIDs = interestedWandooIDs.mutableCopy()
+            userModel.interestedWandooIDs = auxInterestedWandooIDs as! NSMutableDictionary
         }
         
         

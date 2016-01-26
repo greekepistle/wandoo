@@ -23,8 +23,8 @@ class AcceptOrRejectViewController: UITableViewController {
         
         let userDefaults = NSUserDefaults.standardUserDefaults()
         if let acceptOrRejectList = userDefaults.objectForKey("acceptOrRejectList") {
-            userModel.acceptOrRejectList = acceptOrRejectList as! Dictionary<String, Dictionary<String, Int>>
-            print(userModel.acceptOrRejectList)
+            let auxAcceptOrRejectList = acceptOrRejectList.mutableCopy()
+            userModel.acceptOrRejectList = auxAcceptOrRejectList as! Dictionary<String, Dictionary<String, Int>>
         }
         
         getInterestedPeople { () -> Void in
