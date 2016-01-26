@@ -67,7 +67,6 @@ class InterestedModel {
             "rejected": 0,
             "userID": userID
         ]
-        
         if accepted {
             nayOrYay["selected"] = 1
             print("accepted")
@@ -76,6 +75,7 @@ class InterestedModel {
             print("rejected")
         }
         
+        print(nayOrYay)
         let url = NSURL(string: hostname + "/api/interested/" + String(wandooID) + "/" + String(userID))
         
         let request = NSMutableURLRequest(URL: url!)
