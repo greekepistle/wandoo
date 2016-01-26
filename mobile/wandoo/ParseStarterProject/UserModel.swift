@@ -33,6 +33,8 @@ class UserModel {
     var userID: Int?
     
     var interestedWandooIDs = NSMutableDictionary()
+    var acceptOrRejectList = Dictionary<String, Dictionary<String,Int>>()
+    var userDefaults = NSUserDefaults.standardUserDefaults()
     
     //shared user instance - multiple view controllers can use the same instance of this user
     static let sharedUserInstance = UserModel()
