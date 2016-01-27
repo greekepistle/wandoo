@@ -78,9 +78,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 self.retrieveWandoos()
             }
         })
-        
-        self.wandooButton.layer.borderWidth = 1
-        self.wandooButton.layer.borderColor = UIColor.lightGrayColor().CGColor
 
         navigationItem.titleView = UIImageView(image: UIImage(named: "Wandoo"))
 
