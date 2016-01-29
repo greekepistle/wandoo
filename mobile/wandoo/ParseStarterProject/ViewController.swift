@@ -131,7 +131,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     wandooCell.objectID = result["objectID"] as? String
                 }
             }
-
         }
 
         wandooCell.showInterestButton.tag = indexPath.row
@@ -191,6 +190,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
         wandooCell.cardView.layer.borderWidth = 1
         wandooCell.cardView.layer.borderColor = UIColor.lightGrayColor().CGColor
+        wandooCell.showInterestButton.layer.borderColor = UIColor.lightGrayColor().CGColor
 
         return wandooCell
     }
