@@ -121,7 +121,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     wandooCell.profileImage.layer.cornerRadius = wandooCell.profileImage.frame.height/2
                     wandooCell.profileImage.layer.cornerRadius = wandooCell.profileImage.frame.width/2
                     wandooCell.profileImage.clipsToBounds = true
-                    wandooCell.name.text = result["name"] as? String
+                    let fullName = result["name"] as? String
+                    let fullNameArr = fullName!.characters.split{$0 == " "}.map(String.init)
+                    wandooCell.name.text = fullNameArr[0]
                     wandooCell.location.text = String(self.allWandoosArray[indexPath.row]["distance"]!) + " miles away"
                     wandooCell.message.text = self.allWandoosArray[indexPath.row]["text"] as? String
                     wandooCell.time.text = self.wandooModel.checkAndFormatWandooDate((self.allWandoosArray[indexPath.row]["start_time"] as? String)!)

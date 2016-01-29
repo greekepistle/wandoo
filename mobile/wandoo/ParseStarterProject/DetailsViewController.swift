@@ -47,7 +47,9 @@ class DetailsViewController: UIViewController {
         self.userModel.getUserInfoByUserID(userID) { (result) -> Void in
             print(result)
             dispatch_async(dispatch_get_main_queue()) {
-                self.name.text = String(result["name"]!) + ", " + String(result["sex"]!).uppercaseString
+                let fullName = result["name"] as? String
+                let fullNameArr = fullName!.characters.split{$0 == " "}.map(String.init)
+                self.name.text = fullNameArr[0] + ", " + String(result["sex"]!).uppercaseString
                 self.age.text = "Age: " + String(result["age"]!)
                 
                 if let employer = result["employer"]! as? String {
