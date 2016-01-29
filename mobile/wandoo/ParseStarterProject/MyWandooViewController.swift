@@ -58,6 +58,8 @@ class MyWandooViewController: UITableViewController {
         
         wandooCell.cardView.layer.borderWidth = 1
         wandooCell.cardView.layer.borderColor = UIColor.lightGrayColor().CGColor
+        wandooCell.userButton.layer.borderWidth = 1
+        wandooCell.userButton.layer.borderColor = UIColor.lightGrayColor().CGColor
         
         return wandooCell
     }

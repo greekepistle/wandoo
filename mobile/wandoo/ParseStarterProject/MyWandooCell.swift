@@ -18,5 +18,7 @@ class MyWandooCell: UITableViewCell {
     
     @IBOutlet weak var cardView: UIView!
     
+    @IBOutlet weak var userButton: UIButton!
+    
     @IBOutlet weak var myWandooPeople: UILabel!
 }
