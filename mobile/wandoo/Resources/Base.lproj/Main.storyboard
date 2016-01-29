@@ -530,10 +530,7 @@
                                                             </variation>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="s" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yl1-Lo-Jsl">
-                                                            <rect key="frame" x="76" y="63" width="100" height="16"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="width" constant="100" id="vaD-U3-caK"/>
-                                                            </constraints>
+                                                            <rect key="frame" x="76" y="63" width="159" height="16"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -545,11 +542,10 @@
                                                         <constraint firstItem="mIG-Ve-NOB" firstAttribute="top" secondItem="72f-SP-h4z" secondAttribute="top" constant="126" id="5In-od-ccg"/>
                                                         <constraint firstItem="g6G-dA-SId" firstAttribute="trailing" secondItem="72f-SP-h4z" secondAttribute="trailingMargin" id="8UP-Uh-CJb"/>
                                                         <constraint firstItem="mIG-Ve-NOB" firstAttribute="leading" secondItem="72f-SP-h4z" secondAttribute="leading" id="Dhv-ad-D4L"/>
-                                                        <constraint firstItem="g6G-dA-SId" firstAttribute="leading" secondItem="Yl1-Lo-Jsl" secondAttribute="leading" id="Hqo-XK-A6a"/>
+                                                        <constraint firstAttribute="trailing" secondItem="Yl1-Lo-Jsl" secondAttribute="trailing" constant="65" id="Gwc-eA-AhX"/>
                                                         <constraint firstItem="F8d-f0-Lb3" firstAttribute="leading" secondItem="72f-SP-h4z" secondAttribute="leading" constant="76" id="IJn-NA-v2q"/>
-                                                        <constraint firstItem="Yl1-Lo-Jsl" firstAttribute="top" secondItem="g6G-dA-SId" secondAttribute="bottom" constant="8" symbolic="YES" id="LbM-sl-Hxk"/>
                                                         <constraint firstItem="ecs-aM-Auk" firstAttribute="top" secondItem="lvh-Ad-hhl" secondAttribute="bottom" constant="25" id="Pk9-Tf-H9w"/>
-                                                        <constraint firstItem="Yl1-Lo-Jsl" firstAttribute="leading" secondItem="nS1-Lu-TUA" secondAttribute="leading" id="Uwp-XO-qVf"/>
+                                                        <constraint firstItem="Yl1-Lo-Jsl" firstAttribute="top" secondItem="g6G-dA-SId" secondAttribute="bottom" constant="8" symbolic="YES" id="UYz-ze-uQ2"/>
                                                         <constraint firstAttribute="trailing" secondItem="Oq9-km-CJq" secondAttribute="trailing" constant="85" id="Zdj-lF-Kel"/>
                                                         <constraint firstItem="Oq9-km-CJq" firstAttribute="top" secondItem="72f-SP-h4z" secondAttribute="topMargin" id="acu-CB-fjc"/>
                                                         <constraint firstAttribute="bottom" secondItem="mIG-Ve-NOB" secondAttribute="bottom" id="eEb-RA-xDn"/>
@@ -558,8 +554,10 @@
                                                         <constraint firstAttribute="trailing" secondItem="mIG-Ve-NOB" secondAttribute="trailing" id="m00-wx-t9O"/>
                                                         <constraint firstItem="F8d-f0-Lb3" firstAttribute="top" secondItem="nS1-Lu-TUA" secondAttribute="bottom" constant="3" id="od2-V2-OJ3"/>
                                                         <constraint firstItem="g6G-dA-SId" firstAttribute="leading" secondItem="lvh-Ad-hhl" secondAttribute="trailing" constant="8" symbolic="YES" id="qsO-Vr-LL6"/>
-                                                        <constraint firstItem="nS1-Lu-TUA" firstAttribute="top" secondItem="Yl1-Lo-Jsl" secondAttribute="bottom" constant="3" id="wHh-w8-Ytj"/>
+                                                        <constraint firstItem="Yl1-Lo-Jsl" firstAttribute="leading" secondItem="g6G-dA-SId" secondAttribute="leading" id="ujf-lE-hz2"/>
+                                                        <constraint firstItem="Yl1-Lo-Jsl" firstAttribute="leading" secondItem="nS1-Lu-TUA" secondAttribute="leading" id="x6E-TY-k6n"/>
                                                         <constraint firstItem="mIG-Ve-NOB" firstAttribute="top" secondItem="F8d-f0-Lb3" secondAttribute="bottom" constant="9" id="zJy-ev-G2n"/>
+                                                        <constraint firstItem="Yl1-Lo-Jsl" firstAttribute="centerY" secondItem="lvh-Ad-hhl" secondAttribute="centerY" id="zUs-Ju-MVm"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
@@ -657,7 +655,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5965" y="44"/>
+            <point key="canvasLocation" x="5976" y="-88"/>
         </scene>
         <!--Details View Controller-->
         <scene sceneID="HRX-Gw-VkV">
@@ -932,7 +930,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Smu-Ol-ggy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5580" y="139"/>
+            <point key="canvasLocation" x="5711" y="-18"/>
         </scene>
         <!--Accept Or Reject View Controller-->
         <scene sceneID="cdA-bS-auK">
@@ -1245,7 +1243,7 @@
             <objects>
                 <navigationController storyboardIdentifier="initialNav" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="UcQ-As-2ES" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" backIndicatorImage="1C883966-20A1-4267-B601-36D367CE08A6" id="LIG-kr-Btz">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" backIndicatorImage="B984621E-A2D0-4962-98DD-5B99E67B06C9" id="LIG-kr-Btz">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -1405,7 +1403,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="1C883966-20A1-4267-B601-36D367CE08A6" width="62" height="64">
+        <image name="B984621E-A2D0-4962-98DD-5B99E67B06C9" width="62" height="64">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOzxYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBMU
 GR4fJSYsLzU4VSRudWxs1QkKCwwNDg8QERJWTlNTaXplViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBz
