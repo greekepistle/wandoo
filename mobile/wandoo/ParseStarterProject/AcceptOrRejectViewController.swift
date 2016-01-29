@@ -83,7 +83,7 @@ class AcceptOrRejectViewController: UITableViewController {
         }
         interestedCell.name.text = self.allInterestedInfo![indexPath.row]["name"] as? String
         interestedCell.age.text = "Age: " + String(self.allInterestedInfo![indexPath.row]["age"]!)
-        interestedCell.sex.text = "Sex: " + String(self.allInterestedInfo![indexPath.row]["sex"]!)
+        interestedCell.sex.text = "Sex: " + String(self.allInterestedInfo![indexPath.row]["sex"]!).uppercaseString
         if(self.allInterestedInfo![indexPath.row]["employer"] as? String != nil) {
             interestedCell.employer.text = "Employer " + String(self.allInterestedInfo![indexPath.row]["employer"]!)
         }
