@@ -51,6 +51,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     var offset: Int = 1
     var limit: Int = 1
+    var refreshControl:UIRefreshControl!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,6 +61,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             let auxInterestedWandooIDs = interestedWandooIDs.mutableCopy()
             userModel.interestedWandooIDs = auxInterestedWandooIDs as! NSMutableDictionary
         }
+        
+        self.refreshControl = UIRefreshControl()
+        self.refreshControl.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
+        self.wandooTable.addSubview(refreshControl)
         
         
         locationManager.delegate = self
@@ -85,6 +90,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             self.retrieveWandoos()
         }
         self.navigationItem.hidesBackButton = true
+    }
+    
+    func refresh(sender:AnyObject)
+    {
+        print("refreshing data")
+        self.retrieveWandoos()
+        self.wandooTable.reloadData()
+        self.retrieveWandoos()
+        self.refreshControl.endRefreshing()
     }
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
