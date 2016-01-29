@@ -43,7 +43,9 @@ class ProfileViewController: UIViewController, UITableViewDelegate {
             self.user.getUserInfo (fbID) { (result) -> Void in
                 print(result)
                 dispatch_async(dispatch_get_main_queue()) {
-                    self.profileInfo.text = result["name"]! as? String
+                    let fullName = result["name"] as? String
+                    let fullNameArr = fullName!.characters.split{$0 == " "}.map(String.init)
+                    self.profileInfo.text = fullNameArr[0]
                     
                     if let sex = result["sex"]! as? String {
                         self.profileInfo.text! += ", " + sex.uppercaseString

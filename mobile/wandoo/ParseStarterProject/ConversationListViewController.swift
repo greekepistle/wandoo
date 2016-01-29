@@ -35,10 +35,14 @@ class ConversationListViewController: ATLConversationListViewController, ATLConv
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         self.dataSource = self
         self.delegate = self
         
         self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
+        let titleDict: NSDictionary = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+        self.navigationController!.navigationBar.titleTextAttributes = titleDict as! [String : AnyObject]
+        
         
 //        The below code is for enabling Chat selector button. We don't need it for now
 //        let title = NSLocalizedString("Logout", comment: "")
