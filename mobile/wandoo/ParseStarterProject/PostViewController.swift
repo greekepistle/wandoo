@@ -34,6 +34,11 @@ class PostViewController: UIViewController, UITextFieldDelegate {
         
 
     }
+    
+    @IBAction func lunchSuggestion(sender: UIButton) {
+        self.wandooMessage.text = "I want to eat lunch"
+    }
+    
     @IBAction func sendTextData(sender: UIButton) {
         wandooModel.text = messageTextField.text
     }
