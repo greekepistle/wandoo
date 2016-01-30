@@ -225,11 +225,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     //number of rows in our section.. depends on how many wandoos we get from our http request
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if allWandoosArray.count > 0 {
-            return allWandoosArray.count
-        } else {
-            return 0
-        }
+        return allWandoosArray.count
+//        if allWandoosArray.count > 0 {
+//            return allWandoosArray.count
+//        } else {
+//            return 0
+//        }
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

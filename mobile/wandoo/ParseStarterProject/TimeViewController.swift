@@ -12,11 +12,17 @@ class TimeViewController: UIViewController {
     
     let userModel = UserModel.sharedUserInstance
     let wandooModel = WandooModel.sharedWandooInstance
+    
+    let sb = UIStoryboard(name: "Main", bundle: nil)
 
     @IBOutlet weak var timeButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationItem.rightBarButtonItem = nil
+        self.navigationItem.leftBarButtonItem = nil
+        
         let calendar = NSCalendar.currentCalendar()
         datePicker.date = calendar.dateByAddingUnit(.Minute, value: 30, toDate: NSDate(), options: [])!
         datePicker.minimumDate = NSDate()
@@ -30,16 +36,29 @@ class TimeViewController: UIViewController {
     }
 
     @IBAction func postButton(sender: UIButton) {
+        self.navigationController?.navigationBarHidden = true
+        self.tabBarController!.tabBar.translucent = true
+        self.tabBarController!.tabBar.hidden = true
         wandooModel.startTime = timePickerToString(datePicker)
         userModel.postLocation { () -> Void in
             print("usermodel postLocation it")
+            self.wandooModel.postWandoo({ () -> Void in
+                dispatch_async(dispatch_get_main_queue()) {
+                    
+                }
+//                let backToFeed = self.sb.instantiateViewControllerWithIdentifier("tabBar")
+//                self.navigationController?.pushViewController(backToFeed, animated: true)
+                
+//                self.presentViewController(self.wandooModel.backToFeed, animated: true, completion: nil)
+                
+            })
         }
             
-        wandooModel.postWandoo { (result) -> Void in
-//            dispatch_async(dispatch_get_main_queue()) {
-//                self.performSegueWithIdentifier("toWandooController", sender: self)
-//            }
-        }
+//        wandooModel.postWandoo { (result) -> Void in
+////            dispatch_async(dispatch_get_main_queue()) {
+////                self.performSegueWithIdentifier("toWandooController", sender: self)
+////            }
+//        }
     }
    
     @IBOutlet weak var datePicker: UIDatePicker!

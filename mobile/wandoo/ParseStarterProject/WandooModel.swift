@@ -21,6 +21,8 @@ class WandooModel {
     var numPeople: Int?
     var userModel = UserModel.sharedUserInstance
     
+    var timeViewController: TimeViewController!
+    var backToFeed: TabBarViewController!
     //shared wandoo instance.. multiple view controllers can use the same instance of this model
     static let sharedWandooInstance = WandooModel()
     

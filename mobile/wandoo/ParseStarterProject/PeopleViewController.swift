@@ -27,6 +27,7 @@ class PeopleViewController: UIViewController {
     
     @IBAction func sendPeopleData(sender: UIButton) {
         wandooModel.numPeople = Int(quantity.text!)
+        self.navigationController!.pushViewController(wandooModel.timeViewController, animated: true)
     }
     
     @IBOutlet weak var peopleButton: UIBarButtonItem!
