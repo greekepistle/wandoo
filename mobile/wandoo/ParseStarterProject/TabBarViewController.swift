@@ -28,18 +28,17 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
         UITabBar.appearance().barTintColor = UIColor(red:0.204, green:0.596, blue:0.859, alpha:1.0)
         UITabBar.appearance().translucent = false
         
-        
         feedController = sb.instantiateViewControllerWithIdentifier("initialNav") as! UINavigationController
         feedController.navigationBar.translucent = false
         feedController.navigationBar.barTintColor = UIColor(red:0.204, green:0.596, blue:0.859, alpha:1.0)
-        let feedIcon = UITabBarItem(title: "", image: UIImage(named: "feed"), selectedImage: UIImage(named: "feed"))
+        let feedIcon = UITabBarItem(title: "", image: UIImage(named: "feed")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal), selectedImage: UIImage(named: "feed"))
         feedIcon.imageInsets = UIEdgeInsetsMake(8, 0, -8, 0)
         feedController.tabBarItem = feedIcon
        
         let myWandoosController = sb.instantiateViewControllerWithIdentifier("myWandoosNav") as! UINavigationController
         myWandoosController.navigationBar.translucent = false
         myWandoosController.navigationBar.barTintColor = UIColor(red:0.204, green:0.596, blue:0.859, alpha:1.0)
-        let myWandoosIcon = UITabBarItem(title: "", image: UIImage(named: "myWandoos"), selectedImage: UIImage(named: "myWandoos"))
+        let myWandoosIcon = UITabBarItem(title: "", image: UIImage(named: "myWandoos")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal), selectedImage: UIImage(named: "myWandoos"))
         myWandoosIcon.imageInsets = UIEdgeInsetsMake(8, 0, -8, 0)
         myWandoosController.tabBarItem = myWandoosIcon
         
@@ -49,14 +48,14 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
         chatController.viewControllers = [self.conversationListViewController]
         chatController.navigationBar.translucent = false
         chatController.navigationBar.barTintColor = UIColor(red:0.204, green:0.596, blue:0.859, alpha:1.0)
-        let chatIcon = UITabBarItem(title: "", image: UIImage(named: "chat"), selectedImage: UIImage(named: "chat"))
+        let chatIcon = UITabBarItem(title: "", image: UIImage(named: "chat")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal), selectedImage: UIImage(named: "chat"))
         chatIcon.imageInsets = UIEdgeInsetsMake(8, 0, -8, 0)
         chatController.tabBarItem = chatIcon
         
         let profileController = sb.instantiateViewControllerWithIdentifier("profileNav") as! UINavigationController
         profileController.navigationBar.translucent = false
         profileController.navigationBar.barTintColor = UIColor(red:0.204, green:0.596, blue:0.859, alpha:1.0)
-        let profileIcon = UITabBarItem(title: "", image: UIImage(named: "userProfile"), selectedImage: UIImage(named: "userProfile"))
+        let profileIcon = UITabBarItem(title: "", image: UIImage(named: "userProfile")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal), selectedImage: UIImage(named: "userProfile"))
         profileIcon.imageInsets = UIEdgeInsetsMake(8, 0, -8, 0)
         profileController.tabBarItem = profileIcon
         
@@ -94,15 +93,6 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
     func tabBarController(tabBarController: UITabBarController, shouldSelectViewController viewController: UIViewController) -> Bool {
         print("Should select viewController: \(viewController.title) ?")
         return true;
-    }
-    
-    func tabBarController(tabBarController: UITabBarController, didSelectViewController viewController: UIViewController) {
-        
-        print("wtf!!!!!")
-        print(viewController)
-        feedController.pushViewController(viewController, animated: true)
-        
-        
     }
     
     func presentConversationListViewController() {
