@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		100466601C5C338300236BA1 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1004665F1C5C338300236BA1 /* TabBarViewController.swift */; };
 		102561B31C37DE94007CF671 /* AcceptOrRejectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102561B21C37DE94007CF671 /* AcceptOrRejectViewController.swift */; };
 		102561B51C37DED6007CF671 /* InterestedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102561B41C37DED6007CF671 /* InterestedCell.swift */; };
 		102D13AB1C3477D900B823CD /* RoomManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102D13AA1C3477D900B823CD /* RoomManager.swift */; };
@@ -47,6 +48,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1004665F1C5C338300236BA1 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		102561B21C37DE94007CF671 /* AcceptOrRejectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AcceptOrRejectViewController.swift; sourceTree = "<group>"; };
 		102561B41C37DED6007CF671 /* InterestedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterestedCell.swift; sourceTree = "<group>"; };
 		102D13AA1C3477D900B823CD /* RoomManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomManager.swift; sourceTree = "<group>"; };
@@ -198,6 +200,7 @@
 				10F9FE851C20D48400D3C4CC /* WandooModel.swift */,
 				BE95C7361C20AF80005CB21C /* PostViewController.swift */,
 				10F9FDEB1C18AFBB00D3C4CC /* SettingsController.swift */,
+				1004665F1C5C338300236BA1 /* TabBarViewController.swift */,
 			);
 			path = ParseStarterProject;
 			sourceTree = "<group>";
@@ -370,6 +373,7 @@
 				102D13C71C34AC3C00B823CD /* PFUser+ATLParticipant.swift in Sources */,
 				10F9FDE41C17BC9D00D3C4CC /* FacebookLoginController.swift in Sources */,
 				10F9FE861C20D48500D3C4CC /* WandooModel.swift in Sources */,
+				100466601C5C338300236BA1 /* TabBarViewController.swift in Sources */,
 				81BA814B1A49DA1800E65899 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

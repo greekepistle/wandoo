@@ -68,7 +68,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             
             
-            var feedController = storyboard.instantiateViewControllerWithIdentifier("initialNav") as! UINavigationController
+            var feedController = storyboard.instantiateViewControllerWithIdentifier("tabBar") as! UITabBarController
             
             self.window?.rootViewController = feedController
             self.window?.makeKeyAndVisible()
