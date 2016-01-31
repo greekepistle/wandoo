@@ -35,6 +35,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     var locationManager = CLLocationManager()
 
+    @IBOutlet weak var editIcon: UIImageView!
     @IBAction func whatDoYouWantToDo(sender: UIButton) {
         
         
