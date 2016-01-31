@@ -62,6 +62,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.tabBarController!.tabBar.layer.borderWidth = 0.5
+        self.tabBarController!.tabBar.layer.borderColor = UIColor.lightGrayColor().CGColor
+        self.tabBarController?.tabBar.clipsToBounds = true
+        
+        
         let userDefaults = NSUserDefaults.standardUserDefaults()
         if let interestedWandooIDs = userDefaults.objectForKey("interestedWandooIDs") {
             let auxInterestedWandooIDs = interestedWandooIDs.mutableCopy()
