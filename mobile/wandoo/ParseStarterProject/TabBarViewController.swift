@@ -8,6 +8,7 @@
 
 import UIKit
 import Atlas
+import QuartzCore
 
 extension UIImage {
     func imageWithColor(color1: UIColor) -> UIImage {
@@ -58,13 +59,13 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
         print("VIEW WILL APPEAR")
         
         UITabBar.appearance().tintColor = UIColor.whiteColor()
-        UITabBar.appearance().barTintColor = UIColor(red:0.204, green:0.596, blue:0.859, alpha:1.0)
+        UITabBar.appearance().barTintColor = UIColor(red:0.91, green:0.92, blue:0.93, alpha:1.0)
         UITabBar.appearance().translucent = false
         
         feedController = sb.instantiateViewControllerWithIdentifier("initialNav") as! UINavigationController
         feedController.navigationBar.translucent = false
         feedController.navigationBar.barTintColor = UIColor(red:0.204, green:0.596, blue:0.859, alpha:1.0)
-        let feedIcon = UITabBarItem(title: "", image: UIImage(named: "feed")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal), selectedImage: UIImage(named: "feed"))
+        let feedIcon = UITabBarItem(title: "", image: UIImage(named: "feed"), selectedImage: UIImage(named: "feed"))
         feedIcon.imageInsets = UIEdgeInsetsMake(8, 0, -8, 0)
         feedController.tabBarItem = feedIcon
         feedController.tabBarItem.selectedImage = UIImage(named: "feed")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
@@ -72,7 +73,8 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
         let myWandoosController = sb.instantiateViewControllerWithIdentifier("myWandoosNav") as! UINavigationController
         myWandoosController.navigationBar.translucent = false
         myWandoosController.navigationBar.barTintColor = UIColor(red:0.204, green:0.596, blue:0.859, alpha:1.0)
-        let myWandoosIcon = UITabBarItem(title: "", image: UIImage(named: "myWandoos")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal), selectedImage: UIImage(named: "myWandoos"))
+//        let myWandoosIcon = UITabBarItem(title: "", image: UIImage(named: "myWandoos")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal), selectedImage: UIImage(named: "myWandoos"))
+        let myWandoosIcon = UITabBarItem(title: "", image: UIImage(named: "myWandoos"), selectedImage: UIImage(named: "myWandoos"))
         myWandoosIcon.imageInsets = UIEdgeInsetsMake(8, 0, -8, 0)
         myWandoosController.tabBarItem = myWandoosIcon
         
@@ -82,7 +84,7 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
         chatController.viewControllers = [self.conversationListViewController]
         chatController.navigationBar.translucent = false
         chatController.navigationBar.barTintColor = UIColor(red:0.204, green:0.596, blue:0.859, alpha:1.0)
-        let chatIcon = UITabBarItem(title: "", image: UIImage(named: "chat")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal), selectedImage: UIImage(named: "chat"))
+        let chatIcon = UITabBarItem(title: "", image: UIImage(named: "chat"), selectedImage: UIImage(named: "chat"))
         chatIcon.title = ""
         chatIcon.imageInsets = UIEdgeInsetsMake(8, 0, -8, 0)
         chatController.tabBarItem = chatIcon
@@ -90,16 +92,17 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
         let profileController = sb.instantiateViewControllerWithIdentifier("profileNav") as! UINavigationController
         profileController.navigationBar.translucent = false
         profileController.navigationBar.barTintColor = UIColor(red:0.204, green:0.596, blue:0.859, alpha:1.0)
-        let profileIcon = UITabBarItem(title: "", image: UIImage(named: "userProfile")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal), selectedImage: UIImage(named: "userProfile"))
+        let profileIcon = UITabBarItem(title: "", image: UIImage(named: "userProfile"), selectedImage: UIImage(named: "userProfile"))
         profileIcon.imageInsets = UIEdgeInsetsMake(8, 0, -8, 0)
         profileController.tabBarItem = profileIcon
         
         self.viewControllers = [feedController, myWandoosController, chatController, profileController]
         
-        let unselectedColor = UIColor(red:1.0, green:0.4, blue:0.8, alpha:1.0)
+        let selectedColor = UIColor(red:0.204, green:0.596, blue:0.859, alpha:1.0)
         
         for item in self.tabBar.items! {
-            item.image = item.selectedImage?.imageWithColor(unselectedColor).imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+            item.selectedImage = item.selectedImage?.imageWithColor(selectedColor).imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+            
         }
         
 //        var nav1 = UINavigationController()
