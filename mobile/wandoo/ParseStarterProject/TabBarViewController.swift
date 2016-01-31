@@ -96,7 +96,7 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
         
         self.viewControllers = [feedController, myWandoosController, chatController, profileController]
         
-        let unselectedColor = UIColor(red:1.0, green:0.84, blue:0.6, alpha:1.0)
+        let unselectedColor = UIColor(red:1.0, green:0.4, blue:0.8, alpha:1.0)
         
         for item in self.tabBar.items! {
             item.image = item.selectedImage?.imageWithColor(unselectedColor).imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
