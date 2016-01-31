@@ -35,9 +35,11 @@ class ConversationListViewController: ATLConversationListViewController, ATLConv
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         self.dataSource = self
         self.delegate = self
+        
+        self.title = ""
+        self.navigationController?.navigationBar.topItem!.title = "Messages"
         
         self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
         let titleDict: NSDictionary = [NSForegroundColorAttributeName: UIColor.whiteColor()]
@@ -56,6 +58,8 @@ class ConversationListViewController: ATLConversationListViewController, ATLConv
     // MARK - ATLConversationListViewControllerDelegate Methods
     
     func conversationListViewController(conversationListViewController: ATLConversationListViewController, didSelectConversation conversation:LYRConversation) {
+        
+        self.tabBarController!.tabBar.hidden = true
         self.presentControllerWithConversation(conversation)
 
     }
@@ -141,6 +145,7 @@ class ConversationListViewController: ATLConversationListViewController, ATLConv
                 return "Conversation with \(conversation.participants.count) users..."
             }
         }
+        
     }
     
     

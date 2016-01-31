@@ -20,6 +20,7 @@ class WandooModel {
     var longitude: Double?
     var numPeople: Int?
     var userModel = UserModel.sharedUserInstance
+    let timeFormatter = NSDateFormatter()
     
     var timeViewController: TimeViewController!
     var backToFeed: TabBarViewController!

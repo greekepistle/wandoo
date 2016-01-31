@@ -10,6 +10,7 @@ class ConversationViewController: ATLConversationViewController, ATLConversation
         super.viewDidLoad()
         self.dataSource = self
         self.delegate = self
+        
         print("addressBarController: \(self.addressBarController)")
         self.addressBarController?.delegate = self
         
@@ -25,6 +26,10 @@ class ConversationViewController: ATLConversationViewController, ATLConversation
         
         
         self.configureUI()
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        self.tabBarController!.tabBar.hidden = false
     }
     
     func getMessageFunc() {
