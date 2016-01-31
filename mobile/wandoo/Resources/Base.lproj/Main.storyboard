@@ -139,7 +139,6 @@
                             <constraint firstItem="JHf-o4-ofu" firstAttribute="trailing" secondItem="miM-w2-eoM" secondAttribute="trailing" id="3qs-VM-R6S"/>
                             <constraint firstItem="Awk-Vm-pxL" firstAttribute="top" secondItem="miM-w2-eoM" secondAttribute="bottom" id="7QW-vk-dnO"/>
                             <constraint firstAttribute="trailing" secondItem="JHf-o4-ofu" secondAttribute="trailing" id="Awt-2D-LIn"/>
-                            <constraint firstItem="Awk-Vm-pxL" firstAttribute="top" secondItem="miM-w2-eoM" secondAttribute="bottom" id="I1U-TW-9pd"/>
                             <constraint firstItem="JHf-o4-ofu" firstAttribute="leading" secondItem="miM-w2-eoM" secondAttribute="leading" id="KPU-ai-T6o"/>
                             <constraint firstItem="JHf-o4-ofu" firstAttribute="trailing" secondItem="miM-w2-eoM" secondAttribute="trailing" id="OKt-mw-7JZ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="miM-w2-eoM" secondAttribute="trailing" constant="-20" id="Qj7-cg-5ni"/>
@@ -1282,7 +1281,7 @@ Cg
                     <tabBarItem key="tabBarItem" title="Item" id="NfV-oW-ytu"/>
                     <toolbarItems/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" backIndicatorImage="1DEE31B1-201D-420B-AB61-F250E5601319" id="LIG-kr-Btz">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" backIndicatorImage="F41CE324-DF41-497E-8F37-9799E3713415" id="LIG-kr-Btz">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -1489,7 +1488,7 @@ Cg
         </scene>
     </scenes>
     <resources>
-        <image name="1DEE31B1-201D-420B-AB61-F250E5601319" width="62" height="64">
+        <image name="F41CE324-DF41-497E-8F37-9799E3713415" width="62" height="64">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOzxYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBMU
 GR4fJSYsLzU4VSRudWxs1QkKCwwNDg8QERJWTlNTaXplViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBz

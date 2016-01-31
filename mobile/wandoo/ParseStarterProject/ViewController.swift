@@ -66,6 +66,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.tabBarController!.tabBar.layer.borderWidth = 0.5
         self.tabBarController!.tabBar.layer.borderColor = UIColor.lightGrayColor().CGColor
         self.tabBarController?.tabBar.clipsToBounds = true
+        self.tabBarController!.tabBar.hidden = false
+        self.tabBarController!.tabBar.translucent = false
         
         
         let userDefaults = NSUserDefaults.standardUserDefaults()
