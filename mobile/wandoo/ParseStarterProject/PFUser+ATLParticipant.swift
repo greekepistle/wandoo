@@ -9,7 +9,7 @@ extension PFUser: ATLParticipant {
     }
 
     public var lastName: String {
-        return "Test"
+        return " "
     }
 
     public var fullName: String {

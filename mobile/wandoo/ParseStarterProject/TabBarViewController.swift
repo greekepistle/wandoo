@@ -56,11 +56,11 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
         self.conversationListViewController = ConversationListViewController(layerClient: self.layerClient)
         self.conversationListViewController.displaysAvatarItem = true
         let chatController = UINavigationController()
-        chatController.title = ""
         chatController.viewControllers = [self.conversationListViewController]
         chatController.navigationBar.translucent = false
         chatController.navigationBar.barTintColor = UIColor(red:0.204, green:0.596, blue:0.859, alpha:1.0)
-        let chatIcon = UITabBarItem(title: " ", image: UIImage(named: "chat")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal), selectedImage: UIImage(named: "chat"))
+        let chatIcon = UITabBarItem(title: "", image: UIImage(named: "chat")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal), selectedImage: UIImage(named: "chat"))
+        chatIcon.title = ""
         chatIcon.imageInsets = UIEdgeInsetsMake(8, 0, -8, 0)
         chatController.tabBarItem = chatIcon
         
