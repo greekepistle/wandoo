@@ -17,12 +17,14 @@ import Atlas
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate {
 
     let delegate = UIApplication.sharedApplication().delegate as! AppDelegate
+    let sb = UIStoryboard(name: "Main", bundle: nil)
+    let priority = DISPATCH_QUEUE_PRIORITY_HIGH
 
     var layerClient: LYRClient!
     var conversationListViewController: ConversationListViewController!
 
     var userModel = UserModel.sharedUserInstance
-    var wandooModel = WandooModel()
+    var wandooModel = WandooModel.sharedWandooInstance
     var count: Int = 0
     var counter: Int = 0
     var allWandoosArray = [NSDictionary]()
@@ -33,6 +35,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     var locationManager = CLLocationManager()
 
+    @IBAction func whatDoYouWantToDo(sender: UIButton) {
+        
+        
+    }
     @IBOutlet weak var wandooButton: UIButton!
     @IBAction func presentChat(sender: UIButton) {
         self.presentConversationListViewController()

@@ -26,20 +26,6 @@ class PostViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.messageTextField.delegate = self
-        
-        let qualityOfServiceClass = QOS_CLASS_BACKGROUND
-        let backgroundQueue = dispatch_get_global_queue(qualityOfServiceClass, 0)
-//        dispatch_async(backgroundQueue, {
-//            print("This is run on the background queue")
-//            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-//                print("This is run on the main queue, after the previous code in outer block")
-//                
-//            })
-//        })
-        
-        dispatch_async(dispatch_get_main_queue()) {
-            self.wandooModel.timeViewController = self.sb.instantiateViewControllerWithIdentifier("timeViewController") as! TimeViewController
-        }
      
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
 
@@ -50,8 +36,19 @@ class PostViewController: UIViewController, UITextFieldDelegate {
 
     }
     
+    override func viewDidAppear(animated: Bool) {
+        let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
+        dispatch_async(dispatch_get_global_queue(priority, 0)) {
+            // do some task
+            self.wandooModel.timeViewController = self.sb.instantiateViewControllerWithIdentifier("timeViewController") as! TimeViewController
+            dispatch_async(dispatch_get_main_queue()) {
+                // update some UI
+            }
+        }
+    }
+    
     @IBAction func lunchSuggestion(sender: UIButton) {
-        self.wandooMessage.text = "I want to eat lunch"
+//        self.wandooMessage.text = "I want to eat lunch"
     }
     
     @IBAction func sendTextData(sender: UIButton) {

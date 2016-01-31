@@ -39,6 +39,8 @@ class ConversationListViewController: ATLConversationListViewController, ATLConv
         self.dataSource = self
         self.delegate = self
         
+        self.title = ""
+        
         self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
         let titleDict: NSDictionary = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         self.navigationController!.navigationBar.titleTextAttributes = titleDict as! [String : AnyObject]

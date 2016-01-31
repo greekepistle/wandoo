@@ -13,7 +13,6 @@ class TimeViewController: UIViewController {
     let userModel = UserModel.sharedUserInstance
     let wandooModel = WandooModel.sharedWandooInstance
     
-    let sb = UIStoryboard(name: "Main", bundle: nil)
 
     @IBOutlet weak var timeButton: UIBarButtonItem!
     
@@ -39,6 +38,7 @@ class TimeViewController: UIViewController {
         self.navigationController?.navigationBarHidden = true
         self.tabBarController!.tabBar.translucent = true
         self.tabBarController!.tabBar.hidden = true
+        self.performSegueWithIdentifier("backToFeed", sender: nil)
         wandooModel.startTime = timePickerToString(datePicker)
         userModel.postLocation { () -> Void in
             print("usermodel postLocation it")
@@ -65,7 +65,6 @@ class TimeViewController: UIViewController {
     @IBOutlet weak var endTimeDatePicker: UIDatePicker!
    
     func startDatePickerChanged(datePicker:UIDatePicker) {
-        _ = NSDateFormatter()
 
     }
     
@@ -75,9 +74,8 @@ class TimeViewController: UIViewController {
 //    }
     
     func timePickerToString(sender: UIDatePicker) -> String {
-        let timeFormatter = NSDateFormatter()
-        timeFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
-        let stringDate = timeFormatter.stringFromDate(sender.date)
+        wandooModel.timeFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+        let stringDate = wandooModel.timeFormatter.stringFromDate(sender.date)
         
         return stringDate
     }

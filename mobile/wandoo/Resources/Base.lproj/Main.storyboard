@@ -83,7 +83,6 @@
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nZ8-xu-eEg">
                                         <rect key="frame" x="13" y="120" width="174" height="37"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="21"/>
-                                        <state key="normal" title="I want to eat lunch"/>
                                         <connections>
                                             <action selector="lunchSuggestion:" destination="iS5-sY-owf" eventType="touchUpInside" id="W6H-vL-Zwx"/>
                                         </connections>
@@ -240,6 +239,7 @@
                                             <connections>
                                                 <action selector="nextButton:" destination="iS5-sY-owf" eventType="touchUpInside" id="ymb-t2-9gD"/>
                                                 <action selector="sendPeopleData:" destination="alw-hr-aHg" eventType="touchUpInside" id="mvc-0M-5Ql"/>
+                                                <segue destination="EQg-eG-Ch2" kind="show" id="TUs-HS-mGe"/>
                                             </connections>
                                         </button>
                                     </barButtonItem>
@@ -369,6 +369,7 @@
                                     <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
+                                    <action selector="whatDoYouWantToDo:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Mlj-0v-dku"/>
                                     <segue destination="iS5-sY-owf" kind="show" id="yEC-yo-VpH"/>
                                 </connections>
                             </button>
@@ -716,7 +717,6 @@
                                 <state key="normal" image="facebook"/>
                                 <connections>
                                     <action selector="loginFacebookButtonThatTakesUsToTheLoginAtSafari:" destination="qih-Dc-awY" eventType="touchUpInside" id="seu-Ec-F76"/>
-                                    <segue destination="c2R-dH-gMp" kind="show" id="Dm3-bV-Qe0"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Wandoo.png" translatesAutoresizingMaskIntoConstraints="NO" id="yZE-cA-GR7">
@@ -740,6 +740,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="titleWandoo" destination="yZE-cA-GR7" id="A9h-Ar-3lW"/>
+                        <segue destination="c2R-dH-gMp" kind="show" identifier="LoginFacebook" id="hYR-Ah-pQh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MAP-ul-j4w" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1249,7 +1250,7 @@ Cg
                     <tabBarItem key="tabBarItem" title="Item" id="NfV-oW-ytu"/>
                     <toolbarItems/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" backIndicatorImage="68D62492-EC5E-4962-9A33-362A28BCFB14" id="LIG-kr-Btz">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" backIndicatorImage="892DBEAD-975B-4331-A223-91DFBD923CC0" id="LIG-kr-Btz">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -1277,7 +1278,7 @@ Cg
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LRj-WU-DMi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4966" y="275"/>
+            <point key="canvasLocation" x="5038" y="375"/>
         </scene>
         <!--Time View Controller-->
         <scene sceneID="d03-63-TeY">
@@ -1331,7 +1332,6 @@ Cg
                                             <connections>
                                                 <action selector="nextButton:" destination="iS5-sY-owf" eventType="touchUpInside" id="NeC-QW-S7h"/>
                                                 <action selector="postButton:" destination="EQg-eG-Ch2" eventType="touchUpInside" id="mlj-9U-KKB"/>
-                                                <segue destination="c2R-dH-gMp" kind="show" id="fL4-0M-Stw"/>
                                             </connections>
                                         </button>
                                     </barButtonItem>
@@ -1407,12 +1407,13 @@ Cg
                     <connections>
                         <outlet property="datePicker" destination="RdB-VP-b5V" id="Cj7-yP-oRJ"/>
                         <outlet property="timeButton" destination="9Kd-oG-KoI" id="49V-CG-fXJ"/>
+                        <segue destination="c2R-dH-gMp" kind="show" identifier="backToFeed" id="Q8Z-IF-CGn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vpu-4O-96H" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="EKT-9W-J9n" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="5318" y="275"/>
+            <point key="canvasLocation" x="8014" y="-969"/>
         </scene>
         <!--Item-->
         <scene sceneID="pme-9J-R3c">
@@ -1456,7 +1457,7 @@ Cg
         </scene>
     </scenes>
     <resources>
-        <image name="68D62492-EC5E-4962-9A33-362A28BCFB14" width="62" height="64">
+        <image name="892DBEAD-975B-4331-A223-91DFBD923CC0" width="62" height="64">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOzxYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBMU
 GR4fJSYsLzU4VSRudWxs1QkKCwwNDg8QERJWTlNTaXplViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBz
@@ -1480,6 +1481,6 @@ Afg
         <image name="wandoo-logo" width="400" height="201"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="fL4-0M-Stw"/>
+        <segue reference="hYR-Ah-pQh"/>
     </inferredMetricsTieBreakers>
 </document>
