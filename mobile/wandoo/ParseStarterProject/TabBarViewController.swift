@@ -106,8 +106,6 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
             
             item.image = item.selectedImage?.imageWithColor(unselectedColor).imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
             
-            
-            
         }
         
 //        var nav1 = UINavigationController()
@@ -134,11 +132,18 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
     //Delegate methods
     func tabBarController(tabBarController: UITabBarController, shouldSelectViewController viewController: UIViewController) -> Bool {
         print("Should select viewController: \(viewController.title) ?")
+        
+//        let vcMirror = Mirror(reflecting: viewController)
+        if viewController.childViewControllers.first! is ViewController {
+            
+            
+        }
         return true;
     }
     
+    
     override func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem) {
-        print("SELECTED")
+        
     }
     
     func presentConversationListViewController() {
