@@ -59,6 +59,7 @@ class SettingsController: UITableViewController {
 //            print("Current user token=\(FBSDKAccessToken.currentAccessToken().tokenString)")
             
             self.tabBarController!.tabBar.hidden = true
+            self.tabBarController!.tabBar.translucent = true
             PFUser.logOut()
             layerClient.deauthenticateWithCompletion({ (success, error) -> Void in
                 print("successfully logged out of layer")
