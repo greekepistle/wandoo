@@ -83,6 +83,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.tabBarController!.tabBar.layer.borderColor = UIColor.lightGrayColor().CGColor
         self.tabBarController?.tabBar.clipsToBounds = true
         
+        let selectedColor = UIColor(red:0.204, green:0.596, blue:0.859, alpha:1.0)
+        editIcon.image = editIcon.image!.imageWithColor(selectedColor).imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+        
         
         let userDefaults = NSUserDefaults.standardUserDefaults()
         if let interestedWandooIDs = userDefaults.objectForKey("interestedWandooIDs") {

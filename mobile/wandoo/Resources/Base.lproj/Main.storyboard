@@ -542,10 +542,10 @@
                                 </connections>
                             </tableView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="edit-icon2" translatesAutoresizingMaskIntoConstraints="NO" id="6TV-MY-07i">
-                                <rect key="frame" x="8" y="70" width="36" height="29"/>
+                                <rect key="frame" x="11" y="75" width="25" height="19"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="36" id="TVB-92-DTk"/>
-                                    <constraint firstAttribute="height" constant="29" id="cA9-y3-7n1"/>
+                                    <constraint firstAttribute="width" constant="25" id="TVB-92-DTk"/>
+                                    <constraint firstAttribute="height" constant="19" id="cA9-y3-7n1"/>
                                 </constraints>
                             </imageView>
                         </subviews>
@@ -564,9 +564,9 @@
                             <constraint firstItem="tGy-DC-Ni0" firstAttribute="centerX" secondItem="bgm-xG-8Lr" secondAttribute="centerX" id="gJy-Hq-UB8"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="bgm-xG-8Lr" secondAttribute="bottom" id="iAl-7J-vLk"/>
                             <constraint firstItem="aYU-hL-j96" firstAttribute="centerX" secondItem="bgm-xG-8Lr" secondAttribute="centerX" id="ii6-S9-EOk"/>
-                            <constraint firstItem="6TV-MY-07i" firstAttribute="leading" secondItem="tGy-DC-Ni0" secondAttribute="leading" constant="12" id="mYs-Z1-14c"/>
+                            <constraint firstItem="6TV-MY-07i" firstAttribute="leading" secondItem="tGy-DC-Ni0" secondAttribute="leading" constant="15" id="mYs-Z1-14c"/>
                             <constraint firstItem="tGy-DC-Ni0" firstAttribute="centerX" secondItem="aYU-hL-j96" secondAttribute="centerX" id="mdi-V0-XcS"/>
-                            <constraint firstItem="6TV-MY-07i" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-8" id="meU-IN-Swj"/>
+                            <constraint firstItem="6TV-MY-07i" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-5" id="meU-IN-Swj"/>
                             <constraint firstItem="6TV-MY-07i" firstAttribute="centerY" secondItem="tGy-DC-Ni0" secondAttribute="centerY" id="ohE-vs-Wzi"/>
                             <constraint firstItem="bgm-xG-8Lr" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="rlA-c4-FVm"/>
                             <constraint firstItem="tGy-DC-Ni0" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-12" id="zUO-OA-4IC"/>
@@ -1281,7 +1281,7 @@ Cg
                     <tabBarItem key="tabBarItem" title="Item" id="NfV-oW-ytu"/>
                     <toolbarItems/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" backIndicatorImage="592B7588-A009-4AD8-8464-2C22B9CDD082" id="LIG-kr-Btz">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" backIndicatorImage="E2968E99-F24E-41D7-9380-6B269819279F" id="LIG-kr-Btz">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -1488,7 +1488,7 @@ Cg
         </scene>
     </scenes>
     <resources>
-        <image name="592B7588-A009-4AD8-8464-2C22B9CDD082" width="62" height="64">
+        <image name="E2968E99-F24E-41D7-9380-6B269819279F" width="62" height="64">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOzxYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBMU
 GR4fJSYsLzU4VSRudWxs1QkKCwwNDg8QERJWTlNTaXplViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBz
