@@ -19,6 +19,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         navigationItem.titleView = UIImageView(image: UIImage(named: "profile"))
         
         let btnName = UIButton()
