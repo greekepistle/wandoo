@@ -14,7 +14,7 @@ import SVProgressHUD
 import Atlas
 //import CoreData
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate, UITabBarControllerDelegate {
 
     let delegate = UIApplication.sharedApplication().delegate as! AppDelegate
     let sb = UIStoryboard(name: "Main", bundle: nil)
@@ -31,7 +31,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var profilePicture: UIImage?
     var interestedModel = InterestedModel()
 
-    var ignoreFlag = true
+    var ignoreFlag = false
+    var feedButtonFlag = true
     
     var locationManager = CLLocationManager()
 
@@ -48,12 +49,26 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBAction func toTopPost(sender: UIButton) {
         self.retrieveWandoos()
         sender.userInteractionEnabled = false
-        refreshDataAfterTwoSec(sender)
+        refreshDataAfterTwoSec()
 
         self.wandooTable.reloadData()
         self.retrieveWandoos()
         wandooTable.setContentOffset(CGPointMake(0, -wandooTable.contentInset.top), animated: true)
     }
+    
+    func toTopAndRefresh() {
+        print("SHOULD BE 2 SEC DELAY")
+        self.retrieveWandoos()
+//        self.tabBarController!.tabBar.selectedItem!.enabled = false
+        refreshDataAfterTwoSec()
+//        sender.userInteractionEnabled = false
+//        refreshDataAfterTwoSec(sender)
+        
+        self.wandooTable.reloadData()
+        self.retrieveWandoos()
+        wandooTable.setContentOffset(CGPointMake(0, -wandooTable.contentInset.top), animated: true)
+    }
+    
     @IBOutlet weak var wandooTable: UITableView!
 
     var offset: Int = 1
@@ -63,11 +78,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.tabBarController!.delegate = self
         self.tabBarController!.tabBar.layer.borderWidth = 0.5
         self.tabBarController!.tabBar.layer.borderColor = UIColor.lightGrayColor().CGColor
         self.tabBarController?.tabBar.clipsToBounds = true
-        self.tabBarController!.tabBar.hidden = false
-        self.tabBarController!.tabBar.translucent = false
         
         
         let userDefaults = NSUserDefaults.standardUserDefaults()
@@ -104,6 +118,21 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             self.retrieveWandoos()
         }
         self.navigationItem.hidesBackButton = true
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        self.tabBarController!.tabBar.hidden = false
+        self.tabBarController!.tabBar.translucent = false
+        
+        feedButtonFlag = false
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        feedButtonFlag = true
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+//        self.tabBarController!.tabBar.items![0].enabled = true
     }
     
     func refresh(sender:AnyObject)
@@ -256,6 +285,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             destinationVC.wandooInfo = wandooInfo
         }
     }
+    
+    func tabBarController(tabBarController: UITabBarController, didSelectViewController viewController: UIViewController) {
+        
+        
+        if !ignoreFlag && feedButtonFlag && viewController.childViewControllers.first! is ViewController {
+            
+            toTopAndRefresh()
+        }
+    }
 
     func presentConversationListViewController() {
 //        SVProgressHUD.dismiss()
@@ -301,13 +339,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
     }
 
-    func refreshDataAfterTwoSec(sender: UIButton) {
+    func refreshDataAfterTwoSec() {
         let delta: Int64 = 2 * Int64(NSEC_PER_SEC)
-
         let time = dispatch_time(DISPATCH_TIME_NOW, delta)
+        ignoreFlag = true
 
         dispatch_after(time, dispatch_get_main_queue(), {
-            sender.userInteractionEnabled = true
+            self.ignoreFlag = false
+            
         });
     }
 
