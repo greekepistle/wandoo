@@ -2,11 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "wandoo-logo.png",
+      "filename" : "wandoo-logo-blue.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "wandoo-logo-blue-1.png",
       "scale" : "2x"
     },
     {

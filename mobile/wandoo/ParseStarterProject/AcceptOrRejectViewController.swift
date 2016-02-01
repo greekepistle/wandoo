@@ -135,6 +135,8 @@ class AcceptOrRejectViewController: UITableViewController {
             }
         }
         
+        interestedCell.selectionStyle = UITableViewCellSelectionStyle.None
+        
         return interestedCell
     }
     

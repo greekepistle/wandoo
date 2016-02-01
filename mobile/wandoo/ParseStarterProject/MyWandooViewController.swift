@@ -21,6 +21,7 @@ class MyWandooViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         navigationItem.titleView = UIImageView(image: UIImage(named: "my wandoos"))
         
         self.retrieveMyWandoos()

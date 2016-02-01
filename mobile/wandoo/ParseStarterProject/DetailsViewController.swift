@@ -15,11 +15,8 @@ class DetailsViewController: UIViewController {
     var wandooModel = WandooModel()
     
     @IBOutlet weak var profilePicture: UIImageView!
-    @IBOutlet weak var name: UILabel!
-    @IBOutlet weak var age: UILabel!
-    @IBOutlet weak var education: UILabel!
-    @IBOutlet weak var job: UILabel!
-    
+    @IBOutlet weak var profileInfo: UILabel!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -49,25 +46,33 @@ class DetailsViewController: UIViewController {
             dispatch_async(dispatch_get_main_queue()) {
                 let fullName = result["name"] as? String
                 let fullNameArr = fullName!.characters.split{$0 == " "}.map(String.init)
-                self.name.text = fullNameArr[0] + ", " + String(result["sex"]!).uppercaseString
-                self.age.text = "Age: " + String(result["age"]!)
+                self.profileInfo.text = fullNameArr[0]
+                
+                if let sex = result["sex"]! as? String {
+                    self.profileInfo.text! += ", " + sex.uppercaseString
+                }
+                
+                if let age = result["age"]! as? Int {
+                    self.profileInfo.text! += ", " + String(age)
+                }
                 
                 if let employer = result["employer"]! as? String {
+                    self.profileInfo.text! += "\n"
                     if let jobTitle = result["job_title"]! as? String {
-                        self.job.text = jobTitle + " at " + employer
+                        self.profileInfo.text! += jobTitle
+                        self.profileInfo.text! += " at " + employer
                     } else {
-                        self.job.text = ""
+                        self.profileInfo.text! += " at " + employer
                     }
-                } else {
-                    self.job.text = ""
                 }
                 
                 if let edu = result["institution_name"]! as? String {
-                    self.education.text! = edu
-                } else {
-                    self.education.text = ""
+                    self.profileInfo.text! += "\n" + edu
                 }
-                
+                    
+                self.profileInfo.numberOfLines = 0
+                self.profileInfo.frame = CGRectMake(20,20,200,800)
+                self.profileInfo.sizeToFit()
             }
         }
     }
