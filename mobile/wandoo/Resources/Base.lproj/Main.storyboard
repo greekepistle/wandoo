@@ -375,7 +375,7 @@
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="173" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bgm-xG-8Lr">
                                 <rect key="frame" x="-8" y="105" width="336" height="463"/>
-                                <color key="backgroundColor" red="0.9137254901960784" green="0.91764705882352937" blue="0.92941176470588238" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.91372549020000005" green="0.91764705879999997" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="wandooCell" rowHeight="173" id="pnr-KV-Mmk" customClass="WandooCell" customModule="Wandoo" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="336" height="173"/>
@@ -541,6 +541,13 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="n73-Kw-eqc"/>
                                 </connections>
                             </tableView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="edit-icon2" translatesAutoresizingMaskIntoConstraints="NO" id="6TV-MY-07i">
+                                <rect key="frame" x="8" y="70" width="36" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="36" id="TVB-92-DTk"/>
+                                    <constraint firstAttribute="height" constant="29" id="cA9-y3-7n1"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -557,7 +564,10 @@
                             <constraint firstItem="tGy-DC-Ni0" firstAttribute="centerX" secondItem="bgm-xG-8Lr" secondAttribute="centerX" id="gJy-Hq-UB8"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="bgm-xG-8Lr" secondAttribute="bottom" id="iAl-7J-vLk"/>
                             <constraint firstItem="aYU-hL-j96" firstAttribute="centerX" secondItem="bgm-xG-8Lr" secondAttribute="centerX" id="ii6-S9-EOk"/>
+                            <constraint firstItem="6TV-MY-07i" firstAttribute="leading" secondItem="tGy-DC-Ni0" secondAttribute="leading" constant="12" id="mYs-Z1-14c"/>
                             <constraint firstItem="tGy-DC-Ni0" firstAttribute="centerX" secondItem="aYU-hL-j96" secondAttribute="centerX" id="mdi-V0-XcS"/>
+                            <constraint firstItem="6TV-MY-07i" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-8" id="meU-IN-Swj"/>
+                            <constraint firstItem="6TV-MY-07i" firstAttribute="centerY" secondItem="tGy-DC-Ni0" secondAttribute="centerY" id="ohE-vs-Wzi"/>
                             <constraint firstItem="bgm-xG-8Lr" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="rlA-c4-FVm"/>
                             <constraint firstItem="tGy-DC-Ni0" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-12" id="zUO-OA-4IC"/>
                         </constraints>
@@ -578,6 +588,7 @@
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
+                        <outlet property="editIcon" destination="6TV-MY-07i" id="WDd-0k-vqX"/>
                         <outlet property="wandooButton" destination="tGy-DC-Ni0" id="cLd-vh-gln"/>
                         <outlet property="wandooTable" destination="bgm-xG-8Lr" id="DgO-ES-4h2"/>
                     </connections>
@@ -1270,7 +1281,7 @@ Cg
                     <tabBarItem key="tabBarItem" title="Item" id="NfV-oW-ytu"/>
                     <toolbarItems/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" backIndicatorImage="2743D5AF-A3F6-4CEE-ABE8-A1953F83D155" id="LIG-kr-Btz">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" backIndicatorImage="F41CE324-DF41-497E-8F37-9799E3713415" id="LIG-kr-Btz">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -1477,7 +1488,7 @@ Cg
         </scene>
     </scenes>
     <resources>
-        <image name="2743D5AF-A3F6-4CEE-ABE8-A1953F83D155" width="62" height="64">
+        <image name="F41CE324-DF41-497E-8F37-9799E3713415" width="62" height="64">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOzxYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBMU
 GR4fJSYsLzU4VSRudWxs1QkKCwwNDg8QERJWTlNTaXplViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBz
@@ -1494,6 +1505,7 @@ Afg
 </mutableData>
         </image>
         <image name="Wandoo.png" width="303" height="55"/>
+        <image name="edit-icon2" width="128" height="128"/>
         <image name="facebook" width="471" height="85"/>
         <image name="people" width="16" height="16"/>
         <image name="people darken" width="16" height="16"/>

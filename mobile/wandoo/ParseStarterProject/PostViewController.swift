@@ -25,6 +25,10 @@ class PostViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var selectingViewHeight: NSLayoutConstraint!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.tabBarController!.tabBar.hidden = true
+        self.tabBarController!.tabBar.translucent = true
+        
         self.messageTextField.delegate = self
      
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)

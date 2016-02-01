@@ -59,7 +59,7 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
         print("VIEW WILL APPEAR")
         
         UITabBar.appearance().tintColor = UIColor.whiteColor()
-        UITabBar.appearance().barTintColor = UIColor(red:0.91, green:0.92, blue:0.93, alpha:1.0)
+        UITabBar.appearance().barTintColor = UIColor.whiteColor()
         UITabBar.appearance().translucent = false
         
         feedController = sb.instantiateViewControllerWithIdentifier("initialNav") as! UINavigationController
@@ -99,9 +99,14 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
         self.viewControllers = [feedController, myWandoosController, chatController, profileController]
         
         let selectedColor = UIColor(red:0.204, green:0.596, blue:0.859, alpha:1.0)
+        let unselectedColor = UIColor(white:0.80, alpha:1.0)
         
         for item in self.tabBar.items! {
             item.selectedImage = item.selectedImage?.imageWithColor(selectedColor).imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+            
+            item.image = item.selectedImage?.imageWithColor(unselectedColor).imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+            
+            
             
         }
         
