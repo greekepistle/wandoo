@@ -134,7 +134,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             print("refreshing data")
             self.retrieveWandoos()
             self.wandooTable.reloadData()
-            self.retrieveWandoos()
             self.refreshControl.endRefreshing()
         }
     }
@@ -249,22 +248,20 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
-        count++
         let userLocation:CLLocation = locations[0]
-        let fbID = FBSDKAccessToken.currentAccessToken().userID
         userModel.latitude = userLocation.coordinate.latitude
         userModel.longitude = userLocation.coordinate.longitude
-        if count == 1 {
-            self.userModel.getUserInfo(fbID, completion: { (result) -> Void in
-                print(result)
-                self.userModel.userID = result["userID"]! as? Int
-                dispatch_async(dispatch_get_main_queue()){
-                    self.userModel.postLocation { () -> Void in
-                        self.retrieveWandoos()
-                    }
-                }
-            })
+        
+        if updateCount == 0 {
+            getWandoosTheFirstTime()
         }
+        
+        if updateCount >= 2500 {
+            updateCount = 0
+            return
+        }
+        
+        updateCount++
     }
 
     //number of sections in table.. we only have 1 section of wandoos
@@ -345,6 +342,19 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             completion(result: result)
         }
     }
+    
+    func getWandoosTheFirstTime () {
+        let fbID = FBSDKAccessToken.currentAccessToken().userID
+        self.userModel.getUserInfo(fbID, completion: { (result) -> Void in
+            print(result)
+            self.userModel.userID = result["userID"]! as? Int
+            dispatch_async(dispatch_get_main_queue()){
+                self.userModel.postLocation { () -> Void in
+                    self.retrieveWandoos()
+                }
+            }
+        })
+    }
 
     func refreshDataAfterTwoSec() {
         let delta: Int64 = 2 * Int64(NSEC_PER_SEC)
@@ -353,7 +363,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
         dispatch_after(time, dispatch_get_main_queue(), {
             self.ignoreFlag = false
-            
         });
     }
 
