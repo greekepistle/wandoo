@@ -20,6 +20,7 @@
 		10348A701C2DF4FF00CA593D /* InterestedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10348A6F1C2DF4FF00CA593D /* InterestedViewController.swift */; };
 		10348A721C2F57BC00CA593D /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10348A711C2F57BC00CA593D /* DetailsViewController.swift */; };
 		10348A741C3079F100CA593D /* HostProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10348A731C3079F000CA593D /* HostProfileViewController.swift */; };
+		10F523FB1C609D1400762DEC /* AcceptRejectProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F523FA1C609D1300762DEC /* AcceptRejectProfileViewController.swift */; };
 		10F9FDE41C17BC9D00D3C4CC /* FacebookLoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F9FDE31C17BC9D00D3C4CC /* FacebookLoginController.swift */; };
 		10F9FDE61C17DFF700D3C4CC /* SwipeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F9FDE51C17DFF700D3C4CC /* SwipeController.swift */; };
 		10F9FDEC1C18AFBB00D3C4CC /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F9FDEB1C18AFBB00D3C4CC /* SettingsController.swift */; };
@@ -62,6 +63,7 @@
 		10348A6F1C2DF4FF00CA593D /* InterestedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterestedViewController.swift; sourceTree = "<group>"; };
 		10348A711C2F57BC00CA593D /* DetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		10348A731C3079F000CA593D /* HostProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HostProfileViewController.swift; sourceTree = "<group>"; };
+		10F523FA1C609D1300762DEC /* AcceptRejectProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AcceptRejectProfileViewController.swift; sourceTree = "<group>"; };
 		10F9FDE31C17BC9D00D3C4CC /* FacebookLoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookLoginController.swift; sourceTree = "<group>"; };
 		10F9FDE51C17DFF700D3C4CC /* SwipeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeController.swift; sourceTree = "<group>"; };
 		10F9FDEB1C18AFBB00D3C4CC /* SettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
@@ -188,6 +190,7 @@
 				10F9FDE51C17DFF700D3C4CC /* SwipeController.swift */,
 				BEA742E91C3077500028332D /* MyWandooCell.swift */,
 				102561B21C37DE94007CF671 /* AcceptOrRejectViewController.swift */,
+				10F523FA1C609D1300762DEC /* AcceptRejectProfileViewController.swift */,
 				10F9FDEF1C18ECD800D3C4CC /* UserModel.swift */,
 				BECE40211C1F6A3300894D06 /* Main.storyboard */,
 				10348A6F1C2DF4FF00CA593D /* InterestedViewController.swift */,
@@ -351,6 +354,7 @@
 				10F9FDF01C18ECD800D3C4CC /* UserModel.swift in Sources */,
 				10F9FE731C1B83FF00D3C4CC /* ChatViewController.swift in Sources */,
 				BEA742EC1C30B8440028332D /* MyWandooViewController.swift in Sources */,
+				10F523FB1C609D1400762DEC /* AcceptRejectProfileViewController.swift in Sources */,
 				BE928A4E1C20E6E2002C9C7D /* PeopleViewController.swift in Sources */,
 				10F9FEC21C21465900D3C4CC /* WandooCell.swift in Sources */,
 				BEA742EA1C3077500028332D /* MyWandooCell.swift in Sources */,

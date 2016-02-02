@@ -571,14 +571,18 @@
                             <constraint firstItem="bgm-xG-8Lr" firstAttribute="top" secondItem="tGy-DC-Ni0" secondAttribute="bottom" constant="2" id="Ffd-t7-hbK"/>
                             <constraint firstItem="aYU-hL-j96" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-24" id="Gc8-fh-jrT"/>
                             <constraint firstItem="bgm-xG-8Lr" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="MUD-8X-UPY"/>
+                            <constraint firstItem="tGy-DC-Ni0" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="3" id="Sf1-GA-slu"/>
                             <constraint firstItem="tGy-DC-Ni0" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="3" id="VNx-8s-5zk"/>
+                            <constraint firstItem="tGy-DC-Ni0" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="aQV-lK-PC4"/>
                             <constraint firstItem="aYU-hL-j96" firstAttribute="bottom" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="f2b-vP-Ei9"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="tGy-DC-Ni0" secondAttribute="trailing" constant="-20" id="frG-ZF-8AK"/>
                             <constraint firstItem="tGy-DC-Ni0" firstAttribute="centerX" secondItem="bgm-xG-8Lr" secondAttribute="centerX" id="gJy-Hq-UB8"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="bgm-xG-8Lr" secondAttribute="bottom" id="iAl-7J-vLk"/>
                             <constraint firstItem="aYU-hL-j96" firstAttribute="centerX" secondItem="bgm-xG-8Lr" secondAttribute="centerX" id="ii6-S9-EOk"/>
                             <constraint firstItem="6TV-MY-07i" firstAttribute="leading" secondItem="tGy-DC-Ni0" secondAttribute="leading" constant="15" id="mYs-Z1-14c"/>
                             <constraint firstItem="tGy-DC-Ni0" firstAttribute="centerX" secondItem="aYU-hL-j96" secondAttribute="centerX" id="mdi-V0-XcS"/>
                             <constraint firstItem="6TV-MY-07i" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-5" id="meU-IN-Swj"/>
+                            <constraint firstItem="bgm-xG-8Lr" firstAttribute="top" secondItem="tGy-DC-Ni0" secondAttribute="bottom" constant="2" id="nKm-xs-BBc"/>
                             <constraint firstItem="6TV-MY-07i" firstAttribute="centerY" secondItem="tGy-DC-Ni0" secondAttribute="centerY" id="ohE-vs-Wzi"/>
                             <constraint firstItem="bgm-xG-8Lr" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="rlA-c4-FVm"/>
                             <constraint firstItem="tGy-DC-Ni0" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-12" id="zUO-OA-4IC"/>
@@ -621,7 +625,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="wandoo-logo-blue" translatesAutoresizingMaskIntoConstraints="NO" id="sL1-f1-q8Q">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="wandoo-logo" translatesAutoresizingMaskIntoConstraints="NO" id="sL1-f1-q8Q">
                                 <rect key="frame" x="40" y="220" width="240" height="128"/>
                             </imageView>
                         </subviews>
@@ -1097,6 +1101,7 @@ Cg
                                     <outlet property="name" destination="U9B-0E-eej" id="w8o-Gu-HPS"/>
                                     <outlet property="picture" destination="bry-kD-pVA" id="Gpz-pJ-ZEK"/>
                                     <outlet property="reject" destination="VxZ-J3-38W" id="DJl-yq-TCh"/>
+                                    <segue destination="27E-Kz-I4U" kind="show" identifier="toAcceptRejectProfile" id="LMK-88-R8u"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -1107,6 +1112,7 @@ Cg
                     </tableView>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
+                        <outlet property="acceptRejectTable" destination="Qej-y8-tFK" id="J75-2M-6rp"/>
                         <outlet property="interestedTable" destination="Qej-y8-tFK" id="XS2-JX-GKa"/>
                     </connections>
                 </tableViewController>
@@ -1285,7 +1291,7 @@ Cg
                     <tabBarItem key="tabBarItem" title="Item" id="NfV-oW-ytu"/>
                     <toolbarItems/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" backIndicatorImage="542DBBB1-A29B-4CDD-8900-E7E3AA5516BA" id="LIG-kr-Btz">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" backIndicatorImage="2A1F7B81-2778-4329-B746-4BB8597678B5" id="LIG-kr-Btz">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -1550,9 +1556,69 @@ Cg
             </objects>
             <point key="canvasLocation" x="7236" y="-347"/>
         </scene>
+        <!--Accept Reject Profile View Controller-->
+        <scene sceneID="Njt-c6-bTq">
+            <objects>
+                <viewController id="27E-Kz-I4U" customClass="AcceptRejectProfileViewController" customModule="Wandoo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cVS-ee-QP3"/>
+                        <viewControllerLayoutGuide type="bottom" id="SZh-RO-Z6d"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ZHK-oT-ah2">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wCC-5Z-jF5">
+                                <rect key="frame" x="-4" y="64" width="328" height="504"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mxc-iX-Mu0">
+                                        <rect key="frame" x="10" y="296" width="316" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9H1-ud-dkA">
+                                        <rect key="frame" x="33" y="8" width="270" height="270"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="9H1-ud-dkA" secondAttribute="height" multiplier="1:1" id="8hD-Ev-9pi"/>
+                                            <constraint firstAttribute="height" constant="270" id="wcS-wC-Xw6"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="9H1-ud-dkA" firstAttribute="top" secondItem="wCC-5Z-jF5" secondAttribute="top" constant="8" id="1dm-9a-hdO"/>
+                                    <constraint firstItem="9H1-ud-dkA" firstAttribute="trailing" secondItem="Mxc-iX-Mu0" secondAttribute="trailing" constant="-23" id="Iva-ay-Ggu"/>
+                                    <constraint firstItem="9H1-ud-dkA" firstAttribute="centerX" secondItem="wCC-5Z-jF5" secondAttribute="centerX" constant="4" id="SJg-xQ-YTx"/>
+                                    <constraint firstAttribute="trailing" secondItem="Mxc-iX-Mu0" secondAttribute="trailing" constant="2" id="bkn-mY-UR0"/>
+                                    <constraint firstItem="Mxc-iX-Mu0" firstAttribute="leading" secondItem="wCC-5Z-jF5" secondAttribute="leading" constant="10" id="cjj-AX-meq"/>
+                                    <constraint firstItem="Mxc-iX-Mu0" firstAttribute="top" secondItem="9H1-ud-dkA" secondAttribute="bottom" constant="18" id="msH-83-CT2"/>
+                                    <constraint firstAttribute="bottom" secondItem="Mxc-iX-Mu0" secondAttribute="bottom" constant="28" id="w3s-Jf-8qv"/>
+                                    <constraint firstItem="Mxc-iX-Mu0" firstAttribute="leading" secondItem="9H1-ud-dkA" secondAttribute="leading" constant="-23" id="zOt-Pg-YrZ"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.91372549020000005" green="0.91764705879999997" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="wCC-5Z-jF5" firstAttribute="bottom" secondItem="SZh-RO-Z6d" secondAttribute="top" id="XJo-sK-uRN"/>
+                            <constraint firstItem="wCC-5Z-jF5" firstAttribute="centerX" secondItem="ZHK-oT-ah2" secondAttribute="centerX" id="hsH-tY-SI7"/>
+                            <constraint firstItem="wCC-5Z-jF5" firstAttribute="leading" secondItem="ZHK-oT-ah2" secondAttribute="leadingMargin" constant="-20" id="yOB-hg-V48"/>
+                            <constraint firstItem="wCC-5Z-jF5" firstAttribute="top" secondItem="cVS-ee-QP3" secondAttribute="bottom" id="zwk-ta-doV"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="7n7-25-HsF"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="profileInfo" destination="Mxc-iX-Mu0" id="jDy-xO-WbL"/>
+                        <outlet property="profilePicture" destination="9H1-ud-dkA" id="445-5n-sDe"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DTJ-ww-Din" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6028" y="1517"/>
+        </scene>
     </scenes>
     <resources>
-        <image name="542DBBB1-A29B-4CDD-8900-E7E3AA5516BA" width="62" height="64">
+        <image name="2A1F7B81-2778-4329-B746-4BB8597678B5" width="62" height="64">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOzxYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBMU
 GR4fJSYsLzU4VSRudWxs1QkKCwwNDg8QERJWTlNTaXplViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBz
@@ -1574,7 +1640,7 @@ Afg
         <image name="people" width="16" height="16"/>
         <image name="people darken" width="16" height="16"/>
         <image name="time" width="15" height="15"/>
-        <image name="wandoo-logo-blue" width="327" height="123"/>
+        <image name="wandoo-logo" width="400" height="201"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Q8Z-IF-CGn"/>

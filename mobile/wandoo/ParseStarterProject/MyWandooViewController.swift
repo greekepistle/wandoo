@@ -24,6 +24,9 @@ class MyWandooViewController: UITableViewController {
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         navigationItem.titleView = UIImageView(image: UIImage(named: "my wandoos"))
         
+    }
+    
+    override func viewWillAppear(animated: Bool) {
         self.retrieveMyWandoos()
     }
 
@@ -43,6 +46,9 @@ class MyWandooViewController: UITableViewController {
             let picURL = NSURL(string: picString)
             if let pic = NSData(contentsOfURL: picURL!) {
                 dispatch_async(dispatch_get_main_queue()){
+                    let fullName = result["name"] as? String
+                    let fullNameArr = fullName!.characters.split{$0 == " "}.map(String.init)
+                    wandooCell.wandooNumber.text = fullNameArr[0]
                     wandooCell.profileImage.image = UIImage(data: pic)
                     wandooCell.profileImage.layer.borderWidth = 1
                     wandooCell.profileImage.layer.masksToBounds = false
@@ -57,7 +63,6 @@ class MyWandooViewController: UITableViewController {
             }
         }
         
-        wandooCell.wandooNumber.text = "My Wandoo #" + String(indexPath.row + 1)
         wandooCell.cardView.layer.borderWidth = 1
         wandooCell.cardView.layer.borderColor = UIColor.lightGrayColor().CGColor
         wandooCell.userButton.layer.borderWidth = 1
@@ -86,10 +91,26 @@ class MyWandooViewController: UITableViewController {
     }
 
     func retrieveMyWandoos() {
+        
+        if String(self.view.subviews.last).containsString("You Don't Have Any Active Wandoos!") {
+            dispatch_async(dispatch_get_main_queue()) {
+                self.view.subviews.last!.removeFromSuperview()
+            }
+        }
+        
         getMyWandoos { (allMyWandoos) -> Void in
             self.myWandoosArray = allMyWandoos as! [NSDictionary]
             dispatch_async(dispatch_get_main_queue()){
                 self.wandooTable.reloadData()
+                if self.myWandoosArray.count == 0 {
+                    let noWandoos = UILabel(frame: CGRectMake(0, 0, 300, 200))
+                    noWandoos.text = "You Don't Have Any Active Wandoos!"
+                    noWandoos.textAlignment = .Center
+                    noWandoos.font = UIFont(name: noWandoos.font.fontName, size: 20)
+                    noWandoos.center = self.view.center
+                    noWandoos.textColor = UIColor.blackColor()
+                    self.view.addSubview(noWandoos)
+                }
             }
         }
     }

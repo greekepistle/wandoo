@@ -17,6 +17,7 @@ class AcceptOrRejectViewController: UITableViewController {
     
     var myWandooInfo: NSDictionary?
     
+    @IBOutlet var acceptRejectTable: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -149,7 +150,7 @@ class AcceptOrRejectViewController: UITableViewController {
             }
         }
         
-        interestedCell.selectionStyle = UITableViewCellSelectionStyle.None
+//        interestedCell.selectionStyle = UITableViewCellSelectionStyle.None
         
         return interestedCell
     }
@@ -164,6 +165,16 @@ class AcceptOrRejectViewController: UITableViewController {
             return 0
         } else {
             return allInterestedInfo!.count
+        }
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "toAcceptRejectProfile" {
+            let selectedIndex = acceptRejectTable.indexPathForCell(sender as! InterestedCell)
+            
+            let interestedInfo = allInterestedInfo![selectedIndex!.row]
+            let destinationVC = segue.destinationViewController as! AcceptRejectProfileViewController
+            destinationVC.interestedInfo = interestedInfo
         }
     }
     
