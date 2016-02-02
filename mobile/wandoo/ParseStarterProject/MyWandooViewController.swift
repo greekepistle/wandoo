@@ -57,6 +57,7 @@ class MyWandooViewController: UITableViewController {
             }
         }
         
+        wandooCell.wandooNumber.text = "My Wandoo #" + String(indexPath.row + 1)
         wandooCell.cardView.layer.borderWidth = 1
         wandooCell.cardView.layer.borderColor = UIColor.lightGrayColor().CGColor
         wandooCell.userButton.layer.borderWidth = 1

@@ -82,14 +82,25 @@ class AcceptOrRejectViewController: UITableViewController {
             interestedCell.accept.backgroundColor = UIColor(red: 52.0/255.0, green: 152.0/255.0, blue: 219.0/255.0, alpha: 0.5)
         }
         interestedCell.name.text = self.allInterestedInfo![indexPath.row]["name"] as? String
-        interestedCell.age.text = "Age: " + String(self.allInterestedInfo![indexPath.row]["age"]!)
-        interestedCell.sex.text = "Sex: " + String(self.allInterestedInfo![indexPath.row]["sex"]!).uppercaseString
-        if(self.allInterestedInfo![indexPath.row]["employer"] as? String != nil) {
-            interestedCell.employer.text = "Employer " + String(self.allInterestedInfo![indexPath.row]["employer"]!)
+        interestedCell.ageSex.text = String(self.allInterestedInfo![indexPath.row]["sex"]!) + ", " + String(self.allInterestedInfo![indexPath.row]["age"]!)
+        
+        if let employer = self.allInterestedInfo![indexPath.row]["employer"]! as? String {
+            if let jobTitle = self.allInterestedInfo![indexPath.row]["job_title"]! as? String {
+                interestedCell.employerAndOrEdu.text = jobTitle
+                interestedCell.employerAndOrEdu.text! += " at " + employer
+            } else {
+                interestedCell.employerAndOrEdu.text = employer
+            }
+            
+            if let edu = self.allInterestedInfo![indexPath.row]["education"]! as? String {
+                interestedCell.employerAndOrEdu.text! += "\n" + edu
+            }
+        } else {
+            if let edu = self.allInterestedInfo![indexPath.row]["education"]! as? String {
+                interestedCell.employerAndOrEdu.text = edu
+            }
         }
-        else {
-            interestedCell.employer.text = ""
-        }
+    
         interestedCell.reject.tag = indexPath.row
         interestedCell.accept.tag = indexPath.row
         
@@ -176,8 +187,14 @@ class AcceptOrRejectViewController: UITableViewController {
                     self.userModel.getUserInfoByUserID(interestedPeople["userID"] as! Int, completion: { (result) -> Void in
                         interestedPeople["name"] = result["name"]
                         interestedPeople["age"] = String(result["age"]!)
-                        interestedPeople["sex"] = result["sex"]
+                        if result["sex"] as! String == "m" {
+                            interestedPeople["sex"] = "Male"
+                        } else if result["sex"] as! String == "f"{
+                            interestedPeople["sex"] = "Female"
+                        }
                         interestedPeople["employer"] = result["employer"]
+                        interestedPeople["job_title"] = result["job_title"]
+                        interestedPeople["education"] = result["institution_name"]
                         interestedPeople["objectID"] = result["objectID"]
                         let picString = result["profile_picture"] as! String
                         let picURL = NSURL(string: picString)
