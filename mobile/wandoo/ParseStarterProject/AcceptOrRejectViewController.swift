@@ -112,6 +112,9 @@ class AcceptOrRejectViewController: UITableViewController {
         interestedCell.picture.layer.cornerRadius = interestedCell.picture.frame.width/2
         interestedCell.picture.clipsToBounds = true
         
+        interestedCell.cardView.layer.borderWidth = 1
+        interestedCell.cardView.layer.borderColor = UIColor.lightGrayColor().CGColor
+        
         interestedCell.reject.layer.borderWidth = 1
         interestedCell.reject.layer.borderColor = UIColor.lightGrayColor().CGColor
         
@@ -185,7 +188,9 @@ class AcceptOrRejectViewController: UITableViewController {
                         self.userModel.acceptOrRejectList[String(wandooID)]![String(interestedPeople["userID"]!)] = 0
                     }
                     self.userModel.getUserInfoByUserID(interestedPeople["userID"] as! Int, completion: { (result) -> Void in
-                        interestedPeople["name"] = result["name"]
+                        let fullName = result["name"] as? String
+                        let fullNameArr = fullName!.characters.split{$0 == " "}.map(String.init)
+                        interestedPeople["name"] = fullNameArr[0]
                         interestedPeople["age"] = String(result["age"]!)
                         if result["sex"] as! String == "m" {
                             interestedPeople["sex"] = "Male"

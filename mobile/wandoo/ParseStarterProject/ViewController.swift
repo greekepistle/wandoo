@@ -33,6 +33,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     var ignoreFlag = false
     var feedButtonFlag = true
+    var updateCount = 0
     
     var locationManager = CLLocationManager()
 
@@ -102,24 +103,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.startUpdatingLocation()
         
+        
         layerClient = delegate.layerClient
         // Do any additional setup after loading the view, typically from a nib.
-        let fbID = FBSDKAccessToken.currentAccessToken().userID
-        print("reaching here")
         SVProgressHUD.show()
-        self.userModel.getUserInfo(fbID, completion: { (result) -> Void in
-            print(result)
-            self.userModel.userID = result["userID"]! as? Int
-            self.userModel.postLocation { () -> Void in
-                self.retrieveWandoos()
-            }
-        })
 
         navigationItem.titleView = UIImageView(image: UIImage(named: "Wandoo"))
-
-        userModel.postLocation { () -> Void in
-            self.retrieveWandoos()
-        }
+        
         self.navigationItem.hidesBackButton = true
     }
     
@@ -140,11 +130,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func refresh(sender:AnyObject)
     {
-        print("refreshing data")
-        self.retrieveWandoos()
-        self.wandooTable.reloadData()
-        self.retrieveWandoos()
-        self.refreshControl.endRefreshing()
+        userModel.postLocation { () -> Void in
+            print("refreshing data")
+            self.retrieveWandoos()
+            self.wandooTable.reloadData()
+            self.retrieveWandoos()
+            self.refreshControl.endRefreshing()
+        }
     }
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -257,11 +249,22 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
+        count++
         let userLocation:CLLocation = locations[0]
-        
+        let fbID = FBSDKAccessToken.currentAccessToken().userID
         userModel.latitude = userLocation.coordinate.latitude
         userModel.longitude = userLocation.coordinate.longitude
-        
+        if count == 1 {
+            self.userModel.getUserInfo(fbID, completion: { (result) -> Void in
+                print(result)
+                self.userModel.userID = result["userID"]! as? Int
+                dispatch_async(dispatch_get_main_queue()){
+                    self.userModel.postLocation { () -> Void in
+                        self.retrieveWandoos()
+                    }
+                }
+            })
+        }
     }
 
     //number of sections in table.. we only have 1 section of wandoos
@@ -293,8 +296,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         
         if !ignoreFlag && feedButtonFlag && viewController.childViewControllers.first! is ViewController {
-            
-            toTopAndRefresh()
+            self.userModel.postLocation({ () -> Void in
+                self.toTopAndRefresh()
+            })
         }
     }
 

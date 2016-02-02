@@ -11,6 +11,9 @@ import UIKit
 class InterestedCell: UITableViewCell {
   
 
+    
+    @IBOutlet weak var cardView: UIView!
+    
     @IBOutlet weak var name: UILabel!
     
     @IBOutlet weak var ageSex: UILabel!
