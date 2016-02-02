@@ -21,4 +21,7 @@ class MyWandooCell: UITableViewCell {
     @IBOutlet weak var userButton: UIButton!
     
     @IBOutlet weak var myWandooPeople: UILabel!
+    
+    @IBOutlet weak var wandooNumber: UILabel!
+    
 }

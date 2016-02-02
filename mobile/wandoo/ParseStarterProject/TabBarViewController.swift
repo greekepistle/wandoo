@@ -65,8 +65,8 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
         feedController = sb.instantiateViewControllerWithIdentifier("initialNav") as! UINavigationController
         feedController.navigationBar.translucent = false
         feedController.navigationBar.barTintColor = UIColor(red:0.204, green:0.596, blue:0.859, alpha:1.0)
-        let feedIcon = UITabBarItem(title: "", image: UIImage(named: "feed"), selectedImage: UIImage(named: "feed"))
-        feedIcon.imageInsets = UIEdgeInsetsMake(8, 0, -8, 0)
+        let feedIcon = UITabBarItem(title: "Wandoo Feed", image: UIImage(named: "feed"), selectedImage: UIImage(named: "feed"))
+        feedIcon.imageInsets = UIEdgeInsetsMake(3, 0, -3, 0)
         feedController.tabBarItem = feedIcon
         feedController.tabBarItem.selectedImage = UIImage(named: "feed")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
         
@@ -74,8 +74,8 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
         myWandoosController.navigationBar.translucent = false
         myWandoosController.navigationBar.barTintColor = UIColor(red:0.204, green:0.596, blue:0.859, alpha:1.0)
 //        let myWandoosIcon = UITabBarItem(title: "", image: UIImage(named: "myWandoos")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal), selectedImage: UIImage(named: "myWandoos"))
-        let myWandoosIcon = UITabBarItem(title: "", image: UIImage(named: "myWandoos"), selectedImage: UIImage(named: "myWandoos"))
-        myWandoosIcon.imageInsets = UIEdgeInsetsMake(8, 0, -8, 0)
+        let myWandoosIcon = UITabBarItem(title: "My Wandoos", image: UIImage(named: "myWandoos"), selectedImage: UIImage(named: "myWandoos"))
+        myWandoosIcon.imageInsets = UIEdgeInsetsMake(3, 0, -3, 0)
         myWandoosController.tabBarItem = myWandoosIcon
         
         self.conversationListViewController = ConversationListViewController(layerClient: self.layerClient)
@@ -84,16 +84,15 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
         chatController.viewControllers = [self.conversationListViewController]
         chatController.navigationBar.translucent = false
         chatController.navigationBar.barTintColor = UIColor(red:0.204, green:0.596, blue:0.859, alpha:1.0)
-        let chatIcon = UITabBarItem(title: "", image: UIImage(named: "chat"), selectedImage: UIImage(named: "chat"))
-        chatIcon.title = ""
-        chatIcon.imageInsets = UIEdgeInsetsMake(8, 0, -8, 0)
+        let chatIcon = UITabBarItem(title: "Messages", image: UIImage(named: "chat"), selectedImage: UIImage(named: "chat"))
+        chatIcon.imageInsets = UIEdgeInsetsMake(3, 0, -3, 0)
         chatController.tabBarItem = chatIcon
         
         let profileController = sb.instantiateViewControllerWithIdentifier("profileNav") as! UINavigationController
         profileController.navigationBar.translucent = false
         profileController.navigationBar.barTintColor = UIColor(red:0.204, green:0.596, blue:0.859, alpha:1.0)
-        let profileIcon = UITabBarItem(title: "", image: UIImage(named: "userProfile"), selectedImage: UIImage(named: "userProfile"))
-        profileIcon.imageInsets = UIEdgeInsetsMake(8, 0, -8, 0)
+        let profileIcon = UITabBarItem(title: "My Profile", image: UIImage(named: "userProfile"), selectedImage: UIImage(named: "userProfile"))
+        profileIcon.imageInsets = UIEdgeInsetsMake(3, 0, -3, 0)
         profileController.tabBarItem = profileIcon
         
         self.viewControllers = [feedController, myWandoosController, chatController, profileController]
@@ -107,6 +106,9 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
             item.image = item.selectedImage?.imageWithColor(unselectedColor).imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
             
         }
+        UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: selectedColor], forState: .Selected)
+        UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: unselectedColor], forState: .Normal)
+        
         
 //        var nav1 = UINavigationController()
 //        var myWandoosVC = MyWandooViewController()
