@@ -35,6 +35,8 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
     
     let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     var layerClient: LYRClient!
+    var locationManager = CLLocationManager()
+    var userModel = UserModel.sharedUserInstance
     
     let sb = UIStoryboard(name: "Main", bundle: nil)
     var feedController: UINavigationController!
@@ -48,9 +50,6 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
         
         layerClient = appDelegate.layerClient
         
-        
-        
-
         // Do any additional setup after loading the view.
     }
     
@@ -141,6 +140,16 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
             
         }
         return true;
+    }
+    
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
+        let userLocation:CLLocation = locations[0]
+        
+        userModel.latitude = userLocation.coordinate.latitude
+        userModel.longitude = userLocation.coordinate.longitude
+        print(userModel.latitude)
+        
     }
     
     

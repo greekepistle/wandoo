@@ -33,6 +33,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     var ignoreFlag = false
     var feedButtonFlag = true
+    var updateCount = 0
     
     var locationManager = CLLocationManager()
 
@@ -63,8 +64,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         refreshDataAfterTwoSec()
 //        sender.userInteractionEnabled = false
 //        refreshDataAfterTwoSec(sender)
-        
-        self.wandooTable.reloadData()
         self.retrieveWandoos()
         wandooTable.setContentOffset(CGPointMake(0, -wandooTable.contentInset.top), animated: true)
     }
@@ -102,24 +101,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.startUpdatingLocation()
         
+        
         layerClient = delegate.layerClient
         // Do any additional setup after loading the view, typically from a nib.
-        let fbID = FBSDKAccessToken.currentAccessToken().userID
-        print("reaching here")
         SVProgressHUD.show()
-        self.userModel.getUserInfo(fbID, completion: { (result) -> Void in
-            print(result)
-            self.userModel.userID = result["userID"]! as? Int
-            self.userModel.postLocation { () -> Void in
-                self.retrieveWandoos()
-            }
-        })
 
         navigationItem.titleView = UIImageView(image: UIImage(named: "Wandoo"))
-
-        userModel.postLocation { () -> Void in
-            self.retrieveWandoos()
-        }
+        
         self.navigationItem.hidesBackButton = true
     }
     
@@ -140,11 +128,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func refresh(sender:AnyObject)
     {
-        print("refreshing data")
-        self.retrieveWandoos()
-        self.wandooTable.reloadData()
-        self.retrieveWandoos()
-        self.refreshControl.endRefreshing()
+        userModel.postLocation { () -> Void in
+            print("refreshing data")
+            self.retrieveWandoos()
+        }
     }
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -182,28 +169,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         wandooCell.showInterestButton.tag = indexPath.row
         wandooCell.showInterestButton.addTarget(self, action: "toggleInterest:", forControlEvents: .TouchUpInside)
         
-//        let request = NSFetchRequest(entityName: "Interested")
-//        let context: NSManagedObjectContext = delegate.managedObjectContext
-//        request.returnsObjectsAsFaults = false;
-//        
-//        let results: NSArray = try! context.executeFetchRequest(request)
         let wandooID = allWandoosArray[indexPath.row]["wandooID"] as! Int
-        
-//        for res in results {
-//            print(res.valueForKey("wandooID"))
-//            print(res.valueForKey("wandooID") as! Int == wandooID)
-//            if res.valueForKey("wandooID") as! Int == wandooID {
-//                dispatch_async(dispatch_get_main_queue()) {
-//                    wandooCell.showInterestButton.backgroundColor = UIColor(red: 100.0/255.0, green: 181.0/255.0, blue: 246.0/255.0, alpha: 0.5)
-//                    wandooCell.showInterestButton.userInteractionEnabled = false
-//                }
-//            } else {
-//                dispatch_async(dispatch_get_main_queue()) {
-//                    wandooCell.showInterestButton.backgroundColor = UIColor(white:0.88, alpha:1.0)
-//                    wandooCell.showInterestButton.userInteractionEnabled = true
-//                }
-//            }
-//        }
         
         if let _ = userModel.interestedWandooIDs.objectForKey(String(wandooID)) {
             wandooCell.showInterestButton.backgroundColor = UIColor(red: 100.0/255.0, green: 181.0/255.0, blue: 246.0/255.0, alpha: 0.5)
@@ -212,27 +178,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             wandooCell.showInterestButton.backgroundColor = UIColor(white:0.88, alpha:1.0)
             wandooCell.showInterestButton.userInteractionEnabled = true
         }
-
-//        if let interestedWandooIDs = userDefaults.objectForKey("interestedWandooIDs") {
-//            if let _ = interestedWandooIDs.objectForKey(String(wandooID)) {
-//                dispatch_async(dispatch_get_main_queue()) {
-//                    wandooCell.showInterestButton.backgroundColor = UIColor(red: 100.0/255.0, green: 181.0/255.0, blue: 246.0/255.0, alpha: 0.5)
-//                    wandooCell.showInterestButton.userInteractionEnabled = false
-//                }
-//            } else {
-//                dispatch_async(dispatch_get_main_queue()) {
-//                    wandooCell.showInterestButton.backgroundColor = UIColor(white:0.88, alpha:1.0)
-//                    wandooCell.showInterestButton.userInteractionEnabled = true
-//                }
-//            }
-//        }
-//        if let _ = userModel.interestedWandooIDs.objectForKey(wandooID) {
-//            wandooCell.showInterestButton.backgroundColor = UIColor(red: 100.0/255.0, green: 181.0/255.0, blue: 246.0/255.0, alpha: 0.5)
-//            wandooCell.showInterestButton.userInteractionEnabled = false
-//        } else {
-//            wandooCell.showInterestButton.backgroundColor = UIColor(white:0.88, alpha:1.0)
-//            wandooCell.showInterestButton.userInteractionEnabled = true
-//        }
 
         wandooCell.cardView.layer.borderWidth = 1
         wandooCell.cardView.layer.borderColor = UIColor.lightGrayColor().CGColor
@@ -258,10 +203,19 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         let userLocation:CLLocation = locations[0]
-        
         userModel.latitude = userLocation.coordinate.latitude
         userModel.longitude = userLocation.coordinate.longitude
         
+        if updateCount == 0 {
+            getWandoosTheFirstTime()
+        }
+        
+        if updateCount >= 2500 {
+            updateCount = 0
+            return
+        }
+        
+        updateCount++
     }
 
     //number of sections in table.. we only have 1 section of wandoos
@@ -272,11 +226,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     //number of rows in our section.. depends on how many wandoos we get from our http request
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return allWandoosArray.count
-//        if allWandoosArray.count > 0 {
-//            return allWandoosArray.count
-//        } else {
-//            return 0
-//        }
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -293,8 +242,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         
         if !ignoreFlag && feedButtonFlag && viewController.childViewControllers.first! is ViewController {
-            
-            toTopAndRefresh()
+            SVProgressHUD.show()
+            self.userModel.postLocation({ () -> Void in
+                self.toTopAndRefresh()
+            })
         }
     }
 
@@ -313,6 +264,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     //gets all wandoos using UserModel
     //UserModel is able to get the user's info (e.g. name, photo) via facebook id
     func retrieveWandoos() {
+        
+        if String(self.view.subviews.last).containsString("No Wandoos in Your Area!") {
+            dispatch_async(dispatch_get_main_queue()) {
+                self.view.subviews.last!.removeFromSuperview()
+            }
+        }
 
         getAllWandoos { (allWandoos) -> Void in
             print("-------GET ALL")
@@ -325,6 +282,16 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 dispatch_async(dispatch_get_main_queue()){
                     SVProgressHUD.dismiss()
                     self.wandooTable.reloadData()
+                    self.refreshControl.endRefreshing()
+                    if self.allWandoosArray.count == 0 {
+                        let noWandoos = UILabel(frame: CGRectMake(0, 0, 300, 200))
+                        noWandoos.text = "No Wandoos in Your Area!"
+                        noWandoos.textAlignment = .Center
+                        noWandoos.font = UIFont(name: noWandoos.font.fontName, size: 20)
+                        noWandoos.center = self.view.center
+                        noWandoos.textColor = UIColor.blackColor()
+                        self.view.addSubview(noWandoos)
+                    }
                 }
             })
         }
@@ -341,6 +308,19 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             completion(result: result)
         }
     }
+    
+    func getWandoosTheFirstTime () {
+        let fbID = FBSDKAccessToken.currentAccessToken().userID
+        self.userModel.getUserInfo(fbID, completion: { (result) -> Void in
+            print(result)
+            self.userModel.userID = result["userID"]! as? Int
+            dispatch_async(dispatch_get_main_queue()){
+                self.userModel.postLocation { () -> Void in
+                    self.retrieveWandoos()
+                }
+            }
+        })
+    }
 
     func refreshDataAfterTwoSec() {
         let delta: Int64 = 2 * Int64(NSEC_PER_SEC)
@@ -349,7 +329,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
         dispatch_after(time, dispatch_get_main_queue(), {
             self.ignoreFlag = false
-            
         });
     }
 

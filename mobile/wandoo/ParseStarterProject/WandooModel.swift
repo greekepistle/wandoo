@@ -27,6 +27,16 @@ class WandooModel {
     //shared wandoo instance.. multiple view controllers can use the same instance of this model
     static let sharedWandooInstance = WandooModel()
     
+    let tomorrowDays: NSDictionary = [
+        "Sunday": "Monday",
+        "Monday": "Tuesday",
+        "Tuesday": "Wednesday",
+        "Wednesday": "Thursday",
+        "Thursay": "Friday",
+        "Friday": "Saturday",
+        "Saturday": "Sunday",
+    ]
+    
     func postWandoo(completion: () -> Void) {
         self.latitude = userModel.latitude
         self.longitude = userModel.longitude
@@ -145,7 +155,7 @@ class WandooModel {
 //        print(wandooDate)
         
         let timeFormatter = NSDateFormatter()
-        timeFormatter.dateFormat = "h:mm a"
+        timeFormatter.dateFormat = "EEEE h:mm a"
         timeFormatter.timeZone = NSTimeZone.localTimeZone()
         let dateToString = NSDateFormatter()
         dateToString.dateFormat = "dd"
@@ -156,14 +166,22 @@ class WandooModel {
         
         var result: String = ""
         let todayDate = NSDate()
+        let todayDay = timeFormatter.stringFromDate(todayDate).characters.split{$0 == " "}.map(String.init)[0]
         let todayIntDay = Int(dateToString.stringFromDate(todayDate))
         let wandooIntDay = Int(dateToString.stringFromDate(stringToDate.dateFromString(wandooDate)!))
         let wandooFormattedDate = timeFormatter.stringFromDate(stringToDate.dateFromString(wandooDate)!)
         
+        let splitFormattedDate = wandooFormattedDate.characters.split{$0 == " "}.map(String.init)
+        
         if  todayIntDay < wandooIntDay {
-            result = "Tomorrow at " + wandooFormattedDate
+            if wandooIntDay! == todayIntDay! + 1 || String(tomorrowDays[todayDay]!) == splitFormattedDate[0] {
+                result = "Tomorrow at " + splitFormattedDate[1]
+            } else {
+                result = splitFormattedDate[0] + " at " + splitFormattedDate[1]
+            }
+            
         } else {
-            result = "Today at " + wandooFormattedDate
+            result = "Today at " + splitFormattedDate[1]
         }
         
         return result
