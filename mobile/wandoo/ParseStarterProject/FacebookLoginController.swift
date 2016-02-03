@@ -30,8 +30,9 @@ class FacebookLoginController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var titleWandoo: UIImageView!
     
     @IBAction func loginFacebookButtonThatTakesUsToTheLoginAtSafari(sender: AnyObject?) {
-        SVProgressHUD.show()
         PFFacebookUtils.logInInBackgroundWithReadPermissions(["public_profile","user_education_history","user_birthday", "user_work_history","user_friends","user_likes", "email"], block: { (user:PFUser?, error:NSError?) -> Void in
+            
+            SVProgressHUD.show()
             
             
             //PF Push - Start

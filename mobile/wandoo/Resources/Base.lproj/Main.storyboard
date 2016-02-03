@@ -625,16 +625,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="wandoo-logo" translatesAutoresizingMaskIntoConstraints="NO" id="sL1-f1-q8Q">
-                                <rect key="frame" x="40" y="220" width="240" height="128"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wandoo-logo" translatesAutoresizingMaskIntoConstraints="NO" id="sL1-f1-q8Q">
+                                <rect key="frame" x="36" y="220" width="248" height="128"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="sL1-f1-q8Q" firstAttribute="top" secondItem="GH7-Xl-8R8" secondAttribute="bottom" constant="200" id="1zG-dp-1qR"/>
                             <constraint firstItem="5eR-8C-NqI" firstAttribute="top" secondItem="sL1-f1-q8Q" secondAttribute="bottom" constant="220" id="QNk-zS-HAJ"/>
+                            <constraint firstItem="sL1-f1-q8Q" firstAttribute="centerX" secondItem="nPr-aa-ht7" secondAttribute="centerX" id="Xx0-Vv-pfH"/>
                             <constraint firstAttribute="trailingMargin" secondItem="sL1-f1-q8Q" secondAttribute="trailing" constant="20" id="gVG-WC-aaO"/>
-                            <constraint firstItem="sL1-f1-q8Q" firstAttribute="leading" secondItem="nPr-aa-ht7" secondAttribute="leadingMargin" constant="20" id="tDG-D9-Qsm"/>
+                            <constraint firstItem="sL1-f1-q8Q" firstAttribute="centerY" secondItem="nPr-aa-ht7" secondAttribute="centerY" id="pRc-aF-GVZ"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
@@ -1291,7 +1292,7 @@ Cg
                     <tabBarItem key="tabBarItem" title="Item" id="NfV-oW-ytu"/>
                     <toolbarItems/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" backIndicatorImage="B5D64ED0-1C45-43B5-9249-C6B0682B1939" id="LIG-kr-Btz">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" backIndicatorImage="A9EBAE3E-8C5F-4FCD-9628-12F15D0B51AC" id="LIG-kr-Btz">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -1618,7 +1619,7 @@ Cg
         </scene>
     </scenes>
     <resources>
-        <image name="B5D64ED0-1C45-43B5-9249-C6B0682B1939" width="62" height="64">
+        <image name="A9EBAE3E-8C5F-4FCD-9628-12F15D0B51AC" width="62" height="64">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOzxYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBMU
 GR4fJSYsLzU4VSRudWxs1QkKCwwNDg8QERJWTlNTaXplViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBz

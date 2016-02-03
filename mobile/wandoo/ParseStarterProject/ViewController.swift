@@ -111,6 +111,19 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         navigationItem.titleView = UIImageView(image: UIImage(named: "Wandoo"))
         
         self.navigationItem.hidesBackButton = true
+        
+        if CLLocationManager.locationServicesEnabled() {
+            switch(CLLocationManager.authorizationStatus()) {
+            case .NotDetermined, .Restricted, .Denied:
+                print("No access")
+            case .AuthorizedAlways, .AuthorizedWhenInUse:
+                print("Access")
+            default:
+                print("...")
+            }
+        } else {
+            print("Location services are not enabled")
+        }
     }
     
     override func viewWillAppear(animated: Bool) {

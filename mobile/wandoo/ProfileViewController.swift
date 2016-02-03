@@ -23,7 +23,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate {
         navigationItem.titleView = UIImageView(image: UIImage(named: "profile"))
         
         let btnName = UIButton()
-        btnName.setImage(UIImage(named: "setting"), forState: .Normal)
+        btnName.setImage(UIImage(named: "settings")!.imageWithColor(UIColor.whiteColor()), forState: .Normal)
         btnName.frame = CGRectMake(0, 0, 30, 30)
         btnName.addTarget(self, action: "buttonAction:", forControlEvents: .TouchUpInside)
 
