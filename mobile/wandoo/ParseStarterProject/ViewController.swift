@@ -76,6 +76,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        SVProgressHUD.setBackgroundColor(UIColor.clearColor())
+        SVProgressHUD.show()
         
         self.tabBarController!.delegate = self
         self.tabBarController!.tabBar.layer.borderWidth = 0.5
@@ -109,6 +111,19 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         navigationItem.titleView = UIImageView(image: UIImage(named: "Wandoo"))
         
         self.navigationItem.hidesBackButton = true
+        
+        if CLLocationManager.locationServicesEnabled() {
+            switch(CLLocationManager.authorizationStatus()) {
+            case .NotDetermined, .Restricted, .Denied:
+                print("No access")
+            case .AuthorizedAlways, .AuthorizedWhenInUse:
+                print("Access")
+            default:
+                print("...")
+            }
+        } else {
+            print("Location services are not enabled")
+        }
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -242,7 +257,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         
         if !ignoreFlag && feedButtonFlag && viewController.childViewControllers.first! is ViewController {
-            SVProgressHUD.show()
             self.userModel.postLocation({ () -> Void in
                 self.toTopAndRefresh()
             })
@@ -264,6 +278,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     //gets all wandoos using UserModel
     //UserModel is able to get the user's info (e.g. name, photo) via facebook id
     func retrieveWandoos() {
+        
+        if self.allWandoosArray.count == 0 {
+            SVProgressHUD.show()
+        }
         
         if String(self.view.subviews.last).containsString("No Wandoos in Your Area!") {
             dispatch_async(dispatch_get_main_queue()) {
