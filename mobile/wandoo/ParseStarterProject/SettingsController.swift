@@ -10,6 +10,7 @@ import UIKit
 import FBSDKCoreKit
 import ParseFacebookUtilsV4
 import LayerKit
+import SVProgressHUD
 
 class SettingsController: UITableViewController {
     
@@ -57,12 +58,15 @@ class SettingsController: UITableViewController {
         
         if (indexPath.row == 3) {
 //            print("Current user token=\(FBSDKAccessToken.currentAccessToken().tokenString)")
+            SVProgressHUD.setBackgroundColor(UIColor.clearColor())
+            SVProgressHUD.show()
             
             self.tabBarController!.tabBar.hidden = true
             self.tabBarController!.tabBar.translucent = true
             PFUser.logOut()
             layerClient.deauthenticateWithCompletion({ (success, error) -> Void in
                 print("successfully logged out of layer")
+                SVProgressHUD.dismiss()
             })
             
             let loginManager = FBSDKLoginManager()

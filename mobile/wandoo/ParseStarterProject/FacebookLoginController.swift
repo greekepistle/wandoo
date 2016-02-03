@@ -30,6 +30,7 @@ class FacebookLoginController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var titleWandoo: UIImageView!
     
     @IBAction func loginFacebookButtonThatTakesUsToTheLoginAtSafari(sender: AnyObject?) {
+        SVProgressHUD.show()
         PFFacebookUtils.logInInBackgroundWithReadPermissions(["public_profile","user_education_history","user_birthday", "user_work_history","user_friends","user_likes", "email"], block: { (user:PFUser?, error:NSError?) -> Void in
             
             
@@ -57,8 +58,6 @@ class FacebookLoginController: UIViewController, CLLocationManagerDelegate {
             {
                 if let user = user {
                     if user.isNew {
-//                        self.loginLayer()
-                        SVProgressHUD.show()
                         let accessToken = FBSDKAccessToken.currentAccessToken().tokenString
                         self.userModel.storeFBDataIntoParse(user.objectId!, accessToken: accessToken) { () -> Void in
                             
@@ -72,7 +71,6 @@ class FacebookLoginController: UIViewController, CLLocationManagerDelegate {
                         //segue into profile editing page
                         print("New user signed up")
                     } else {
-                        SVProgressHUD.show()
                         let fbID = FBSDKAccessToken.currentAccessToken().userID
                         print("reaching here")
                         self.userModel.getUserInfo(fbID, completion: { (result) -> Void in
@@ -94,6 +92,7 @@ class FacebookLoginController: UIViewController, CLLocationManagerDelegate {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        SVProgressHUD.setBackgroundColor(UIColor.clearColor())
 
         layerClient = delegate.layerClient
         print("this needs to print ", layerClient)
