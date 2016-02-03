@@ -302,11 +302,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     self.wandooTable.reloadData()
                     self.refreshControl.endRefreshing()
                     if self.allWandoosArray.count == 0 {
-                        let noWandoos = UILabel(frame: CGRectMake(0, 0, 300, 200))
+                        let noWandoos = UILabel(frame: CGRect(x: self.view.bounds.width/2 - 150, y: self.view.bounds.height/2 - 100, width: 300, height: 200))
                         noWandoos.text = "No Wandoos in Your Area!"
                         noWandoos.textAlignment = .Center
                         noWandoos.font = UIFont(name: noWandoos.font.fontName, size: 20)
-                        noWandoos.center = self.view.center
                         noWandoos.textColor = UIColor.blackColor()
                         self.view.addSubview(noWandoos)
                     }
