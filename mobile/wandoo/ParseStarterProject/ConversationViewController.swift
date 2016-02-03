@@ -14,6 +14,10 @@ class ConversationViewController: ATLConversationViewController, ATLConversation
         print("addressBarController: \(self.addressBarController)")
         self.addressBarController?.delegate = self
         
+        self.messageInputToolbar.displaysRightAccessoryImage = false
+        self.messageInputToolbar.leftAccessoryButton = nil
+        
+        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "getMessageFunc", name: "getMessage", object: nil)
         
         // Uncomment the following line if you want to show avatars in 1:1 conversations
