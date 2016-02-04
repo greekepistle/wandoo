@@ -103,7 +103,7 @@ class MyWandooViewController: UITableViewController {
             dispatch_async(dispatch_get_main_queue()){
                 self.wandooTable.reloadData()
                 if self.myWandoosArray.count == 0 {
-                    let noWandoos = UILabel(frame: CGRect(x: self.view.bounds.width/2 - 150, y: self.view.bounds.height/2 - 100, width: 350, height: 200))
+                    let noWandoos = UILabel(frame: CGRect(x: self.view.bounds.width/2 - 175, y: self.view.bounds.height/2 - 100, width: 350, height: 200))
                     noWandoos.text = "You Don't Have Any Active Wandoos!"
                     noWandoos.textAlignment = .Center
                     noWandoos.font = UIFont(name: noWandoos.font.fontName, size: 18)

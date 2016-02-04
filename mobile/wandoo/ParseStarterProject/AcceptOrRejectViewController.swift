@@ -28,17 +28,13 @@ class AcceptOrRejectViewController: UITableViewController {
             userModel.acceptOrRejectList = auxAcceptOrRejectList as! Dictionary<String, Dictionary<String, Int>>
         }
         
-        getInterestedPeople { () -> Void in
-
-//            for (index, interestedPeople) in self.allInterestedInfo!.enumerate() {
-//                if(interestedPeople["selected"] as! Int == 1) {
-//                    let indexPath = NSIndexPath(forRow: index, inSection: 0)
-//                    let cell = self.interestedTable.cellForRowAtIndexPath(indexPath) as! InterestedCell
-//                    cell.accept.backgroundColor = UIColor(red: 52.0/255.0, green: 152.0/255.0, blue: 219.0/255.0, alpha: 0.5)
-//                }
-//            }
-        }
         print("view did load all the time?")
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        getInterestedPeople { () -> Void in
+            
+        }
     }
     
     @IBAction func rejectButton(sender: UIButton) {
@@ -187,50 +183,66 @@ class AcceptOrRejectViewController: UITableViewController {
             userModel.acceptOrRejectList[String(wandooID)] = [:]
         }
         
+        if String(self.view.subviews.last).containsString("Hang tight! No one has shown interest yet") {
+            dispatch_async(dispatch_get_main_queue()) {
+                self.view.subviews.last!.removeFromSuperview()
+            }
+        }
+        
         interestedModel.getInterestedPeople(wandooID, completion: { (result) -> Void in
 
             self.allInterestedInfo = result as? Array<NSMutableDictionary>
             var count = 0
-//            dispatch_async(dispatch_get_main_queue()){
-                for interestedPeople in self.allInterestedInfo! {
-                    if let _ = self.userModel.acceptOrRejectList[String(wandooID)]![String(interestedPeople["userID"]!)] {
-                        print("userID already exists")
-                    } else {
-                        self.userModel.acceptOrRejectList[String(wandooID)]![String(interestedPeople["userID"]!)] = 0
+            print(self.allInterestedInfo!.count)
+            if self.allInterestedInfo!.count == 0 {
+                dispatch_async(dispatch_get_main_queue()) {
+                    self.interestedTable.reloadData()
+                    let noInterested = UILabel(frame: CGRect(x: self.view.bounds.width/2 - 175, y: self.view.bounds.height/2 - 100, width: 350, height: 200))
+                    noInterested.text = "Hang Tight for Interested People!"
+                    noInterested.textAlignment = .Center
+                    noInterested.font = UIFont(name: noInterested.font.fontName, size: 17)
+                    noInterested.textColor = UIColor.blackColor()
+                    self.view.addSubview(noInterested)
+                }
+            }
+            for interestedPeople in self.allInterestedInfo! {
+                if let _ = self.userModel.acceptOrRejectList[String(wandooID)]![String(interestedPeople["userID"]!)] {
+                    print("userID already exists")
+                } else {
+                    self.userModel.acceptOrRejectList[String(wandooID)]![String(interestedPeople["userID"]!)] = 0
+                }
+                self.userModel.getUserInfoByUserID(interestedPeople["userID"] as! Int, completion: { (result) -> Void in
+                    let fullName = result["name"] as? String
+                    let fullNameArr = fullName!.characters.split{$0 == " "}.map(String.init)
+                    interestedPeople["name"] = fullNameArr[0]
+                    interestedPeople["age"] = String(result["age"]!)
+                    if result["sex"] as! String == "m" {
+                        interestedPeople["sex"] = "Male"
+                    } else if result["sex"] as! String == "f"{
+                        interestedPeople["sex"] = "Female"
                     }
-                    self.userModel.getUserInfoByUserID(interestedPeople["userID"] as! Int, completion: { (result) -> Void in
-                        let fullName = result["name"] as? String
-                        let fullNameArr = fullName!.characters.split{$0 == " "}.map(String.init)
-                        interestedPeople["name"] = fullNameArr[0]
-                        interestedPeople["age"] = String(result["age"]!)
-                        if result["sex"] as! String == "m" {
-                            interestedPeople["sex"] = "Male"
-                        } else if result["sex"] as! String == "f"{
-                            interestedPeople["sex"] = "Female"
-                        }
-                        interestedPeople["employer"] = result["employer"]
-                        interestedPeople["job_title"] = result["job_title"]
-                        interestedPeople["education"] = result["institution_name"]
-                        interestedPeople["objectID"] = result["objectID"]
-                        let picString = result["profile_picture"] as! String
-                        let picURL = NSURL(string: picString)
-                        if let pic = NSData(contentsOfURL: picURL!) {
-                            interestedPeople["profile_picture"] = UIImage(data: pic)
-                            count++
-                            if count == self.allInterestedInfo!.count {
-                                dispatch_async(dispatch_get_main_queue()) {
-                                    self.interestedTable.reloadData()
-                                }
-                                let acceptOrRejectList = self.userModel.acceptOrRejectList as NSDictionary
-                                self.userModel.userDefaults.setObject(acceptOrRejectList, forKey: "acceptOrRejectList")
-                                self.userModel.userDefaults.synchronize()
+                    interestedPeople["employer"] = result["employer"]
+                    interestedPeople["job_title"] = result["job_title"]
+                    interestedPeople["education"] = result["institution_name"]
+                    interestedPeople["objectID"] = result["objectID"]
+                    let picString = result["profile_picture"] as! String
+                    let picURL = NSURL(string: picString)
+                    if let pic = NSData(contentsOfURL: picURL!) {
+                        interestedPeople["profile_picture"] = UIImage(data: pic)
+                        count++
+                        if count == self.allInterestedInfo!.count {
+                            dispatch_async(dispatch_get_main_queue()) {
+                                self.interestedTable.reloadData()
                             }
-                            
+                            let acceptOrRejectList = self.userModel.acceptOrRejectList as NSDictionary
+                            self.userModel.userDefaults.setObject(acceptOrRejectList, forKey: "acceptOrRejectList")
+                            self.userModel.userDefaults.synchronize()
                         }
                         
-                    })
-                }
-//            }
+                    }
+                    
+                })
+            }
         })
     }
     
