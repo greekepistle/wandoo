@@ -17,7 +17,7 @@ class PeopleViewController: UIViewController {
         super.viewDidLoad()
         
         StepCounter.autorepeat = true
-        StepCounter.maximumValue = 5.0
+        StepCounter.maximumValue = 4.0
         StepCounter.minimumValue = 2.0
         quantity.text = "\(Int(StepCounter.value))"
         StepCounter.addTarget(self, action: "stepperValueDidChange:", forControlEvents: .ValueChanged)

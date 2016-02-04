@@ -62,7 +62,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate {
                             self.profileInfo.text! += jobTitle 
                             self.profileInfo.text! += " at " + employer
                         } else {
-                            self.profileInfo.text! += " at " + employer
+                            self.profileInfo.text! += employer
                         }
                     }
                     
