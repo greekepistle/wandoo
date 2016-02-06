@@ -14,6 +14,7 @@ module.exports = {
         callback(err);
       } else {
         db.query(qs, [], function (err, result) {
+          con.release();
           if (err) {
             callback(err);
           } else {
@@ -102,6 +103,21 @@ module.exports = {
     } else {
       var qs1 = "delete from room_user where roomID in (?);"
       var qs2 = "delete from room where roomID in (?);"
+       
+      //REFACTOR TO USE QUERYBUILDER
+      // dbUtils.queryBuilder(qs1, [roomIDs], function (err, result1) {
+      //   if (err) {
+      //     callback(err);
+      //   } else {
+      //     dbUtils.queryBuilder(qs2, [roomIDs], function (err, result2) {
+      //       if (err) {
+      //         callback(err);
+      //       } else {
+      //         callback(null, result1, result2);
+      //       }
+      //     });
+      //   }
+      // });
 
       db.getConnection(function (err, con) {
         if (err) {

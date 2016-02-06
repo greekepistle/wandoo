@@ -9,7 +9,7 @@ module.exports = {
   },
 
   getPartialRes : function (params, callback) {
-    var qs = "select * from wandoo order by start_time asc limit ?,?;";
+    var qs = "select * from wandoo where status='A' order by start_time asc limit ?,?;";
     dbUtils.queryBuilder(qs, params, callback);
   },
 

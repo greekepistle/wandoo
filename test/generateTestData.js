@@ -1,5 +1,6 @@
 var request = require('supertest'),
     fs = require('fs'),
+    _ = require('underscore'),
     db = require('../server/db/db'),
     userDataGenerator = require('./userDataGenerator');
     wandooTextData = require('./wandooGenerator'),
@@ -9,22 +10,21 @@ var request = require('supertest'),
 
 var server = request.agent(config.serverURL);
 
-var numUsers = 1000, // max is userData.length
-    numWandoos = 10000,
+var numUsers = 3, // max is userData.length
+    numWandoos = 10,
     // location where you want to centre all locations
-    // locSeed = [37.7833669, -122.4088739], // SF
-    locSeed = [32.8724048054, -117.2019943782], // San Diego
+    locSeed = [37.7833669, -122.4088739], // SF
+    // locSeed = [32.8724048054, -117.2019943782], // San Diego
     numInterests = numWandoos * 3,
     // below are currently not used
-    wandoosRoomsProportion = 0.5, // proportion of wandoos with rooms
-    selectedInterestedRatio = 0.3, // ratio of total selected users in system to total interested users in system
+    selectedInterestedRatio = 0.6, // ratio of total selected users in system to total interested users in system
     rejectedInterestedRatio = 0.2; // ratio of total rejected users in system to total interested users in system
+    noneInterestedRatio = 0.2;
 
 var locData = locDataGenerator(locSeed, numWandoos);
 var wandooTimeData = wandooTimeDataGenerator(numWandoos);
 var userIDs = [];
 var wandooIDs = [];
-var userData = [];
 
 var getRandIndex = function (maxIndex) {
   return Math.round(Math.random() * maxIndex);
@@ -34,11 +34,11 @@ var randomElement = function(array){
   var randomIndex = Math.floor(Math.random() * array.length);
   return array[randomIndex];
 };
-
 var generateUsers = function (callback) {
+  var userData = [];
   var generateUser = function (i) {
     if (i < numUsers) {
-      fs.readFile(__dirname + '/profilePics/' + i + '.png', 'base64', function (err, data) {
+      fs.readFile(__dirname + '/profilePics/' + getRandIndex(9) + '.png', 'base64', function (err, data) {
         if (err) {
           throw err;
         }
@@ -63,7 +63,7 @@ var generateUsers = function (callback) {
   generateUser(0);
 }
 
-var getUserIDs = function (callback) {
+var getUserIDs = function (userIDs, callback) {
   var qs = 'select userID from user';
   db.getConnection(function (err, con) {
     if (err) {
@@ -77,13 +77,13 @@ var getUserIDs = function (callback) {
         userIDs = result.map(function (val) {
           return val.userID;
         });
-        callback();
+        callback(userIDs);
       });
     }
   });
 }
 
-var getWandooIDs = function (callback) {
+var getWandooIDs = function (wandooIDs, callback) {
   var qs = 'select wandooID, userID from wandoo';
   db.getConnection(function (err, con) {
     if (err) {
@@ -97,13 +97,13 @@ var getWandooIDs = function (callback) {
         wandooIDs = result.map(function (val) {
           return [val.wandooID, val.userID];
         });
-        callback();
+        callback(wandooIDs);
       });
     }
   });
 }
 
-var generateWandoos = function (callback) {
+var generateWandoos = function (userIDs, callback) {
   var generateWandoo = function (i) {
     if (i < numWandoos) {
       var wandoo = {
@@ -146,14 +146,22 @@ var selRejCombos = [ // not currently used
   }
 ];
 
-var generateInterests = function (callback) {
+var generateInterests = function (userIDs, wandooIDs, callback) {
+  var interests = [];
   var generateInterest = function (i) {
     if (i < numInterests) {
       var wandooID = wandooIDs[getRandIndex(wandooIDs.length - 1)];
+      console.log(wandooIDs);
+      var filteredUserIDs = _.chain(interests)
+        .filter(function (interest) {
+          return interest.wandooID === wandooID;
+        })
+        .pluck('userID');
       var userID;
       while (!userID) {
         var userIndex = getRandIndex(userIDs.length - 1);
-        if (userIDs[userIndex] !== wandooID[1]) { //check if user is not liking their own wandoo
+        //check if user is not liking their own wandoo and has not expressed interest in wandoo already
+        if (userIDs[userIndex] !== wandooID[1] && !contains(filteredUserIDs, userIndex)) { 
           userID = userIDs[userIndex];
         }
       }
@@ -168,8 +176,15 @@ var generateInterests = function (callback) {
           if (err) {
             throw err;
           }
-          // INSERT CODE HERE FOR INSERTING SELECTED OR REJECTED
-          // Math.round(Math.random() * 0.5);
+
+          var rand = Math.random();
+          if (rand <= selectedInterestedRatio) {
+            interest.selected = true;
+          } else if (rand <= selectedInterestedRatio + rejectedInterestedRatio) {
+            interest.rejected = true;
+          }
+          interests.push(interest);
+
           generateInterest(i + 1);
         });
     } else {
@@ -179,27 +194,27 @@ var generateInterests = function (callback) {
   generateInterest(0);
 }
 
-// var generateRooms = function(callback) {
-
-//   // get a random wandooID to generate a room for
-//   // 
-//   var generateRoom = function (i) {
-    
-//   }
-//   generateRoom(0);
-// }
+module.exports = {
+  generateUsers : generateUsers,
+  getUserIDs : getUserIDs,
+  generateWandoos : generateWandoos,
+  getWandooIDs : getWandooIDs, 
+  generateInterests : generateInterests
+};
 
 generateUsers(function () {
-  getUserIDs(function () {
-    generateWandoos(function () {
-      getWandooIDs(function () {
-        generateInterests(function () {
+  getUserIDs(userIDs, function (userIDs) {
+    generateWandoos(userIDs, function () {
+      getWandooIDs(wandooIDs, function (wandooIDs) {
+        // generateInterests(userIDs, wandooIDs, function () {
           console.log('Complete');
-        });
+        // });
       })
     });
   });
 });
+
+// NEED TO TEST GENERATE INTEREST
   
 // 1. Insert users
 // 2. Get userIDs
