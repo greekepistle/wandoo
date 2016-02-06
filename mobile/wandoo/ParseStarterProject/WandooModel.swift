@@ -32,7 +32,7 @@ class WandooModel {
         "Monday": "Tuesday",
         "Tuesday": "Wednesday",
         "Wednesday": "Thursday",
-        "Thursay": "Friday",
+        "Thursday": "Friday",
         "Friday": "Saturday",
         "Saturday": "Sunday",
     ]
@@ -173,15 +173,17 @@ class WandooModel {
         
         let splitFormattedDate = wandooFormattedDate.characters.split{$0 == " "}.map(String.init)
         
+        print(splitFormattedDate[2])
+        
         if  todayIntDay < wandooIntDay {
             if wandooIntDay! == todayIntDay! + 1 || String(tomorrowDays[todayDay]!) == splitFormattedDate[0] {
-                result = "Tomorrow at " + splitFormattedDate[1]
+                result = "Tomorrow at " + splitFormattedDate[1] + " " + splitFormattedDate[2]
             } else {
-                result = splitFormattedDate[0] + " at " + splitFormattedDate[1]
+                result = splitFormattedDate[0] + " at " + splitFormattedDate[1] + " " + splitFormattedDate[2]
             }
             
         } else {
-            result = "Today at " + splitFormattedDate[1]
+            result = "Today at " + splitFormattedDate[1] + " " + splitFormattedDate[2]
         }
         
         return result
