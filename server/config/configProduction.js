@@ -6,6 +6,6 @@ module.exports = {
   dbPassword : process.env.DBPASS,
   dbHost : process.env.DBHOST,
   db : process.env.DB,
-  serverURL : process.env.SERVERURL,
+  serverURL : process.env.SERVERURL
 }
 

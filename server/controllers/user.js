@@ -15,7 +15,7 @@ module.exports = {
           res.json({ data : result }); 
         }
       });
-    } else if (req.query.facebookID) { // need to account for case when other params aside frmo facebookID are passed
+    } else if (req.query.facebookID) { // need to account for case when other params aside from facebookID are passed
       user.getByFBID(req.query.facebookID, function (err, result) {
         if (err) {
           console.error(err);
@@ -54,7 +54,8 @@ module.exports = {
     for ( var i in req.body ) {
       if ( i in userAttr ) {
         if ( i === 'profilePic' ) {
-          // userValues[userAttr[i]] = '/images/' + req.body['facebookID'] + '.png';
+          // TO TEST IMAGES ON DEV ENVIRONMENT
+          // userValues[userAttr[i]] = config.serverURL + '/images/' + req.body['facebookID'] + '.png';
           // util.writeImage(userValues[userAttr[i]], req.body['profilePic']);
           userValues[userAttr[i]] = s3.fileURL(req.body.facebookID);
           s3.uploadFileToS3(req.body.facebookID, req.body.profilePic);

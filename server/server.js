@@ -19,6 +19,7 @@ fs.access(__dirname + '/public/images', fs.R_OK | fs.W_OK, function (err) {
 app.use(bodyParser.json({limit: '5mb'}));
 app.use(logger);
 app.use('/images',express.static(__dirname + '/public/images'));
+app.use(express.static(__dirname + '/public'));
 app.use('/', expressRouter);
 router(expressRouter);
 app.listen(config.port);

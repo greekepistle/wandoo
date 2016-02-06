@@ -9,7 +9,7 @@ module.exports = {
   },
 
   getPartialRes : function (params, callback) {
-    var qs = "select * from wandoo where wandooID >= ? order by start_time asc limit ?;";
+    var qs = "select * from wandoo where status='A' order by start_time asc limit ?,?;";
     dbUtils.queryBuilder(qs, params, callback);
   },
 
@@ -24,18 +24,23 @@ module.exports = {
 
     db.getConnection(function (err, con) {
       if (err) {
+        con.release();
         callback(err);
       } else {
         db.query(qs1, userID, function (err, results1) {
           if (err) {
+            con.release();
             callback(err);
           } else if (!results1.length) {
+            con.release();
             callback('The specified userID does not exist');
           } else if (!results1[0].latitude || !results1[0].longitude) {
+            con.release();
             callback('The user location is undefined');
           } else {
             var location = [results1[0].latitude, results1[0].longitude];
             db.query(qs2, [], function (err, results2) {
+              con.release();
               if (err) {
                 callback(err);
               } else {

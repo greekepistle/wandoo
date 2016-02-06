@@ -34,15 +34,18 @@ module.exports = {
 
     db.getConnection(function (err, con) {
       if (err) {
+        con.release();
         callback(err);
       } else {
         db.query(qs1, userData, function(err, results1) {
           if ( err ) {
+            con.release();
             callback(err);
           } else {
             eduData.unshift(results1.insertId);
             db.query(qs2, eduData, function(err,results2) {
-              if ( err ) {
+              con.release();
+              if (err) {
                 callback(err);
               } else {
                 callback(null, results1, results2);

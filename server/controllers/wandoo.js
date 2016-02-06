@@ -41,9 +41,9 @@ module.exports = {
           res.status('400').send('There was an error with selection');
         } else {
           var filteredResults = _.filter(result, function (wandoo) {
-            var dist = util.distance(wandoo.latitude, wandoo.longitude, location[0], location[1]);
-            wandoo.distance = Math.round(dist * 10)/10; // round to 1 decimal point
-            return (dist <= maxDist && req.query.userID !== wandoo.userID);
+            wandoo.distance = util.distance(wandoo.latitude, wandoo.longitude, location[0], location[1]);
+            // don't return the user's own wandoo
+            return (wandoo.distance <= maxDist && req.query.userID !== wandoo.userID);
           });
           res.json({data : filteredResults});
         }
