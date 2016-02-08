@@ -4,7 +4,7 @@ var util = require('../util');
 var layer = require('../layer');
 var _ = require('underscore');
 
-var maxDist = 5; // max dist in miles between user and wandoos returned
+var maxDist = 20; // max dist in miles between user and wandoos returned
 
 var getQueryCB = function (err, result, res) {
     if (err) {
