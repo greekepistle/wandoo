@@ -10,8 +10,8 @@ var request = require('supertest'),
 
 var server = request.agent(config.serverURL);
 
-var numUsers = 3, // max is userData.length
-    numWandoos = 10,
+var numUsers = 500, // max is userData.length
+    numWandoos = 2500,
     // location where you want to centre all locations
     locSeed = [37.7833669, -122.4088739], // SF
     // locSeed = [32.8724048054, -117.2019943782], // San Diego
@@ -214,8 +214,9 @@ generateUsers(function () {
   });
 });
 
-// NEED TO TEST GENERATE INTEREST
-  
+// NEED TO TEST GENERATE INTEREST BEFORE ADDING IT
+
+// PSEUDO CODE
 // 1. Insert users
 // 2. Get userIDs
 // 3. Insert wandoos

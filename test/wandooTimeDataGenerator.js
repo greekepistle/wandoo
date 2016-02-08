@@ -57,15 +57,6 @@ module.exports = function (numRecords) {
   var maxStart = new Date();
   setMaxStart(maxStart);
 
-  // var randomPost = new Date(+minPost + (Math.random() * (maxPost - minPost)));
-  // var minStart = new Date(randomPost.getTime());
-  // setMinStart(minStart);
-  // var randomStart = new Date(+minStart + (Math.random() * (maxStart - minStart))); 
-
-  // console.log(randomPost);
-  // console.log(randomStart);
-
-
   for (var i = 0; i < numRecords; i ++) {
     var randomPost = new Date(+minPost + (Math.random() * (maxPost - minPost)));
     var minStart = new Date(randomPost.getTime());
