@@ -193,6 +193,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             wandooCell.showInterestButton.backgroundColor = UIColor(white:0.88, alpha:1.0)
             wandooCell.showInterestButton.userInteractionEnabled = true
         }
+        
+        if userID == userModel.userID {
+            wandooCell.showInterestButton.backgroundColor = UIColor(red: 100.0/255.0, green: 181.0/255.0, blue: 246.0/255.0, alpha: 0.5)
+            wandooCell.showInterestButton.userInteractionEnabled = false
+        }
 
         wandooCell.cardView.layer.borderWidth = 1
         wandooCell.cardView.layer.borderColor = UIColor.lightGrayColor().CGColor
@@ -312,7 +317,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 }
             })
         }
-    }
+    } 
 
     func getAllWandoos(completion: (result: NSArray) -> Void) {
         wandooModel.getAllWandoos { (allWandoos) -> Void in

@@ -14,6 +14,7 @@ class AcceptOrRejectViewController: UITableViewController {
     var allInterestedInfo: Array<NSMutableDictionary>?
     var interestedModel = InterestedModel.sharedInterestedInstance
     var userModel = UserModel.sharedUserInstance
+    var wandooModel = WandooModel.sharedWandooInstance
     
     var myWandooInfo: NSDictionary?
     
@@ -134,6 +135,7 @@ class AcceptOrRejectViewController: UITableViewController {
                     interestedCell.reject.userInteractionEnabled = false
                     interestedCell.accept.userInteractionEnabled = false
                 } else if decision == 2 {
+                    userModel.acceptOrRejectList[String(wandooID)]!["count"]!++
                     interestedCell.accept.backgroundColor = UIColor(red: 100.0/255.0, green: 181.0/255.0, blue: 246.0/255.0, alpha: 0.5)
                     interestedCell.accept.userInteractionEnabled = false
                     interestedCell.reject.userInteractionEnabled = false
@@ -181,6 +183,8 @@ class AcceptOrRejectViewController: UITableViewController {
             print("available")
         } else {
             userModel.acceptOrRejectList[String(wandooID)] = [:]
+            userModel.acceptOrRejectList[String(wandooID)]!["count"] = 0
+            
         }
         
         if String(self.view.subviews.last).containsString("Hang tight! No one has shown interest yet") {
