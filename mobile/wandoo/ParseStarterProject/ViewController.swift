@@ -217,6 +217,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let interestedWandooIDs = userModel.interestedWandooIDs as NSDictionary
         self.userModel.userDefaults.setObject(interestedWandooIDs, forKey: "interestedWandooIDs")
         self.userModel.userDefaults.synchronize()
+        
+        let hostID = allWandoosArray[sender.tag]["userID"] as! Int
+        self.userModel.getUserInfoByUserID(hostID) { (result) -> Void in
+            
+            //PUT YOUR PUSH CODE HERE FOR SHOWING INTEREST
+            print(result["objectID"]!)
+            //----------------------------------------
+        }
 
     }
     
