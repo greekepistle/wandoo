@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class AcceptOrRejectViewController: UITableViewController {
     
@@ -69,6 +70,34 @@ class AcceptOrRejectViewController: UITableViewController {
             
             //PUT YOUR PUSH CODE HERE FOR ACCEPT AND REJECT
             print(allInterestedInfo![sender.tag]["objectID"])
+            
+            
+            //Push Notification to be sent to Host
+            let participant = allInterestedInfo![sender.tag]["objectID"]
+            let uQuery:PFQuery = PFUser.query()!
+            uQuery.whereKey("objectId", equalTo: participant!)
+            
+            let pushQuery:PFQuery = PFInstallation.query()!
+            pushQuery.whereKey("user", matchesQuery: uQuery)
+            
+            let push:PFPush = PFPush()
+            push.setQuery(pushQuery)
+            let setMessage = "Congrats!! User has matched. Go and chat with them!!"
+            push.setMessage(setMessage)
+            
+            do {
+                try push.sendPushInBackground()
+                
+            } catch {
+                
+            }
+            
+            print("Accept push sent for objectID: ", participant)
+            
+            
+            
+            
+            
             //----------------------------
             cell!.userInteractionEnabled = false
         }
