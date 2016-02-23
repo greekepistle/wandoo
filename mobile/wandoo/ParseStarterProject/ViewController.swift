@@ -224,6 +224,31 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             //PUT YOUR PUSH CODE HERE FOR SHOWING INTEREST
             print(result["objectID"]!)
             //----------------------------------------
+            
+            //Push Notification to be sent to Host
+            let participant = result["objectID"]
+            let uQuery:PFQuery = PFUser.query()!
+            uQuery.whereKey("objectId", equalTo: participant!)
+            
+            let pushQuery:PFQuery = PFInstallation.query()!
+            pushQuery.whereKey("user", matchesQuery: uQuery)
+            
+            let push:PFPush = PFPush()
+            push.setQuery(pushQuery)
+            let setMessage = "Congrats!! User has shown interest in your wandoo. Go and check them out!!"
+            push.setMessage(setMessage)
+            
+            do {
+                try push.sendPushInBackground()
+                
+            } catch {
+                
+            }
+            
+            print("Matched push sent for objectID: ", participant)
+            
+            
+            
         }
 
     }

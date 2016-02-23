@@ -53,38 +53,38 @@ class ConversationViewController: ATLConversationViewController, ATLConversation
     
     func conversationViewController(viewController: ATLConversationViewController, didSendMessage message: LYRMessage) {
 
-      
-        for participant in message.conversation.participants {
-
-            if participant == PFUser.currentUser()!.objectId! {
-                print("They dont match", PFUser.currentUser()!.objectId!, participant)
-                continue
-            }
-            
-            let uQuery:PFQuery = PFUser.query()!
-            uQuery.whereKey("objectId", equalTo: participant)
-            
-            let pushQuery:PFQuery = PFInstallation.query()!
-            pushQuery.whereKey("user", matchesQuery: uQuery)
-            
-            let push:PFPush = PFPush()
-            push.setQuery(pushQuery)
-            let setMessage = "Message received from"
-            push.setMessage(setMessage)
-            
-            do {
-                try push.sendPushInBackground()
-                
-            } catch {
-                
-            }
-            
-            print("push sent for objectID: ", participant)
-        }
+       //push notifications
+//        for participant in message.conversation.participants {
+//
+//            if participant == PFUser.currentUser()!.objectId! {
+//                print("They dont match", PFUser.currentUser()!.objectId!, participant)
+//                continue
+//            }
+//            
+//            let uQuery:PFQuery = PFUser.query()!
+//            uQuery.whereKey("objectId", equalTo: participant)
+//            
+//            let pushQuery:PFQuery = PFInstallation.query()!
+//            pushQuery.whereKey("user", matchesQuery: uQuery)
+//            
+//            let push:PFPush = PFPush()
+//            push.setQuery(pushQuery)
+//            let setMessage = "Message received from"
+//            push.setMessage(setMessage)
+//            
+//            do {
+//                try push.sendPushInBackground()
+//                
+//            } catch {
+//                
+//            }
+//            
+//            print("push sent for objectID: ", participant)
+//        }
         
         print("Message sent!")
         
-        //push notifications
+       
     }
     
     func conversationViewController(viewController: ATLConversationViewController, didFailSendingMessage message: LYRMessage, error: NSError?) {
