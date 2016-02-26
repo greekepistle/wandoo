@@ -17,7 +17,7 @@ class SettingsController: UITableViewController {
     let delegate = UIApplication.sharedApplication().delegate as! AppDelegate
     var layerClient: LYRClient!
     
-    var settings = ["About Us", "Contact Us", "Delete Account", "Log Out"]
+    var settings = ["About Us", "Contact Us", "Terms and Conditions", "Privacy Policy", "Log Out","Delete Account", "", "Version 1.0.0"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,7 +56,7 @@ class SettingsController: UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        if (indexPath.row == 3) {
+        if (indexPath.row == 4) {
 //            print("Current user token=\(FBSDKAccessToken.currentAccessToken().tokenString)")
             SVProgressHUD.setBackgroundColor(UIColor.clearColor())
             SVProgressHUD.show()
@@ -75,9 +75,46 @@ class SettingsController: UITableViewController {
             performSegueWithIdentifier("backToLogin", sender: nil)
         } else if (indexPath.row == 0) {
             
+            let email = "Wandooapp@gmail.com"
+            let url = NSURL(string: "mailto:\(email)")
+            UIApplication.sharedApplication().openURL(url!)
+            
         } else if (indexPath.row == 1) {
             
+            let email = "Wandooapp@gmail.com"
+            let url = NSURL(string: "mailto:\(email)")
+            UIApplication.sharedApplication().openURL(url!)
+            
         } else if (indexPath.row == 2) {
+            
+            UIApplication.sharedApplication().openURL(NSURL(string: "https://wandoo-hs5abf-5804.herokuapp.com/terms.html")!)
+            
+        } else if (indexPath.row == 3) {
+            
+            UIApplication.sharedApplication().openURL(NSURL(string: "https://wandoo-hs5abf-5804.herokuapp.com/privacy.html")!)
+            
+        } else if (indexPath.row == 5) {
+            
+            let query = PFQuery(className:"_User")
+            query.getObjectInBackgroundWithId(PFUser.currentUser()!.objectId!) {
+                (user: PFObject?, error: NSError?) -> Void in
+                
+                user?.deleteInBackgroundWithBlock({ (deleted, error) -> Void in
+                    self.layerClient.deauthenticateWithCompletion({ (success, error) -> Void in
+                        let loginManager = FBSDKLoginManager()
+                        loginManager.logOut()
+                        
+                        self.tabBarController!.tabBar.hidden = true
+                        self.tabBarController!.tabBar.translucent = true
+                        
+                        self.performSegueWithIdentifier("backToLogin", sender: nil)
+                        let alert = UIAlertController(title: "", message: "Profile deleted", preferredStyle: UIAlertControllerStyle.Alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+                        self.presentViewController(alert, animated: true, completion: nil)
+                    })
+                })
+                
+            }
             
         }
     }
