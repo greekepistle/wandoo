@@ -30,7 +30,7 @@ class FacebookLoginController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var termsAndPrivacy: UILabel!
     @IBOutlet weak var noPostToFB: UILabel!
     
-    let termsAndPrivacyText = "By continuing, you agree to our Terms and Conditions and Privacy Policy"
+    let termsAndPrivacyText = "What do you want to do?"
     let noPostToFBText = "We don't post anything to Facebook"
     var mutableTermsAndPrivacy = NSMutableAttributedString()
     var mutableNoPostToFB = NSMutableAttributedString()
@@ -130,27 +130,27 @@ class FacebookLoginController: UIViewController, CLLocationManagerDelegate {
         print(FBSDKAccessToken.currentAccessToken() != nil)
         
         
-        mutableTermsAndPrivacy = NSMutableAttributedString(
-            string: termsAndPrivacyText,
-            attributes: [NSFontAttributeName:UIFont(
-                name: "Helvetica Neue",
-                size: 11.0)!])
+//        mutableTermsAndPrivacy = NSMutableAttributedString(
+//            string: termsAndPrivacyText,
+//            attributes: [NSFontAttributeName:UIFont(
+//                name: "Helvetica Neue",
+//                size: 11.0)!])
         
-        mutableTermsAndPrivacy.addAttribute(NSFontAttributeName,
-            value: UIFont(
-                name: "Helvetica-Bold",
-                size: 11.0)!,
-            range: NSRange(
-                location: 32,
-                length: 20))
-        
-        mutableTermsAndPrivacy.addAttribute(NSFontAttributeName,
-            value: UIFont(
-                name: "Helvetica-Bold",
-                size: 11.0)!,
-            range: NSRange(
-                location: 57,
-                length: 14))
+//        mutableTermsAndPrivacy.addAttribute(NSFontAttributeName,
+//            value: UIFont(
+//                name: "Helvetica-Bold",
+//                size: 11.0)!,
+//            range: NSRange(
+//                location: 32,
+//                length: 20))
+//        
+//        mutableTermsAndPrivacy.addAttribute(NSFontAttributeName,
+//            value: UIFont(
+//                name: "Helvetica-Bold",
+//                size: 11.0)!,
+//            range: NSRange(
+//                location: 57,
+//                length: 14))
         
 //        mutableTermsAndPrivacy.addAttribute(NSLinkAttributeName,
 //            value: "https://wandoo-hs5abf-5804.herokuapp.com/terms.html",
@@ -164,15 +164,15 @@ class FacebookLoginController: UIViewController, CLLocationManagerDelegate {
 //                location: 57,
 //                length: 14))
         
-        termsAndPrivacy.attributedText = mutableTermsAndPrivacy
+//        termsAndPrivacy.attributedText = mutableTermsAndPrivacy
         
-        mutableNoPostToFB = NSMutableAttributedString(
-            string: noPostToFBText,
-            attributes: [NSFontAttributeName:UIFont(
-                name: "Helvetica Neue",
-                size: 11.0)!])
-        
-        noPostToFB.attributedText = mutableNoPostToFB
+//        mutableNoPostToFB = NSMutableAttributedString(
+//            string: noPostToFBText,
+//            attributes: [NSFontAttributeName:UIFont(
+//                name: "Helvetica Neue",
+//                size: 11.0)!])
+//        
+//        noPostToFB.attributedText = mutableNoPostToFB
         
         
         
