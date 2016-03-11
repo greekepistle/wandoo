@@ -41,9 +41,17 @@ class ConversationListViewController: ATLConversationListViewController, ATLConv
 //        self.title = "Messages"
 //        self.navigationController?.navigationBar.topItem!.title = "Messages"
         
+//        self.navigationController!.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont(name: "Helvetica", size: 25.0)!];
+        
+        
+        
         self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
-        let titleDict: NSDictionary = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+        let titleDict: NSDictionary = [NSForegroundColorAttributeName: UIColor.whiteColor(),
+            NSFontAttributeName: UIFont.systemFontOfSize(22, weight: UIFontWeightSemibold)]
+        
+        
         self.navigationController!.navigationBar.titleTextAttributes = titleDict as! [String : AnyObject]
+        
         
         
 //        The below code is for enabling Chat selector button. We don't need it for now
