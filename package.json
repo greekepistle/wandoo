@@ -5,7 +5,7 @@
   "main": "server/server.js",
   "scripts": {
     "test": "mocha",
-    "start": "sudo nodemon",
+    "start": "nodemon",
     "generate": "node test/generateTestData.js"
   },
   "repository": {
