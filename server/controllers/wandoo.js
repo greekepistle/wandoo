@@ -98,6 +98,11 @@ module.exports = {
   },
 
   delete : function (req, res) {
+    if (!req.body.wandooIDs) {
+      console.error('Invalid parameters');
+      res.status('400').send('Invalid parameters');
+      return;
+    }
     wandoo.delete(req.body.wandooIDs, function (err, result) {
       if ( err ) {
         console.error(err);
