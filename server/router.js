@@ -35,8 +35,6 @@ module.exports = function (router) {
 
   router.get('/api/rooms', room.get); 
 
-  // router.get('/api/rooms/:roomID', room.get);
-
   router.post('/api/rooms', room.post);
 
   router.delete('/api/rooms', room.delete);

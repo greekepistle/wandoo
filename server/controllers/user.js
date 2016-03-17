@@ -1,6 +1,6 @@
 var user = require('../models/user');
 var _ = require('underscore');
-var util = require('../util');
+var util = require('../util/util');
 var s3 = require('../util/s3');
 
 module.exports = {

@@ -1,8 +1,8 @@
 var room = require('../models/room');
 var user = require('../models/user');
-var util = require('../util');
+var util = require('../util/util');
 var _ = require('underscore');
-var layer = require('../layer');
+var layer = require('../util/layer');
 
 var roomExpiry = 1;// number of days after end time when room will be expired
 
