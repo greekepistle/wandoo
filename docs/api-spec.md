@@ -9,12 +9,10 @@
 Name|Notes|Example
 ----|-----|-------
 facebookID| | 10153381139067955
-
-
 #### Example
 
 ```json
-curl -i http://127.0.0.1:8000/api/users/?facebookID=10153381139067955
+curl -i http://localhost:8000/api/users?facebookID=10153381139067955
 ```
 
 #### Usage
@@ -25,7 +23,7 @@ curl -i http://127.0.0.1:8000/api/users/?facebookID=10153381139067955
 #### Example
 
 ```json
-curl -i http://127.0.0.1:8000/api/users/324624
+curl -i http://localhost:8000/api/users/324624
 ```
 
 #### Usage
@@ -43,42 +41,41 @@ facebookID | Uniquely identifies a user of Facebook | 10153381139067955 |
 email | | john.smith@yahoo.com |
 age | | 53 |
 sex | | M |
-profilePic | Image file | ? |
+profilePic | A base64 encoded image file | data:image/gif;base64,R0lGODlhAQABAIAAAAUEBAAAACwAAAAAAQABAAACAkQBADs=|
 employer | | Google |
 jobTitle | | Software Engineer |
 latitude | | 37.7836675 |
 longitude | | -122.4091699 |
 educationInstitution | | Stanford |
 objectID| Provided by Parse |IPyQqWYM0x | 
-friends | POST MVP | |
-interests | POST MVP | |
-likes | POST MVP |  |
+friends | To be added post-MVP | |
+interests | To be added post-MVP | |
+likes | To be added post-MVP |  |
 
 #### Examples
 
 ```json
 
-curl -i -X POST -H 'Content-Type: application/json' -d '{"name":"Pete Zurish","facebookID":134515,"email":"pete.z@gmail.com","age":28,"sex":"M","profilePic":"need a profile pic","employer":"Google","jobTitle":"Software Engineer","latitude":"37.7836675","longitude":"-122.4091699","educationInstitution":"University of Toronto", "objectID":"adfgafh"}' localhost:8000/api/users
+curl -i -X POST -H 'Content-Type: application/json' -d '{"name":"Pete Zurish","facebookID":134515,"email":"pete.z@gmail.com","age":28,"sex":"M","profilePic":"data:image/gif;base64,R0lGODlhAQABAIAAAAUEBAAAACwAAAAAAQABAAACAkQBADs=","employer":"Google","jobTitle":"Software Engineer","latitude":"37.7836675","longitude":"-122.4091699","educationInstitution":"University of Toronto", "objectID":"adfgafh"}' localhost:8000/api/users
 
 ```
 #### Usage
 1. Every new user that is created will have its user data sent to the server to store in the database.
 
-### DELETE /api/users:\<userID\>
+### DELETE /api/users/\<userID\>
 
-POST MVP
+To be added post-MVP
 
 #### Example
-TODO
 
 ```json
-curl -i http://127.0.0.1:8000/api/user
+
 ```
 
 #### Usage
 1. When a user deletes his/her account from our system. a) delete user from user table b) delete host wandoos c) delete all wandoo interests by the user
 
-### PUT /api/users:\<userID\>
+### PUT /api/users/\<userID\>
 
 #### Payload
 
@@ -108,11 +105,11 @@ Name | Notes | Example
 offset| The record number to start from. Must be used with limit. Starts from 0.| 0 |
 limit | Limits the number of return values | 25 |
 hostID | Returns all wandoos of the host identified by the host's userID. Cannot be used with offset and limit.| 222 |
-userID | Returns all wandoos that are 5 miles away from user. | 3345 |
-startTime | ISO:8601 String (use Date.prototype.toJSON()) POST MVP| 2015-12-12T01:30:00.040Z |
-endTime | ISO:8601 String (use Date.prototype.toJSON()) POST MVP| 2015-12-12T02:30:00.040Z |
-postTime | ISO:8601 String (use Date.prototype.toJSON()) POST MVP | 2015-12-12T01:00:00.040Z |
-tag | POST MVP | dinner |
+userID | Returns all wandoos that are 20 miles away from user. | 3345 |
+startTime | To be added post-MVP, ISO:8601 String (use Date.prototype.toJSON())| 2015-12-12T01:30:00.040Z |
+endTime | To be added post-MVP, ISO:8601 String (use Date.prototype.toJSON())| 2015-12-12T02:30:00.040Z |
+postTime | To be added post-MVP, ISO:8601 String (use Date.prototype.toJSON())| 2015-12-12T01:00:00.040Z |
+tag | To be added post-MVP | dinner |
 
 #### Examples
 
@@ -125,7 +122,8 @@ curl -i localhost:8000/api/wandoos?userID=5
 
 #### Usage
 1. Retrieve all wandoos of a host by specifying host's userID
-2. Retrieving all wandoos near user's location
+2. Retrieve all wandoos near user's location
+3. Retrieve all wandoos and limit the amount returned
 
 ### POST /api/wandoos
 
@@ -138,7 +136,7 @@ text | Full text of the wandoo (max of x characters)? | Going out to lunch |
 startTime | ISO:8601 String (use Date.prototype.toJSON()) | 2015-12-12T01:30:00.040Z | 
 endTime | ISO:8601 String (use Date.prototype.toJSON()) | 2015-12-12T02:00:00.040Z | 
 postTime | ISO:8601 String (use Date.prototype.toJSON()) | 2015-12-12T01:00:00.040Z | 
-tag | POST MVP | lunch | 
+tag | To be added post-MVP | lunch | 
 latitude | latitude of user's position | 37.7836675 |
 longitude | longitude of user's position | -122.4091699 |
 numPeople | | 4 |
@@ -154,7 +152,7 @@ curl -i -X POST -H 'Content-Type: application/json' localhost:8000/api/wandoos -
 #### Payload
 Name | Notes | Example
 -----|-------|--------
-wandooID|An array of wandooIDs that identify the wandoos to be deleted|[24,43,56]
+wandooIDs|An array of wandooIDs that identify the wandoos to be deleted|[24,43,56]
 
 #### Examples
 
@@ -162,7 +160,7 @@ wandooID|An array of wandooIDs that identify the wandoos to be deleted|[24,43,56
 1. When a user deletes a wandoo (delete room, tags, interests)
 2. When a wandoo expires and the worker deletes it
 
-### PUT /api/wandoos/<wandooID>
+### PUT /api/wandoos/\<wandooID\>
 
 #### Payload
 Name | Notes | Example
@@ -191,11 +189,12 @@ wandooID| Cannot be specified if userID is specified| 22323|
 userID| Cannot be specified if wandooID is specified| 235245|
 
 #### Examples
-TODO
+```json
+```
 
 #### Usage
-1. On the bulletin board, all wandoos which a user has already expressed interest in will be disabled
-2. A user will be able to view all of their wandoos
+1. On the feed, all wandoos which a user has already expressed interest in will be disabled
+2. A user will be able to view all of the wandoos that they've expressed interest in
 
 ### POST /api/interested
 
@@ -220,6 +219,10 @@ Name | Notes | Example
 selected| 1 indicates that a host has selected a user, 0 indicates that host has not. Cannot be specified if **rejected** is specified.  | 1
 rejected| 1 indicates that a host has selected a user, 0 indicates that host has not. Cannot be specified if **selected** is specified. | 0
 hostID|userID of the host| 245626|
+
+#### Examples
+```json
+```
 
 #### Usage
 1. When a host selects/rejects a user, send a PUT to change respective flag
@@ -289,7 +292,7 @@ curl -i -X DELETE localhost:8000/api/rooms -d '{"roomIDs":[2,3,4]}'
 
 ## Tags
 
-### POST MVP
+To be added post-MVP
 
 ### GET /api/tags
 
