@@ -152,7 +152,7 @@ var wandoo = {
 
 // sanity test
 
-describe('GET /api/test', function(){
+xdescribe('GET /api/test', function(){
   it('Sanity test', function(done){
     server
       .get('/api/test')
@@ -164,7 +164,7 @@ describe('GET /api/test', function(){
 
 // USERS
 
-describe('POST /api/users', function() {
+xdescribe('POST /api/users', function() {
   it('should add a user to the database', function(done) {
 
     var user = {
@@ -189,7 +189,7 @@ describe('POST /api/users', function() {
   // can we create a test to verify that this user is in the database?
 });
 
-describe('GET /api/users:userID', function() {
+xdescribe('GET /api/users:userID', function() {
 
   var userID = 6;
 
@@ -238,7 +238,7 @@ xdescribe('DELETE /api/users', function() {
 
 });
 
-describe('PUT /api/users', function() {
+xdescribe('PUT /api/users', function() {
 
   before(function (done) {
     getUser(done);
@@ -287,7 +287,7 @@ xdescribe('GET /api/wandoos', function() {
   });
 });
 
-describe('POST /api/wandoos', function() {
+xdescribe('POST /api/wandoos', function() {
   before(function (done) {
     getUser(done);
   });
