@@ -1,4 +1,3 @@
-var crondbclean = require('./cron-dbclean');
 var cleanUpWandoos = require('./cleanUpWandoos');
 var CronJob = require('cron').CronJob;
 

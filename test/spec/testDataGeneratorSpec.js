@@ -3,27 +3,27 @@ var expect = require('chai').expect;
 
 // IN PROGRESS
 
-describe('generateUsers', function () {
+xdescribe('generateUsers', function () {
   before(function executeFunction (done) {
     generate.generateUsers(done);
   });
   // verify in the database that the correct n
 });
 
-describe('getUserIDs', function () {
+xdescribe('getUserIDs', function () {
   before(function executeFunction (done) {
     var userIDs = generate.getUserIDs(done);
   });
   // it('should return an array of userIDs')
 });
 
-describe('generateWandoos', function () {
+xdescribe('generateWandoos', function () {
   before(function executeFunction (done) {
     generate.generateWandoos(done);
   });
 });
 
-describe('getWandooIDs', function () {
+xdescribe('getWandooIDs', function () {
   before(function executeFunction (done) {
     generate.getWandooIDs(done);
   });

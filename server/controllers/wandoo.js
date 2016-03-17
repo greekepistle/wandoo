@@ -1,7 +1,7 @@
 var wandoo = require('../models/wandoo');
 var user = require('../models/user');
-var util = require('../util');
-var layer = require('../layer');
+var util = require('../util/util');
+var layer = require('../util/layer');
 var _ = require('underscore');
 
 var maxDist = 20; // max dist in miles between user and wandoos returned
@@ -98,6 +98,11 @@ module.exports = {
   },
 
   delete : function (req, res) {
+    if (!req.body.wandooIDs) {
+      console.error('Invalid parameters');
+      res.status('400').send('Invalid parameters');
+      return;
+    }
     wandoo.delete(req.body.wandooIDs, function (err, result) {
       if ( err ) {
         console.error(err);
