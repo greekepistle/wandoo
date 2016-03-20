@@ -41,6 +41,7 @@ class FacebookLoginController: UIViewController, CLLocationManagerDelegate {
         PFFacebookUtils.logInInBackgroundWithReadPermissions(["public_profile","user_education_history","user_birthday", "user_work_history","user_friends", "email"], block: { (user:PFUser?, error:NSError?) -> Void in
             
             SVProgressHUD.show()
+            print(user!.objectId!)
             
             
             //PF Push - Start

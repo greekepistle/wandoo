@@ -341,10 +341,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     self.refreshControl.endRefreshing()
                     if self.allWandoosArray.count == 0 {
                         let noWandoos = UILabel(frame: CGRect(x: self.view.bounds.width/2 - 150, y: self.view.bounds.height/2 - 100, width: 300, height: 200))
-                        noWandoos.text = "No Wandoos in Your Area!"
-                        noWandoos.textAlignment = .Center
-                        noWandoos.font = UIFont(name: noWandoos.font.fontName, size: 20)
-                        noWandoos.textColor = UIColor.blackColor()
+                        noWandoos.numberOfLines = 0
+                        noWandoos.text = "No Wandoos in Your Area!\nPost some and live/connect :)\n\nExamples: \nWanna #Hangout?\nWanna #tour the city ?\nGo see #Movie?\nTrain with me #@Gym?\n#Lunch/Dinner with me?\n#Carpool with me?\nGet me #stuff from Costco?\n#Bar hopping tonight?\nGo to #Mall for shopping-hopping?\nRead a #book with me @Barnes?\n#Party with me 2nite?\nCaltrain #talk and connect with me?"
+                        noWandoos.sizeToFit()
+                        noWandoos.frame = CGRect(x: self.view.bounds.width/2 - 150, y: self.view.bounds.height/2 - 100, width: 300, height: 300)
+                        noWandoos.textAlignment = .Left
+                        noWandoos.font = UIFont(name:"HelveticaNeue", size: 16.0)
+//                        noWandoos.font = UIFont(name: noWandoos.font.fontName, size: 16)
+                        noWandoos.textColor = UIColor(red:0.204, green:0.596, blue:0.859, alpha:1.0)
                         self.view.addSubview(noWandoos)
                     }
                 }
