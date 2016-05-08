@@ -203,19 +203,24 @@ class UserModel {
                 do {
                     let parsedData = try NSJSONSerialization.JSONObjectWithData(data, options: .MutableContainers) as? NSDictionary
 //                    print(parsedData)
-                    let unwrappedData = parsedData!["data"]![0] as! NSDictionary
-                    let picString = unwrappedData["profile_picture"] as! String
-            
-//                    let fbID = FBSDKAccessToken.currentAccessToken().userID
-                    let picURL = NSURL(string: picString)
-                    if let data = NSData(contentsOfURL: picURL!) {
-                        print("yes")
-                        unwrappedData.setValue(UIImage(data: data), forKey: "profile_picture")
-                        completion(result: unwrappedData)
-                    } else {
-                        print("Can't get Image")
-                        unwrappedData.setValue(UIImage(named: "default_user"), forKey: "profile_picture")
-                        completion(result: unwrappedData)
+                    if let unwrappedData = parsedData!["data"] {
+                        let unwrappedArray = unwrappedData as! NSArray
+                        let unwrappedDictionary = unwrappedArray[0] as! NSDictionary
+                        
+                        let picString = unwrappedDictionary["profile_picture"] as! String
+                        
+                        //                    let fbID = FBSDKAccessToken.currentAccessToken().userID
+                        let picURL = NSURL(string: picString)
+                        if let data = NSData(contentsOfURL: picURL!) {
+                            print("yes")
+                            unwrappedData.setValue(UIImage(data: data), forKey: "profile_picture")
+                            completion(result: unwrappedDictionary)
+                        } else {
+                            print("Can't get Image")
+                            unwrappedData.setValue(UIImage(named: "default_user"), forKey: "profile_picture")
+                            completion(result: unwrappedDictionary)
+                        }
+                        
                     }
                 } catch {
                     print("getUserInfo Something went wrong")
@@ -233,8 +238,11 @@ class UserModel {
             if let data = data {
                 do {
                     let parsedData = try NSJSONSerialization.JSONObjectWithData(data, options: .MutableContainers) as? NSDictionary
-                    let unwrappedData = parsedData!["data"]![0] as! NSDictionary
-                    completion(result: unwrappedData)
+                    if let unwrappedData = parsedData!["data"] {
+                        let unwrappedArray = unwrappedData as! NSArray
+                        let unwrappedDictionary = unwrappedArray[0] as! NSDictionary
+                        completion(result: unwrappedDictionary)
+                    }
                 } catch {
                     print("getUserInfoByUserID Something went wrong")
                 }
