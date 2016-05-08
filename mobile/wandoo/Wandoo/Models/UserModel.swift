@@ -238,8 +238,11 @@ class UserModel {
             if let data = data {
                 do {
                     let parsedData = try NSJSONSerialization.JSONObjectWithData(data, options: .MutableContainers) as? NSDictionary
-                    let unwrappedData = parsedData!["data"]![0] as! NSDictionary
-                    completion(result: unwrappedData)
+                    if let unwrappedData = parsedData!["data"] {
+                        let unwrappedArray = unwrappedData as! NSArray
+                        let unwrappedDictionary = unwrappedArray[0] as! NSDictionary
+                        completion(result: unwrappedDictionary)
+                    }
                 } catch {
                     print("getUserInfoByUserID Something went wrong")
                 }
