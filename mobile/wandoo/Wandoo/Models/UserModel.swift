@@ -63,19 +63,31 @@ class UserModel {
                 let gender = userData["gender"]! as! String
                 self.gender = String(gender[gender.startIndex])
                 
-                
-                if userData["work"] != nil && userData["work"]![0]["employer"]! != nil {
-                    self.employer = userData["work"]![0]["employer"]!!["name"] as? String
-                }
-                
-                if userData["work"] != nil && userData["work"]![0]["position"]! != nil {
-                    self.jobTitle = userData["work"]![0]["position"]!!["name"] as? String
+                if let userWork = userData["work"] {
+                    var work = userWork as! [NSDictionary]
+                    if let userEmployer = work[0]["employer"] {
+                        var employer = userEmployer as! NSDictionary
+                        self.employer = employer["name"] as? String
+                    }
+                    
+                    if let userPosition = work[0]["position"] {
+                        var position = userPosition as! NSDictionary
+                        self.jobTitle = position["name"] as? String
+                    }
                 }
                 
                 if userData["education"] != nil {
                     for var i = 0; i < userData["education"]!.count; i++ {
                         if userData["education"]![i]["type"]! as! String == "College" {
-                            self.education = userData["education"]![i]["school"]!!["name"] as? String
+                            if let userEducation = userData["education"] {
+                                var education = userEducation as! [NSDictionary]
+                                if let userSchool = education[i]["school"] {
+                                    var school = userSchool as! NSDictionary
+                                    if let schoolName = school["name"] {
+                                        self.education = schoolName as? String
+                                    }
+                                }
+                            }
                         }
                     }
                 }
